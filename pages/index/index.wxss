@@ -1,21 +1,71 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.top_bg {
+    background-color: #E64A3A;
+    width: 750rpx;
+    height: 566rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.search {
+    align-items: center;
+    width: 690rpx;
+    height: 57rpx;
+    border-radius:20rpx;
+    background-color: #fff;
+    margin: 30rpx 30rpx 19rpx;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.iconsousuo {
+    font-size: 36rpx;
+    line-height: 57rpx;
+    margin-left: 20rpx;
+    margin-right: 20rpx;
 }
 
-.usermotto {
-  margin-top: 200px;
+.search_input {
+    line-height: 57rpx;
+    height: 57rpx;
+    font-size: 32rpx;
+    /*color: #BCBCBC;*/
+    color: #333;
+}
+
+.banner {
+    width: 690rpx;
+    height: 242rpx;
+    margin: 0 30rpx;
+    position: relative;
+}
+
+.swiper {
+}
+
+.swiper_img {
+    width: 100%;
+    max-height: 242rpx;
+}
+
+.slot {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 9rpx;
+}
+
+.slot-item {
+    width: 12rpx;
+    height: 13rpx;
+    background:rgba(255,255,255, 0.7);
+    border-radius:6rpx;
+    margin-right: 20rpx;
+}
+
+.slot-item-active {
+    width: 27rpx;
+    height: 13rpx;
+    background-color: #fff;
+    border-radius:6rpx;
+    margin-right: 20rpx;
 }

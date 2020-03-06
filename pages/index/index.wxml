@@ -1,13 +1,19 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<block>
+  <view class="top_bg"></view>
+  <view class="flex search">
+    <view class="iconfont iconsousuo"></view>
+    <input class="search_input" auto-focus placeholder="酸奶"/>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="banner">
+    <swiper class="swiper" bindchange="swiperChange" autoplay="true" interval="3000" circular="true">
+      <block wx:for="{{bannerList}}" wx:key="banner">
+        <swiper-item>
+          <image class="swiper_img" mode="widthFix" src="{{item.img}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="slot flex">
+      <view class="{{bannerCurIdx == index ? 'slot-item-active' : 'slot-item'}}" wx:for="{{bannerList.length ? bannerList.length : 0}}" wx:key="slot"></view>
+    </view>
   </view>
-</view>
+</block>
