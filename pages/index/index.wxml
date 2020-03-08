@@ -1,8 +1,8 @@
-<block>
+<scroll-view scroll-y="true" bindscroll="bindscrollchange" class="scroll_wrap" style="height: 100vh" scroll-into-view="{{intoView}}">
   <view class="top_bg"></view>
   <view class="flex search">
-    <view class="iconfont iconsousuo"></view>
-    <input class="search_input" auto-focus placeholder="酸奶"/>
+    <view class="iconfont iconsousuo1"></view>
+    <view class="search_input">酸奶</view>
   </view>
   <view class="banner">
     <swiper class="swiper" bindchange="swiperChange" autoplay="true" interval="3000" circular="true">
@@ -16,4 +16,83 @@
       <view class="{{bannerCurIdx == index ? 'slot-item-active' : 'slot-item'}}" wx:for="{{bannerList.length ? bannerList.length : 0}}" wx:key="slot"></view>
     </view>
   </view>
-</block>
+  <view class="flex promise">
+    <view class="item flex" style="margin-left: 50rpx;">
+      <image class="image" mode="widthFix" src="../../imgs/index/promise.png"></image>
+      <view class="txt">自营商品</view>
+    </view>
+    <view class="item flex">
+      <image class="image" mode="widthFix" src="../../imgs/index/promise.png"></image>
+      <view class="txt">自营商品</view>
+    </view>
+    <view class="item flex" style="margin-right: 50rpx;">
+      <image class="image" mode="widthFix" src="../../imgs/index/promise.png"></image>
+      <view class="txt">自营商品</view>
+    </view>
+  </view>
+  <view class="small_ad">
+    <view class="flex title">
+      <view class="ad_1">10元专区</view>
+      <view class="ad_2"></view>
+      <view class="ad_3">好货不错过</view>
+    </view>
+    <swiper class="ad_swiper" vertical="true" circular="true" autoplay="true">
+      <block wx:for="{{3}}" wx:key="ad_banner">
+        <swiper-item>
+          <view class="ad_item flex">
+            <view wx:for="{{3}}" wx:key="ad_item" class="ad_item_item">
+              <image mode="widthFix" src="" class="ad_img"></image>
+              <view class="txt1">￥5.5</view>
+              <view class="txt2">返现0.5元</view>
+            </view>
+            <view class="rush">
+              <view>立即</view>
+              <view>抢购</view>
+              <image mode="widthFix" src="../../imgs/index/ad_right.png" class="ad_right"></image>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="hot_goods">
+    <view class="title flex">
+      <image class="hot_img" mode="widthFix" src="../../imgs/index/hot_goods_icon.png"></image>
+      <view>爆款商品</view>
+      <view class="more_hot_goods flex">
+        <view>更多爆款</view>
+        <view class="iconfont iconxiangyoujiantou"></view>
+      </view>
+    </view>
+    <view class="flex hot_goods_item_wrap">
+      <view class="hot_goods_item" wx:for="{{4}}" wx:key="hot_goods">
+        <image class="hot_goods_img" mode="widthFix" src=""></image>
+      </view>
+    </view>
+  </view>
+  <view class="goods_list">
+    <view style="height: 111rpx;" wx:if="{{isStop}}"></view>
+    <view class="flex {{isStop ? 'goods_list_nav' : ''}}" id="goods-list-title">
+      <view class="flex goods_list_title" wx:for="{{goodsList}}" wx:key="goods_list_title">
+        <view class="list_title" bindtap="selectGoodsType" data-index="{{index}}">
+          <view class="goods_txt1 {{TitleIdx == index ? 'goods_txt3' : ''}}">{{item.name}}</view>
+          <view class="goods_txt2 {{TitleIdx == index ? 'goods_txt3' : ''}}">{{item.txt}}</view>
+        </view>
+        <view class="interval" wx:if="{{index+1 !== goodsList.length}}"></view>
+      </view>
+    </view>
+    <view class="flex goods_item" wx:for="{{9}}" wx:key="goods_bottom_item" style="margin-bottom: {{index+1 == 9 ? 0 : ''}}rpx">
+      <image class="goods_img" mode="widthFix"></image>
+      <view class="goods_right">
+        <view class="goods_title">【限时免费领】过滤效果>90%防尘透气易呼吸防雾防尘透气易呼吸防雾</view>
+        <view class="flex" style="margin-top: 56rpx;align-items: center;justify-content: space-between;">
+          <view class="goods_price">
+            <view class="pri1">￥5.00</view>
+            <view class="pri2">返现：1.00</view>
+          </view>
+          <view class="goods_btn">去抢购</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

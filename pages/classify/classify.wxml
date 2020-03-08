@@ -1,2 +1,37 @@
-<!--pages/classify/classify.wxml-->
-<text>pages/classify/classify.wxml</text>
+<block>
+    <view class="search flex">
+        <view class="iconfont iconsousuo1"></view>
+        <view class="search_input">酸奶</view>
+    </view>
+    <view class="flex">
+        <scroll-view class="scroll_left" scroll-y="true">
+            <view
+                    bindtap="selectTap"
+                    data-index="{{index}}"
+                    class="left_item {{leftIdx == index ? 'left_item1' : ''}}"
+                    wx:for="{{scrollLeft}}"
+                    wx:key="scroll_left"
+            >
+                <view wx:if="{{leftIdx == index}}" class="select_active"></view>
+                <view>{{item.name}}</view>
+            </view>
+        </scroll-view>
+        <scroll-view class="scroll_right" scroll-y="true">
+            <image mode="widthFix" src="" class="banner_img"></image>
+            <view class="special_recom">专场推荐</view>
+            <view class="goods_list flex">
+                <view class="goods_item" wx:for="{{6}}" wx:key="goos_item">
+                    <image mode="widthFix" class="goods_img" src=""></image>
+                    <view class="goods_name">商场大推荐</view>
+                </view>
+            </view>
+            <view class="special_recom hot_class">热门分类</view>
+            <view class="goods_list flex">
+                <view class="goods_item" wx:for="{{6}}" wx:key="goos_item">
+                    <image mode="widthFix" class="goods_img" src=""></image>
+                    <view class="goods_name">商场大推荐</view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</block>
