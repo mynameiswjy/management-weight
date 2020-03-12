@@ -1,0 +1,10 @@
+<block>
+    <view class="nav" style="height: {{navHeight}}rpx">
+        <view class="back_home flex" style="top: {{MenuButtonTop + 4}}rpx;">
+            <view class="iconfont iconfanhui"></view>
+            <view class="back_home_bor"></view>
+            <view class="iconfont iconcaidan1"></view>
+        </view>
+    </view>
+    <image mode="widthFix" class="banner_img"></image>
+</block>
