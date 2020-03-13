@@ -6,7 +6,8 @@
     border: 1rpx solid #F2F2F2;
     margin-left: 20rpx;
     position: fixed;
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.6);
+    z-index: 99;
 }
 
 .back_home_bor {
@@ -24,6 +25,14 @@
     line-height: 60rpx;
 }
 
+.iconshouye {
+    font-size: 32rpx;
+    color: #000;
+    padding-right: 15rpx;
+    padding-left: 25rpx;
+    line-height: 60rpx;
+}
+
 .iconcaidan1 {
     font-size: 40rpx;
     color: #000;
@@ -32,17 +41,50 @@
     line-height: 60rpx;
 }
 
-.banner_img {
-    width: 750rpx;
-    max-height: 3000rpx;
-    height: 2000rpx;
-    background-color: #bfa;
-}
-
 .nav {
     background-color: #ffffff;
     width: 750rpx;
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 98;
+}
+
+.tab {
+    justify-content: center;
+    align-items: center;
+    color: #747474;
+    font-size: 24rpx;
+}
+
+.tab_item {
+    padding: 20rpx 15rpx;
+    position: relative;
+}
+
+.select_bar {
+    width: 45rpx;
+    height: 6rpx;
+    background-color: #DA3E2F;
+    position: absolute;
+    bottom: -8rpx;
+    transform: translateX(-50%);
+    left: 50%;
+}
+
+.select_txt {
+    color: #DA3E2F;
+}
+
+.swiper_wrap {
+    width: 750rpx;
+    height: 750rpx;
+}
+
+.banner_img {
+    width: 750rpx;
+    height: 100%;
+    max-height: 850rpx;
+    display: block;
+    background-color: #bfa;
 }

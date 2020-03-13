@@ -1,10 +1,23 @@
 <block>
-    <view class="nav" style="height: {{navHeight}}rpx">
-        <view class="back_home flex" style="top: {{MenuButtonTop + 4}}rpx;">
-            <view class="iconfont iconfanhui"></view>
-            <view class="back_home_bor"></view>
-            <view class="iconfont iconcaidan1"></view>
+    <view class="back_home flex" style="top: {{MenuButtonTop + 4}}rpx;" bindtap="backBtn">
+        <view class="iconfont {{options.IsShare?'iconshouye':'iconfanhui'}}"></view>
+        <view class="back_home_bor"></view>
+        <view class="iconfont iconcaidan1"></view>
+    </view>
+    <view class="nav" style="height: {{navHeight}}rpx;opacity: {{grodCoe}}">
+        <view class="flex tab" style="height: {{navHeight-statusBarHeight}}rpx;margin-top: {{statusBarHeight}}rpx;">
+            <view class="tab_item" wx:for="{{navList}}" wx:key="nav_item" bindtap="selectTab" data-index="{{index}}">
+                <view class="{{index == navIdx ? 'select_txt' : ''}}">{{item.name}}</view>
+                <view class="select_bar" wx:if="{{navIdx == index}}"></view>
+            </view>
         </view>
     </view>
-    <image mode="widthFix" class="banner_img"></image>
+    <swiper class="swiper_wrap" circular="true">
+        <swiper-item wx:for="{{bannerList}}" wx:key="swoper_item">
+            <image bindload="bindload" mode="widthFix" class="banner_img" src="{{item.img}}"></image>
+        </swiper-item>
+    </swiper>
+    <view style="height: 1500rpx;">
+        66666
+    </view>
 </block>
