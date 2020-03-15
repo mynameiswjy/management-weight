@@ -1,4 +1,8 @@
 
+.scroll_view {
+    height: 100vh;
+}
+
 .back_home {
     width: 160rpx;
     height: 58rpx;
@@ -87,4 +91,175 @@
     max-height: 850rpx;
     display: block;
     background-color: #bfa;
+}
+
+.price_wrap {
+    margin-top: 20rpx;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    margin-left: 30rpx;
+}
+
+.actual_price {
+    color: #CC3C25;
+    font-weight: 600;
+    margin-bottom: 24rpx;
+    line-height: 1;
+}
+
+.share_price {
+    width: 277rpx;
+    line-height: 45rpx;
+    font-size: 29rpx;
+    color: #fff;
+    text-align: center;
+    background-color: #CC3C25;
+    border-radius: 6rpx;
+}
+
+.share_btn {
+    width: 319rpx;
+    height: 62rpx;
+    border-radius: 12rpx 0 0 12rpx;
+    background-color: #EDEDED;
+    align-items: center;
+    font-size: 39rpx;
+    color: #858383;
+    justify-content: center;
+}
+
+.iconfenxiang {
+    font-size: 39rpx;
+    line-height: 62rpx;
+    margin-left: 40rpx;
+}
+
+.goods_name {
+    max-width: 705rpx;
+    font-size: 30rpx;
+    line-height: 39rpx;
+    font-weight: 600;
+    margin: 15rpx auto 10rpx;
+}
+
+.active {
+    width: 740rpx;
+    height: 66rpx;
+    border-radius: 12rpx;
+    background-color: #F9EEDA;
+    margin:  0 auto 8rpx;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.rebate {
+    background-image: url("https://www.mengniuhealth.cn/upload/details/place_order.png");
+    width: 108rpx;
+    height: 41rpx;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-size: 26rpx;
+    color: #FBFBFB;
+    line-height: 41rpx;
+    text-indent: 10rpx;
+}
+
+.look_more {
+    color: #111111;
+    font-size: 25rpx;
+    line-height: 1;
+    font-weight: 600;
+    align-items: center;
+}
+
+.user_select {
+    width: 750rpx;
+    height: 80rpx;
+    border-top: 10rpx solid #F5F2F5;
+    align-items: center;
+}
+
+.user_select .txt {
+    font-size: 38rpx;
+    font-weight: 600;
+    color: #1A1A1A;
+    margin-left: 30rpx;
+    margin-right: 45rpx;
+}
+
+.user_select .txt1 {
+    font-size: 30rpx;
+}
+
+.user_select .txt2 {
+    font-size: 30rpx;
+    color: #1A1A1A;
+}
+
+.user_select .txt3 {
+    font-size: 30rpx;
+    color: #BD7B02;
+}
+
+.estimate {
+    border-top: 20rpx solid #F5F2F5;
+}
+
+.estimate_title {
+    height: 100rpx;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.estimate_num {
+    font-size: 36rpx;
+    font-weight: 600;
+    color: #1A1A1A;
+    border-left: 8rpx solid #DA3E2F;
+    padding-left: 10rpx;
+    margin-left: 10rpx;
+    height: 58rpx;
+}
+
+.estimate_coe {
+    font-size: 30rpx;
+    color: #8F8F8F;margin-right: 30rpx;
+}
+
+.goods_detail {
+
+}
+
+.goods_detail .title {
+    width: 750rpx;
+    height: 95rpx;
+    background-color: #F4F1F4;
+    align-items: center;
+    justify-content: center;
+}
+
+.goods_detail .txt {
+    font-size: 40rpx;
+    color: #FD974C;
+    margin: 0 60rpx;
+}
+
+.bor_across {
+    width: 84rpx;
+    height: 4rpx;
+    background-color: #FD974C;
+}
+
+.bor_vertical {
+    width: 4rpx;
+    height: 48rpx;
+    background-color: #FD974C;
+}
+
+.goods_detail .detail_img {
+    width: 750rpx;
+    display: block;
 }

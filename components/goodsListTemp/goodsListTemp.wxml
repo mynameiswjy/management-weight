@@ -1,0 +1,17 @@
+<view class=" goods_list">
+    <view class="item {{index%2==0?'left':''}}" wx:for="{{goodsList}}" wx:key="goods_item" style="margin-right: {{index%2==0?10:0}}rpx;">
+        <image mode="widthFix" class="item_img" src="{{item.img}}"></image>
+        <view class="item_name">{{item.name}}</view>
+        <view class="flex price">
+            <view class="actual_price flex">
+                <view class="txt1">¥</view>
+                <view class="txt2">5.00</view>
+            </view>
+            <view class="share_price flex">
+                <view style="font-size: 19rpx;margin-right: 5rpx;">分享返现</view>
+                <view style="24rpx">0.90</view>
+            </view>
+        </view>
+        <view wx:if="{{item.isLook}}" class="hot_goods">大家都在买的热销商品</view>
+    </view>
+</view>

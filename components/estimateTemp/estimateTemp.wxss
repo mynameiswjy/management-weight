@@ -1,0 +1,79 @@
+@import "../../iconfont.wxss";
+ .flex {
+     display: flex;
+ }
+
+.wrap {
+    margin: 10rpx 0 50rpx 0;
+}
+
+.avatar {
+    width: 98rpx;
+    max-height: 98rpx;
+    display: block;
+    margin: 0 15rpx 0 13rpx;
+    border-radius: 49rpx;
+}
+
+.top {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user_info {
+    align-items: flex-end;
+}
+
+.user_name {
+    font-size: 30rpx;
+    color: #1A1A1A;
+}
+
+.date {
+    font-size: 30rpx;
+    color: #1A1A1A;
+    margin-right: 28rpx;
+}
+
+.imgs_wrap {
+
+}
+
+.imgs {
+    width: 214rpx;
+    max-height: 225rpx;
+    background-color: #666666;
+}
+
+.iconxingxing1 {
+    font-size: 30rpx;
+}
+
+.iconxingxing2 {
+    font-size: 30rpx;
+    color: #E64E24;
+}
+
+.content {
+    max-width: 662rpx;
+    font-size: 30rpx;
+    font-weight: 600;
+    line-height: 39rpx;
+    margin: 20rpx auto;
+}
+
+.imgs_wrap {
+    justify-content: center;
+}
+
+.all_estimate {
+    width: 243rpx;
+    height: 63rpx;
+    border: 2rpx solid #A6A1A1;
+    border-radius: 32rpx;
+    font-size:30rpx;
+    color: #1A1A1A;
+    text-align: center;
+    line-height: 63rpx;
+    margin: 0 auto 40rpx;
+}

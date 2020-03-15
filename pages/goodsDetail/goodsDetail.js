@@ -1,8 +1,10 @@
 const app = getApp();
+const config = require('../../config.globle');
 
 Page({
 
   data: {
+    imgUrl: config.BASE_URL,
     coe: 2,
     MenuButton: null,
     scrollTop: 0,
@@ -21,6 +23,11 @@ Page({
       {img: 'http://m.360buyimg.com/mobilecms/s750x750_jfs/t1/107089/10/13905/251177/5e60d902Edb55f975/fafbe62a2ef82f59.jpg!q80.dpg.png'},
       {img: 'http://m.360buyimg.com/mobilecms/s843x843_jfs/t1/102801/30/146/374179/5da80a5aE3de865e2/b3a3b05ca10cc363.jpg!q70.dpg.png'},
       {img: 'http://m.360buyimg.com/mobilecms/s843x843_jfs/t1/48645/21/13561/74696/5da80a59E6de2b117/9fa345567bd57231.jpg!q70.dpg.png'},
+    ],
+    detailsImg: [
+      '//img13.360buyimg.com/cms/jfs/t1/88159/7/12016/182150/5e427ff6Ebdc11470/aa39e08c4514c1f2.jpg!q70.dpg.png',
+      '//img12.360buyimg.com/cms/jfs/t1/64584/38/9901/503898/5d77fbc2E4d7a864c/7b2caae267ead5f7.jpg!q70.dpg.png',
+      '//img13.360buyimg.com/cms/jfs/t1/64856/12/9871/893638/5d77fbc2E5e11abbc/83da552181607fe5.jpg!q70.dpg.png',
     ]
   },
 
@@ -44,14 +51,13 @@ Page({
   selectTab(e) {
     const index = e.currentTarget.dataset.index;
     this.setData({
-      navIdx: index
+      navIdx: index,
+      intoView: 'intoView' + (index + 1)
     })
   },
 
   onPageScroll(e) {
-    this.setData({
-      grodCoe: (e.scrollTop / 110 > 1 ? 1 : e.scrollTop / 110).toFixed(1)
-    });
+
   },
 
   backBtn() {
@@ -66,9 +72,13 @@ Page({
     }
   },
 
-  bindgetphonenumber(e) {
-    console.log(e);
+  bindscroll(e) {
+    const scrollTop = e.detail.scrollTop;
+    this.setData({
+      grodCoe: (scrollTop / 110 > 1 ? 1 : scrollTop / 110).toFixed(1)
+    });
   },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

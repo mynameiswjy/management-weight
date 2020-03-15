@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "电商首页",
-  "usingComponents": {}
+  "usingComponents": {
+    "goodsListTemp": "/components/goodsListTemp/goodsListTemp"
+  }
 }

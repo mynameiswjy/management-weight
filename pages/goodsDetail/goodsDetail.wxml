@@ -1,4 +1,4 @@
-<block>
+<scroll-view scroll-y="true" bindscroll="bindscroll" class="scroll_view" scroll-into-view="{{intoView}}">
     <view class="back_home flex" style="top: {{MenuButtonTop + 4}}rpx;" bindtap="backBtn">
         <view class="iconfont {{options.IsShare?'iconshouye':'iconfanhui'}}"></view>
         <view class="back_home_bor"></view>
@@ -12,12 +12,75 @@
             </view>
         </view>
     </view>
-    <swiper class="swiper_wrap" circular="true">
+    <swiper class="swiper_wrap" circular="true" id="intoView1">
         <swiper-item wx:for="{{bannerList}}" wx:key="swoper_item">
             <image bindload="bindload" mode="widthFix" class="banner_img" src="{{item.img}}"></image>
         </swiper-item>
     </swiper>
-    <view style="height: 1500rpx;">
-        66666
+    <view class="flex price_wrap">
+        <view class="price">
+            <view class="actual_price">
+                <text style="font-size: 30rpx">¥</text>
+                <text style="font-size: 38rpx;">1799.00</text>
+            </view>
+            <view class="share_price">分享返现：¥5.00</view>
+        </view>
+        <view class="share_btn flex">
+            <view>分享给亲友</view>
+            <view class="iconfont iconfenxiang"></view>
+        </view>
     </view>
-</block>
+    <view class="goods_name">ECCO爱步拼色单鞋女新款 浅口尖头平底蝴蝶结女鞋型塑269313黑色/深灰色/灰粉色</view>
+    <view class="active flex">
+        <view class="rebate">下单返</view>
+        <view style="font-weight: 600;">
+            <text style="font-size: 26rpx;color: #131313;">¥ 18.87</text>
+            <text style="font-size: 25rpx;color: #131313;"> 成为团长可返</text>
+            <text style="color: #C04334;font-size: 25rpx;"> ¥ 29.12 </text>
+        </view>
+        <view class="look_more flex">
+            <text>立即升级</text>
+            <text class="iconfont icontubiao-"></text>
+        </view>
+    </view>
+    <view class="user_select flex">
+        <view class="txt">已选</view>
+        <view class="txt2">
+            <text>黑色, </text>
+            <text>S, </text>
+            <text>两件 </text>
+        </view>
+    </view>
+    <view class="user_select flex">
+        <view class="txt txt1">服务</view>
+        <view class="txt3">在线支付运费</view>
+    </view>
+    <view class="estimate" id="intoView2">
+        <view class="flex estimate_title">
+            <view class="estimate_num">评价5.9万</view>
+            <view class="estimate_coe">好评度95%></view>
+        </view>
+        <estimateTemp IsOpenAllBtn="{{true}}"></estimateTemp>
+    </view>
+    <view class="goods_detail" id="intoView3">
+        <view class="title flex">
+            <view class="bor_across" style="margin-right: 15rpx"></view>
+            <view class="bor_vertical"></view>
+            <view class="txt">详情</view>
+            <view class="bor_vertical"></view>
+            <view class="bor_across" style="margin-left: 15rpx"></view>
+        </view>
+        <block wx:for="{{detailsImg}}" wx:key="details_img">
+            <image mode="widthFix" class="detail_img" src="{{item}}"></image>
+        </block>
+    </view>
+    <view class="goods_detail" id="intoView4">
+        <view class="title flex">
+            <view class="bor_across" style="margin-right: 15rpx"></view>
+            <view class="bor_vertical"></view>
+            <view class="txt">猜你喜欢</view>
+            <view class="bor_vertical"></view>
+            <view class="bor_across" style="margin-left: 15rpx"></view>
+        </view>
+    </view>
+</scroll-view>

@@ -1,4 +1,5 @@
-const app = getApp()
+const app = getApp();
+const config = require('../../config.globle');
 
 Page({
   data: {
@@ -17,7 +18,8 @@ Page({
     windowHeight: 0,
     intoView: '',
     cos: 2,
-    isStop: false
+    isStop: false,
+    imgUrl: config.BASE_URL
   },
   onLoad: function () {
     const {windowWidth, windowHeight} = app.globalData.SystemInfo;

@@ -18,15 +18,15 @@
   </view>
   <view class="flex promise">
     <view class="item flex" style="margin-left: 50rpx;">
-      <image class="image" mode="widthFix" src="../../imgs/index/promise.png"></image>
+      <image class="image" mode="widthFix" src="{{imgUrl}}/upload/index/promise.png"></image>
       <view class="txt">自营商品</view>
     </view>
     <view class="item flex">
-      <image class="image" mode="widthFix" src="../../imgs/index/promise.png"></image>
+      <image class="image" mode="widthFix" src="{{imgUrl}}/upload/index/promise.png"></image>
       <view class="txt">自营商品</view>
     </view>
     <view class="item flex" style="margin-right: 50rpx;">
-      <image class="image" mode="widthFix" src="../../imgs/index/promise.png"></image>
+      <image class="image" mode="widthFix" src="{{imgUrl}}/upload/index/promise.png"></image>
       <view class="txt">自营商品</view>
     </view>
   </view>
@@ -48,7 +48,7 @@
             <view class="rush">
               <view>立即</view>
               <view>抢购</view>
-              <image mode="widthFix" src="../../imgs/index/ad_right.png" class="ad_right"></image>
+              <image mode="widthFix" src="{{imgUrl}}/upload/index/ad_right.png" class="ad_right"></image>
             </view>
           </view>
         </swiper-item>
@@ -57,7 +57,7 @@
   </view>
   <view class="hot_goods">
     <view class="title flex">
-      <image class="hot_img" mode="widthFix" src="../../imgs/index/hot_goods_icon.png"></image>
+      <image class="hot_img" mode="widthFix" src="{{imgUrl}}/upload/index/hot_goods_icon.png"></image>
       <view>爆款商品</view>
       <view class="more_hot_goods flex">
         <view>更多爆款</view>
@@ -65,7 +65,7 @@
       </view>
     </view>
     <view class="flex hot_goods_item_wrap">
-      <view class="hot_goods_item" wx:for="{{4}}" wx:key="hot_goods">
+      <view class="hot_goods_item" wx:for="{{4}}" wx:key="hot_goods" style="margin-right: {{index%2==0?10:0}}rpx;">
         <image class="hot_goods_img" mode="widthFix" src=""></image>
       </view>
     </view>
@@ -81,7 +81,7 @@
         <view class="interval" wx:if="{{index+1 !== goodsList.length}}"></view>
       </view>
     </view>
-    <view class="flex goods_item" wx:for="{{9}}" wx:key="goods_bottom_item" style="margin-bottom: {{index+1 == 9 ? 0 : ''}}rpx">
+    <!--<view class="flex goods_item" wx:for="{{9}}" wx:key="goods_bottom_item" style="margin-bottom: {{index+1 == 9 ? 0 : ''}}rpx">
       <image class="goods_img" mode="widthFix"></image>
       <view class="goods_right">
         <view class="goods_title">【限时免费领】过滤效果>90%防尘透气易呼吸防雾防尘透气易呼吸防雾</view>
@@ -93,6 +93,7 @@
           <view class="goods_btn">去抢购</view>
         </view>
       </view>
-    </view>
+    </view>-->
+    <goodsListTemp></goodsListTemp>
   </view>
 </scroll-view>

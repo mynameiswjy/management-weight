@@ -1,0 +1,20 @@
+<view wx:for="{{list}}" wx:key="item" class="wrap">
+    <view class="flex top">
+        <view class="flex user_info">
+            <image class="avatar" mode="widthFix" src="{{item.avatar}}"></image>
+            <view class="user_name">
+                <view>{{item.nickName}}</view>
+                <view class="flex">
+                    <view wx:for="{{item.graded}}" wx:key="item_graded" class="iconfont iconxingxing2"></view>
+                    <view wx:for="{{5 - item.graded}}" wx:key="item_graded" class="iconfont iconxingxing1"></view>
+                </view>
+            </view>
+        </view>
+        <view class="date">{{item.date}}</view>
+    </view>
+    <view class="content">{{item.content}}</view>
+    <view class="flex imgs_wrap">
+        <image wx:for="{{item.imgs}}" wx:for-item="imgs" wx:key="imgs" mode="widthFix" src="{{imgs}}" class="imgs" style="margin-right: {{item.imgs.length%3==0?12:0}}rpx;"></image>
+    </view>
+</view>
+<view class="all_estimate" wx:if="{{IsOpenAllBtn}}">查看全部评论</view>
