@@ -28,7 +28,8 @@ Page({
       '//img13.360buyimg.com/cms/jfs/t1/88159/7/12016/182150/5e427ff6Ebdc11470/aa39e08c4514c1f2.jpg!q70.dpg.png',
       '//img12.360buyimg.com/cms/jfs/t1/64584/38/9901/503898/5d77fbc2E4d7a864c/7b2caae267ead5f7.jpg!q70.dpg.png',
       '//img13.360buyimg.com/cms/jfs/t1/64856/12/9871/893638/5d77fbc2E5e11abbc/83da552181607fe5.jpg!q70.dpg.png',
-    ]
+    ],
+    currentScrollTop: 0
   },
 
   onLoad: function (options) {
@@ -42,6 +43,15 @@ Page({
       statusBarHeight: statusBarHeight * coe,
       options
     });
+
+    setTimeout(() => {
+      let query = wx.createSelectorQuery();
+      query.selectAll(".scroll-view-item").boundingClientRect((rect) => {
+        this.setData({
+          scrollTops: rect
+        })
+      }).exec();
+    }, 1000)
   },
 
   onShow: function () {
@@ -54,10 +64,6 @@ Page({
       navIdx: index,
       intoView: 'intoView' + (index + 1)
     })
-  },
-
-  onPageScroll(e) {
-
   },
 
   backBtn() {
@@ -74,11 +80,47 @@ Page({
 
   bindscroll(e) {
     const scrollTop = e.detail.scrollTop;
+    let pageTops = this.data.scrollTops.map((item) => {
+      return item.top
+    });
+    const h = 60;
+    if (pageTops[0] < scrollTop + h && scrollTop + h < pageTops[1]) {
+      if (this.data.navIdx != 0) {
+        this.setData({
+          navIdx: 0
+        })
+      }
+    } else if (pageTops[1] < scrollTop + h && scrollTop + h < pageTops[2]) {
+      if (this.data.navIdx != 1) {
+        this.setData({
+          navIdx: 1
+        })
+      }
+    } else if (pageTops[2] < scrollTop + h && scrollTop + h < pageTops[3]) {
+      if (this.data.navIdx != 2) {
+        this.setData({
+          navIdx: 2
+        })
+      }
+    } else if (scrollTop + h > pageTops[3]) {
+      if (this.data.navIdx != 3) {
+        this.setData({
+          navIdx: 3
+        })
+      }
+    }
+
+
     this.setData({
       grodCoe: (scrollTop / 110 > 1 ? 1 : scrollTop / 110).toFixed(1)
     });
   },
 
+  gotoBtn() {
+    wx.switchTab({
+      url: '/pages/cart/cart'
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

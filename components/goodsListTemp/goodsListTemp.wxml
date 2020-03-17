@@ -9,7 +9,7 @@
             </view>
             <view class="share_price flex">
                 <view style="font-size: 19rpx;margin-right: 5rpx;">分享返现</view>
-                <view style="24rpx">0.90</view>
+                <view style="font-size: 24rpx;">0.90</view>
             </view>
         </view>
         <view wx:if="{{item.isLook}}" class="hot_goods">大家都在买的热销商品</view>

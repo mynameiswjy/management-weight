@@ -12,57 +12,60 @@
             </view>
         </view>
     </view>
-    <swiper class="swiper_wrap" circular="true" id="intoView1">
-        <swiper-item wx:for="{{bannerList}}" wx:key="swoper_item">
-            <image bindload="bindload" mode="widthFix" class="banner_img" src="{{item.img}}"></image>
-        </swiper-item>
-    </swiper>
-    <view class="flex price_wrap">
-        <view class="price">
-            <view class="actual_price">
-                <text style="font-size: 30rpx">¥</text>
-                <text style="font-size: 38rpx;">1799.00</text>
+    <view id="intoView1" class="scroll-view-item">
+        <swiper class="swiper_wrap" circular="true">
+            <swiper-item wx:for="{{bannerList}}" wx:key="swoper_item">
+                <image bindload="bindload" mode="widthFix" class="banner_img" src="{{item.img}}"></image>
+            </swiper-item>
+        </swiper>
+        <view class="flex price_wrap">
+            <view class="price">
+                <view class="actual_price">
+                    <text style="font-size: 30rpx">¥</text>
+                    <text style="font-size: 38rpx;">1799.00</text>
+                </view>
+                <view class="share_price">分享返现：¥5.00</view>
             </view>
-            <view class="share_price">分享返现：¥5.00</view>
+            <view class="share_btn flex">
+                <view>分享给亲友</view>
+                <view class="iconfont iconfenxiang"></view>
+            </view>
         </view>
-        <view class="share_btn flex">
-            <view>分享给亲友</view>
-            <view class="iconfont iconfenxiang"></view>
+        <view class="goods_name">ECCO爱步拼色单鞋女新款 浅口尖头平底蝴蝶结女鞋型塑269313黑色/深灰色/灰粉色</view>
+        <view class="active flex">
+            <view class="rebate">下单返</view>
+            <view style="font-weight: 600;">
+                <text style="font-size: 26rpx;color: #131313;">¥ 18.87</text>
+                <text style="font-size: 25rpx;color: #131313;"> 成为团长可返</text>
+                <text style="color: #C04334;font-size: 25rpx;"> ¥ 29.12 </text>
+            </view>
+            <view class="look_more flex">
+                <text>立即升级</text>
+                <text class="iconfont icontubiao-"></text>
+            </view>
+        </view>
+        <view class="user_select flex">
+            <view class="txt">已选</view>
+            <view class="txt2">
+                <text>黑色, </text>
+                <text>S, </text>
+                <text>两件 </text>
+            </view>
+        </view>
+        <view class="user_select flex">
+            <view class="txt txt1">服务</view>
+            <view class="txt3">在线支付运费</view>
         </view>
     </view>
-    <view class="goods_name">ECCO爱步拼色单鞋女新款 浅口尖头平底蝴蝶结女鞋型塑269313黑色/深灰色/灰粉色</view>
-    <view class="active flex">
-        <view class="rebate">下单返</view>
-        <view style="font-weight: 600;">
-            <text style="font-size: 26rpx;color: #131313;">¥ 18.87</text>
-            <text style="font-size: 25rpx;color: #131313;"> 成为团长可返</text>
-            <text style="color: #C04334;font-size: 25rpx;"> ¥ 29.12 </text>
-        </view>
-        <view class="look_more flex">
-            <text>立即升级</text>
-            <text class="iconfont icontubiao-"></text>
-        </view>
-    </view>
-    <view class="user_select flex">
-        <view class="txt">已选</view>
-        <view class="txt2">
-            <text>黑色, </text>
-            <text>S, </text>
-            <text>两件 </text>
-        </view>
-    </view>
-    <view class="user_select flex">
-        <view class="txt txt1">服务</view>
-        <view class="txt3">在线支付运费</view>
-    </view>
-    <view class="estimate" id="intoView2">
+
+    <view class="estimate scroll-view-item" id="intoView2">
         <view class="flex estimate_title">
             <view class="estimate_num">评价5.9万</view>
             <view class="estimate_coe">好评度95%></view>
         </view>
         <estimateTemp IsOpenAllBtn="{{true}}"></estimateTemp>
     </view>
-    <view class="goods_detail" id="intoView3">
+    <view class="goods_detail scroll-view-item" id="intoView3">
         <view class="title flex">
             <view class="bor_across" style="margin-right: 15rpx"></view>
             <view class="bor_vertical"></view>
@@ -74,7 +77,7 @@
             <image mode="widthFix" class="detail_img" src="{{item}}"></image>
         </block>
     </view>
-    <view class="goods_detail" id="intoView4">
+    <view class="goods_detail scroll-view-item" id="intoView4">
         <view class="title flex">
             <view class="bor_across" style="margin-right: 15rpx"></view>
             <view class="bor_vertical"></view>
@@ -82,5 +85,30 @@
             <view class="bor_vertical"></view>
             <view class="bor_across" style="margin-left: 15rpx"></view>
         </view>
+        <goodsListTemp></goodsListTemp>
     </view>
 </scroll-view>
+
+<!-- <view class="select_mask">
+    <view class="goods_detail flex">
+        <image mode="widthFix" src="" class="goods_detail_img"></image>
+        <view>
+            <view>¥ 7.90</view>
+            <view>福百年卫生纸家用实惠装竹浆本，色卷纸批发学生</view>
+        </view>
+    </view>
+</view> -->
+
+<view style="height: 146rpx;"></view>
+<view class="goods_btn flex">
+    <button open-type="contact" hover-class="none" class="server">
+        <view class="iconfont iconkefu"></view>
+        <view>联系客服</view>
+    </button>
+    <view class="cart server" bindtap="gotoBtn">
+        <view class="iconfont icongouwuche1"></view>
+        <view>购物车</view>
+    </view>
+    <view class="common_btn join_cart">加入购物车</view>
+    <view class="common_btn buy_btn">立即购买</view>
+</view>
