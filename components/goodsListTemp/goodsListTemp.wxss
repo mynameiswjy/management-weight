@@ -2,6 +2,7 @@
 
 .flex {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .left {
@@ -13,7 +14,12 @@
 }
 
 .goods_list {
-    margin: 0 30rpx;
+    padding: 0 30rpx;
+}
+
+.goods_list1 {
+    background-color: #F4F1F4;
+    width: 750rpx;
 }
 
 .item {

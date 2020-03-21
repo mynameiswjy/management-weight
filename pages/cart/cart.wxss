@@ -1,1 +1,153 @@
-/* pages/cart/cart.wxss */
+
+page {
+    background-color: #F5F3F3;
+}
+
+.wrap {
+    width: 665rpx;
+    border-radius: 12rpx;
+    background-color: #fff;
+    margin: 30rpx;
+    padding-left: 25rpx;
+    padding-bottom: 28rpx;
+}
+
+.shop_name {
+    padding-top: 30rpx;
+    align-items: center;
+    font-size: 28rpx;
+    color: #282828;
+}
+
+.iconxuanzhong {
+    font-size: 30rpx;
+    color: #E02907;
+    padding-right: 25rpx;
+}
+
+.iconweixuanzhong {
+    font-size: 30rpx;
+    padding-right: 25rpx;
+}
+
+.icondianpu {
+    font-size: 26rpx;
+    margin-right: 22rpx;
+}
+
+.cart_goods_img {
+    width: 200rpx;
+    max-height: 200rpx;
+    background-color: #ccc;
+    margin-right: 25rpx;
+}
+
+.cart_goods_list {
+    margin-top: 30rpx;
+    align-items: center;
+}
+
+.cart_goods_right {
+    max-width: 355rpx;
+    color: #282828;
+}
+
+.cart_goods_right .txt {
+    font-size: 24rpx;
+    line-height: 36rpx;
+}
+
+.cart_goods_right .txt1 {
+    width: 132rpx;
+    height: 38rpx;
+    border-radius: 20rpx;
+    background-color: #F3F3F3;
+    text-align: center;
+    line-height: 38rpx;
+    font-size: 22rpx;
+    margin-top: 15rpx;
+    margin-bottom: 12rpx;
+}
+
+.cart_goods_right .txt2 {
+    justify-content: space-between;
+    line-height: 32rpx;
+}
+
+.cart_goods_right .price {
+    font-size: 30rpx;
+    color: #DE2910;
+    font-weight: 600;
+}
+
+.cart_goods_right  .num_btn {
+
+}
+
+.cart_goods_right  .num_btn .num {
+    width: 80rpx;
+    height: 32rpx;
+    background-color: #eee;
+    border-radius: 26rpx;
+    font-size: 24rpx;
+    color: #282828;
+    font-weight: 600;
+    text-align: center;
+    line-height: 32rpx;
+}
+
+.iconjianhaocu {
+    padding-right: 20rpx;
+    font-size: 28rpx;
+}
+
+.iconjiahao {
+    padding-left: 20rpx;
+    font-size: 28rpx;
+}
+
+.cart_goods_right .bottom {
+    font-size: 20rpx;
+    line-height: 1;
+    margin-top: 12rpx;
+    color: #DE2910;
+}
+
+.hot_goods {
+    margin-bottom: 40rpx;
+    margin-top: 40rpx;
+    justify-content: center;
+    align-items: center;
+}
+
+.hot_goods .txt {
+    font-size: 32rpx;
+    color: #282828;
+    font-weight: 600;
+    text-align: center;
+    line-height: 32rpx;
+    margin: 0 20rpx;
+}
+
+.iconhot {
+    color: #F07E65;
+    font-size: 28rpx;
+}
+
+.right_bor, .left_bor {
+    position: relative;
+}
+
+.hot_goods .bor {
+    width: 42rpx;
+    height: 4rpx;
+    background-color: #DDD;
+}
+
+.hot_goods .left_bor {
+    margin-right: 20rpx;
+}
+
+.hot_goods .right_bor {
+    margin-left: 20rpx;
+}

@@ -29,7 +29,10 @@ Page({
       '//img12.360buyimg.com/cms/jfs/t1/64584/38/9901/503898/5d77fbc2E4d7a864c/7b2caae267ead5f7.jpg!q70.dpg.png',
       '//img13.360buyimg.com/cms/jfs/t1/64856/12/9871/893638/5d77fbc2E5e11abbc/83da552181607fe5.jpg!q70.dpg.png',
     ],
-    currentScrollTop: 0
+    currentScrollTop: 0,
+    selectTypeIdx: 0,
+    goodsNum: 1,
+    IsOpenMaskGoods: false
   },
 
   onLoad: function (options) {
@@ -58,6 +61,39 @@ Page({
 
   },
 
+
+  goodsAddBtn(e) {
+    const tap = e.currentTarget.dataset.tap;
+    let goodsNum = this.data.goodsNum;
+
+    if (tap == 1) {// 加号
+      ++goodsNum;
+      this.setData({
+        goodsNum: goodsNum
+      })
+    } else {
+      if (goodsNum > 0) {
+        this.setData({
+          goodsNum: --goodsNum
+        })
+      }
+    }
+  },
+
+  // 打开选择模板
+  openSelectMask() {
+    this.setData({
+      IsOpenMaskGoods: true
+    })
+  },
+
+  // 关闭选择模板
+  hideGoodsMask() {
+    this.setData({
+      IsOpenMaskGoods: false
+    })
+  },
+
   selectTab(e) {
     const index = e.currentTarget.dataset.index;
     this.setData({
@@ -77,6 +113,7 @@ Page({
       })
     }
   },
+  catchtouchmove() {},
 
   bindscroll(e) {
     const scrollTop = e.detail.scrollTop;
@@ -131,5 +168,9 @@ Page({
 
   onShareAppMessage: function () {
 
+  },
+
+  stopClick() {
+    return
   }
 })

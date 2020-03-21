@@ -230,7 +230,7 @@
 }
 
 .goods_detail {
-
+    padding: 30rpx 30rpx 0 30rpx;
 }
 
 .goods_detail .title {
@@ -267,18 +267,27 @@
 .select_mask {
     z-index: 9;
     width: 750rpx;
-    background-color: #fff;
-    border-radius: 12px 12px 0px 0px;
+    background-color: rgba(0,0,0, 0.5);
     position: fixed;
     bottom: 0;
     left: 0;
-    height: 500rpx;
+    top: 0;
+}
+
+.select_content {
+    width: 750rpx;
+    background-color: #fff;
+    position: absolute;
+    border-radius: 24rpx 24rpx 0px 0px;
+    bottom: 0;
+    overflow: hidden;
 }
 
 .goods_detail_img {
     width: 200rpx;
     max-height: 200rpx;
     background-color: #666;
+    margin-right: 30rpx;
 }
 
 .goods_btn {
@@ -334,4 +343,114 @@
     width: 227rpx;
     height: 78rpx;
     background: linear-gradient(87deg,rgba(243,171,60,1) 0%,rgba(245,184,64,1) 100%);
+}
+
+.select_goods_name {
+    max-width: 420rpx;
+    padding-top: 12rpx;
+    margin-bottom: 50rpx;
+}
+
+.mask_goods_price {
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #DE2910;
+    line-height: 40rpx;
+}
+
+.mask_goods_price1 {
+    margin: 16rpx 0 30rpx 0;
+    font-size: 26rpx;
+    color: #999;
+    line-height: 1;
+}
+
+.select_goods_name .txt5 {
+    max-width: 420rpx;
+    font-size: 30rpx;
+    color: #282828;
+    line-height: 40rpx;
+    font-weight: 600;
+}
+
+.mask_scroll_view {
+    height: 500rpx;
+    width: 750rpx;
+    background-color: #fff;
+}
+
+.goods_type_title {
+    color: #282828;
+    font-size: 26rpx;
+    line-height: 1;
+    margin-left: 30rpx;
+    font-weight: 600;
+}
+
+.goods_type {
+    flex-wrap: wrap;
+    margin-left: 30rpx;
+    margin-top: 26rpx;
+}
+
+.goods_type_item {
+    padding: 12rpx 28rpx;
+    border-radius: 52rpx;
+    background-color: #F3F3F3;
+    margin-right: 40rpx;
+    margin-bottom: 24rpx;
+}
+
+.goods_type_active_item {
+    border: 1rpx solid #DE2910;
+    background:rgba(222,41,16,0.1);
+    color: #DE2910;
+}
+
+.goods_type_num {
+    justify-content: space-between;
+    margin-top: 20rpx;
+}
+
+.goods_type_num_btn {
+    margin-right: 6rpx;
+    align-items: center;
+    font-weight: 600;
+}
+
+.goods_type_num .num1 {
+    width: 80rpx;
+    height: 32rpx;
+    background-color: #eee;
+    border-radius: 32rpx;
+    text-align: center;
+    font-size: 24rpx;
+    line-height: 32rpx;
+    /*margin: 0 22rpx;*/
+}
+
+.iconjianhaocu, .iconjiahao {
+    font-size: 30rpx;
+    padding:  0 22rpx;
+}
+
+.submit_goods_btn {
+    width: 630rpx;
+    height: 80rpx;
+    background-color: #DE2910;
+    border-radius: 40rpx;
+    margin: 0 auto 40rpx;
+    font-size: 32rpx;
+    color: #fff;
+    text-align: center;
+    line-height: 80rpx;
+    font-weight: 600;
+}
+
+.iconguanbi {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #999;
+    padding: 30rpx 30rpx 0 0;
 }
