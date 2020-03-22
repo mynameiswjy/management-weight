@@ -1,1 +1,204 @@
-/* pages/mine/mine.wxss */
+
+.avatar {
+    width: 120rpx;
+    height: 120rpx;
+    background:linear-gradient(0deg,rgba(225,62,90,1) 0%,rgba(234,53,44,1) 100%);
+    border-radius: 60rpx;
+    margin-right: 25rpx;
+}
+
+.user_info {
+    align-items: center;
+    margin-left: 30rpx;
+    padding-top: 14rpx;
+    border-top: 20rpx solid #FCF9FC;
+    background-color: #fff;
+}
+
+.user_info .user_name {
+    font-size:38rpx;
+    color: #110F0F;
+    font-weight: 600;
+}
+
+.user_info .grade {
+    width: 165rpx;
+    height: 37rpx;
+    border-radius: 8rpx;
+    background-color: #141414;
+    margin-left: 27rpx;
+    font-size: 26rpx;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconicon- {
+    font-size: 30rpx;
+    color: #DEE6EA;
+    margin-right: 8rpx;
+}
+
+.withdraw {
+    width: 690rpx;
+    height: 235rpx;
+    background:linear-gradient(265deg,rgba(233,53,46,1) 0%,rgba(225,62,89,1) 100%);
+    border-radius: 12rpx;
+    margin: 20rpx 0 30rpx 30rpx;
+}
+
+.withdraw_price {
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15rpx;
+}
+
+.withdraw_txt {
+    font-size: 36rpx;
+    color: #fff;
+    margin-left: 30rpx;
+}
+
+.withdraw_btn {
+    width: 247rpx;
+    margin-right: 12rpx;
+    height: 58rpx;
+    border-radius: 29rpx;
+    font-size: 34rpx;
+    text-align: center;
+    line-height: 58rpx;
+    color: #EA3324;
+    background-color: #fff;
+    font-weight: 600;
+}
+
+.withdraw .bottom {
+    align-items: center;
+    justify-content: center;
+    font-size: 36rpx;
+    color: #fff;
+    margin-top: 50rpx;
+}
+
+.bor_between {
+    width: 3rpx;
+    height: 66rpx;
+    background-color: #fff;
+    margin: 0 40rpx;
+}
+
+.withdraw .bottom .txt1 {
+    font-size: 28rpx;
+}
+
+.withdraw .bottom {
+    text-align: center;
+}
+
+.privilege {
+    width: 690rpx;
+    height: 86rpx;
+    background-color: #212121;
+    border-radius: 12rpx;
+    margin: 20rpx 0 39rpx 30rpx;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.privilege image {
+    width: 43rpx;
+    max-height: 34rpx;
+    margin: 0 24rpx 0 34rpx;
+}
+
+.privilege .left {
+    align-items: center;
+    font-size: 30rpx;
+    color: #D1B86D;
+    font-weight: 600;
+}
+
+.privilege .right {
+    width: 175rpx;
+    height: 36rpx;
+    border: 1rpx solid #D1B86D;
+    border-radius: 19rpx;
+    font-size: 26rpx;
+    text-align: center;
+    color: #D1B86D;
+    margin-right: 24rpx;
+}
+
+.member_title {
+    color: #212121;
+    font-weight: 600;
+    font-size: 38rpx;
+    margin-left: 30rpx;
+    margin-bottom: 20rpx;
+    line-height: 1;
+}
+
+.member_img {
+    width: 61rpx;
+    max-height: 53rpx;
+    display: block;
+    margin:  0 auto;
+}
+
+.member {
+    margin: 0 30rpx;
+}
+
+.member_item {
+    text-align: center;
+    width: 230rpx;
+}
+
+.member_item .txt1 {
+    font-size: 30rpx;
+    color: #212121;
+    margin: 15rpx 0 11rpx 0;
+    font-weight: 600;
+}
+
+.member_item .txt2 {
+    font-size: 26rpx;
+    color: #A4A4A4;
+}
+
+.more_order {
+    font-size: 24rpx;
+    color: #212121;
+    padding-right: 25rpx;
+}
+
+.order_title {
+    justify-content: space-between;
+    padding-top: 30rpx;
+    border-top: 19rpx solid #FCF9FC;
+    margin-top: 30rpx;
+    margin-bottom: 35rpx;
+}
+
+.order {
+    justify-content: space-between;
+    margin: 0 50rpx;
+    padding-bottom: 28rpx;
+    border-bottom: 19rpx solid #FCF9FC;
+}
+
+.icondaifukuan, .icondaifahuo, .icondaishouhuo, .icondaipingjia {
+    font-size: 50rpx;
+}
+
+.order_item {
+    text-align: center;
+    color: #212121;
+    font-size: 24rpx;
+    line-height: 1;
+}
+
+.server {
+    margin-top: 30rpx;
+    margin-bottom: 30rpx;
+}

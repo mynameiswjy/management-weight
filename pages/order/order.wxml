@@ -1,0 +1,40 @@
+<scroll-view scroll-x="true" class="nav_scroll">
+    <view class="nav_bar flex" id="scroll-view">
+        <view class="item {{navIdx==index?'item1':''}}" bindtap="navTab" data-index="{{index}}" wx:for="{{navList}}" wx:key="nav" style="padding-right: {{index+1==navList.length?0:''}}">{{item.name}}</view>
+    </view>
+</scroll-view>
+<view class="order">
+    <view class="flex shop_title">
+        <view class="flex">
+            <view class="iconfont icondianpu"></view>
+            <view>官方旗舰店</view>
+        </view>
+        <view class="flex cancel">
+            <view>已取消</view>
+            <view class="bor_between"></view>
+            <view class="iconfont iconweb-icon-"></view>
+        </view>
+    </view>
+    <view class="flex content">
+        <image mode="widthFix" src="" class="order_img"></image>
+        <view class="right">
+            <view class="flex top">
+                <view class="order_goods_name">
+                    <view style="margin-bottom: 12rpx;">智能语音助手-天猫精灵</view>
+                    <view>小巧，方便携带</view>
+                </view>
+                <view class="order_goods_price">
+                    <view>¥ 390.00</view>
+                    <view>X1</view>
+                </view>
+            </view>
+            <view class="order_goods_type">白色，M号</view>
+        </view>
+    </view>
+    <view>
+        <text>共1件，总计：</text>
+        <text>¥</text>
+        <text>390</text>
+    </view>
+    <view>再次购买</view>
+</view>

@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/cart/cart",
+    "pages/mine/mine",
     "pages/index/index",
     "pages/classify/classify",
-
-    "pages/mine/mine",
+    "pages/cart/cart",
+    "pages/order/order",
     "pages/goodsDetail/goodsDetail"
   ],
   "subPackages": [],

@@ -4,6 +4,10 @@ view, text, button, textarea {
     font-family:PingFang SC;
 }
 
+image {
+    display: block;
+}
+
 .flex {
     display: flex;
 }

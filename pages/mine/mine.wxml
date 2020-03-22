@@ -1,2 +1,96 @@
-<!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
+<view class="flex user_info">
+    <image mode="widthFix" src="" class="avatar"></image>
+    <view class="user_name">1383268895</view>
+    <view class="flex grade">
+        <view class="iconfont iconicon-"></view>
+        <view>高级团长</view>
+    </view>
+</view>
+<view class="withdraw">
+    <view class="flex withdraw_price">
+        <view class="withdraw_txt">可提现 ¥ 4.00</view>
+        <view class="withdraw_btn">立即提现</view>
+    </view>
+    <view class="flex bottom">
+        <view class="item">
+            <view>¥ 104.00</view>
+            <view class="txt1">上月提现<text class="iconfont icontubiao-"></text></view>
+        </view>
+        <view class="bor_between"></view>
+        <view class="item">
+            <view>¥ 104.00</view>
+            <view class="txt1">上月提现<text class="iconfont icontubiao-"></text></view>
+        </view>
+        <view class="bor_between"></view>
+        <view class="item">
+            <view>¥ 104.00</view>
+            <view class="txt1">上月提现<text class="iconfont icontubiao-"></text></view>
+        </view>
+    </view>
+</view>
+
+<view class="privilege flex">
+    <view class="flex left">
+        <image mode="widthFix" src="{{imgUrl}}/upload/mine/grade1.png"></image>
+        <view class="txt">0元升级享更多特权</view>
+    </view>
+    <view class="right">本月预估<text class="iconfont icontubiao-"></text></view>
+</view>
+<view class="member_title">会员中心</view>
+<view class="flex member">
+    <view class="member_item">
+        <image class="member_img" mode="widthFix" src="{{imgUrl}}/upload/mine/invite_friends.png"></image>
+        <view class="txt1">邀请好友</view>
+        <view class="txt2">分享赚钱</view>
+    </view>
+    <view class="member_item">
+        <image class="member_img" mode="widthFix" src="{{imgUrl}}/upload/mine/wechat.png"></image>
+        <view class="txt1">导师微信</view>
+        <view class="txt2">看看六角恐龙</view>
+    </view>
+    <view class="member_item">
+        <image class="member_img" mode="widthFix" src="{{imgUrl}}/upload/mine/course.png"></image>
+        <view class="txt1">新手教程</view>
+        <view class="txt2">新手攻略</view>
+    </view>
+</view>
+<view class="member_title flex order_title">
+    <view>我的订单</view>
+    <view class="more_order">查看更多订单<text class="iconfont icontubiao-"></text></view>
+</view>
+<view class="flex order">
+    <view class="order_item">
+        <view class="iconfont icondaifukuan"></view>
+        <view>待付款</view>
+    </view>
+    <view class="order_item">
+        <view class="iconfont icondaifahuo"></view>
+        <view>待发货</view>
+    </view>
+    <view class="order_item">
+        <view class="iconfont icondaishouhuo"></view>
+        <view>待收货</view>
+    </view>
+    <view class="order_item">
+        <view class="iconfont icondaipingjia"></view>
+        <view>待评价</view>
+    </view>
+</view>
+<view class="member_title server">我的服务</view>
+<view class="flex member" style="margin-bottom: 20rpx;">
+    <view class="member_item">
+        <image class="member_img" mode="widthFix" src="{{imgUrl}}/upload/mine/FAQ.png"></image>
+        <view class="txt1">常见问题</view>
+        <view class="txt2">有疑问点这里</view>
+    </view>
+    <view class="member_item">
+        <image class="member_img" mode="widthFix" src="{{imgUrl}}/upload/mine/rule.png"></image>
+        <view class="txt1">平台规则</view>
+        <view class="txt2">请严格遵守</view>
+    </view>
+    <view class="member_item">
+        <image class="member_img" mode="widthFix" src="{{imgUrl}}/upload/mine/aboult.png"></image>
+        <view class="txt1">关于平台</view>
+        <view class="txt2">V1.0.0</view>
+    </view>
+</view>

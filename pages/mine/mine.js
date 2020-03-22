@@ -1,11 +1,10 @@
-// pages/mine/mine.js
+
+const config = require('../../config.globle');
+
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    imgUrl: config.BASE_URL
   },
 
   /**
