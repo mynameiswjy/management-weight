@@ -31,10 +31,14 @@
             <view class="order_goods_type">白色，M号</view>
         </view>
     </view>
-    <view>
+    <view class="total">
         <text>共1件，总计：</text>
         <text>¥</text>
-        <text>390</text>
+        <text style="font-size: 30rpx;font-weight: 600;">390</text>
     </view>
-    <view>再次购买</view>
+    <view class="order_btn">
+        <view class="common_btn" wx:if="">去付款</view>
+        <view class="common_btn check_logistics">查看物流</view>
+        <view class="common_btn">再次购买</view>
+    </view>
 </view>

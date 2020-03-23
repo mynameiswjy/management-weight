@@ -38,11 +38,11 @@ page {
 
 .order {
     width: 634rpx;
-    height: 460rpx;
     background-color: #fff;
     border-radius: 12rpx;
     margin: 0 30rpx 20rpx;
     padding: 0 28rpx;
+    position: relative;
 }
 
 .shop_title {
@@ -115,4 +115,35 @@ page {
     color: #282828;
     display: inline-block;
     margin-top: 20rpx;
+}
+
+.total {
+    font-size: 26rpx;
+    color: #282828;
+    line-height: 1;
+    margin-top: 36rpx;
+    text-align: right;
+}
+
+.common_btn {
+    color: #DE2910;
+    font-size: 26rpx;
+    line-height: 48rpx;
+    /*width: 144rpx;*/
+    padding: 0 20rpx;
+    border: 1rpx solid #DE2910;
+    border-radius: 48rpx;
+    margin-left: 20rpx;
+}
+
+.order_btn {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 24rpx;
+    padding-bottom: 20rpx;
+}
+
+.check_logistics {
+    color: #666;
+    border: 1rpx solid #999;
 }
