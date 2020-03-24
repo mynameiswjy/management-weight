@@ -30,6 +30,12 @@ Page({
     });
   },
 
+  goSearchPage() {
+    wx.navigateTo({
+      url: '/pages/search/search'
+    })
+  },
+
   swiperChange(e) {
     this.setData({
       bannerCurIdx: e.detail.current

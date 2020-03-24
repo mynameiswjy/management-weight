@@ -1,0 +1,61 @@
+
+.top {
+    align-items: center;
+}
+
+.iconfanhui1 {
+    font-size: 35rpx;
+    padding-left: 28rpx;
+    padding-right: 20rpx;
+}
+
+.search {
+    width: 450rpx;
+    height: 60rpx;
+    background-color: #F2F2F2;
+    border-radius: 30rpx;
+    align-items: center;
+}
+
+.input {
+    width: 390rpx;
+    height: 60rpx;
+    font-size: 24rpx;
+}
+
+.iconclose-b {
+    font-size: 24rpx;
+    color: #999;
+    text-align: left;
+    width: 40rpx;
+    line-height: 60rpx;
+}
+
+.history_title {
+    font-size: 30rpx;
+    font-weight: 600;
+    justify-content: space-between;
+    margin: 50rpx 28rpx;
+    line-height: 1;
+    align-items: center;
+}
+
+.iconweb-icon- {
+    font-size: 45rpx;
+    color: #9B9B9B;
+}
+
+.history_wrap {
+    flex-wrap: wrap;
+}
+
+.history_item {
+    background-color: #F6F6F6FF;
+    border-radius: 30rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: 26rpx;
+    color: #6B6B6BFF;
+    padding: 0 24rpx;
+    margin: 0 0 28rpx 28rpx;
+}

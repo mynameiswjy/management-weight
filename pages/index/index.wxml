@@ -1,6 +1,6 @@
 <scroll-view scroll-y="true" bindscroll="bindscrollchange" class="scroll_wrap" style="height: 100vh" scroll-into-view="{{intoView}}">
   <view class="top_bg"></view>
-  <view class="flex search">
+  <view class="flex search" bindtap="goSearchPage">
     <view class="iconfont iconsousuo1"></view>
     <view class="search_input">酸奶</view>
   </view>

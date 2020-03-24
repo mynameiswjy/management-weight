@@ -147,7 +147,6 @@ Page({
       }
     }
 
-
     this.setData({
       grodCoe: (scrollTop / 110 > 1 ? 1 : scrollTop / 110).toFixed(1)
     });

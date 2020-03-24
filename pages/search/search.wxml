@@ -1,0 +1,15 @@
+<view class="flex top" style="margin-top: {{MenuButtonTop}}rpx;">
+    <view class="iconfont iconfanhui1" bindtap="backBtn"></view>
+    <view class="search flex">
+        <view style="width: 20rpx;"></view>
+        <input class="input" type="text" value="{{searchVal}}" placeholder="苹果" bindinput="bindinput"/>
+        <view wx:if="{{searchVal}}" class="iconfont iconclose-b" bindtap="emptyVal"></view>
+    </view>
+</view>
+<view class="history_title flex">
+    <view>搜索历史</view>
+    <view class="iconfont iconweb-icon-"></view>
+</view>
+<view class="flex history_wrap">
+    <view class="history_item" wx:for="{{historyList}}" wx:key="history_item">{{item}}</view>
+</view>
