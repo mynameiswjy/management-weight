@@ -1,5 +1,6 @@
 const app = getApp();
 const config = require('../../config.globle');
+import { homeIndex } from '../../api/index'
 
 Page({
   data: {
@@ -19,7 +20,8 @@ Page({
     intoView: '',
     cos: 2,
     isStop: false,
-    imgUrl: config.BASE_URL
+    imgUrl: config.BASE_URL,
+    indexData: null
   },
   onLoad: function () {
     const {windowWidth, windowHeight} = app.globalData.SystemInfo;
@@ -28,6 +30,11 @@ Page({
       windowHeight: windowHeight * 750 / windowWidth,
       windowWidth
     });
+    homeIndex({token: ''}).then((res) => {
+      this.setData({
+        indexData: res.data.object
+      })
+    })
   },
 
   goSearchPage() {

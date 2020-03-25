@@ -6,14 +6,14 @@
   </view>
   <view class="banner">
     <swiper class="swiper" bindchange="swiperChange" autoplay="true" interval="3000" circular="true">
-      <block wx:for="{{bannerList}}" wx:key="banner">
+      <block wx:for="{{indexData.banner}}" wx:key="banner">
         <swiper-item>
-          <image class="swiper_img" mode="widthFix" src="{{item.img}}"></image>
+          <image class="swiper_img" mode="widthFix" src="{{imgUrl + item.imgUrl}}"></image>
         </swiper-item>
       </block>
     </swiper>
-    <view class="slot flex">
-      <view class="{{bannerCurIdx == index ? 'slot-item-active' : 'slot-item'}}" wx:for="{{bannerList.length ? bannerList.length : 0}}" wx:key="slot"></view>
+    <view class="slot flex" wx:if="{{indexData.banner.length>1}}">
+      <view class="{{bannerCurIdx == index ? 'slot-item-active' : 'slot-item'}}" wx:for="{{indexData.banner.length}}" wx:key="slot"></view>
     </view>
   </view>
   <view class="flex promise">
