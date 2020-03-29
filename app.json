@@ -1,12 +1,14 @@
 {
   "pages": [
+    "pages/classify/classify",
     "pages/index/index",
     "pages/mine/mine",
-    "pages/classify/classify",
+
     "pages/cart/cart",
     "pages/order/order",
     "pages/goodsDetail/goodsDetail",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/goodsList/goodsList"
   ],
   "subPackages": [],
   "window": {

@@ -1,6 +1,7 @@
-const app = getApp();
-const config = require('../../config.globle');
 import { homeIndex } from '../../api/index'
+const config = require('../../config.globle');
+
+const app = getApp();
 
 Page({
   data: {
@@ -30,11 +31,26 @@ Page({
       windowHeight: windowHeight * 750 / windowWidth,
       windowWidth
     });
-    homeIndex({token: ''}).then((res) => {
+    homeIndex({}).then((res) => {
+      let data = res.data.object;
+      // let zoneGoodsList = data.zoneGoods.zoneGoodsList;
+      let zoneGoodsList = data.zoneGoods.zoneGoodsList;
+      const len = Math.floor(zoneGoodsList.length / 3) * 3;
+      let newZoneGoodsList = [];
+      let item = [];
+      for (let i = 0; i < len; i++) {
+        item.push(zoneGoodsList[i]);
+        if ((i + 1) % 3 === 0) {
+          newZoneGoodsList.push(item);
+          item = []
+        }
+      }
+      data.zoneGoods.newZoneGoodsList = newZoneGoodsList;
       this.setData({
-        indexData: res.data.object
+        indexData: data
       })
     })
+
   },
 
   goSearchPage() {

@@ -6,7 +6,7 @@
   </view>
   <view class="banner">
     <swiper class="swiper" bindchange="swiperChange" autoplay="true" interval="3000" circular="true">
-      <block wx:for="{{indexData.banner}}" wx:key="banner">
+      <block wx:for="{{indexData.banner}}" wx:key="index">
         <swiper-item>
           <image class="swiper_img" mode="widthFix" src="{{imgUrl + item.imgUrl}}"></image>
         </swiper-item>
@@ -32,18 +32,18 @@
   </view>
   <view class="small_ad">
     <view class="flex title">
-      <view class="ad_1">10元专区</view>
+      <view class="ad_1">{{indexData.zoneGoods.name}}</view>
       <view class="ad_2"></view>
       <view class="ad_3">好货不错过</view>
     </view>
     <swiper class="ad_swiper" vertical="true" circular="true" autoplay="true">
-      <block wx:for="{{3}}" wx:key="ad_banner">
+      <block wx:for="{{indexData.zoneGoods.newZoneGoodsList}}" wx:for-item="zoneGoods" wx:key="index">
         <swiper-item>
           <view class="ad_item flex">
-            <view wx:for="{{3}}" wx:key="ad_item" class="ad_item_item">
-              <image mode="widthFix" src="" class="ad_img"></image>
-              <view class="txt1">￥5.5</view>
-              <view class="txt2">返现0.5元</view>
+            <view wx:for="{{zoneGoods}}" wx:key="goodsSno" class="ad_item_item">
+              <image mode="widthFix" src="{{item.masterPic}}" class="ad_img"></image>
+              <view class="txt1">￥{{item.compostCashPrice}}</view>
+              <view class="txt2">返现{{item.shareBrok}}元</view>
             </view>
             <view class="rush">
               <view>立即</view>
@@ -65,8 +65,8 @@
       </view>
     </view>
     <view class="flex hot_goods_item_wrap">
-      <view class="hot_goods_item" wx:for="{{4}}" wx:key="hot_goods" style="margin-right: {{index%2==0?10:0}}rpx;">
-        <image class="hot_goods_img" mode="widthFix" src=""></image>
+      <view class="hot_goods_item" wx:for="{{indexData.hotStyleGoods}}" wx:key="index" style="margin-right: {{index%2==0?10:0}}rpx;">
+        <image class="hot_goods_img" mode="widthFix" src="{{item.masterPic}}"></image>
       </view>
     </view>
   </view>
@@ -81,19 +81,6 @@
         <view class="interval" wx:if="{{index+1 !== goodsList.length}}"></view>
       </view>
     </view>
-    <!--<view class="flex goods_item" wx:for="{{9}}" wx:key="goods_bottom_item" style="margin-bottom: {{index+1 == 9 ? 0 : ''}}rpx">
-      <image class="goods_img" mode="widthFix"></image>
-      <view class="goods_right">
-        <view class="goods_title">【限时免费领】过滤效果>90%防尘透气易呼吸防雾防尘透气易呼吸防雾</view>
-        <view class="flex" style="margin-top: 56rpx;align-items: center;justify-content: space-between;">
-          <view class="goods_price">
-            <view class="pri1">￥5.00</view>
-            <view class="pri2">返现：1.00</view>
-          </view>
-          <view class="goods_btn">去抢购</view>
-        </view>
-      </view>
-    </view>-->
     <goodsListTemp></goodsListTemp>
   </view>
 </scroll-view>

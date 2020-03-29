@@ -1,0 +1,14 @@
+<view class="flex goods_item" wx:for="{{goodsList}}" wx:key="goodsSno"
+      style="margin-bottom: {{index+1 == goodsList.length ? 0 : ''}}rpx">
+    <image class="goods_img" src="{{item.masterPic}}" mode="widthFix"></image>
+    <view class="goods_right">
+        <view class="goods_title">{{item.name}}</view>
+        <view class="flex" style="margin-top: 56rpx;align-items: center;justify-content: space-between;">
+            <view class="goods_price">
+                <view class="pri1">￥{{item.compostCashPrice}}</view>
+                <view class="pri2">返现：{{item.shareBrok}}</view>
+            </view>
+            <view class="goods_btn">去抢购</view>
+        </view>
+    </view>
+</view>

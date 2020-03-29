@@ -8,30 +8,31 @@
             <view
                     bindtap="selectTap"
                     data-index="{{index}}"
+                    data-sno="{{item.sno}}"
                     class="left_item {{leftIdx == index ? 'left_item1' : ''}}"
                     wx:for="{{scrollLeft}}"
-                    wx:key="scroll_left"
+                    wx:key="sno"
             >
                 <view wx:if="{{leftIdx == index}}" class="select_active"></view>
                 <view>{{item.name}}</view>
             </view>
         </scroll-view>
         <scroll-view class="scroll_right" scroll-y="true">
-            <image mode="widthFix" src="" class="banner_img"></image>
-            <view class="special_recom">专场推荐</view>
-            <view class="goods_list flex">
-                <view class="goods_item" wx:for="{{6}}" wx:key="goos_item">
-                    <image mode="widthFix" class="goods_img" src=""></image>
-                    <view class="goods_name">商场大推荐</view>
-                </view>
-            </view>
-            <view class="special_recom hot_class">热门分类</view>
-            <view class="goods_list flex">
-                <view class="goods_item" wx:for="{{6}}" wx:key="goos_item">
-                    <image mode="widthFix" class="goods_img" src=""></image>
-                    <view class="goods_name">商场大推荐</view>
-                </view>
-            </view>
+            <block wx:if="{{rightData.length}}">
+                <image mode="widthFix" src="{{rightData[0].url}}" class="banner_img"></image>
+                <block wx:for="{{rightData}}" wx:for-item="typeItem" wx:key="sno">
+                    <view class="special_recom">{{typeItem.name}}</view>
+                    <view class="goods_list flex">
+                        <view class="goods_item" wx:for="{{typeItem.goodsCatyBeans}}" wx:key="goos_item">
+                            <image mode="widthFix" class="goods_img" src="{{item.imgUrl}}"></image>
+                            <view class="goods_name">{{item.name}}</view>
+                        </view>
+                    </view>
+                </block>
+            </block>
+            <block wx:else>
+                <view>暂无数据</view>
+            </block>
         </scroll-view>
     </view>
 </block>

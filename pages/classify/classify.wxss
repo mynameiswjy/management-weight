@@ -34,11 +34,11 @@
     text-align: center;
     line-height: 80rpx;
     position: relative;
+    white-space: nowrap;
 }
 
 .left_item1 {
     color: #2E2D2D;
-    font-size: 34rpx;
     background-color: #fff;
 }
 
@@ -59,10 +59,11 @@
 
 .banner_img {
     width: 542rpx;
-    height: 240rpx;
+    max-height: 240rpx;
     background-color: #666;
     margin-left: 23rpx;
     display: block;
+    margin-bottom: 50rpx;
 }
 
 .special_recom {
@@ -71,7 +72,7 @@
     color: #2E2D2D;
     line-height: 1;
     margin-left: 29rpx;
-    margin-top: 60rpx;
+    margin-top: 10rpx;
     margin-bottom: 20rpx;
 }
 
@@ -97,7 +98,7 @@
     font-size: 30rpx;
     color: #2E2D2D;
     line-height: 1;
-    font-weight: 600;
+    text-align: center;
 }
 
 .hot_class {

@@ -241,7 +241,7 @@ page {
     width: 336rpx;
     max-height: 312rpx;
     margin: 0 1rpx;
-    background-color: #bfa;
+    background-color: #ccc;
 }
 
 .goods_list_nav {

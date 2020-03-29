@@ -3,7 +3,7 @@ const host = config.BASE_URL;
 
 export function requestAjaxGet(url, data = {}, cb, header = {}, err) {
   const head = header ? header : {
-    'content-type': 'onapplication/js' // 默认值
+    'content-type': 'application/json' // 默认值
   };
   wx.request({
     url: host + url,
@@ -25,7 +25,7 @@ export function requestAjaxGet(url, data = {}, cb, header = {}, err) {
 
 export function requestAjaxPost(url, data={}, cb, header, err) {
   const head = header ? header : {
-    'content-type': 'onapplication/js' // 默认值
+    'content-type': 'application/json' // 默认值
   };
   wx.request({
     url: host + url,
