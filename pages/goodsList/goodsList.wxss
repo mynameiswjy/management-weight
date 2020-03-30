@@ -58,3 +58,35 @@
     color: #fff;
     font-size: 24rpx;
 }
+
+.is-end {
+    font-size: 26rpx;
+    color: #ccc;
+    text-align: center;
+    height: 80rpx;
+    line-height: 80rpx;
+}
+
+.weui-loading {
+    margin: 10px 5px 10px 0;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    background:  url('http://img02.exam8.com/img2017/minapp/icon/loading.gif') no-repeat;
+    background-size: 100%;
+}
+
+.weui-loadmore {
+    width: 65%;
+    color: #9a9a9a;
+    margin: 1.5rpx auto;
+    line-height: 1.6rpx;
+    font-size: 14px;
+    text-align: center;
+}
+
+.weui-loadmore_tips {
+    display: inline-block;
+    vertical-align: middle;
+}

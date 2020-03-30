@@ -9,7 +9,16 @@ export function homeIndex (data) {
   })
 }
 
-// 分类三级商品
+export function homeGoodsList (data) {
+  const url = '/shop/applet/goods/commodity/zone/list';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
+// 分类页面 三级商品
 export function ClassifyThree (data) {
   const url = '/shop/applet/goods/caty/list';
   return new Promise((resolve, reject) => {

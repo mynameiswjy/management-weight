@@ -12,3 +12,8 @@
         </view>
     </view>
 </view>
+<view class="is-end" wx:if="{{isEnd}}">已经到底啦</view>
+<view class="weui-loadmore" wx:if="{{!isEnd}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore_tips">正在加载</view>
+</view>

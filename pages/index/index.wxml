@@ -1,4 +1,4 @@
-<scroll-view scroll-y="true" bindscroll="bindscrollchange" class="scroll_wrap" style="height: 100vh" scroll-into-view="{{intoView}}">
+<scroll-view scroll-y="true" bindscroll="bindscrollchange" class="scroll_wrap" style="height: 100vh" lower-threshold="50" bindscrolltolower="tolower" scroll-into-view="{{intoView}}">
   <view class="top_bg"></view>
   <view class="flex search" bindtap="goSearchPage">
     <view class="iconfont iconsousuo1"></view>
@@ -73,14 +73,14 @@
   <view class="goods_list">
     <view style="height: 111rpx;" wx:if="{{isStop}}"></view>
     <view class="flex {{isStop ? 'goods_list_nav' : ''}}" id="goods-list-title">
-      <view class="flex goods_list_title" wx:for="{{goodsList}}" wx:key="goods_list_title">
-        <view class="list_title" bindtap="selectGoodsType" data-index="{{index}}">
+      <view class="flex goods_list_title" wx:for="{{goodsListTitle}}" wx:key="id">
+        <view class="list_title" bindtap="selectGoodsType" data-index="{{index}}" data-type="{{item.type}}">
           <view class="goods_txt1 {{TitleIdx == index ? 'goods_txt3' : ''}}">{{item.name}}</view>
           <view class="goods_txt2 {{TitleIdx == index ? 'goods_txt3' : ''}}">{{item.txt}}</view>
         </view>
-        <view class="interval" wx:if="{{index+1 !== goodsList.length}}"></view>
+        <view class="interval" wx:if="{{index+1 !== goodsListTitle.length}}"></view>
       </view>
     </view>
-    <goodsListTemp></goodsListTemp>
+    <goodsListTemp id="goodsListTemp"></goodsListTemp>
   </view>
 </scroll-view>

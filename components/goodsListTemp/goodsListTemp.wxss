@@ -33,7 +33,7 @@
 .item_img {
     width: 340rpx;
     max-height: 293rpx;
-    background-color: #bfa;
+    background-color: #ccc;
 }
 
 .item_name {

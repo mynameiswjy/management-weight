@@ -5,7 +5,8 @@ Page({
   data: {
     goodsList: [],
     pageIdx: 1,
-    IsRefresh: false
+    IsRefresh: false,
+    isEnd: false
   },
 
   onLoad: function (options) {
@@ -21,12 +22,16 @@ Page({
     }).then((res) => {
       const data = res.data.object;
       if (!data.length) {
-        this.data.IsRefresh = true
+        this.data.IsRefresh = true;
+        this.setData({
+          isEnd: true
+        });
+      } else {
+        this.data.pageIdx++;
+        this.setData({
+          goodsList: this.data.goodsList.concat(data)
+        })
       }
-      this.data.pageIdx++;
-      this.setData({
-        goodsList: this.data.goodsList.concat(data)
-      })
     })
   },
 
@@ -55,4 +60,4 @@ Page({
   onShareAppMessage: function () {
 
   }
-})
+});

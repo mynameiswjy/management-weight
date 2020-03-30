@@ -48,7 +48,11 @@ Component({
     attached() {}
   },
   methods: {
-
+    reqData(res) {
+      this.setData({
+        goodsList: res
+      })
+    }
   }
 
 });
