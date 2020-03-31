@@ -14,24 +14,24 @@
     </view>
     <view id="intoView1" class="scroll-view-item">
         <swiper class="swiper_wrap" circular="true">
-            <swiper-item wx:for="{{bannerList}}" wx:key="swoper_item">
-                <image bindload="bindload" mode="widthFix" class="banner_img" src="{{item.img}}"></image>
+            <swiper-item wx:for="{{goodsInfo.defaultSpecsPicUrl}}" wx:key="index">
+                <image bindload="bindload" mode="widthFix" class="banner_img" src="{{item}}"></image>
             </swiper-item>
         </swiper>
         <view class="flex price_wrap">
             <view class="price">
                 <view class="actual_price">
                     <text style="font-size: 30rpx">¥</text>
-                    <text style="font-size: 38rpx;">1799.00</text>
+                    <text style="font-size: 38rpx;">{{goodsInfo.compostCashPrice}}</text>
                 </view>
-                <view class="share_price">分享返现：¥5.00</view>
+                <view class="share_price">分享返现：¥{{goodsInfo.shareBrok}}</view>
             </view>
             <button open-type="share" class="share_btn flex">
                 <view>分享给亲友</view>
                 <view class="iconfont iconfenxiang"></view>
             </button>
         </view>
-        <view class="goods_name">ECCO爱步拼色单鞋女新款 浅口尖头平底蝴蝶结女鞋型塑269313黑色/深灰色/灰粉色</view>
+        <view class="goods_name">{{goodsInfo.name}}</view>
         <view class="active flex">
             <view class="rebate">下单返</view>
             <view style="font-weight: 600;">
@@ -73,7 +73,7 @@
             <view class="bor_vertical"></view>
             <view class="bor_across" style="margin-left: 15rpx"></view>
         </view>
-        <block wx:for="{{detailsImg}}" wx:key="details_img">
+        <block wx:for="{{goodsInfo.descImgUrls}}" wx:key="index">
             <image mode="widthFix" class="detail_img" src="{{item}}"></image>
         </block>
     </view>
@@ -92,7 +92,7 @@
  <view class="select_mask" catchtouchmove="catchtouchmove" wx:if="{{IsOpenMaskGoods}}" catchtap="hideGoodsMask">
      <view class="select_content" catchtap="stopClick">
          <view class="iconfont iconguanbi" catchtap="hideGoodsMask"></view>
-         <view class="goods_detail flex">
+         <view class="goods_detail_wrap flex">
              <image mode="widthFix" src="" class="goods_detail_img"></image>
              <view class="select_goods_name">
                  <view class="mask_goods_price"><text style="font-size: 28rpx">¥</text> 7.90</view>

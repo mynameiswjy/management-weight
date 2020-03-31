@@ -230,7 +230,7 @@
 }
 
 .goods_detail {
-    padding: 30rpx 30rpx 0 30rpx;
+
 }
 
 .goods_detail .title {
@@ -281,6 +281,10 @@
     border-radius: 24rpx 24rpx 0px 0px;
     bottom: 0;
     overflow: hidden;
+}
+
+.goods_detail_wrap {
+    padding: 30rpx 30rpx 0 30rpx;
 }
 
 .goods_detail_img {

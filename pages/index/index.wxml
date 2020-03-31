@@ -39,7 +39,7 @@
     <swiper class="ad_swiper" vertical="true" circular="true" autoplay="true">
       <block wx:for="{{indexData.zoneGoods.newZoneGoodsList}}" wx:for-item="zoneGoods" wx:key="index">
         <swiper-item>
-          <view class="ad_item flex">
+          <view class="ad_item flex" bindtap="goToGoodsList" data-zone-type="DEFAULT_ZONE">
             <view wx:for="{{zoneGoods}}" wx:key="goodsSno" class="ad_item_item">
               <image mode="widthFix" src="{{item.masterPic}}" class="ad_img"></image>
               <view class="txt1">￥{{item.compostCashPrice}}</view>
@@ -59,7 +59,7 @@
     <view class="title flex">
       <image class="hot_img" mode="widthFix" src="{{imgUrl}}/upload/index/hot_goods_icon.png"></image>
       <view>爆款商品</view>
-      <view class="more_hot_goods flex">
+      <view class="more_hot_goods flex" bindtap="goToGoodsList" data-zone-type="HOT_STYLE_GOODS">
         <view>更多爆款</view>
         <view class="iconfont iconxiangyoujiantou"></view>
       </view>
@@ -82,5 +82,10 @@
       </view>
     </view>
     <goodsListTemp id="goodsListTemp"></goodsListTemp>
+    <view class="is-end" wx:if="{{isEnd}}">已经到底啦</view>
+    <view class="weui-loadmore" wx:if="{{!isEnd}}">
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore_tips">正在加载</view>
+    </view>
   </view>
 </scroll-view>

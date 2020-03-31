@@ -1,5 +1,5 @@
 <block>
-    <view class="search flex">
+    <view class="search flex" bindtap="goSearchPage">
         <view class="iconfont iconsousuo1"></view>
         <view class="search_input">酸奶</view>
     </view>
@@ -19,11 +19,13 @@
         </scroll-view>
         <scroll-view class="scroll_right" scroll-y="true">
             <block wx:if="{{rightData.length}}">
-                <image mode="widthFix" src="{{rightData[0].url}}" class="banner_img"></image>
+                <view bindtap="moreGoodsList" data-sno="{{rightData[0].sno}}">
+                    <image mode="widthFix" src="{{rightData[0].url}}" class="banner_img"></image>
+                </view>
                 <block wx:for="{{rightData}}" wx:for-item="typeItem" wx:key="sno">
                     <view class="special_recom">{{typeItem.name}}</view>
                     <view class="goods_list flex">
-                        <view class="goods_item" wx:for="{{typeItem.goodsCatyBeans}}" wx:key="goos_item">
+                        <view class="goods_item" bindtap="moreGoodsList" data-sno="{{item.sno}}" wx:for="{{typeItem.goodsCatyBeans}}" wx:key="goos_item">
                             <image mode="widthFix" class="goods_img" src="{{item.imgUrl}}"></image>
                             <view class="goods_name">{{item.name}}</view>
                         </view>

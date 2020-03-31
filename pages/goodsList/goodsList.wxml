@@ -6,14 +6,16 @@
         <view class="flex" style="margin-top: 56rpx;align-items: center;justify-content: space-between;">
             <view class="goods_price">
                 <view class="pri1">￥{{item.compostCashPrice}}</view>
-                <view class="pri2">返现：{{item.shareBrok}}</view>
+                <view class="pri2"><text style="font-size: 26rpx;">返现: </text><text>{{item.shareBrok}}</text></view>
             </view>
             <view class="goods_btn">去抢购</view>
         </view>
     </view>
 </view>
-<view class="is-end" wx:if="{{isEnd}}">已经到底啦</view>
-<view class="weui-loadmore" wx:if="{{!isEnd}}">
-    <view class="weui-loading"></view>
-    <view class="weui-loadmore_tips">正在加载</view>
-</view>
+<block wx:if="{{goodsList.length}}">
+    <view class="is-end" wx:if="{{isEnd}}">已经到底啦</view>
+    <view class="weui-loadmore" wx:if="{{!isEnd}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore_tips">正在加载</view>
+    </view>
+</block>

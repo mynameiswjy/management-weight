@@ -28,7 +28,8 @@ Page({
       hostSellGoods: [],
       specialOfferGoods: [],
       brandGoods: []
-    }
+    },
+    isEnd: false
   },
   onLoad: function () {
     const {windowWidth, windowHeight} = app.globalData.SystemInfo;
@@ -81,7 +82,11 @@ Page({
     }).then((res) => {
       const data = res.data.object;
       if (!data.length) {
-        goodsListTitle[CurrentI].IsEnd = true
+        goodsListTitle[CurrentI].IsEnd = true;
+        this.setData({
+          isEnd: true
+        });
+        return
       }
       goodsListTitle[CurrentI].pageIdx++;
       const goodsData = this.data.goodsData[currentGoodsTab].concat(data);
@@ -117,7 +122,8 @@ Page({
     }
     this.setData({
       TitleIdx: index,
-      intoView: 'goods-list-title'
+      intoView: 'goods-list-title',
+      isEnd: this.data.goodsListTitle[index].IsEnd
     })
   },
 
@@ -143,6 +149,13 @@ Page({
   // 上拉刷新
   tolower(e) {
     this.typeGoodsData(this.data.indexData[this.data.currentGoodsTab])
+  },
+
+  goToGoodsList(e) {
+    const target = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: `/pages/goodsList/goodsList?type=index&zoneType=${target.zoneType}`
+    })
   }
 
 });

@@ -42,16 +42,31 @@ Component({
         price: 50,
         sharePrice: 0.3
       },
-    ]
+    ],
+    goodsLeftData: null,
+    goodsRightData: null,
   },
   lifetimes: {
     attached() {}
   },
   methods: {
     reqData(res) {
-      this.setData({
-        goodsList: res
-      })
+      if (res) {
+        let goodsLeftData = [];
+        let goodsRightData = [];
+        for (let i = 0; i < res.length; i++) {
+          if (i % 2 === 0) {
+            goodsLeftData.push(res[i])
+          } else {
+            goodsRightData.push(res[i])
+          }
+        }
+        this.setData({
+          goodsList: res,
+          goodsLeftData,
+          goodsRightData
+        })
+      }
     }
   }
 

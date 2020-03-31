@@ -4,6 +4,9 @@
     display: flex;
     flex-wrap: wrap;
 }
+.flex1 {
+    display: flex;
+}
 
 .left {
     float: left;
@@ -88,3 +91,22 @@
     text-align: center;
     margin-bottom: 30rpx;
 }
+
+/*
+.left{
+
+    float:left;
+
+}
+
+.listLeft,.listRight{
+
+    width: 340rpx;
+
+}
+
+.listRight{
+
+    margin-left: 20rpx;
+
+}*/

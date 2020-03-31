@@ -18,6 +18,16 @@ export function homeGoodsList (data) {
   })
 }
 
+// 首页10元商品 爆款商品 落地页
+export function commodityzonegoods (data) {
+  const url = '/shop/applet/goods/commodity/zone/goods';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
 // 分类页面 三级商品
 export function ClassifyThree (data) {
   const url = '/shop/applet/goods/caty/list';
@@ -43,5 +53,15 @@ export function ClassifyOne (data, cb) {
   const url = '/shop/applet/caty/list';
   requestAjaxGet(url, data, (res) => {
     cb(res)
+  })
+}
+
+// 商品详情页
+export function goodsDetail (data) {
+  const url = '/shop/applet/goods/detail';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
   })
 }

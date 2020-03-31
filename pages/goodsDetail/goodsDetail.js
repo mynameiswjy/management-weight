@@ -1,3 +1,4 @@
+import { goodsDetail } from '../../api/index'
 const app = getApp();
 const config = require('../../config.globle');
 
@@ -32,7 +33,8 @@ Page({
     currentScrollTop: 0,
     selectTypeIdx: 0,
     goodsNum: 1,
-    IsOpenMaskGoods: false
+    IsOpenMaskGoods: false,
+    goodsInfo: null
   },
 
   onLoad: function (options) {
@@ -45,6 +47,11 @@ Page({
       navHeight: Math.ceil((MenuButton.height + MenuButton.top * 2 - statusBarHeight + 3) * coe),
       statusBarHeight: statusBarHeight * coe,
       options
+    });
+    goodsDetail({goodsSno: options.goodsSno || "3712144700781232191"}).then((res) => {
+      this.setData({
+        goodsInfo: res.data.object
+      })
     });
 
     setTimeout(() => {
