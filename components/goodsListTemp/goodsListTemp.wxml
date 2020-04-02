@@ -20,7 +20,7 @@
 <!--瀑布流-->
 <view class="goods_list flex1" wx:if="{{!showType}}">
     <view>
-        <view class="item" wx:for="{{goodsLeftData}}" wx:key="goodsSno">
+        <view class="item" wx:for="{{goodsLeftData}}" wx:key="goodsSno" bindtap="buyGoods" data-goods-sno="{{item.goodsSno}}">
             <image mode="widthFix" class="item_img" src="{{item.masterPic}}"></image>
             <view class="item_name">{{item.name}}</view>
             <view class="flex price">
@@ -38,7 +38,7 @@
     </view>
     <view style="margin-left: 10rpx">
         <view class="item" wx:for="{{goodsRightData}}" wx:key="goodsSno"
-              style="">
+              style="" bindtap="buyGoods" data-goods-sno="{{item.goodsSno}}">
             <image mode="widthFix" class="item_img" src="{{item.masterPic}}"></image>
             <view class="item_name">{{item.name}}</view>
             <view class="flex price">

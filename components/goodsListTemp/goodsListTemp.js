@@ -67,6 +67,13 @@ Component({
           goodsRightData
         })
       }
+    },
+    buyGoods(e) {
+      const target = e.currentTarget.dataset;
+      const goodsSno = target.goodsSno;
+      wx.navigateTo({
+        url: `/pages/goodsDetail/goodsDetail?goodsSno=${goodsSno}`
+      })
     }
   }
 
