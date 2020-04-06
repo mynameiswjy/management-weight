@@ -65,3 +65,13 @@ export function goodsDetail (data) {
     })
   })
 }
+
+// 登录注册
+export function login (data) {
+  const url = '/shop/applet/user/login.do ';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}

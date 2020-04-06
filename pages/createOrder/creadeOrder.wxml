@@ -1,0 +1,67 @@
+<view class="address flex" wx:if="{{true}}">
+    <view class="flex left">
+        <view class="iconfont icondizhi"></view>
+        <view class="txt">添加收货地址</view>
+    </view>
+    <view class="iconfont icontubiao-"></view>
+</view>
+<view class="address address1 flex" wx:if="{{}}">
+    <view class="iconfont icondizhi2"></view>
+    <view>
+        <view class="userinfo">
+            <text style="margin-right: 40rpx;">王宝强</text>
+            <text style="color: #282828;">1383268888</text>
+        </view>
+        <view class="addr_name">地址是纳库克哈撒哈拉</view>
+    </view>
+</view>
+<view class="goods_detail">
+    <view class="shop_title flex">
+        <view class="iconfont icondianpu"></view>
+        <view>官方旗舰店</view>
+    </view>
+    <view class="flex goods_info">
+        <image class="goods_img" mode="widthFix" src=""></image>
+        <view class="goods_right">
+            <view class="flex top">
+                <view class="goods_name">福百年卫生纸家用实惠装竹浆本</view>
+                <view class="goods_price">
+                    <view><text style="font-size: 20rpx;">¥ </text>7.90</view>
+                    <view style="margin-top: 6rpx">x1</view>
+                </view>
+            </view>
+            <view class="goods_num">1提12卷</view>
+            <view class="total">
+                <text>共1件，总计：</text>
+                <text style="font-size: 22rpx">¥ </text>
+                <text style="font-weight: 600;font-size: 28rpx;">23.70</text></view>
+        </view>
+    </view>
+</view>
+<view class="price_detail">
+    <view class="flex item">
+        <view style="color: #666;">商品售价</view>
+        <view>20.00</view>
+    </view>
+    <view class="flex item">
+        <view style="color: #666;">商品售价</view>
+        <view>20.00</view>
+    </view>
+    <view class="flex item">
+        <view style="color: #666;">商品售价</view>
+        <view>20.00</view>
+    </view>
+</view>
+<view class="price_detail flex">
+    <view class="remark">备注</view>
+    <input class="area" placeholder="20字以内" type="text"/>
+</view>
+<view class="order_btn flex">
+    <view class="left">
+        <text style="color: #999;font-size: 26rpx;">共1件，</text>
+        <text style="color: #666;font-size: 30rpx;">实付款：</text>
+        <text style="color: #DD3333;font-weight: 600;font-size: 30rpx;">¥ 23.70</text>
+    </view>
+    <view class="submit">提交订单</view>
+</view>
+<login></login>

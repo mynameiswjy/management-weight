@@ -18,6 +18,9 @@
 .user_info .user_name {
     font-size:38rpx;
     color: #110F0F;
+}
+
+.user_info .user_name1 {
     font-weight: 600;
 }
 

@@ -1,6 +1,10 @@
-<view class="flex user_info">
+<button hover-class="none" open-type="getPhoneNumber" class="flex user_info" bindgetphonenumber="getPhoneNumber" wx:if="{{!userInfo.hasLogin}}">
     <image mode="widthFix" src="" class="avatar"></image>
-    <view class="user_name">1383268895</view>
+    <view class="user_name">登录</view>
+</button>
+<view class="flex user_info" bindtap="logOut" wx:else>
+    <image mode="widthFix" src="" class="avatar"></image>
+    <view class="user_name user_name1">{{userInfo.NickName}}</view>
     <view class="flex grade">
         <view class="iconfont iconicon-"></view>
         <view>高级团长</view>
@@ -9,7 +13,7 @@
 <view class="withdraw">
     <view class="flex withdraw_price">
         <view class="withdraw_txt">可提现 ¥ 4.00</view>
-        <view class="withdraw_btn">立即提现</view>
+        <view class="withdraw_btn" bindtap="withdrawBtn">立即提现</view>
     </view>
     <view class="flex bottom">
         <view class="item">

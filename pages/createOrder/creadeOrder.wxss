@@ -1,0 +1,183 @@
+page {
+    background-color: #F3F3F3;
+}
+
+.address {
+    width: 690rpx;
+    height: 160rpx;
+    background-color: #fff;
+    border-radius: 12rpx;
+    margin: 20rpx 30rpx 20rpx;
+    align-items: center;
+    color: #999;
+    justify-content: space-between;
+}
+
+.address1 {
+    justify-content: flex-start;
+}
+
+.address .left {
+    align-items: center;
+}
+
+.address .txt {
+    font-size: 28rpx;
+}
+
+.address .icondizhi {
+    font-size: 36rpx;
+    margin: 0 20rpx 0 25rpx;
+}
+
+.icondizhi2 {
+    font-size: 36rpx;
+    margin: 0 16rpx 0 25rpx;
+    color: #877C30;
+}
+
+.address .icontubiao- {
+    font-size: 30rpx;
+    margin-right: 10rpx;
+}
+
+.userinfo {
+    font-size: 30rpx;
+    color: #282828;
+}
+
+.address1 .addr_name {
+    color: #282828;
+    font-size: 28rpx;
+    line-height: 1;
+    margin-top: 24rpx;
+}
+
+.goods_detail {
+    width: 690rpx;
+    background-color: #fff;
+    border-radius: 12rpx;
+    margin: 0 30rpx 20rpx;
+}
+
+.goods_info {
+    padding-top: 36rpx;
+}
+
+.goods_right .top {
+    justify-content: space-between;
+    font-weight: 600;
+}
+
+.goods_right {
+    width: 406rpx;
+}
+
+.goods_name {
+    font-size: 24rpx;
+    color: #282828;
+    line-height: 30rpx;
+    max-width: 260rpx;
+}
+
+.goods_img {
+    background-color: #cccccc;
+    width: 200rpx;
+    height: 200rpx;
+    margin: 0 28rpx 28rpx;
+}
+
+.goods_price {
+    text-align: right;
+    font-size: 26rpx;
+    color: #666666;
+    line-height: 1;
+}
+
+.goods_num {
+    display: inline-block;
+    font-size: 22rpx;
+    color: #282828;
+    padding: 8rpx 12rpx;
+    border-radius: 20rpx;
+    margin-top: 16rpx;
+    margin-bottom: 50rpx ;
+    background-color: #F3F3F3;
+}
+
+.shop_title {
+    margin-left: 28rpx;
+    padding-top: 36rpx;
+    font-size: 28rpx;
+    color: #282828;
+    align-items: center;
+    font-weight: 600;
+}
+.icondianpu {
+    margin-right: 26rpx;
+}
+
+.total {
+    font-size: 26rpx;
+    color: #282828;
+    text-align: right;
+}
+
+.price_detail {
+    width: 634rpx;
+    border-radius: 12rpx;
+    margin: 20rpx 30rpx 0;
+    background-color: #fff;
+    padding: 28rpx 28rpx 0;
+}
+
+.price_detail .item {
+    justify-content: space-between;
+    padding-bottom: 28rpx;
+    font-size: 26rpx;
+    color: #282828;
+}
+
+.remark {
+    font-size: 30rpx;
+    color: #282828;
+    padding-bottom: 28rpx;
+}
+
+.area {
+    margin-left: 20rpx;
+    font-size: 30rpx;
+    width: 450rpx;
+}
+
+.order_btn {
+    position: fixed;
+    width: 750rpx;
+    height: 120rpx;
+    background-color: #fff;
+    bottom: 0;
+    left: 0;
+}
+
+.order_btn .left {
+    text-align: right;
+    position: absolute;
+    right: 242rpx;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    top: 54rpx;
+}
+
+.submit {
+    width: 202rpx;
+    height: 120rpx;
+    background-color: #DE2910;
+    font-size: 26rpx;
+    color: #fff;
+    text-align: center;
+    line-height: 120rpx;
+    font-weight: 600;
+    position: absolute;
+    right: 0;
+}

@@ -1,0 +1,73 @@
+.login-cont {
+  position: fixed;
+  top: 0;
+  width: 750rpx;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999999999;
+}
+
+.login {
+  text-align: center;
+  width: 600rpx;
+  height: 439rpx;
+  border-radius: 14rpx;
+  background: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*margin-top: -320rpx;*/
+}
+
+.login .title {
+  font-size: 36rpx;
+  color: #4E4E4E;
+  font-weight: 600;
+  text-align: center;
+  line-height: 50rpx;
+  padding: 60rpx 0 44rpx 0;
+}
+
+.login .text {
+  font-size: 30rpx;
+  color: #7A7A7A;
+  text-align: center;
+}
+
+.login .close_txt {
+  font-size: 26rpx;
+  color: #CCCCCC;
+  line-height: 37rpx;
+  margin-top: 24rpx;
+  text-align: center;
+}
+
+.login .btn {
+  margin: 70rpx auto 0rpx auto;
+  background: #DE2910;
+  border-radius: 44rpx;
+  color: #fff;
+  width: 440rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 34rpx;
+}
+
+.login .close {
+  box-sizing: border-box;
+  position: absolute;
+  right: 0rpx;
+  top: 0rpx;
+  z-index: 10;
+}
+
+.login .close .close_icon {
+  width: 25rpx;
+  height: 25rpx;
+  padding: 30rpx 30rpx 0 0;
+  font-size: 23rpx;
+  color: #CCCCCC;
+}
