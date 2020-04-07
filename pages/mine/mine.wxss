@@ -13,6 +13,7 @@
     padding-top: 14rpx;
     border-top: 20rpx solid #FCF9FC;
     background-color: #fff;
+    position: relative;
 }
 
 .user_info .user_name {
@@ -204,4 +205,18 @@
 .server {
     margin-top: 30rpx;
     margin-bottom: 30rpx;
+}
+
+.setting {
+    width: 100rpx;
+    height: 154rpx;
+    position: absolute;
+    right: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.setting .iconshezhi {
+    font-size:38rpx;
+    color: #282828;
 }

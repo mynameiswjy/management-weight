@@ -2,9 +2,8 @@ const config = require("../config.globle");
 const host = config.BASE_URL;
 
 export function requestAjaxGet(url, data = {}, cb, header = {}, err) {
-  const head = header ? header : {
-    'content-type': 'application/json' // 默认值
-  };
+  let head = {'content-type': 'application/json'};
+  head = Object.assign({}, head, header);
   wx.request({
     url: host + url,
     data: data,
@@ -24,9 +23,8 @@ export function requestAjaxGet(url, data = {}, cb, header = {}, err) {
 }
 
 export function requestAjaxPost(url, data={}, cb, header, err) {
-  const head = header ? header : {
-    'content-type': 'application/json' // 默认值
-  };
+  let head = {'content-type': 'application/json'};
+  head = Object.assign({}, head, header);
   wx.request({
     url: host + url,
     data: data,

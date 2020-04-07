@@ -68,10 +68,32 @@ export function goodsDetail (data) {
 
 // 登录注册
 export function login (data) {
-  const url = '/shop/applet/user/login.do ';
+  const url = '/shop/applet/user/login.do';
   return new Promise((resolve, reject) => {
     requestAjaxPost(url, data, (res) => {
       resolve(res)
     })
+  })
+}
+
+// 登录注册
+export function logout (data) {
+  const url = '/shop/applet/user/logout.do';
+  const app = getApp();
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    }, {token: app.globalData.loginInfo.token})
+  })
+}
+
+// 利用code获取用户信息
+export function getUserInfo (data) {
+  const url = '/shop/applet/user/get.do';
+  const app = getApp();
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    }, {token: app.globalData.loginInfo.token})
   })
 }
