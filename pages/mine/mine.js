@@ -14,13 +14,25 @@ Page({
    */
   onLoad: function (options) {
     console.log(app.globalData.loginInfo);
-    this.setData({
-      hasLogin: app.globalData.loginInfo.hasLogin,
-      userInfo: {
-        NickName: app.globalData.userInfo.nickName ? app.globalData.userInfo.nickName : app.globalData.loginInfo.phoneNo,
-        avatarUrl: app.globalData.userInfo.avatarUrl ? app.globalData.userInfo.avatarUrl : ''
-      },
-    })
+    if (app.globalData.IsRefresh) {
+      app.loginCallback = () => {
+        this.setData({
+          hasLogin: app.globalData.loginInfo.hasLogin,
+          userInfo: {
+            NickName: app.globalData.userInfo.nickName ? app.globalData.userInfo.nickName : app.globalData.loginInfo.phoneNo,
+            avatarUrl: app.globalData.userInfo.avatarUrl ? app.globalData.userInfo.avatarUrl : ''
+          },
+        })
+      }
+    } else {
+      this.setData({
+        hasLogin: app.globalData.loginInfo.hasLogin,
+        userInfo: {
+          NickName: app.globalData.userInfo.nickName ? app.globalData.userInfo.nickName : app.globalData.loginInfo.phoneNo,
+          avatarUrl: app.globalData.userInfo.avatarUrl ? app.globalData.userInfo.avatarUrl : ''
+        },
+      })
+    }
   },
 
   withdrawBtn() {
@@ -62,44 +74,53 @@ Page({
     wx.showLoading({
       title: '加载中',
     });
-    wx.login({
-      success(e) {
-        login({
-          code: e.code,
-          encryptedData: target.encryptedData,
-          iv: target.iv
-        }).then((res) => {
-          wx.hideLoading();
-          if (res.data.code === 200) {
-            const data = res.data.object;
-            if (data.token) {
-              app.globalData.loginInfo.hasLogin = true;
-              that.setData({
-                hasLogin: true,
-                userInfo: {
-                  NickName: data.phoneNo
-                },
+    if (target.errMsg === "getPhoneNumber:ok") {
+      wx.login({
+        success(e) {
+          login({
+            code: e.code,
+            encryptedData: target.encryptedData,
+            iv: target.iv
+          }).then((res) => {
+            wx.hideLoading();
+            if (res.data.code === 200) {
+              const data = res.data.object;
+              if (data.token) {
+                app.globalData.loginInfo.hasLogin = true;
+                that.setData({
+                  hasLogin: true,
+                  userInfo: {
+                    NickName: data.phoneNo
+                  },
+                })
+              }
+              app.syncLoginInfo(data)
+            } else {
+              wx.showToast({
+                title: res.data.message,
+                icon: 'none',
+                duration: 2000
               })
             }
-            app.syncLoginInfo(data)
-          } else {
+          }).catch((err) => {
+            console.log(err);
+            wx.hideLoading();
             wx.showToast({
-              title: res.data.message,
+              title: '获取用户信息失败',
               icon: 'none',
               duration: 2000
             })
-          }
-        }).catch((err) => {
-          console.log(err);
-          wx.hideLoading();
-          wx.showToast({
-            title: '获取用户信息失败',
-            icon: 'none',
-            duration: 2000
           })
-        })
-      }
-    })
+        }
+      })
+    } else {
+      wx.hideLoading();
+      wx.showToast({
+        title: '您拒绝了授权，无法为您登录',
+        icon: 'none',
+        duration: 2000
+      })
+    };
   },
 
   getUserInfo(e) {

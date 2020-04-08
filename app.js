@@ -10,7 +10,8 @@ App({
     userInfo: {
       avatar: '',
       userName: ''
-    }
+    },
+    IsRefresh: false
   },
   onLaunch () {
     const that = this;
@@ -27,12 +28,13 @@ App({
         }
         this.globalData.loginInfo = Object.assign({}, data, loginInfo)
       } else {
+        that.globalData.IsRefresh = true;
         wx.login({
           success(e) {
             getUserInfo({code: e.code}).then((res) => {
               const data = res.data.object;
               if (res.data.code === 200 && data.loginStatus != 'SIGNOUT') {
-                that.syncLoginInfo(data)
+                that.syncLoginInfo(data);
               }
             })
           }
@@ -50,18 +52,21 @@ App({
     }
   },
 
-  syncInfoData(options, cb) {
-    cb === "function" && cb();
-  },
-
   syncLoginInfo(data = null) {
     if (!data) return;
+    const that = this;
     const {custSno, phoneNo, token} = data;
     const loginInfo = {custSno, phoneNo, token, hasLogin: true};
     this.globalData.loginInfo = loginInfo;
     wx.setStorage({
       key: config.LOGININFO,
-      data: loginInfo
+      data: loginInfo,
+      success(e) {
+        if (that.globalData.IsRefresh && that.loginCallback) {
+          that.loginCallback();
+        }
+        that.globalData.IsRefresh = false;
+      }
     });
     wx.showToast({
       title: '存储成功',

@@ -57,6 +57,7 @@ Page({
           item = []
         }
       }
+      data.hotStyleGoods = data.hotStyleGoods.slice(0, 4)
       data.zoneGoods.newZoneGoodsList = newZoneGoodsList;
       this.setData({
         indexData: data

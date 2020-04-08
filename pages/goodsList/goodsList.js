@@ -46,7 +46,8 @@ Page({
     } else {
       this.data.pageIdx++;
       this.setData({
-        goodsList: this.data.goodsList.concat(data)
+        goodsList: this.data.goodsList.concat(data),
+        isEnd: this.data.goodsList.length < 10 ? true : false
       })
     }
   },

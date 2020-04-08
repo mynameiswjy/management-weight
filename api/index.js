@@ -76,14 +76,14 @@ export function login (data) {
   })
 }
 
-// 登录注册
+// 退出登录
 export function logout (data) {
   const url = '/shop/applet/user/logout.do';
   const app = getApp();
   return new Promise((resolve, reject) => {
     requestAjaxPost(url, data, (res) => {
       resolve(res)
-    }, {token: app.globalData.loginInfo.token})
+    })
   })
 }
 
@@ -94,6 +94,6 @@ export function getUserInfo (data) {
   return new Promise((resolve, reject) => {
     requestAjaxPost(url, data, (res) => {
       resolve(res)
-    }, {token: app.globalData.loginInfo.token})
+    })
   })
 }
