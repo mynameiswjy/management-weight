@@ -1,5 +1,7 @@
 {
+  "navigationBarTitleText": "确认订单",
   "usingComponents": {
-    "login": "/components/Login/Login"
+    "login": "/components/Login/Login",
+    "addAddress": "/components/addAddress/addAddress"
   }
 }

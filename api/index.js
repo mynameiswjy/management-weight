@@ -66,6 +66,26 @@ export function goodsDetail (data) {
   })
 }
 
+// 商品规格
+export function goodsSspecs (data) {
+  const url = '/shop/applet/goods/specs';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
+// 生成订单
+export function createOrder (data) {
+  const url = '/shop/applet/order';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
 // 登录注册
 export function login (data) {
   const url = '/shop/applet/user/login.do';
@@ -95,5 +115,21 @@ export function getUserInfo (data) {
     requestAjaxPost(url, data, (res) => {
       resolve(res)
     })
+  })
+}
+
+// 省
+export function findAllProvince (data, cb) {
+  const url = '/shop/area/findAllProvince';
+  requestAjaxGet(url, data, (res) => {
+    cb(res)
+  })
+}
+
+// 市
+export function findByParentCode (data, cb) {
+  const url = '/shop/area/findByParentCode';
+  requestAjaxPost(url, data, (res) => {
+    cb(res)
   })
 }

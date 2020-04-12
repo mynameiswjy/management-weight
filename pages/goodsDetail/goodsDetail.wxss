@@ -386,7 +386,7 @@
 }
 
 .mask_scroll_view {
-    height: 500rpx;
+    height: 600rpx;
     width: 750rpx;
     background-color: #fff;
 }
@@ -412,6 +412,11 @@
     margin-right: 40rpx;
     margin-bottom: 24rpx;
     border: 1rpx solid transparent;
+}
+
+.goods_type_item_disable {
+    color: #ccc!important;
+    text-decoration: line-through;
 }
 
 .goods_type_active_item {

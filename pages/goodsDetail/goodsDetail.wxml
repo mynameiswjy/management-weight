@@ -14,7 +14,7 @@
     </view>
     <view id="intoView1" class="scroll-view-item">
         <swiper class="swiper_wrap" circular="true">
-            <swiper-item wx:for="{{goodsInfo.defaultSpecsPicUrl}}" wx:key="index">
+            <swiper-item wx:for="{{goodsInfo.goodsImgUrls}}" wx:key="index">
                 <image bindload="" mode="widthFix" class="banner_img" src="{{item}}"></image>
             </swiper-item>
         </swiper>
@@ -44,13 +44,21 @@
                 <text class="iconfont icontubiao-"></text>
             </view>
         </view>
-        <view class="user_select flex" bindtap="openSelectMask">
-            <view class="txt">已选</view>
-            <view class="txt2">
-                <text>黑色, </text>
-                <text>S, </text>
-                <text>两件 </text>
-            </view>
+        <view class="user_select flex" bindtap="selectData">
+            <block wx:if="{{selectColor||selectSpecs}}">
+                <view class="txt">已选</view>
+                <view class="txt2">
+                    <text wx:if="{{selectColor}}">{{selectColor}}, </text>
+                    <text wx:if="{{selectSpecs}}">{{selectSpecs}} </text>
+                </view>
+            </block>
+            <block wx:else>
+                <view class="txt">选择</view>
+                <view class="txt2">
+                    <text>颜色, </text>
+                    <text>类型</text>
+                </view>
+            </block>
         </view>
         <view class="user_select flex">
             <view class="txt txt1">服务</view>
@@ -93,38 +101,44 @@
      <view class="select_content {{IsOpenAnimation?'show_mask':'hide_mask'}}" catchtap="stopClick">
          <view class="iconfont iconguanbi" catchtap="hideGoodsMask"></view>
          <view class="goods_detail_wrap flex">
-             <image mode="widthFix" src="{{goodsInfo.defaultSpecsPicUrl[0]}}" class="goods_detail_img"></image>
+             <image mode="widthFix" src="{{selectInfo.selectInfo[0].specsImgUrl}}" class="goods_detail_img"></image>
              <view class="select_goods_name">
-                 <view class="mask_goods_price"><text style="font-size: 28rpx">¥</text> {{goodsInfo.compostCashPrice}}</view>
+                 <view class="mask_goods_price"><text style="font-size: 28rpx">¥</text> {{selectInfo.selectInfo[0].compostCashPrice}}</view>
                  <view class="mask_goods_price1">JD自营价：23.70</view>
-                 <view class="txt5 line_clamp">{{goodsInfo.name}}</view>
+                 <view class="txt5 line_clamp">{{selectInfo.selectInfo[0].name}}</view>
              </view>
          </view>
          <scroll-view class="mask_scroll_view" scroll-y="true">
-             <block wx:if="{{goodsInfo.supportColors.length}}">
+             <block wx:if="{{selectInfo.color.length}}">
                  <view class="goods_type_title">颜色</view>
                  <view class="goods_type flex">
                      <view
-                             class="goods_type_item {{index==selectColorIdx?'goods_type_active_item':''}}"
-                             wx:for="{{goodsInfo.supportColors}}"
+                             class="goods_type_item {{item.defaultIsSelect?'goods_type_active_item':''}} {{item.isSelect?'':'goods_type_item_disable'}}"
+                             wx:for="{{selectInfo.color}}"
                              bindtap="selectType"
                              data-index="{{index}}"
+                             data-is-select="{{item.isSelect}}"
+                             data-defaul-sno="{{item.specsGoodsSno}}"
+                             data-color="{{item.color}}"
                              data-tap="color"
                              wx:key="index"
-                     >{{item}}</view>
+                     >{{item.color}}</view>
                  </view>
              </block>
-             <block wx:if="{{goodsInfo.supportSpecs.length}}">
+             <block wx:if="{{selectInfo.specs.length}}">
                  <view class="goods_type_title">型号</view>
                  <view class="goods_type flex">
                      <view
-                             class="goods_type_item {{index==selectSpecsIdx?'goods_type_active_item':''}}"
-                             wx:for="{{goodsInfo.supportSpecs}}"
+                             class="goods_type_item {{item.defaultIsSelect?'goods_type_active_item':''}} {{item.isSelect?'':'goods_type_item_disable'}}"
+                             wx:for="{{selectInfo.specs}}"
                              bindtap="selectType"
+                             data-defaul-sno="{{item.specsGoodsSno}}"
+                             data-is-select="{{item.isSelect}}"
                              data-index="{{index}}"
                              data-tap="specs"
+                             data-specs="{{item.specs}}"
                              wx:key="index"
-                     >{{item}}</view>
+                     >{{item.specs}}</view>
                  </view>
              </block>
              <view class="flex goods_type_num">
@@ -137,7 +151,7 @@
              </view>
              <view style="height: 60rpx;"></view>
          </scroll-view>
-         <view class="submit_goods_btn">确定</view>
+         <view class="submit_goods_btn" bindtap="confirmOrder">确定</view>
      </view>
 </view>
 
@@ -152,5 +166,5 @@
         <view>购物车</view>
     </view>
     <view class="common_btn join_cart">加入购物车</view>
-    <view class="common_btn buy_btn">立即购买</view>
+    <view class="common_btn buy_btn" bindtap="selectData">立即购买</view>
 </view>

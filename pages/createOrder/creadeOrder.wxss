@@ -54,10 +54,11 @@ page {
 }
 
 .goods_detail {
-    width: 690rpx;
+    width: 634rpx;
     background-color: #fff;
     border-radius: 12rpx;
     margin: 0 30rpx 20rpx;
+    padding: 0 28rpx;
 }
 
 .goods_info {
@@ -78,13 +79,20 @@ page {
     color: #282828;
     line-height: 30rpx;
     max-width: 260rpx;
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .goods_img {
     background-color: #cccccc;
     width: 200rpx;
     height: 200rpx;
-    margin: 0 28rpx 28rpx;
+    margin: 0 28rpx 28rpx 0;
 }
 
 .goods_price {
@@ -106,7 +114,6 @@ page {
 }
 
 .shop_title {
-    margin-left: 28rpx;
     padding-top: 36rpx;
     font-size: 28rpx;
     color: #282828;
@@ -114,7 +121,7 @@ page {
     font-weight: 600;
 }
 .icondianpu {
-    margin-right: 26rpx;
+    margin-right: 22rpx;
 }
 
 .total {
@@ -131,7 +138,7 @@ page {
     padding: 28rpx 28rpx 0;
 }
 
-.price_detail .item {
+.goods_detail .item {
     justify-content: space-between;
     padding-bottom: 28rpx;
     font-size: 26rpx;
@@ -139,14 +146,14 @@ page {
 }
 
 .remark {
-    font-size: 30rpx;
+    font-size:26rpx;
     color: #282828;
     padding-bottom: 28rpx;
 }
 
 .area {
     margin-left: 20rpx;
-    font-size: 30rpx;
+    font-size: 26rpx;
     width: 450rpx;
 }
 

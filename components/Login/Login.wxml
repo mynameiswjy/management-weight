@@ -1,7 +1,7 @@
 <view class="login-cont" wx:if='{{showPopup}}'>
   <view class='login'>
     <view class='close' bindtap='hidePopup'>
-       <cover-image class="close_icon" bindtap="hidePopup" src="http://img02.exam8.com/img2017/minapp/icon/close@2x.png"></cover-image>
+       <image class="close_icon" bindtap="hidePopup" src="http://img02.exam8.com/img2017/minapp/icon/close@2x.png"></image>
       <!--<text class='iconfont icon_guanbi'></text>-->
     </view>
     <view class='title'>

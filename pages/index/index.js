@@ -41,6 +41,10 @@ Page({
     this.initData();
   },
 
+  onShow() {
+    this.initData();
+  },
+
   initData() {
     homeIndex({}).then((res) => {
       let data = res.data.object;

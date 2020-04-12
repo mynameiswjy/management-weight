@@ -1,4 +1,4 @@
-import { goodsDetail } from '../../api/index'
+import { goodsDetail, goodsSspecs } from '../../api/index'
 const app = getApp();
 const config = require('../../config.globle');
 
@@ -23,7 +23,10 @@ Page({
     goodsNum: 1,
     IsOpenMaskGoods: false,
     goodsInfo: null,
-    selectInfo: []
+    selectInfo: [],
+    selectColor: '',
+    selectSpecs: '',
+    defaultSpecsGoodsSnoL: ''
   },
 
   onLoad: function (options) {
@@ -37,10 +40,11 @@ Page({
       statusBarHeight: statusBarHeight * coe,
       options
     });
+
     goodsDetail({goodsSno: options.goodsSno || "3712144700781232517"}).then((res) => {
       let Data = res.data.object;
-      Data.supportSpecs = ['1.8米床 220*240cm', '2.0米床 220*240cm', '2.2米床 220*240cm'];
-      Data.supportColors = ['宝利莱', '珊瑚粉', '樱花白'];
+      /*Data.supportSpecs = ['1.8米床 220*240cm', '2.0米床 220*240cm', '2.2米床 220*240cm'];
+      Data.supportColors = ['宝利莱', '珊瑚粉', '樱花白'];*/
       this.setData({
         goodsInfo: Data
       }, () => {
@@ -61,6 +65,56 @@ Page({
 
   },
 
+
+
+  // 打开选择模板
+  openSelectMask() {
+
+  },
+
+  selectData() {
+    const goodsData = this.data.goodsInfo;
+    goodsSspecs({
+      defaultSpecsGoodsSno: this.data.defaultSpecsGoodsSnoL || goodsData.defaultSpecsGoodsSno,
+      goodsSno: goodsData.goodsSno,
+      color: this.data.selectColor,
+      specs: this.data.selectSpecs
+    }).then((res) => {
+      const data = res.data.object;
+      let selectInfo = data.color.length ? data.color : data.specs;
+      selectInfo = selectInfo.filter((item) => {
+        return item.defaultIsSelect === true
+      });
+      data.selectInfo = selectInfo;
+      this.setData({
+        IsOpenMaskGoods: true,
+        IsOpenAnimation: true,
+        selectInfo: data
+      }, () => {
+        let selectColor, selectSpecs;
+        if (data.color.length) {
+          for (let i = 0; i < data.color.length; i++) {
+            if (data.color[i].defaultIsSelect) {
+              selectColor = data.color[i].color
+              break;
+            }
+          }
+        }
+        if (data.specs.length) {
+          for (let i = 0; i < data.specs.length; i++) {
+            if (data.specs[i].defaultIsSelect) {
+              selectSpecs = data.specs[i].specs
+              break;
+            }
+          }
+        }
+        this.setData({
+          selectColor,
+          selectSpecs
+        })
+      });
+    });
+  },
 
   goodsAddBtn(e) {
     const tap = e.currentTarget.dataset.tap;
@@ -84,22 +138,28 @@ Page({
     const target = e.currentTarget.dataset;
     const idx = target.index;
     const tap = target.tap;
+    if (!target.isSelect) return;
+    this.data.defaultSpecsGoodsSnoL = target.defaulSno;
     if (tap === 'color') {
-      this.setData({
-        selectColorIdx: idx
-      })
+      this.data.selectColor = target.color
     } else if (tap === 'specs') {
-      this.setData({
-        selectSpecsIdx: idx
-      })
+      this.data.selectSpecs = target.specs
     }
+    this.selectData();
   },
 
-  // 打开选择模板
-  openSelectMask() {
-    this.setData({
-      IsOpenMaskGoods: true,
-      IsOpenAnimation: true
+  confirmOrder() {
+    const goodsInfo = this.data.goodsInfo;
+    const specsGoodsSno = this.data.defaultSpecsGoodsSnoL ? this.data.defaultSpecsGoodsSnoL : goodsInfo.defaultSpecsGoodsSno;
+    let param= `quantity=${this.data.goodsNum}&goodsSno=${goodsInfo.goodsSno}&specsGoodsSno=${specsGoodsSno}`;
+    if (this.data.selectSpecs) {
+      param += `&selectSpecs=${this.data.selectSpecs}`
+    }
+    if (this.data.selectColor) {
+      param += `&selectColor=${this.data.selectColor}`
+    }
+    wx.navigateTo({
+      url: '/pages/createOrder/creadeOrder?' + param
     })
   },
 

@@ -15,53 +15,60 @@
         <view class="addr_name">地址是纳库克哈撒哈拉</view>
     </view>
 </view>
-<view class="goods_detail">
-    <view class="shop_title flex">
-        <view class="iconfont icondianpu"></view>
-        <view>官方旗舰店</view>
-    </view>
-    <view class="flex goods_info">
-        <image class="goods_img" mode="widthFix" src=""></image>
-        <view class="goods_right">
-            <view class="flex top">
-                <view class="goods_name">福百年卫生纸家用实惠装竹浆本</view>
-                <view class="goods_price">
-                    <view><text style="font-size: 20rpx;">¥ </text>7.90</view>
-                    <view style="margin-top: 6rpx">x1</view>
+<block wx:for="{{orderInfo.ordersListInfos}}" wx:for-item="goodsInfo" wx:key="index">
+    <view class="goods_detail">
+        <view class="shop_title flex">
+            <view class="iconfont icondianpu"></view>
+            <view>官方旗舰店</view>
+        </view>
+        <view class="flex goods_info" wx:for="{{goodsInfo.goodsInfoBeans}}" wx:key="goodsSno">
+            <image class="goods_img" mode="widthFix" src="{{item.goodsImageUrl}}"></image>
+            <view class="goods_right">
+                <view class="flex top">
+                    <view class="goods_name">{{item.goodsName}}</view>
+                    <view class="goods_price">
+                        <view><text style="font-size: 20rpx;">¥ </text>{{item.compostCashPrice}}</view>
+                        <view style="margin-top: 6rpx">x{{item.quantity}}</view>
+                    </view>
                 </view>
+                <view class="goods_num">{{item.specs}}</view>
+                <!--<view class="total">
+                    <text>共{{goodsInfo.totalQuantity}}件，总计：</text>
+                    <text style="font-size: 22rpx">¥ </text>
+                    <text style="font-weight: 600;font-size: 28rpx;">{{goodsInfo.totalMoney}}</text>
+                </view>-->
             </view>
-            <view class="goods_num">1提12卷</view>
-            <view class="total">
-                <text>共1件，总计：</text>
-                <text style="font-size: 22rpx">¥ </text>
-                <text style="font-weight: 600;font-size: 28rpx;">23.70</text></view>
+        </view>
+        <view class="flex item">
+            <view style="color: #666;">商品总价</view>
+            <view>{{goodsInfo.totalMoney}}</view>
+        </view>
+        <view class="flex item">
+            <view style="color: #666;">运费</view>
+            <view>+{{goodsInfo.carriage}}</view>
+        </view>
+        <view class="flex item">
+            <view style="color: #666;">数量</view>
+            <view>{{goodsInfo.totalQuantity}}</view>
+        </view>
+        <view class="flex">
+            <view class="remark">备注</view>
+            <input class="area" placeholder="20字以内" type="text"/>
         </view>
     </view>
-</view>
-<view class="price_detail">
-    <view class="flex item">
-        <view style="color: #666;">商品售价</view>
-        <view>20.00</view>
-    </view>
-    <view class="flex item">
-        <view style="color: #666;">商品售价</view>
-        <view>20.00</view>
-    </view>
-    <view class="flex item">
-        <view style="color: #666;">商品售价</view>
-        <view>20.00</view>
-    </view>
-</view>
-<view class="price_detail flex">
-    <view class="remark">备注</view>
-    <input class="area" placeholder="20字以内" type="text"/>
-</view>
+    <!--<view class="price_detail flex">
+        <view class="remark">备注</view>
+        <input class="area" placeholder="20字以内" type="text"/>
+    </view>-->
+</block>
+
 <view class="order_btn flex">
     <view class="left">
-        <text style="color: #999;font-size: 26rpx;">共1件，</text>
+        <text style="color: #999;font-size: 26rpx;">共{{orderInfo.orderTotolQuantity}}件，</text>
         <text style="color: #666;font-size: 30rpx;">实付款：</text>
-        <text style="color: #DD3333;font-weight: 600;font-size: 30rpx;">¥ 23.70</text>
+        <text style="color: #DD3333;font-weight: 600;font-size: 30rpx;">¥ {{orderInfo.orderTotolAmount}}</text>
     </view>
     <view class="submit">提交订单</view>
 </view>
 <login></login>
+<addAddress></addAddress>
