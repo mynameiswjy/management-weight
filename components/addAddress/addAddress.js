@@ -13,24 +13,32 @@ Component({
     provinceData: [],
     selectIdx: [0, 0, 0],
     cityCode: '',
-    districtCode: ''
+    districtCode: '',
+    addressVal: '',
+    areaVal: ''
   },
   attached() {
     /*this.initData()*/
     this.provinceData();
   },
   methods: {
-    bindchange(e) {
-      console.log(e, 'bindchange');
+    bindarea(e) {
       this.setData({
-        selectIdx: e.detail.value
+        areaVal: e.detail.value
+      })
+    },
+    bindchange(e) {
+      const idxArr = e.detail.value;
+      const province = this.data.province;
+      this.setData({
+        selectIdx: idxArr,
+        addressVal: province[0][idxArr[0]] + ' ' + province[1][idxArr[1]] + ' ' + province[2][idxArr[2]]
       })
     },
     bindcolumnchange(e) {
       const target = e.detail;
       const column = target.column;
       const value = target.value;
-      console.log(typeof value)
       const code = this.data.provinceData[column][value].code;
       switch (column) {
         case 0:
