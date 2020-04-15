@@ -11,6 +11,7 @@ Component({
   data: {
     province: [],
     provinceData: [],
+    selectIdx: [0, 0, 0],
     cityCode: '',
     districtCode: ''
   },
@@ -21,11 +22,15 @@ Component({
   methods: {
     bindchange(e) {
       console.log(e, 'bindchange');
+      this.setData({
+        selectIdx: e.detail.value
+      })
     },
     bindcolumnchange(e) {
       const target = e.detail;
       const column = target.column;
       const value = target.value;
+      console.log(typeof value)
       const code = this.data.provinceData[column][value].code;
       switch (column) {
         case 0:

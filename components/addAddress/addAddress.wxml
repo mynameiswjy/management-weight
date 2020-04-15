@@ -7,7 +7,7 @@
       <input type="number" placeholder="联系电话" placeholder-class="placeholder"/>
     </view>
     <view class="section">
-      <picker mode="multiSelector" bindchange="bindchange" bindcolumnchange="bindcolumnchange" range="{{province}}">
+      <picker mode="multiSelector" bindchange="bindchange" value="{{selectIdx}}" bindcolumnchange="bindcolumnchange" range="{{province}}">
         <view class="picker">
 66666
         </view>
