@@ -1,10 +1,10 @@
-<view class="address_wrap">
+<view class="address_wrap" wx:if="{{IsOpenAddAddrTemp}}">
     <view class="content">
         <view class="address_title">新增地址</view>
-        <image class="close_icon" src="http://img02.exam8.com/img2017/minapp/icon/close@2x.png"></image>
+        <image class="close_icon" bindtap="closeTemp" src="http://img02.exam8.com/img2017/minapp/icon/close@2x.png"></image>
         <view class="name_phone flex">
-            <input type="text" class="input_name" placeholder="收货姓名" placeholder-class="placeholder"/>
-            <input type="number" placeholder="联系电话" placeholder-class="placeholder"/>
+            <input type="text" bindinput="getUserName" class="input_name" placeholder="收货姓名" placeholder-class="placeholder"/>
+            <input bindinput="getUserPhone" type="number" placeholder="联系电话" placeholder-class="placeholder"/>
         </view>
         <view class="section">
             <picker mode="multiSelector" bindchange="bindchange" value="{{selectIdx}}"
@@ -19,7 +19,7 @@
             <textarea auto-height="true" value="{{areaVal}}" bindinput="bindarea" placeholder="详细地址（如街道、小区、乡镇、村）" class="area"/>
         </view>
         <view style="border-top: 1rpx solid #eee;"></view>
-        <view class="btn">保存</view>
+        <view class="btn {{!UserPhone||!UserName||!addressVal||!areaVal?'btn1':''}}" bindtap="addAddrBtn">保存</view>
         <view style="height: 25rpx"></view>
     </view>
 </view>

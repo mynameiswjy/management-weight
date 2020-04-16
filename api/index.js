@@ -133,3 +133,13 @@ export function findByParentCode (data, cb) {
     cb(res)
   })
 }
+
+// 市
+export function addAddress (data) {
+  const url = '/shop/cse/add';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}

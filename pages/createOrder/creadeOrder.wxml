@@ -1,4 +1,4 @@
-<view class="address flex" wx:if="{{true}}">
+<view class="address flex" wx:if="{{true}}" bindtap="addAddress">
     <view class="flex left">
         <view class="iconfont icondizhi"></view>
         <view class="txt">添加收货地址</view>
@@ -71,4 +71,4 @@
     <view class="submit">提交订单</view>
 </view>
 <login></login>
-<addAddress></addAddress>
+<addAddress id="addAddress" bindaddress="bindaddress"></addAddress>

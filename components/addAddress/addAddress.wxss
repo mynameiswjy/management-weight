@@ -94,3 +94,7 @@ input {
   margin-top: 25rpx;
   overflow: hidden;
 }
+
+.btn1 {
+  background-color: #999999;
+}
