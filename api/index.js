@@ -86,6 +86,16 @@ export function createOrder (data) {
   })
 }
 
+// 支付签名
+export function PaySign (data) {
+  const url = '/shop/applet/order/pay';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
 // 登录注册
 export function login (data) {
   const url = '/shop/applet/user/login.do';
@@ -134,7 +144,7 @@ export function findByParentCode (data, cb) {
   })
 }
 
-// 市
+// 添加地址
 export function addAddress (data) {
   const url = '/shop/cse/add';
   return new Promise((resolve, reject) => {
@@ -143,3 +153,64 @@ export function addAddress (data) {
     })
   })
 }
+
+// 获取默认地址
+export function addrDefaulted (data) {
+  const url = '/shop/cse/defaulted';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
+// 获取收货地址列表
+export function addrList (data) {
+  const url = '/shop/cse/list';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
+// 设置默认地址
+export function setDefault (data) {
+  const url = '/shop/cse/default';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
+// 修改地址
+export function modifiAddr (data) {
+  const url = '/shop/cse/edit';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
+// 删除收货地址
+export function deleteAddr (data) {
+  const url = '/shop/cse/del';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
+// 订单列表
+export function orderList (data) {
+  const url = '/shop/applet/shopOrder/list';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+

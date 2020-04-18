@@ -1,74 +1,89 @@
-<view class="address flex" wx:if="{{true}}" bindtap="addAddress">
-    <view class="flex left">
-        <view class="iconfont icondizhi"></view>
-        <view class="txt">添加收货地址</view>
-    </view>
-    <view class="iconfont icontubiao-"></view>
-</view>
-<view class="address address1 flex" wx:if="{{}}">
-    <view class="iconfont icondizhi2"></view>
-    <view>
-        <view class="userinfo">
-            <text style="margin-right: 40rpx;">王宝强</text>
-            <text style="color: #282828;">1383268888</text>
+<block wx:if="{{!successPay}}">
+    <view class="address flex" wx:if="{{isShowAddr}}" bindtap="addAddress">
+        <view class="flex left">
+            <view class="iconfont icondizhi"></view>
+            <view class="txt">添加收货地址</view>
         </view>
-        <view class="addr_name">地址是纳库克哈撒哈拉</view>
+        <view class="iconfont icontubiao-"></view>
     </view>
-</view>
-<block wx:for="{{orderInfo.ordersListInfos}}" wx:for-item="goodsInfo" wx:key="index">
-    <view class="goods_detail">
-        <view class="shop_title flex">
-            <view class="iconfont icondianpu"></view>
-            <view>官方旗舰店</view>
+    <view class="address address1 flex" wx:if="{{defaultAddData}}" bindtap="modifiyAddr">
+        <view class="iconfont icondizhi2"></view>
+        <view>
+            <view class="userinfo">
+                <text style="margin-right: 40rpx;">{{defaultAddData.cseName}}</text>
+                <text style="color: #282828;">{{defaultAddData.csePhone}}</text>
+            </view>
+            <view class="addr_name">{{defaultAddData.provinceName}} {{defaultAddData.cityName}} {{defaultAddData.districtName}} {{defaultAddData.address}}</view>
         </view>
-        <view class="flex goods_info" wx:for="{{goodsInfo.goodsInfoBeans}}" wx:key="goodsSno">
-            <image class="goods_img" mode="widthFix" src="{{item.goodsImageUrl}}"></image>
-            <view class="goods_right">
-                <view class="flex top">
-                    <view class="goods_name">{{item.goodsName}}</view>
-                    <view class="goods_price">
-                        <view><text style="font-size: 20rpx;">¥ </text>{{item.compostCashPrice}}</view>
-                        <view style="margin-top: 6rpx">x{{item.quantity}}</view>
+    </view>
+    <block wx:for="{{orderInfo.ordersListInfos}}" wx:for-item="goodsInfo" wx:key="index">
+        <view class="goods_detail">
+            <view class="shop_title flex">
+                <view class="iconfont icondianpu"></view>
+                <view>官方旗舰店</view>
+            </view>
+            <view class="flex goods_info" wx:for="{{goodsInfo.goodsInfoBeans}}" wx:key="goodsSno">
+                <image class="goods_img" mode="widthFix" src="{{item.goodsImageUrl}}"></image>
+                <view class="goods_right">
+                    <view class="flex top">
+                        <view class="goods_name">{{item.goodsName}}</view>
+                        <view class="goods_price">
+                            <view><text style="font-size: 20rpx;">¥ </text>{{item.compostCashPrice}}</view>
+                            <view style="margin-top: 6rpx">x{{item.quantity}}</view>
+                        </view>
                     </view>
+                    <view class="goods_num">{{item.specs}}</view>
+                    <!--<view class="total">
+                        <text>共{{goodsInfo.totalQuantity}}件，总计：</text>
+                        <text style="font-size: 22rpx">¥ </text>
+                        <text style="font-weight: 600;font-size: 28rpx;">{{goodsInfo.totalMoney}}</text>
+                    </view>-->
                 </view>
-                <view class="goods_num">{{item.specs}}</view>
-                <!--<view class="total">
-                    <text>共{{goodsInfo.totalQuantity}}件，总计：</text>
-                    <text style="font-size: 22rpx">¥ </text>
-                    <text style="font-weight: 600;font-size: 28rpx;">{{goodsInfo.totalMoney}}</text>
-                </view>-->
+            </view>
+            <view class="flex item">
+                <view style="color: #666;">商品总价</view>
+                <view>{{goodsInfo.totalMoney}}</view>
+            </view>
+            <view class="flex item">
+                <view style="color: #666;">运费</view>
+                <view>+{{goodsInfo.carriage}}</view>
+            </view>
+            <view class="flex item">
+                <view style="color: #666;">数量</view>
+                <view>{{goodsInfo.totalQuantity}}</view>
+            </view>
+            <view class="flex remake_wrap">
+                <view class="remark">备注</view>
+                <input class="area" placeholder="20字以内" type="text"/>
             </view>
         </view>
-        <view class="flex item">
-            <view style="color: #666;">商品总价</view>
-            <view>{{goodsInfo.totalMoney}}</view>
-        </view>
-        <view class="flex item">
-            <view style="color: #666;">运费</view>
-            <view>+{{goodsInfo.carriage}}</view>
-        </view>
-        <view class="flex item">
-            <view style="color: #666;">数量</view>
-            <view>{{goodsInfo.totalQuantity}}</view>
-        </view>
-        <view class="flex">
-            <view class="remark">备注</view>
-            <input class="area" placeholder="20字以内" type="text"/>
-        </view>
-    </view>
-    <!--<view class="price_detail flex">
-        <view class="remark">备注</view>
-        <input class="area" placeholder="20字以内" type="text"/>
-    </view>-->
-</block>
+    </block>
 
-<view class="order_btn flex">
-    <view class="left">
-        <text style="color: #999;font-size: 26rpx;">共{{orderInfo.orderTotolQuantity}}件，</text>
-        <text style="color: #666;font-size: 30rpx;">实付款：</text>
-        <text style="color: #DD3333;font-weight: 600;font-size: 30rpx;">¥ {{orderInfo.orderTotolAmount}}</text>
+    <view class="order_btn flex">
+        <view class="left">
+            <text style="color: #999;font-size: 26rpx;">共{{orderInfo.orderTotolQuantity}}件，</text>
+            <text style="color: #666;font-size: 30rpx;">实付款：</text>
+            <text style="color: #DD3333;font-weight: 600;font-size: 30rpx;">¥ {{orderInfo.orderTotolAmount}}</text>
+        </view>
+        <view class="submit" bindtap="submit">提交订单</view>
     </view>
-    <view class="submit">提交订单</view>
-</view>
+</block>
+<block wx:if="{{successPay}}">
+    <view class="pay_success">
+        <image mode="widthFix" class="avatar_img"></image>
+        <view class="flex success">
+            <view class="iconfont iconchenggong"></view>
+            <view class="success_txt">支付成功</view>
+        </view>
+        <view class="pay_num">支付金额：<text style="color: #F4523B;">¥{{orderInfo.orderTotolAmount}}</text></view>
+        <view class="another" bindtap="AnotherOrder">返回主页</view>
+        <view class="order_detail flex" bindtap="checkDetail">
+            <view>查看订单详情</view>
+            <view class="iconfont icontubiao-"></view>
+        </view>
+        <view style="height: 20rpx;"></view>
+    </view>
+    <goodsListTemp showType="{{1}}"></goodsListTemp>
+</block>
 <login></login>
 <addAddress id="addAddress" bindaddress="bindaddress"></addAddress>

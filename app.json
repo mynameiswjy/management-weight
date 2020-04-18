@@ -2,12 +2,13 @@
   "pages": [
     "pages/index/index",
     "pages/mine/mine",
-    "pages/createOrder/creadeOrder", 
+    "pages/createOrder/creadeOrder",
     "pages/classify/classify",
     "pages/cart/cart",
     "pages/order/order",
     "pages/goodsDetail/goodsDetail",
     "pages/search/search",
+    "pages/addressList/addressList",
     "pages/goodsList/goodsList"
   ],
   "subPackages": [],

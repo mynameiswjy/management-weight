@@ -1,11 +1,12 @@
 const config = require("../config.globle");
 const host = config.BASE_URL;
-const {token} = wx.getStorageSync(config.LOGININFO);
+const {token, custSno} = wx.getStorageSync(config.LOGININFO);
 
 export function requestAjaxGet(url, data = {}, cb, header = {}, err) {
   let head = {
     'content-type': 'application/json',
-    token: token ? token : ''
+    token: token ? token : '',
+    custSno: custSno ? custSno : ''
   };
   head = Object.assign({}, head, header);
   wx.request({
@@ -29,7 +30,8 @@ export function requestAjaxGet(url, data = {}, cb, header = {}, err) {
 export function requestAjaxPost(url, data={}, cb, header, err) {
   let head = {
     'content-type': 'application/json',
-    token: token ? token : ''
+    token: token ? token : '',
+    custSno: custSno ? custSno : ''
   };
   head = Object.assign({}, head, header);
   wx.request({

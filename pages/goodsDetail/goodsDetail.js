@@ -149,6 +149,7 @@ Page({
   },
 
   confirmOrder() {
+    const that = this;
     const goodsInfo = this.data.goodsInfo;
     const specsGoodsSno = this.data.defaultSpecsGoodsSnoL ? this.data.defaultSpecsGoodsSnoL : goodsInfo.defaultSpecsGoodsSno;
     let param= `quantity=${this.data.goodsNum}&goodsSno=${goodsInfo.goodsSno}&specsGoodsSno=${specsGoodsSno}`;
@@ -159,7 +160,12 @@ Page({
       param += `&selectColor=${this.data.selectColor}`
     }
     wx.navigateTo({
-      url: '/pages/createOrder/creadeOrder?' + param
+      url: '/pages/createOrder/creadeOrder?' + param,
+      success() {
+        that.setData({
+          IsOpenMaskGoods: false
+        })
+      }
     })
   },
 
@@ -253,4 +259,4 @@ Page({
   stopClick() {
     return
   }
-})
+});

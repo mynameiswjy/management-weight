@@ -42,10 +42,12 @@ Page({
   },
 
   onShow() {
-    this.initData();
   },
 
   initData() {
+    wx.showLoading({
+      title: '加载中',
+    });
     homeIndex({}).then((res) => {
       let data = res.data.object;
       this.typeGoodsData(data[this.data.currentGoodsTab]);
@@ -63,6 +65,7 @@ Page({
       }
       data.hotStyleGoods = data.hotStyleGoods.slice(0, 4)
       data.zoneGoods.newZoneGoodsList = newZoneGoodsList;
+      wx.hideLoading()
       this.setData({
         indexData: data
       })

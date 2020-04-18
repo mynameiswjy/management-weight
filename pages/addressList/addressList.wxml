@@ -1,0 +1,34 @@
+
+<block wx:if="{{isEmpty}}">
+    <view>还没有存地址</view>
+</block>
+<block wx:if="{{addrList.length}}">
+    <view class="address_item" wx:for="{{addrList}}" wx:key="index">
+        <image class="close_icon" bindtap="closeTemp" data-sno="{{item.sno}}" src="http://img02.exam8.com/img2017/minapp/icon/close@2x.png"></image>
+        <view class="flex top">
+            <view class="addr_name">{{item.cseName}}</view>
+            <view class="addr_phone">{{item.csePhone}}</view>
+        </view>
+        <view class="addr_con">{{item.provinceName}} {{item.cityName}} {{item.districtName}} {{item.address}}</view>
+        <view class="flex bottom">
+            <view class="flex default" bindtap="defaultAddr" data-sno="{{item.sno}}" data-defaulted="{{item.defaulted}}">
+                <view class="iconfont {{item.defaulted?'iconchenggong':'icondanxuan-moren'}}"></view>
+                <view class="{{item.defaulted?'default_txt':''}}">{{item.defaulted?'已设为默认':'设为默认'}}</view>
+            </view>
+            <view class="redact" bindtap="redactAddr" data-item="{{item}}">编辑</view>
+        </view>
+    </view>
+</block>
+<view class="flex btn">
+    <view class="addr_btn flex" bindtap="manuallyAdd">
+        <view class="iconfont icontianjia"></view>
+        <view>手动添加</view>
+    </view>
+    <view class="addr_btn addr_btn1 flex" bindtap="wechatAdd">
+        <view class="iconfont iconweixin"></view>
+        <view>微信添加</view>
+    </view>
+</view>
+<view style="height: 138rpx"></view>
+
+<addAddress id="addAddress" bindaddress="bindaddress"></addAddress>

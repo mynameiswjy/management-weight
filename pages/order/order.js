@@ -1,3 +1,4 @@
+import {orderList} from '../../api/index'
 const app = getApp();
 
 Page({
@@ -17,6 +18,14 @@ Page({
 
   onLoad: function (options) {
     const {windowWidth, windowHeight, statusBarHeight} = app.globalData.SystemInfo;
+    orderList({
+      status: '',
+      pageSize: 10,
+      page: 1,
+      custSno: app.globalData.loginInfo.custSno
+    }).then((res) => {
+      console.log(res);
+    })
   },
 
   onShow: function () {

@@ -1,4 +1,4 @@
-import {findAllProvince, findByParentCode, addAddress} from "../../api/index"
+import {findAllProvince, findByParentCode, addAddress, modifiAddr} from "../../api/index"
 let app = getApp();
 
 Component({
@@ -18,7 +18,8 @@ Component({
     areaVal: '',
     UserName: '',
     UserPhone: '',
-    IsOpenAddAddrTemp: false
+    IsOpenAddAddrTemp: false,
+    codeInfo: null
   },
   attached() {
     /*this.initData()*/
@@ -38,40 +39,67 @@ Component({
         });
         return false;
       }
-      addAddress({
+      let data = {
         cseName: globalData.UserName,
         csePhone: globalData.UserPhone,
         address: globalData.areaVal,
-        defaulted: true,
-        province: provinceData[0][selectIdx[0]].code,
-        city: provinceData[1][selectIdx[1]].code,
-        district: provinceData[2][selectIdx[2]].code,
-        town: 0,
-        custSno: app.globalData.loginInfo.custSno
-      }).then((res) => {
-        if (res.data.code === 200) {
-          wx.showToast({
-            title: '保存成功',
-            icon: 'none',
-            duration: 1000
-          });
-          this.triggerEvent('address', {
-            cseName: globalData.UserName,
-            csePhone: globalData.UserPhone,
-            address: globalData.areaVal,
-            addressVal: globalData.addressVal
-          });
-          this.setData({
-            IsOpenAddAddrTemp: false
-          })
-        } else {
-          wx.showToast({
-            title: res.data.message,
-            icon: 'none',
-            duration: 1000
-          });
-        }
-      })
+        town: 0
+      };
+      if (!this.data.codeInfo) {
+        data = Object.assign({}, data, {
+          defaulted: true,
+          province: provinceData[0][selectIdx[0]].code,
+          city: provinceData[1][selectIdx[1]].code,
+          district: provinceData[2][selectIdx[2]].code
+        })
+        addAddress(data).then((res) => {
+          if (res.data.code === 200) {
+            wx.showToast({
+              title: '保存成功',
+              icon: 'none',
+              duration: 1000
+            });
+            this.triggerEvent('address', {
+              cseName: globalData.UserName,
+              csePhone: globalData.UserPhone,
+              address: globalData.areaVal,
+              addressVal: globalData.addressVal
+            });
+            this.setData({
+              IsOpenAddAddrTemp: false
+            })
+          } else {
+            wx.showToast({
+              title: res.data.message,
+              icon: 'none',
+              duration: 1000
+            });
+          }
+        })
+      } else {
+        const {province, city, district, defaulted, sno} = this.data.codeInfo;
+        data = Object.assign({}, data, {
+          defaulted: defaulted,
+          province: province,
+          city: city,
+          district: district,
+          sno: sno
+        });
+        modifiAddr(data).then((res) => {
+          if (res.data.code === 200) {
+            this.triggerEvent('address');
+            this.setData({
+              IsOpenAddAddrTemp: false
+            })
+            wx.showToast({
+              title: '保存成功',
+              icon: 'none',
+              duration: 1000
+            });
+          }
+          console.log(res);
+        })
+      }
     },
     bindarea(e) {
       this.setData({
@@ -168,7 +196,37 @@ Component({
         this.cityData(res[0].code, 'district')
       })
     },
-    showTemp() {
+    showTemp(e = null) {
+      let data = {
+        address: "666",
+        city: "2807",
+        cityName: "门头沟",
+        cseName: "666",
+        csePhone: "15831683106",
+        defaulted: false,
+        district: "51556",
+        districtName: "潭柘寺镇",
+        province: "1",
+        provinceName: "北京市",
+        sno: "4233069910958817668",
+        town: "0",
+        townName: null
+      };
+      if (e) {
+        this.setData({
+          UserPhone: e.csePhone,
+          UserName: e.cseName,
+          addressVal: e.provinceName + ' ' + e.cityName + ' ' + e.districtName,
+          areaVal: e.address,
+          codeInfo: {
+            province: e.province,
+            city: e.city,
+            district: e.district,
+            defaulted: e.defaulted,
+            sno: e.sno
+          }
+        });
+      }
       this.setData({
         IsOpenAddAddrTemp: true
       })

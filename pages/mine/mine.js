@@ -36,23 +36,17 @@ Page({
   },
 
   withdrawBtn() {
-    wx.requestPayment({
-      nonceStr: 'eTbQRtR0pojH66z2',
-      package: 'prepay_id=wx0612502995170960fb1b2d561676667800',
-      paySign: 'EBC512761D30F6C60A26BFDD7F8DF021',
-      signType: 'MD5',
-      timeStamp: '1586148629',
-      success(e) {
-        console.log(e);
-      },
-      fail(err) {
-        console.log(err);
-      }
-    })
+
   },
 
   onShow: function () {
 
+  },
+
+  checkDetail() {
+    wx.navigateTo({
+      url: '/pages/order/order'
+    })
   },
 
   getCode() {

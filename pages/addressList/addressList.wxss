@@ -1,0 +1,103 @@
+page {
+    background-color: #F4F4F4;
+}
+
+.address_item {
+    width: 630rpx;
+    margin: 30rpx 30rpx 0;
+    padding: 0 30rpx;
+    position: relative;
+    background-color: #fff;
+    border-radius: 10rpx;
+}
+
+.close_icon {
+    width: 25rpx;
+    height: 25rpx;
+    padding: 30rpx 30rpx 0 0;
+    font-size: 23rpx;
+    color: #CCCCCC;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.top {
+    font-size: 28rpx;
+    color: #666;
+    line-height: 1;
+    padding: 40rpx 0 25rpx 0;
+}
+
+.addr_name {
+    margin-right: 40rpx;
+}
+
+.addr_con {
+    max-width: 550rpx;
+    font-size: 30rpx;
+    line-height: 45rpx;
+    color: #282828;
+}
+
+.bottom {
+    width: 630rpx;
+    border-top: 1rpx solid #eee;
+    margin-top: 20rpx;
+    justify-content: space-between;
+    height: 80rpx;
+    font-size: 28rpx;
+    color: #999999;
+    align-items: center;
+}
+
+.default {
+    align-items: center;
+    height: 80rpx;
+}
+
+.icondanxuan-moren, .iconchenggong {
+    font-size: 28rpx;
+    color: #999;
+    margin-right: 15rpx;
+}
+
+.iconchenggong {
+    color: #DE2910;
+}
+
+.default_txt {
+    color: #DE2910;
+}
+
+.redact {
+    padding-left: 30rpx;
+    line-height: 80rpx;
+}
+
+.btn {
+    position: fixed;
+    bottom: 50rpx;
+    padding-left: 40rpx;
+}
+
+.addr_btn {
+    width: 325rpx;
+    height: 88rpx;
+    background-color: #E02E24;
+    font-size: 32rpx;
+    border-radius: 12rpx;
+    margin-right: 20rpx;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.icontianjia, .iconweixin {
+    margin-right: 12rpx;
+    font-size: 36rpx;
+}
+
+.addr_btn1 {
+    background-color: #03C300;
+}

@@ -63,7 +63,7 @@
 </view>
 <view class="member_title flex order_title">
     <view>我的订单</view>
-    <view class="more_order">查看更多订单<text class="iconfont icontubiao-"></text></view>
+    <view class="more_order" bindtap="checkDetail">查看更多订单<text class="iconfont icontubiao-"></text></view>
 </view>
 <view class="flex order">
     <view class="order_item">

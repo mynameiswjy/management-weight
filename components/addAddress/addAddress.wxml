@@ -3,8 +3,8 @@
         <view class="address_title">新增地址</view>
         <image class="close_icon" bindtap="closeTemp" src="http://img02.exam8.com/img2017/minapp/icon/close@2x.png"></image>
         <view class="name_phone flex">
-            <input type="text" bindinput="getUserName" class="input_name" placeholder="收货姓名" placeholder-class="placeholder"/>
-            <input bindinput="getUserPhone" type="number" placeholder="联系电话" placeholder-class="placeholder"/>
+            <input type="text" bindinput="getUserName" value="{{UserName}}" class="input_name" placeholder="收货姓名" placeholder-class="placeholder"/>
+            <input bindinput="getUserPhone" type="number" value="{{UserPhone}}" placeholder="联系电话" placeholder-class="placeholder"/>
         </view>
         <view class="section">
             <picker mode="multiSelector" bindchange="bindchange" value="{{selectIdx}}"

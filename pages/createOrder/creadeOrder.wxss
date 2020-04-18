@@ -4,7 +4,7 @@ page {
 
 .address {
     width: 690rpx;
-    height: 160rpx;
+    padding: 25rpx 0;
     background-color: #fff;
     border-radius: 12rpx;
     margin: 20rpx 30rpx 20rpx;
@@ -49,8 +49,9 @@ page {
 .address1 .addr_name {
     color: #282828;
     font-size: 28rpx;
-    line-height: 1;
-    margin-top: 24rpx;
+    line-height: 42rpx;
+    margin-top: 20rpx;
+    max-width: 600rpx;
 }
 
 .goods_detail {
@@ -145,10 +146,14 @@ page {
     color: #282828;
 }
 
+.remake_wrap {
+    align-items: center;
+    height: 72rpx;
+}
+
 .remark {
     font-size:26rpx;
     color: #282828;
-    padding-bottom: 28rpx;
 }
 
 .area {
@@ -187,4 +192,67 @@ page {
     font-weight: 600;
     position: absolute;
     right: 0;
+}
+
+.pay_success {
+    width: 690rpx;
+    border-radius: 12rpx;
+    margin: 30rpx;
+    background-color: #fff;
+    padding-top: 40rpx;
+}
+
+.avatar_img {
+    width: 120rpx;
+    max-height: 120rpx;
+    background-color: #eee;
+    display: block;
+    margin: 0 auto 30rpx;
+    border-radius: 60rpx;
+}
+
+.iconchenggong {
+    font-size: 30rpx;
+    color: #1D921D;
+    margin-right: 15rpx;
+}
+
+.success {
+    justify-content: center;
+    align-items: center;
+}
+
+.success_txt {
+    text-align: center;
+    font-size: 28rpx;
+    color: #333;
+}
+
+.pay_num {
+    margin-top: 25rpx;
+    text-align: center;
+    font-size: 28rpx;
+    color: #333;
+    line-height: 1;
+}
+
+.another {
+    width: 144rpx;
+    height: 48rpx;
+    border-radius: 24rpx;
+    border: 1rpx solid rgba(222,41,16,1);
+    color: #DE2910;
+    font-size: 26rpx;
+    text-align: center;
+    line-height: 48rpx;
+    margin: 25rpx auto 0;
+}
+
+.order_detail {
+    margin: 0 auto;
+    width: 300rpx;
+    font-size: 24rpx;
+    color: #666;
+    padding-top: 25rpx;
+    justify-content: center;
 }
