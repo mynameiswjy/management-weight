@@ -65,7 +65,7 @@ Page({
       }
       data.hotStyleGoods = data.hotStyleGoods.slice(0, 4)
       data.zoneGoods.newZoneGoodsList = newZoneGoodsList;
-      wx.hideLoading()
+      wx.hideLoading();
       this.setData({
         indexData: data
       })

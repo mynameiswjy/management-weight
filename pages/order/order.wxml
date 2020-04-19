@@ -1,44 +1,65 @@
 <scroll-view scroll-x="true" class="nav_scroll">
     <view class="nav_bar flex" id="scroll-view">
-        <view class="item {{navIdx==index?'item1':''}}" bindtap="navTab" data-index="{{index}}" wx:for="{{navList}}" wx:key="nav" style="padding-right: {{index+1==navList.length?0:''}}">{{item.name}}</view>
+        <view
+                class="item {{navIdx==index?'item1':''}}"
+                bindtap="navTab"
+                data-type="{{item.type}}"
+                data-index="{{index}}"
+                wx:for="{{navList}}"
+                wx:key="type"
+                style="padding-right: {{index+1==navList.length?0:''}}"
+        >{{item.name}}</view>
     </view>
 </scroll-view>
-<view class="order">
-    <view class="flex shop_title">
-        <view class="flex">
-            <view class="iconfont icondianpu"></view>
-            <view>官方旗舰店</view>
-        </view>
-        <view class="flex cancel">
-            <view>已取消</view>
-            <view class="bor_between"></view>
-            <view class="iconfont iconweb-icon-"></view>
-        </view>
-    </view>
-    <view class="flex content">
-        <image mode="widthFix" src="" class="order_img"></image>
-        <view class="right">
-            <view class="flex top">
-                <view class="order_goods_name">
-                    <view style="margin-bottom: 12rpx;">智能语音助手-天猫精灵</view>
-                    <view>小巧，方便携带</view>
-                </view>
-                <view class="order_goods_price">
-                    <view>¥ 390.00</view>
-                    <view>X1</view>
-                </view>
+<view style="min-height: {{windowHeight}}rpx">
+    <view class="order" wx:for="{{AllOrderList[navList[navIdx].type?navList[navIdx].type:'allList']}}" wx:key="index" wx:for-item="goodsInfo">
+        <view class="flex shop_title">
+            <view class="flex">
+                <view class="iconfont icondianpu"></view>
+                <view>官方旗舰店</view>
             </view>
-            <view class="order_goods_type">白色，M号</view>
+            <view class="flex cancel">
+                <view wx:if="{{goodsInfo.orderState === 'INIT'}}">待付款</view>
+                <view wx:if="{{goodsInfo.orderState === 'PAID'}}">待发货</view>
+                <view wx:if="{{goodsInfo.orderState === 'SHIPPED'}}">已发货</view>
+                <view wx:if="{{goodsInfo.orderState === 'FINISHED'}}">已完成</view>
+                <view wx:if="{{goodsInfo.orderState === 'CANCEL'}}">已取消</view>
+                <view class="bor_between"></view>
+                <view class="iconfont iconweb-icon-"></view>
+            </view>
+        </view>
+        <view class="flex content" wx:for="{{goodsInfo.items}}" wx:key="index">
+            <image mode="widthFix" src="{{item.goodsImgUrl}}" class="order_img"></image>
+            <view class="right">
+                <view class="flex top">
+                    <view class="order_goods_name">{{item.name}}</view>
+                    <view class="order_goods_price">
+                        <view>¥ {{item.payAmount}}</view>
+                        <view>X{{item.quantity}}</view>
+                    </view>
+                </view>
+                <view class="order_goods_type">{{item.specs}}</view>
+            </view>
+        </view>
+        <view class="total">
+            <text>共{{goodsInfo.totalQuantity}}件，总计：</text>
+            <text>¥</text>
+            <text style="font-size: 30rpx;font-weight: 600;">{{goodsInfo.totalAmount}}</text>
+        </view>
+        <view class="order_btn">
+            <view class="common_btn" wx:if="{{goodsInfo.orderState === 'INIT'}}">去付款</view>
+            <view class="common_btn check_logistics" wx:if="{{goodsInfo.orderState === 'SHIPPED'}}">查看物流</view>
+            <view class="common_btn" wx:if="{{goodsInfo.orderState === 'SHIPPED'}}">确认收货</view>
+            <view class="common_btn" wx:if="{{goodsInfo.orderState === 'FINISHED'}}">再次购买</view>
+            <view class="common_btn" wx:if="{{goodsInfo.orderState === 'FINISHED'}}">评价</view>
+            <view class="common_btn check_logistics" wx:if="{{goodsInfo.orderState === 'CANCEL'}}">加入购物车</view>
+            <view class="common_btn check_logistics" wx:if="{{goodsInfo.orderState === 'PAID'}}">提醒发货</view>
         </view>
     </view>
-    <view class="total">
-        <text>共1件，总计：</text>
-        <text>¥</text>
-        <text style="font-size: 30rpx;font-weight: 600;">390</text>
-    </view>
-    <view class="order_btn">
-        <view class="common_btn" wx:if="">去付款</view>
-        <view class="common_btn check_logistics">查看物流</view>
-        <view class="common_btn">再次购买</view>
-    </view>
+</view>
+
+<view class="is-end" wx:if="{{isEnd}}">已经到底啦</view>
+<view class="weui-loadmore" wx:if="{{!isEnd}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore_tips">正在加载</view>
 </view>

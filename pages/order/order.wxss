@@ -96,7 +96,12 @@ page {
 .order_goods_name {
     font-size: 24rpx;
     max-width: 256rpx;
-    line-height: 1;
+    line-height: 30rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 .order_goods_price {
