@@ -58,7 +58,8 @@ page {
 }
 
 .cart_goods_right .txt1 {
-    width: 132rpx;
+    display: inline-block;
+    padding: 0 20rpx;
     height: 38rpx;
     border-radius: 20rpx;
     background-color: #F3F3F3;
@@ -68,6 +69,7 @@ page {
     margin-top: 15rpx;
     margin-bottom: 12rpx;
 }
+
 
 .cart_goods_right .txt2 {
     justify-content: space-between;
@@ -150,4 +152,8 @@ page {
 
 .hot_goods .right_bor {
     margin-left: 20rpx;
+}
+
+.disable {
+    color: #9a9a9a;
 }

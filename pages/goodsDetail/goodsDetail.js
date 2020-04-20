@@ -1,4 +1,4 @@
-import { goodsDetail, goodsSspecs } from '../../api/index'
+import { goodsDetail, goodsSspecs, addCard } from '../../api/index'
 const app = getApp();
 const config = require('../../config.globle');
 
@@ -72,8 +72,9 @@ Page({
 
   },
 
-  selectData() {
+  selectData(e) {
     const goodsData = this.data.goodsInfo;
+    this.data.selectType = e.currentTarget.dataset.type;
     goodsSspecs({
       defaultSpecsGoodsSno: this.data.defaultSpecsGoodsSnoL || goodsData.defaultSpecsGoodsSno,
       goodsSno: goodsData.goodsSno,
@@ -148,8 +149,9 @@ Page({
     this.selectData();
   },
 
-  confirmOrder() {
+  confirmOrder(e) {
     const that = this;
+    const type = this.data.selectType;
     const goodsInfo = this.data.goodsInfo;
     const specsGoodsSno = this.data.defaultSpecsGoodsSnoL ? this.data.defaultSpecsGoodsSnoL : goodsInfo.defaultSpecsGoodsSno;
     let param= `quantity=${this.data.goodsNum}&goodsSno=${goodsInfo.goodsSno}&specsGoodsSno=${specsGoodsSno}`;
@@ -159,14 +161,42 @@ Page({
     if (this.data.selectColor) {
       param += `&selectColor=${this.data.selectColor}`
     }
-    wx.navigateTo({
-      url: '/pages/createOrder/creadeOrder?' + param,
-      success() {
+    if (type === 'buy') {
+      wx.navigateTo({
+        url: '/pages/createOrder/creadeOrder?' + param,
+        success() {
+          that.setData({
+            IsOpenMaskGoods: false
+          })
+        }
+      })
+    } else {
+      addCard({
+        specsGoodsSno: this.data.defaultSpecsGoodsSnoL ? this.data.defaultSpecsGoodsSnoL : goodsInfo.defaultSpecsGoodsSno,
+        quantity: this.data.goodsNum,
+        goodsSno: goodsInfo.goodsSno,
+        isSelect: 'N',
+        custSno: app.globalData.loginInfo.custSno
+      }).then((res) => {
+        console.log(res);
         that.setData({
           IsOpenMaskGoods: false
-        })
-      }
-    })
+        });
+        if (res.data.code === 200) {
+          wx.showToast({
+            title: '宝贝添加成功',
+            icon: 'success',
+            duration: 2000
+          })
+        } else {
+          wx.showToast({
+            title: '添加失败',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      })
+    }
   },
 
   // 关闭选择模板

@@ -1,22 +1,22 @@
 <block>
     <view class="wrap">
         <view class="shop_name flex">
-            <view class="iconfont {{isSelect?'iconxuanzhong':'iconweixuanzhong'}}" bindtap="IsJoinCart"></view>
+            <view class="iconfont {{isAllSelect?'iconxuanzhong':'iconweixuanzhong'}}" bindtap="IsJoinCart"></view>
             <view class="iconfont icondianpu"></view>
             <view>SD官方旗舰店</view>
         </view>
-        <view class="flex cart_goods_list" wx:for="{{3}}" wx:key="cart_goods_list">
-            <view class="iconfont  {{isSelect?'iconxuanzhong':'iconweixuanzhong'}}"></view>
-            <image mode="widthFix" src="" class="cart_goods_img"></image>
+        <view class="flex cart_goods_list" wx:for="{{cardList}}" wx:key="index">
+            <view class="iconfont  {{item.isSelect=='Y'?'iconxuanzhong':'iconweixuanzhong'}}" bindtap="selecGoods" data-index="{{index}}"></view>
+            <image mode="widthFix" src="{{item.masterPic}}" class="cart_goods_img"></image>
             <view class="cart_goods_right">
-                <view class="txt">智能语音助手-天猫精灵智能语音助手</view>
-                <view class="txt1">白色， M号</view>
+                <view class="txt">{{item.name}}</view>
+                <view class="txt1">{{item.specs}}</view>
                 <view class="flex txt2">
-                    <view class="price"><text style="font-size: 26rpx">¥ </text>390.00</view>
+                    <view class="price"><text style="font-size: 26rpx">¥ </text>{{item.compostCashPrice}}</view>
                     <view class="flex num_btn">
-                        <view class="iconfont iconjianhaocu"></view>
-                        <view class="num">1</view>
-                        <view class="iconfont iconjiahao"></view>
+                        <view class="iconfont iconjianhaocu {{item.quantity<1?'':''}}" bindtap="quantityGoods" data-type="reduce" data-index="{{index}}"></view>
+                        <view class="num">{{item.quantity}}</view>
+                        <view class="iconfont iconjiahao" bindtap="quantityGoods" data-type="add" data-index="{{index}}"></view>
                     </view>
                 </view>
                 <view class="bottom">京东自营价：499.00</view>
