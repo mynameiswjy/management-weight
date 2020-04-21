@@ -56,10 +56,10 @@
             <view class="common_btn check_logistics" wx:if="{{goodsInfo.orderState === 'PAID'}}">提醒发货</view>
         </view>
     </view>
+    <view wx:if="{{!AllOrderList[navList[navIdx].type?navList[navIdx].type:'allList'].length}}">咱无数据</view>
 </view>
-
-<view class="is-end" wx:if="{{isEnd}}">已经到底啦</view>
-<view class="weui-loadmore" wx:if="{{!isEnd}}">
+<view class="is-end" wx:if="{{IsEnd}}">已经到底啦</view>
+<view class="weui-loadmore" wx:if="{{!IsEnd}}">
     <view class="weui-loading"></view>
     <view class="weui-loadmore_tips">正在加载</view>
 </view>

@@ -162,10 +162,12 @@ Page({
       wx.hideLoading();
       if (res.data.code === 200) {
         if (res.data.object.length) {
-          this.data.AllOrderList[type?type:'allList'] = this.data.AllOrderList[type?type:'allList'].concat(res.data.object);
+          const data = res.data.object;
+          this.data.AllOrderList[type?type:'allList'] = this.data.AllOrderList[type?type:'allList'].concat(data);
           this.data.pageIdx++;
           this.setData({
-            AllOrderList: this.data.AllOrderList
+            AllOrderList: this.data.AllOrderList,
+            IsEnd: this.data.pageIdx < 2 && data.length < 10 ? true : false
           });
         } else {
           this.setData({
