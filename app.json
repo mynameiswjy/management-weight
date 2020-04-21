@@ -1,10 +1,11 @@
 {
   "pages": [
+    "pages/cart/cart",
     "pages/index/index",
     "pages/mine/mine",
     "pages/createOrder/creadeOrder",
     "pages/classify/classify",
-    "pages/cart/cart",
+
     "pages/order/order",
     "pages/goodsDetail/goodsDetail",
     "pages/search/search",
