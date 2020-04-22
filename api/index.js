@@ -234,3 +234,23 @@ export function cardList (data) {
   })
 }
 
+// 修改购物车
+export function cardEdit (data) {
+  const url = '/shop/cart/edit';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
+// 删除购物车商品
+export function deleteCartGoods (data) {
+  const url = '/shop/cart/del';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+

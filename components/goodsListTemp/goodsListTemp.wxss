@@ -22,7 +22,7 @@
 
 .goods_list1 {
     background-color: #F4F1F4;
-    width: 750rpx;
+    width: 690rpx;
 }
 
 .item {

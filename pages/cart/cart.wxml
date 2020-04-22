@@ -1,27 +1,39 @@
 <block>
     <view class="wrap">
-        <view class="shop_name flex">
+        <!--<view class="shop_name flex">
             <view class="iconfont {{isAllSelect?'iconxuanzhong':'iconweixuanzhong'}}" bindtap="IsJoinCart"></view>
             <view class="iconfont icondianpu"></view>
             <view>SD官方旗舰店</view>
-        </view>
-        <view class="flex cart_goods_list" wx:for="{{cardList}}" wx:key="index">
-            <view class="iconfont  {{item.isSelect=='Y'?'iconxuanzhong':'iconweixuanzhong'}}" bindtap="selecGoods" data-index="{{index}}"></view>
-            <image mode="widthFix" src="{{item.masterPic}}" class="cart_goods_img"></image>
-            <view class="cart_goods_right">
-                <view class="txt">{{item.name}}</view>
-                <view class="txt1">{{item.specs}}</view>
-                <view class="flex txt2">
-                    <view class="price"><text style="font-size: 26rpx">¥ </text>{{item.compostCashPrice}}</view>
-                    <view class="flex num_btn">
-                        <view class="iconfont iconjianhaocu {{item.quantity<1?'':''}}" bindtap="quantityGoods" data-type="reduce" data-index="{{index}}"></view>
-                        <view class="num">{{item.quantity}}</view>
-                        <view class="iconfont iconjiahao" bindtap="quantityGoods" data-type="add" data-index="{{index}}"></view>
+        </view>-->
+        <block wx:for="{{cardList}}" wx:key="index">
+            <scroll-view scroll-x="true" class="scroll" scroll-left="{{ScrollLeft}}rpx">
+                <view class="flex cart_goods_list">
+                    <view class="iconfont  {{item.isSelect=='Y'?'iconxuanzhong':'iconweixuanzhong'}}" bindtap="selecGoods" data-index="{{index}}"></view>
+                    <image mode="widthFix" src="{{item.masterPic}}" class="cart_goods_img"></image>
+                    <view class="cart_goods_right">
+                        <view class="txt">{{item.name}}</view>
+                        <view class="txt1">{{item.specs}}</view>
+                        <view class="flex txt2">
+                            <view class="price"><text style="font-size: 26rpx">¥ </text>{{item.compostCashPrice}}</view>
+                            <view class="flex num_btn">
+                                <view class="iconfont iconjianhaocu {{item.quantity<1?'':''}}" bindtap="quantityGoods" data-type="reduce" data-index="{{index}}"></view>
+                                <view class="num">{{item.quantity}}</view>
+                                <view class="iconfont iconjiahao" bindtap="quantityGoods" data-type="add" data-index="{{index}}"></view>
+                            </view>
+                        </view>
+<!--                        <view class="bottom">京东自营价：499.00</view>-->
                     </view>
+                    <view class="delete flex" bindtap="deleteGoods" data-item="{{item}}">删除</view>
                 </view>
-                <view class="bottom">京东自营价：499.00</view>
-            </view>
+            </scroll-view>
+        </block>
+    </view>
+    <view class="pay_btn flex">
+        <view class="shop_name flex" style="padding-top: 0;">
+            <view class="iconfont {{isAllSelect?'iconxuanzhong':'iconweixuanzhong'}}" bindtap="IsJoinCart"></view>
+            <view>全选</view>
         </view>
+        <view class="close_account" bindtap="PayBtn">去结算</view>
     </view>
     <view class="hot_goods flex">
         <view class="bor left_bor"></view>

@@ -1,4 +1,4 @@
-import {cardList} from '../../api/index'
+import {cardList, cardEdit, deleteCartGoods} from '../../api/index'
 
 const app = getApp();
 
@@ -10,29 +10,33 @@ Page({
   },
 
   onLoad: function (options) {
+
+  },
+
+  onShow: function () {
+    this.initData()
+  },
+
+  initData() {
+    wx.showLoading({
+      title: '加载中',
+    });
     cardList({custSno: app.globalData.loginInfo.custSno}).then((res) => {
-      console.log(res);
+      wx.hideLoading();
       this.setData({
         cardList: res.data.object
       })
     })
   },
-
-  onReady: function () {
-
-  },
-
-  onShow: function () {
-
-  },
   quantityGoods(e) {
     const {type, index} = e.currentTarget.dataset;
     const cardList = this.data.cardList;
+    const {specsGoodsSno, sno} = cardList[index];
     cardList[index].quantity = Number(cardList[index].quantity);
     if (type === 'add') {
       cardList[index].quantity++
     } else {
-      if (cardList[index].quantity === 0) {
+      if (cardList[index].quantity === 1) {
         wx.showToast({
           title: '不能再少了',
           icon: 'none',
@@ -43,8 +47,58 @@ Page({
       }
       cardList[index].quantity--
     }
-    this.setData({
+    cardEdit({
+      specsGoodsSno: specsGoodsSno,
+      quantity: cardList[index].quantity,
+      sno: sno,
+      custSno: app.globalData.loginInfo.custSno
+    }).then((res) => {
+      if (res.data.code === 200) {
+        this.initData()
+      } else {
+        wx.showToast({
+          title: res.data.message,
+          icon: 'none',
+          duration: 1000,
+          mask: true
+        });
+      }
+    });
+    /*this.setData({
       cardList: cardList
+    })*/
+  },
+
+  deleteGoods(e) {
+    const that = this;
+    const {sno, specsGoodsSno} = e.currentTarget.dataset.item;
+    wx.showModal({
+      title: '提示',
+      content: '确认删除吗？',
+      success (res) {
+        if (res.confirm) {
+          deleteCartGoods({
+            specsGoodsSno: specsGoodsSno,
+            sno: sno,
+            custSno: app.globalData.loginInfo.custSno
+          }).then((res) => {
+            if (res.data.code === 200) {
+              that.initData()
+            } else {
+              wx.showToast({
+                title: res.data.message,
+                icon: 'none',
+                duration: 1000,
+                mask: true
+              });
+            }
+          })
+        } else if (res.cancel) {
+          that.setData({
+            ScrollLeft: 0
+          })
+        }
+      }
     })
   },
 
@@ -80,6 +134,10 @@ Page({
       isAllSelect: !isAllSelect,
       cardList
     })
+  },
+
+  PayBtn() {
+
   },
 
   /**
