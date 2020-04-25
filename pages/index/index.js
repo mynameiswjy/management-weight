@@ -51,7 +51,6 @@ Page({
     homeIndex({}).then((res) => {
       let data = res.data.object;
       this.typeGoodsData(data[this.data.currentGoodsTab]);
-
       let zoneGoodsList = data.zoneGoods.zoneGoodsList;
       const len = Math.floor(zoneGoodsList.length / 3) * 3;
       let newZoneGoodsList = [];
@@ -63,8 +62,14 @@ Page({
           item = []
         }
       }
-      data.hotStyleGoods = data.hotStyleGoods.slice(0, 4)
-      data.zoneGoods.newZoneGoodsList = newZoneGoodsList;
+      if (zoneGoodsList.length < 4) {
+        for (let i = 0; i < zoneGoodsList.length; i++) {
+          item.push(zoneGoodsList[i]);
+        }
+        newZoneGoodsList.push(item);
+      }
+      // data.hotStyleGoods = data.hotStyleGoods.slice(0, 4)
+      data.zoneGoods.zoneGoodsList = newZoneGoodsList;
       wx.hideLoading();
       this.setData({
         indexData: data
@@ -160,10 +165,16 @@ Page({
   },
 
   goToGoodsList(e) {
-    const target = e.currentTarget.dataset;
-    wx.navigateTo({
-      url: `/pages/goodsList/goodsList?type=index&zoneType=${target.zoneType}`
-    })
+    const {sno, type} = e.currentTarget.dataset;
+    if (type === 'hotGoods') {
+      wx.navigateTo({
+        url: `/pages/goodsList/goodsList?type=${type}&sno=${sno}`
+      })
+    } else {
+      wx.navigateTo({
+        url: `/pages/goodsList/goodsList?type=index&zoneType=${type}`
+      })
+    }
   }
 
 });

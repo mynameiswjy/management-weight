@@ -1,0 +1,68 @@
+page {
+    background-color: #F4F1F4;
+}
+
+.nav_top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #F4F1F4;
+}
+
+.search {
+    width: 690rpx;
+    height: 57rpx;
+    background-color: #fff;
+    border-radius: 20rpx;
+    margin: 21rpx 0 0rpx 30rpx;
+    color: #BCBCBC;
+}
+
+.iconsousuo1 {
+    font-size: 32rpx;
+    line-height: 57rpx;
+    margin-left: 20rpx;
+    margin-right: 20rpx;
+}
+
+.search_input {
+    line-height: 57rpx;
+    height: 57rpx;
+    font-size: 36rpx;
+}
+
+
+.nav_scroll {
+    width: 690rpx;
+    padding: 0 30rpx;
+}
+
+.nav_bar {
+    height: 100rpx;
+    font-size: 26rpx;
+    color: #282828;
+    line-height: 1;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.nav_bar .item {
+    height: 100rpx;
+    margin-right: 50rpx;
+    line-height: 100rpx;
+    white-space: nowrap;
+    position: relative;
+}
+
+.item1:after {
+    content: "";
+    width: 48rpx;
+    height: 6rpx;
+    background-color: #DE2910;
+    border-radius: 4rpx;
+    position: absolute;
+    bottom: 10rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}

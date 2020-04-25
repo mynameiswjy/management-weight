@@ -37,9 +37,9 @@
       <view class="ad_3">好货不错过</view>
     </view>
     <swiper class="ad_swiper" vertical="true" circular="true" autoplay="true">
-      <block wx:for="{{indexData.zoneGoods.newZoneGoodsList}}" wx:for-item="zoneGoods" wx:key="index">
+      <block wx:for="{{indexData.zoneGoods.zoneGoodsList}}" wx:for-item="zoneGoods" wx:key="index">
         <swiper-item>
-          <view class="ad_item flex" bindtap="goToGoodsList" data-zone-type="DEFAULT_ZONE">
+          <view class="ad_item flex" bindtap="goToGoodsList" data-type="DEFAULT_ZONE">
             <view wx:for="{{zoneGoods}}" wx:key="goodsSno" class="ad_item_item">
               <image mode="widthFix" src="{{item.masterPic}}" class="ad_img"></image>
               <view class="txt1">￥{{item.compostCashPrice}}</view>
@@ -56,17 +56,24 @@
     </swiper>
   </view>
   <view class="hot_goods">
-    <view class="title flex">
+    <!--<view class="title flex">
       <image class="hot_img" mode="widthFix" src="{{imgUrl}}/upload/index/hot_goods_icon.png"></image>
       <view>爆款商品</view>
       <view class="more_hot_goods flex" bindtap="goToGoodsList" data-zone-type="HOT_STYLE_GOODS">
         <view>更多爆款</view>
         <view class="iconfont iconxiangyoujiantou"></view>
       </view>
-    </view>
+    </view>-->
     <view class="flex hot_goods_item_wrap">
-      <view class="hot_goods_item" wx:for="{{indexData.hotStyleGoods}}" wx:key="index" style="margin-right: {{index%2==0?10:0}}rpx;">
-        <image class="hot_goods_img" mode="widthFix" src="{{item.masterPic}}"></image>
+      <view
+              class="hot_goods_item"
+              wx:for="{{indexData.specialtopic}}"
+              wx:key="index" style="margin-right: {{index%2==0?10:0}}rpx;"
+              bindtap="goToGoodsList"
+              data-sno="{{item.sno}}"
+              data-type="hotGoods"
+      >
+        <image class="hot_goods_img" mode="widthFix" src="{{item.fileAddress}}"></image>
       </view>
     </view>
   </view>

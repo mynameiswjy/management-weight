@@ -56,9 +56,29 @@ export function ClassifyOne (data, cb) {
   })
 }
 
+// 分类下的商品
+export function ClassificationGoods (data, cb) {
+  const url = '/shop/applet/goods/caty/goods';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
 // 商品详情页
 export function goodsDetail (data) {
   const url = '/shop/applet/goods/detail';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
+// 商品浏览记录
+export function goodsRecord (data) {
+  const url = '/shop/applet/user/behavior/put.do';
   return new Promise((resolve, reject) => {
     requestAjaxPost(url, data, (res) => {
       resolve(res)
@@ -204,9 +224,19 @@ export function deleteAddr (data) {
   })
 }
 
-// 订单列表
+// 10元专区订单列表
 export function orderList (data) {
   const url = '/shop/applet/shopOrder/list';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
+// 10元专区下方订单列表
+export function commodityGoodsList (data) {
+  const url = '/shop/applet/goods/commodity/zone/list';
   return new Promise((resolve, reject) => {
     requestAjaxPost(url, data, (res) => {
       resolve(res)

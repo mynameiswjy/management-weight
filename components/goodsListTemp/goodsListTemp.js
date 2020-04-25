@@ -1,5 +1,5 @@
-
-const app = getApp()
+import {goodsRecord} from '../../api/index'
+const app = getApp();
 
 Component({
   options: {
@@ -71,8 +71,12 @@ Component({
     buyGoods(e) {
       const target = e.currentTarget.dataset;
       const goodsSno = target.goodsSno;
+      const that = this;
       wx.navigateTo({
-        url: `/pages/goodsDetail/goodsDetail?goodsSno=${goodsSno}`
+        url: `/pages/goodsDetail/goodsDetail?goodsSno=${goodsSno}`,
+        success() {
+          goodsRecord({goodsSno: goodsSno})
+        }
       })
     }
   }

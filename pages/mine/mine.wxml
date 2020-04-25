@@ -63,22 +63,22 @@
 </view>
 <view class="member_title flex order_title">
     <view>我的订单</view>
-    <view class="more_order" bindtap="checkDetail">查看更多订单<text class="iconfont icontubiao-"></text></view>
+    <view class="more_order" bindtap="checkDetail" data-idx="0">查看更多订单<text class="iconfont icontubiao-"></text></view>
 </view>
 <view class="flex order">
-    <view class="order_item">
+    <view class="order_item" bindtap="checkDetail" data-idx="2">
         <view class="iconfont icondaifukuan"></view>
         <view>待付款</view>
     </view>
-    <view class="order_item">
+    <view class="order_item" bindtap="checkDetail" data-idx="1">
         <view class="iconfont icondaifahuo"></view>
         <view>待发货</view>
     </view>
-    <view class="order_item">
+    <view class="order_item" bindtap="checkDetail" data-idx="3">
         <view class="iconfont icondaishouhuo"></view>
         <view>待收货</view>
     </view>
-    <view class="order_item">
+    <view class="order_item" bindtap="">
         <view class="iconfont icondaipingjia"></view>
         <view>待评价</view>
     </view>

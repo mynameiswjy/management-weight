@@ -1,11 +1,11 @@
 {
   "pages": [
-    "pages/cart/cart",
     "pages/index/index",
+    "pages/recommendGoods/recommendGoods",
+    "pages/classify/classify",
+    "pages/cart/cart",
     "pages/mine/mine",
     "pages/createOrder/creadeOrder",
-    "pages/classify/classify",
-
     "pages/order/order",
     "pages/goodsDetail/goodsDetail",
     "pages/search/search",
@@ -31,8 +31,8 @@
         "selectedIconPath": "imgs/tabBar/index_select.png"
       },
       {
-        "pagePath": "pages/classify/classify",
-        "text": "分类",
+        "pagePath": "pages/recommendGoods/recommendGoods",
+        "text": "推荐",
         "iconPath": "imgs/tabBar/classify.png",
         "selectedIconPath": "imgs/tabBar/classify_select.png"
       },

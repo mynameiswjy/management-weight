@@ -1,4 +1,4 @@
-import { ClassifyOne, ClassifyTwo } from '../../api/index'
+import { ClassifyOne, ClassifyTwo, ClassificationGoods } from '../../api/index'
 
 const app = getApp()
 

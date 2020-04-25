@@ -207,3 +207,17 @@ page {
     height: 200rpx;
     margin-top: 30rpx;
 }
+
+.empty_img {
+    width: 200rpx;
+    max-height: 200rpx;
+    display: block;
+    margin: 50rpx auto 10rpx;
+}
+
+.empty_txt {
+    font-size: 28rpx;
+    color: #666;
+    text-align: center;
+    margin-bottom: 30rpx;
+}

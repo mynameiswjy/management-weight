@@ -1,4 +1,4 @@
-import { ClassifyThree, commodityzonegoods } from '../../api/index'
+import { ClassifyThree, commodityzonegoods, commodityGoodsList } from '../../api/index'
 const app = getApp();
 
 Page({
@@ -27,8 +27,14 @@ Page({
       }).then((res) => {this.manage(res)})
     } else if (type === "classify") {
       ClassifyThree({sno: options.sno, page: pageIdx, pageSize: 10}).then((res) => {this.manage(res)})
-    } else {
-
+    } else if (type === 'hotGoods'){
+      commodityGoodsList({
+        sno: options.sno,
+        page: pageIdx,
+        pageSize: 10
+      }).then((res) => {
+        this.manage(res)
+      })
     }
   },
 
@@ -37,17 +43,25 @@ Page({
   },
 
   manage(res) {
-    const data = res.data.object;
-    if (!data.length) {
-      this.data.IsRefresh = true;
-      this.setData({
-        isEnd: true
-      });
+    if (res.data.code === 200) {
+      const data = res.data.object;
+      if (!data.length) {
+        this.data.IsRefresh = true;
+        this.setData({
+          isEnd: true
+        });
+      } else {
+        this.data.pageIdx++;
+        this.setData({
+          goodsList: this.data.goodsList.concat(data),
+          isEnd: this.data.goodsList.length < 10 ? true : false
+        })
+      }
     } else {
-      this.data.pageIdx++;
-      this.setData({
-        goodsList: this.data.goodsList.concat(data),
-        isEnd: this.data.goodsList.length < 10 ? true : false
+      wx.showToast({
+        title: res.data.message,
+        icon: 'success',
+        duration: 2000
       })
     }
   },

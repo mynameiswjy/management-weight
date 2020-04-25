@@ -1,0 +1,28 @@
+<block>
+    <view class="nav_top">
+        <view class="search flex" bindtap="goSearchPage">
+            <view class="iconfont iconsousuo1"></view>
+            <view class="search_input">酸奶</view>
+        </view>
+        <scroll-view scroll-x="true" class="nav_scroll">
+            <view class="nav_bar flex" id="scroll-view">
+                <view
+                        class="item {{navIdx==index?'item1':''}}"
+                        bindtap="navTab"
+                        data-sno="{{item.sno}}"
+                        data-index="{{index}}"
+                        wx:for="{{scrollLeft}}"
+                        wx:key="type"
+                        style="padding-right: {{index+1==navList.length?0:''}}"
+                >{{item.name}}</view>
+            </view>
+        </scroll-view>
+    </view>
+    <view style="height: 178rpx;"></view>
+    <goodsListTemp id="goodsListTemp" showType="{{1}}"></goodsListTemp>
+    <view class="is-end" wx:if="{{scrollLeft[navIdx].isEnd}}">已经到底啦</view>
+    <view class="weui-loadmore" wx:if="{{!scrollLeft[navIdx].isEnd}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore_tips">正在加载</view>
+    </view>
+</block>

@@ -43,9 +43,10 @@ Page({
 
   },
 
-  checkDetail() {
+  checkDetail(e) {
+    const idx = e.currentTarget.dataset.idx;
     wx.navigateTo({
-      url: '/pages/order/order'
+      url: `/pages/order/order?navIdx=${idx}`
     })
   },
 
