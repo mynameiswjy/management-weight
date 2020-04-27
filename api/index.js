@@ -76,6 +76,16 @@ export function goodsDetail (data) {
   })
 }
 
+// 商品推荐
+export function recommendGoods (data) {
+  const url = '/shop/applet/goods/related/list';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
 // 商品浏览记录
 export function goodsRecord (data) {
   const url = '/shop/applet/user/behavior/put.do';
@@ -116,6 +126,26 @@ export function PaySign (data) {
   })
 }
 
+// 10元专区订单列表
+export function orderList (data) {
+  const url = '/shop/applet/shopOrder/list';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
+// 10元专区下方订单列表
+export function commodityGoodsList (data) {
+  const url = '/shop/applet/goods/commodity/zone/list';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
 // 登录注册
 export function login (data) {
   const url = '/shop/applet/user/login.do';
@@ -148,139 +178,4 @@ export function getUserInfo (data) {
   })
 }
 
-// 省
-export function findAllProvince (data, cb) {
-  const url = '/shop/area/findAllProvince';
-  requestAjaxGet(url, data, (res) => {
-    cb(res)
-  })
-}
-
-// 市
-export function findByParentCode (data, cb) {
-  const url = '/shop/area/findByParentCode';
-  requestAjaxPost(url, data, (res) => {
-    cb(res)
-  })
-}
-
-// 添加地址
-export function addAddress (data) {
-  const url = '/shop/cse/add';
-  return new Promise((resolve, reject) => {
-    requestAjaxPost(url, data, (res) => {
-      resolve(res)
-    })
-  })
-}
-
-// 获取默认地址
-export function addrDefaulted (data) {
-  const url = '/shop/cse/defaulted';
-  return new Promise((resolve, reject) => {
-    requestAjaxPost(url, data, (res) => {
-      resolve(res)
-    })
-  })
-}
-
-// 获取收货地址列表
-export function addrList (data) {
-  const url = '/shop/cse/list';
-  return new Promise((resolve, reject) => {
-    requestAjaxPost(url, data, (res) => {
-      resolve(res)
-    })
-  })
-}
-
-// 设置默认地址
-export function setDefault (data) {
-  const url = '/shop/cse/default';
-  return new Promise((resolve, reject) => {
-    requestAjaxPost(url, data, (res) => {
-      resolve(res)
-    })
-  })
-}
-
-// 修改地址
-export function modifiAddr (data) {
-  const url = '/shop/cse/edit';
-  return new Promise((resolve, reject) => {
-    requestAjaxPost(url, data, (res) => {
-      resolve(res)
-    })
-  })
-}
-
-// 删除收货地址
-export function deleteAddr (data) {
-  const url = '/shop/cse/del';
-  return new Promise((resolve, reject) => {
-    requestAjaxPost(url, data, (res) => {
-      resolve(res)
-    })
-  })
-}
-
-// 10元专区订单列表
-export function orderList (data) {
-  const url = '/shop/applet/shopOrder/list';
-  return new Promise((resolve, reject) => {
-    requestAjaxPost(url, data, (res) => {
-      resolve(res)
-    })
-  })
-}
-
-// 10元专区下方订单列表
-export function commodityGoodsList (data) {
-  const url = '/shop/applet/goods/commodity/zone/list';
-  return new Promise((resolve, reject) => {
-    requestAjaxPost(url, data, (res) => {
-      resolve(res)
-    })
-  })
-}
-
-// 添加购物车
-export function addCard (data) {
-  const url = '/shop/cart/add';
-  return new Promise((resolve, reject) => {
-    requestAjaxPost(url, data, (res) => {
-      resolve(res)
-    })
-  })
-}
-
-// 添加购物车
-export function cardList (data) {
-  const url = '/shop/cart/info';
-  return new Promise((resolve, reject) => {
-    requestAjaxPost(url, data, (res) => {
-      resolve(res)
-    })
-  })
-}
-
-// 修改购物车
-export function cardEdit (data) {
-  const url = '/shop/cart/edit';
-  return new Promise((resolve, reject) => {
-    requestAjaxPost(url, data, (res) => {
-      resolve(res)
-    })
-  })
-}
-
-// 删除购物车商品
-export function deleteCartGoods (data) {
-  const url = '/shop/cart/del';
-  return new Promise((resolve, reject) => {
-    requestAjaxPost(url, data, (res) => {
-      resolve(res)
-    })
-  })
-}
 

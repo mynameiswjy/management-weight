@@ -8,7 +8,9 @@ Page({
     goodsData: [],
     navIdx: 0,
     isEnd: false,
-    pageIdx: 1
+    pageIdx: 1,
+    Isbreakdown: false,
+    IsShowGoods: false
   },
 
   onLoad: function (options) {
@@ -44,7 +46,11 @@ Page({
             goodsData[navIdx] = Data;
             this.data.scrollLeft[navIdx].pageIndex++;
             this.selectComponent("#goodsListTemp").reqData(goodsData[navIdx]);
-            this.data.goodsData = goodsData
+            this.data.goodsData = goodsData;
+            this.setData({
+              IsShowGoods: true,
+              goodsData
+            })
           } else {
             this.data.scrollLeft[navIdx].isEnd = true;
             this.setData({
@@ -52,9 +58,12 @@ Page({
             })
           }
         } else {
+          this.setData({
+            Isbreakdown: !this.data.goodsData.length
+          });
           wx.showToast({
             title: data.data.message,
-            icon: 'success',
+            icon: 'none',
             duration: 2000
           })
         }

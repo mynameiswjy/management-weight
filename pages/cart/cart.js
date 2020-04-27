@@ -1,4 +1,5 @@
-import {cardList, cardEdit, deleteCartGoods} from '../../api/index'
+import {cardList, cardEdit, deleteCartGoods} from '../../api/cart'
+import {recommendGoods} from '../../api/index'
 
 const app = getApp();
 
@@ -6,7 +7,9 @@ Page({
 
   data: {
     isSelect: true,
-    cardList: null
+    cardList: null,
+    pageIdx: 1,
+    isEnd: false
   },
 
   onLoad: function (options) {
@@ -15,6 +18,41 @@ Page({
 
   onShow: function () {
     this.initData()
+    this.goodsList()
+  },
+
+  goodsList() {
+    if (this.data.isEnd) {
+      wx.showToast({
+        title: '到底了, 别扯了',
+        icon: 'none',
+        duration: 1000,
+        mask: true
+      });
+      return
+    }
+    recommendGoods({
+      page: this.data.pageIdx,
+      pageSize: 10
+    }).then((res) => {
+      if (res.data.code === 200) {
+        if (res.data.object.length) {
+          this.data.pageIdx++;
+          this.selectComponent('#goodsListTemp').reqData(res.data.object);
+        } else {
+          this.setData({
+            isEnd: true
+          })
+        }
+      } else {
+        wx.showToast({
+          title: res.data.message,
+          icon: 'none',
+          duration: 1000,
+          mask: true
+        });
+      }
+    })
   },
 
   initData() {
@@ -147,11 +185,8 @@ Page({
 
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom: function () {
-
+    this.goodsList()
   },
 
   /**

@@ -3,6 +3,7 @@
   "navigationStyle": "custom",
   "usingComponents": {
     "estimateTemp": "/components/estimateTemp/estimateTemp",
+    "Login": "/components/Login/Login",
     "goodsListTemp": "/components/goodsListTemp/goodsListTemp"
   }
 }

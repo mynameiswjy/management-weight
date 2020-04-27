@@ -1,4 +1,4 @@
-import {addrList, setDefault, deleteAddr} from "../../api/index"
+import {addrList, setDefault, deleteAddr} from "../../api/address"
 const app = getApp();
 
 Page({

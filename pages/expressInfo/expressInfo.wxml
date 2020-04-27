@@ -1,0 +1,23 @@
+<view class="flex shipped">
+    <view class="iconfont iconyifahuo"></view>
+    <view class="right">
+        <view class="txt1">已发货</view>
+        <view class="txt2">终端运输中，很快就要到了呐！</view>
+    </view>
+</view>
+
+<view class="shipped express_num">
+    <view class="txt3">
+        <text>快递单号：</text>
+        <text style="color: #333;">348257215666666</text>
+        <text class="copy">复制</text>
+    </view>
+    <view class="txt4">
+        <text>快递公司：</text>
+        <text style="color: #333;">顺丰快递</text>
+    </view>
+</view>
+
+<view class="express_info">
+
+</view>

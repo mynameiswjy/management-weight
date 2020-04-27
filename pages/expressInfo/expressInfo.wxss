@@ -1,0 +1,63 @@
+page {
+    background-color: #F3F3F3;
+}
+
+.shipped {
+    background:linear-gradient(90deg,rgba(248,206,58,1) 0%,rgba(248,191,66,1) 100%);
+    border-radius: 12rpx;
+    width: 630;
+    padding: 30rpx;
+    margin: 20rpx 30rpx;
+    align-items: center;
+}
+
+.iconyifahuo {
+    font-size: 56rpx;
+    color: #282828;
+    margin-right: 20rpx;
+}
+
+.shipped .txt1 {
+    font-size: 32rpx;
+    color: #282828;
+    line-height: 1;
+    margin-bottom: 15rpx;
+}
+
+.shipped .txt2 {
+    font-size: 26rpx;
+    color: #666;
+    line-height: 1;
+}
+
+.express_num {
+    background: #fff;
+    font-size: 26rpx;
+    color: #999;
+    line-height: 1;
+    padding: 40rpx 30rpx;
+}
+
+.express_num .txt3 {
+    margin-bottom: 28rpx;
+}
+
+.copy {
+    width: 64rpx;
+    height: 32rpx;
+    text-align: center;
+    line-height: 32rpx;
+    border-radius: 16rpx;
+    background-color: #F3F3F3;
+    margin-left: 20rpx;
+    font-size: 20rpx;
+    display: inline-block;
+}
+
+.express_info {
+    width: 690rpx;
+    height: 500rpx;
+    margin: 0 30rpx 30rpx;
+    background-color: #fff;
+    border-radius: 12rpx;
+}

@@ -1,4 +1,5 @@
-import { goodsDetail, goodsSspecs, addCard } from '../../api/index'
+import { goodsDetail, goodsSspecs } from '../../api/index'
+import { addCard } from '../../api/cart'
 const app = getApp();
 const config = require('../../config.globle');
 
@@ -26,10 +27,14 @@ Page({
     selectInfo: [],
     selectColor: '',
     selectSpecs: '',
-    defaultSpecsGoodsSnoL: ''
+    defaultSpecsGoodsSnoL: '',
+    hasLogin: false
   },
 
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    });
     const {windowWidth, windowHeight, statusBarHeight} = app.globalData.SystemInfo;
     const MenuButton = wx.getMenuButtonBoundingClientRect();
     const coe = 750 / windowWidth;
@@ -43,8 +48,7 @@ Page({
 
     goodsDetail({goodsSno: options.goodsSno || "3712144700781232517"}).then((res) => {
       let Data = res.data.object;
-      /*Data.supportSpecs = ['1.8米床 220*240cm', '2.0米床 220*240cm', '2.2米床 220*240cm'];
-      Data.supportColors = ['宝利莱', '珊瑚粉', '樱花白'];*/
+      wx.hideLoading();
       this.setData({
         goodsInfo: Data
       }, () => {
@@ -72,9 +76,17 @@ Page({
 
   },
 
+  successCallback(){
+    // this.selectData({type: this.data.selectType})
+  },
+
   selectData(e) {
     const goodsData = this.data.goodsInfo;
     this.data.selectType = e.currentTarget.dataset.type;
+    if (!app.globalData.loginInfo.hasLogin) {
+      this.selectComponent("#login").showPopup();
+      return;
+    }
     goodsSspecs({
       defaultSpecsGoodsSno: this.data.defaultSpecsGoodsSnoL || goodsData.defaultSpecsGoodsSno,
       goodsSno: goodsData.goodsSno,

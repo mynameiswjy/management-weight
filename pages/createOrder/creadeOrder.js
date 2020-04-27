@@ -1,5 +1,6 @@
 
-import {createOrder, PaySign, addrDefaulted} from "../../api/index"
+import {createOrder, PaySign} from "../../api/index"
+import {addrDefaulted} from "../../api/address"
 const app = getApp();
 
 Page({

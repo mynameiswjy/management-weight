@@ -10,7 +10,8 @@
     "pages/goodsDetail/goodsDetail",
     "pages/search/search",
     "pages/addressList/addressList",
-    "pages/goodsList/goodsList"
+    "pages/goodsList/goodsList",
+    "pages/expressInfo/expressInfo"
   ],
   "subPackages": [],
   "window": {

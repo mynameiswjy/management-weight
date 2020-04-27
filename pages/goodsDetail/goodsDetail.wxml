@@ -168,3 +168,4 @@
     <view class="common_btn join_cart" bindtap="selectData" data-type="addCard">加入购物车</view>
     <view class="common_btn buy_btn" bindtap="selectData" data-type="buy">立即购买</view>
 </view>
+<Login id="login" bindsuccCallBack="successCallback"></Login>

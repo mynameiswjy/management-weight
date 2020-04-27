@@ -1,4 +1,4 @@
-import {findAllProvince, findByParentCode, addAddress, modifiAddr} from "../../api/index"
+import {findAllProvince, findByParentCode, addAddress, modifiAddr} from "../../api/address"
 let app = getApp();
 
 Component({

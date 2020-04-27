@@ -1,4 +1,4 @@
-<block>
+<block wx:if="{{goodsData.length}}">
     <view class="nav_top">
         <view class="search flex" bindtap="goSearchPage">
             <view class="iconfont iconsousuo1"></view>
@@ -20,9 +20,18 @@
     </view>
     <view style="height: 178rpx;"></view>
     <goodsListTemp id="goodsListTemp" showType="{{1}}"></goodsListTemp>
+    <view wx:if="{{goodsData[navIdx].length}}" class="empty">
+        <image class="empty_img" mode="widthFix" src="https://www.mengniuhealth.cn/upload/empty_goods.png"></image>
+        <view class="empty_txt">这个类型没有商品，换个别的试试吧</view>
+    </view>
     <view class="is-end" wx:if="{{scrollLeft[navIdx].isEnd}}">已经到底啦</view>
     <view class="weui-loadmore" wx:if="{{!scrollLeft[navIdx].isEnd}}">
         <view class="weui-loading"></view>
         <view class="weui-loadmore_tips">正在加载</view>
     </view>
 </block>
+
+<view wx:if="{{Isbreakdown}}" class="empty">
+    <image class="empty_img" mode="widthFix" src="https://www.mengniuhealth.cn/upload/404_page.png"></image>
+    <view class="empty_txt">页面奔溃了</view>
+</view>

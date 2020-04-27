@@ -13,6 +13,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+  },
+
+  withdrawBtn() {
+
+  },
+
+  onShow: function () {
     console.log(app.globalData.loginInfo);
     if (app.globalData.IsRefresh) {
       app.loginCallback = () => {
@@ -33,14 +41,6 @@ Page({
         },
       })
     }
-  },
-
-  withdrawBtn() {
-
-  },
-
-  onShow: function () {
-
   },
 
   checkDetail(e) {
