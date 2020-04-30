@@ -93,7 +93,7 @@
             <view class="bor_vertical"></view>
             <view class="bor_across" style="margin-left: 15rpx"></view>
         </view>
-        <goodsListTemp showType="{{1}}"></goodsListTemp>
+        <goodsListTemp id="goodsListTemp" showType="{{1}}"></goodsListTemp>
     </view>
 </scroll-view>
 
@@ -154,7 +154,11 @@
          <view class="submit_goods_btn" bindtap="confirmOrder">确定</view>
      </view>
 </view>
-
+<!--<view class="is-end" wx:if="{{isEnd}}">已经到底啦</view>
+<view class="weui-loadmore" wx:if="{{!isEnd}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore_tips">正在加载</view>
+</view>-->
 <view style="height: 146rpx;"></view>
 <view class="goods_btn flex">
     <button open-type="contact" hover-class="none" class="server">

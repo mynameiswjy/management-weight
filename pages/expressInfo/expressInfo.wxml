@@ -9,15 +9,22 @@
 <view class="shipped express_num">
     <view class="txt3">
         <text>快递单号：</text>
-        <text style="color: #333;">348257215666666</text>
-        <text class="copy">复制</text>
+        <text style="color: #333;">{{expressData.shippingSno}}</text>
+        <text class="copy" bindtap="copyBtn">复制</text>
     </view>
     <view class="txt4">
         <text>快递公司：</text>
-        <text style="color: #333;">顺丰快递</text>
+        <text style="color: #333;">{{expressData.company}}</text>
     </view>
 </view>
 
 <view class="express_info">
-
+    <view
+            wx:for="{{expressData.jdOrderTrack.orderTrack}}"
+            wx:key="index"
+            class="item {{index+1!==expressData.jdOrderTrack.orderTrack.length?'item1':'item2'}} {{!index?'item3':''}}"
+    >
+        <view class="expre_detail">{{item.content}}</view>
+        <view class="expres_time">{{item.msgTime}}</view>
+    </view>
 </view>

@@ -1,0 +1,26 @@
+<view class="set_wrap">
+    <view class="flex item">
+        <view>头像</view>
+        <image src="{{userInfo.avatarUrl}}" class="avatar item1"></image>
+    </view>
+    <view class="flex item">
+        <view>用户名</view>
+        <view class="item1">{{userInfo.NickName}}</view>
+    </view>
+    <view class="flex item">
+        <view>性别</view>
+        <view class="item1">男</view>
+    </view>
+    <view class="flex item">
+        <view>绑定手机号</view>
+        <view class="item1">{{userInfo.phoneNum}}</view>
+    </view>
+    <view class="flex item" bindtap="shoppingAddr">
+        <view>收货地址</view>
+        <view class="iconfont icontubiao-"></view>
+    </view>
+</view>
+
+<view class="logout_btn" bindtap="logoutBtn">退出登录</view>
+
+<maskTemp id="maskTemp"></maskTemp>

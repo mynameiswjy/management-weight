@@ -56,8 +56,81 @@ page {
 
 .express_info {
     width: 690rpx;
-    height: 500rpx;
     margin: 0 30rpx 30rpx;
     background-color: #fff;
     border-radius: 12rpx;
+    font-size: 26rpx;
+    color: #999;
+    padding: 50rpx 0 0;
+}
+
+.expre_detail {
+    max-width: 546rpx;
+    line-height: 32rpx;
+}
+
+.expres_time {
+    line-height: 35rpx;
+}
+
+.express_info .item {
+    padding-bottom: 45rpx;
+    padding-left: 50rpx;
+    margin-left: 55rpx;
+    position: relative;
+}
+
+.express_info .item1 {
+    border-left: 1rpx solid #eee;
+}
+
+.express_info .item:after {
+    content: '';
+    width: 16rpx;
+    height: 16rpx;
+    border-radius: 50%;
+    background-color: #CCCCCC;
+    position: absolute;
+    top: 12rpx;
+    left: -8rpx;
+}
+
+.express_info .item2 {
+    position: relative;
+}
+
+.express_info .item2:before {
+    content: '';
+    width: 1rpx;
+    height: 30rpx;
+    background-color: #eeeeee;
+    position: absolute;
+    top: -15rpx;
+    left: 0;
+}
+
+.express_info .item3 {
+    position: relative;
+}
+
+.express_info .item3:after {
+    content: '';
+    width: 22rpx;
+    height: 22rpx;
+    background-color: #F8CE3A;
+    position: absolute;
+    border-radius: 50%;
+    top: 6rpx;
+    left: -11rpx;
+}
+
+.express_info .item3:before {
+    content: '';
+    width: 34rpx;
+    height: 34rpx;
+    background-color: #FBE38C;
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    left: -17rpx;
 }

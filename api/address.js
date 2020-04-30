@@ -75,3 +75,13 @@ export function deleteAddr (data) {
     })
   })
 }
+
+// 删除收货地址
+export function expressFind (data) {
+  const url = '/shop/applet/shopOrder/express/detail';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}

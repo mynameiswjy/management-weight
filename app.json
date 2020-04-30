@@ -11,6 +11,7 @@
     "pages/search/search",
     "pages/addressList/addressList",
     "pages/goodsList/goodsList",
+    "pages/setting/setting",
     "pages/expressInfo/expressInfo"
   ],
   "subPackages": [],

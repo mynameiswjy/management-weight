@@ -1,0 +1,45 @@
+page {
+    background-color: #f8f8f8;
+}
+
+.set_wrap {
+    width: 650rpx;
+    background-color: #fff;
+    border-radius: 20rpx;
+    margin: 18rpx 30rpx;
+    padding: 20rpx 20rpx;
+}
+
+.item {
+    justify-content: space-between;
+    height: 90rpx;
+    align-items: center;
+    font-size: 28rpx;
+    color: #666666;
+}
+
+.item1 {
+    margin-right: 20rpx;
+}
+
+.avatar {
+    width: 80rpx;
+    max-height:80rpx;
+    background-color: #eee;
+    border-radius: 40rpx;
+}
+
+.logout_btn {
+    width: 680rpx;
+    margin: 0 35rpx;
+    position: fixed;
+    bottom: 80rpx;
+    background-color: #DE2910;
+    color: #fff;
+    height: 80rpx;
+    font-size: 28rpx;
+    text-align: center;
+    line-height: 80rpx;
+    border-radius: 40rpx;
+
+}

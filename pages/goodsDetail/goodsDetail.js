@@ -1,4 +1,4 @@
-import { goodsDetail, goodsSspecs } from '../../api/index'
+import { goodsDetail, goodsSspecs, recommendGoods } from '../../api/index'
 import { addCard } from '../../api/cart'
 const app = getApp();
 const config = require('../../config.globle');
@@ -28,7 +28,9 @@ Page({
     selectColor: '',
     selectSpecs: '',
     defaultSpecsGoodsSnoL: '',
-    hasLogin: false
+    hasLogin: false,
+    pageIdx: 1,
+    isEnd: false
   },
 
   onLoad: function (options) {
@@ -51,10 +53,9 @@ Page({
       wx.hideLoading();
       this.setData({
         goodsInfo: Data
-      }, () => {
-
       })
     });
+    this.recommendList();
     setTimeout(() => {
       let query = wx.createSelectorQuery();
       query.selectAll(".scroll-view-item").boundingClientRect((rect) => {
@@ -70,6 +71,39 @@ Page({
   },
 
 
+  recommendList() {
+    if (this.data.isEnd) {
+      wx.showToast({
+        title: '到底了, 别扯了',
+        icon: 'none',
+        duration: 1000,
+        mask: true
+      });
+      return
+    }
+    recommendGoods({
+      page: this.data.pageIdx,
+      pageSize: 10
+    }).then((res) => {
+      if (res.data.code === 200) {
+        if (res.data.object.length) {
+          this.data.pageIdx++;
+          this.selectComponent('#goodsListTemp').reqData(res.data.object);
+        } else {
+          this.setData({
+            isEnd: true
+          })
+        }
+      } else {
+        wx.showToast({
+          title: res.data.message,
+          icon: 'none',
+          duration: 1000,
+          mask: true
+        });
+      }
+    })
+  },
 
   // 打开选择模板
   openSelectMask() {
@@ -82,7 +116,9 @@ Page({
 
   selectData(e) {
     const goodsData = this.data.goodsInfo;
-    this.data.selectType = e.currentTarget.dataset.type;
+    if (e) {
+      this.data.selectType = e.currentTarget.dataset.type;
+    }
     if (!app.globalData.loginInfo.hasLogin) {
       this.selectComponent("#login").showPopup();
       return;
@@ -285,6 +321,10 @@ Page({
     wx.switchTab({
       url: '/pages/cart/cart'
     })
+  },
+
+  onReachBottom: function () {
+    this.recommendList()
   },
 
   /**

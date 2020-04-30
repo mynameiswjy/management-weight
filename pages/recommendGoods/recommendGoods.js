@@ -45,11 +45,11 @@ Page({
             const goodsData = this.data.goodsData;
             goodsData[navIdx] = Data;
             this.data.scrollLeft[navIdx].pageIndex++;
-            this.selectComponent("#goodsListTemp").reqData(goodsData[navIdx]);
-            this.data.goodsData = goodsData;
             this.setData({
               IsShowGoods: true,
               goodsData
+            }, () => {
+              this.selectComponent("#goodsListTemp").reqData(goodsData[navIdx]);
             })
           } else {
             this.data.scrollLeft[navIdx].isEnd = true;

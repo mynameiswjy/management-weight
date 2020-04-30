@@ -149,30 +149,9 @@ Page({
   },
 
   logout() {
-    const that = this;
-    wx.showModal({
-      title: '提示',
-      content: '确定退出吗？',
-      success (res) {
-        if (res.confirm) {
-          logout({}).then((res) => {
-            app.globalData.loginInfo.hasLogin = false;
-            that.setData({
-              hasLogin: false
-            }, () => {
-              wx.removeStorage({
-                key: config.LOGININFO,
-                success: function(res) {
-                  console.log(res.data)
-                }
-              })
-            })
-          });
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
-      }
-    });
+    wx.navigateTo({
+      url: '/pages/setting/setting'
+    })
   },
 
   /**
