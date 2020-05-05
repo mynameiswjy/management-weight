@@ -12,7 +12,10 @@
                     <image mode="widthFix" src="{{item.masterPic}}" class="cart_goods_img"></image>
                     <view class="cart_goods_right">
                         <view class="txt">{{item.name}}</view>
-                        <view class="txt1">{{item.specs}}</view>
+                        <view class="txt1">
+                            <text wx:if="{{item.specs}}">{{item.specs}}</text>
+                            <text wx:if="{{item.color}}">，{{item.color}}</text>
+                        </view>
                         <view class="flex txt2">
                             <view class="price"><text style="font-size: 26rpx">¥ </text>{{item.compostCashPrice}}</view>
                             <view class="flex num_btn">

@@ -19,6 +19,7 @@
 .user_info .user_name {
     font-size:38rpx;
     color: #110F0F;
+    position: relative;
 }
 
 .user_info .user_name1 {
@@ -219,4 +220,17 @@
 .setting .iconshezhi {
     font-size:38rpx;
     color: #282828;
+}
+
+.update_info {
+    position: absolute;
+    bottom: -30rpx;
+    font-size: 24rpx;
+    font-weight: normal;
+    background-color: #DE2910;
+    text-align: center;
+    border-radius: 8rpx;
+    color: #fff;
+    width: 120rpx;
+    line-height: 32rpx;
 }

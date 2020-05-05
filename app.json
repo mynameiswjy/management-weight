@@ -12,7 +12,8 @@
     "pages/addressList/addressList",
     "pages/goodsList/goodsList",
     "pages/setting/setting",
-    "pages/expressInfo/expressInfo"
+    "pages/expressInfo/expressInfo",
+    "pages/comment/comment"
   ],
   "subPackages": [],
   "window": {

@@ -2,9 +2,12 @@
     <image mode="widthFix" src="" class="avatar"></image>
     <view class="user_name">登录</view>
 </button>
-<button hover-class="none" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="flex user_info" bindtap="" wx:else>
+<button class="flex user_info" bindtap="" wx:else>
     <image mode="widthFix" src="{{userInfo.avatarUrl}}" class="avatar"></image>
-    <view class="user_name user_name1">{{userInfo.NickName}}</view>
+    <view class="user_name user_name1">
+        <view>{{userInfo.NickName}}</view>
+        <button hover-class="none" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="update_info">更新资料</button>
+    </view>
     <view class="flex grade">
         <view class="iconfont iconicon-"></view>
         <view>高级团长</view>

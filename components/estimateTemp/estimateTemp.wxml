@@ -17,4 +17,7 @@
         <image wx:for="{{item.imgs}}" wx:for-item="imgs" wx:key="imgs" mode="widthFix" src="{{imgs}}" class="imgs" style="margin-right: {{item.imgs.length%3==0?12:0}}rpx;"></image>
     </view>
 </view>
-<view class="all_estimate" wx:if="{{IsOpenAllBtn}}">查看全部评论</view>
+<view wx:if="{{!list.length}}" class="empty_comment">
+    暂无评论
+</view>
+<view class="all_estimate" wx:if="{{IsOpenAllBtn&&list.length}}" bindtap="checkAll">查看全部评论</view>

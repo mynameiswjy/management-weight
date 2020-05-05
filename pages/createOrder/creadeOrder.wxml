@@ -32,7 +32,10 @@
                             <view style="margin-top: 6rpx">x{{item.quantity}}</view>
                         </view>
                     </view>
-                    <view class="goods_num">{{item.specs}}</view>
+                    <view class="goods_num">
+                        <tetx wx:if="{{item.specs}}">{{item.specs}}，</tetx>
+                        <text wx:if="{{item.color}}">{{item.color}}</text>
+                    </view>
                     <!--<view class="total">
                         <text>共{{goodsInfo.totalQuantity}}件，总计：</text>
                         <text style="font-size: 22rpx">¥ </text>

@@ -106,6 +106,16 @@ export function goodsSspecs (data) {
   })
 }
 
+// 通过规格获取商品信息
+export function getGoodsInfo (data) {
+  const url = '/shop/applet/goods/price';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
 // 生成订单
 export function createOrder (data) {
   const url = '/shop/applet/order';
@@ -170,6 +180,17 @@ export function logout (data) {
 // 利用code获取用户信息
 export function getUserInfo (data) {
   const url = '/shop/applet/user/get.do';
+  const app = getApp();
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
+// 利用code获取用户信息
+export function search (data) {
+  const url = '/shop/applet/goods/search';
   const app = getApp();
   return new Promise((resolve, reject) => {
     requestAjaxPost(url, data, (res) => {

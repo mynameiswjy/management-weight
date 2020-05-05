@@ -1,6 +1,5 @@
 .goods_item {
     background-color: #fff;
-    margin-bottom: 10rpx;
 }
 
 .goods_img {
@@ -8,7 +7,7 @@
     max-height: 245rpx;
     display: block;
     background-color: #666;
-    margin: 27rpx 30rpx 22rpx 15rpx;
+    margin: 15rpx 30rpx 15rpx 15rpx;
 }
 
 .goods_list .goods_right {

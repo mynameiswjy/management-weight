@@ -121,6 +121,9 @@ Page({
             custSno: app.globalData.loginInfo.custSno
           }).then((res) => {
             if (res.data.code === 200) {
+              that.setData({
+                ScrollLeft: 0
+              })
               that.initData()
             } else {
               wx.showToast({

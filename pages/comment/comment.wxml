@@ -1,0 +1,21 @@
+<view wx:for="{{commentList}}" wx:for-item="commentItem" wx:key="index" class="comment_item {{index+1 !== commentList.length ?'comment_item1':''}}" wx:if="{{commentList.length}}">
+    <view class="flex top">
+        <image src="{{commentItem.avatar}}" class="user_avatar"></image>
+        <view>{{commentItem.userName}}</view>
+        <view class="flex level">
+            <view wx:for="{{commentItem.level}}" wx:key="index" class="iconfont iconxingxing"></view>
+        </view>
+    </view>
+    <view class="content">{{commentItem.discussantContent}}</view>
+    <view class="comment_imgs flex" wx:if="{{commentItem.imgs.length}}">
+        <block wx:for="{{commentItem.imgs}}" wx:key="index">
+            <image
+                    src="{{item}}"
+                    class="user_imgs {{commentItem.imgs.length>1?'':'user_imgs1'}} {{(index+1)%3==0?'':'img_margin'}}" ></image>
+        </block>
+    </view>
+</view>
+
+<view wx:if="{{!commentList.length}}">
+    暂无评价
+</view>

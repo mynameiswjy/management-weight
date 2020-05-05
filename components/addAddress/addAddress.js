@@ -23,7 +23,6 @@ Component({
   },
   attached() {
     /*this.initData()*/
-    this.provinceData();
   },
   methods: {
     addAddrBtn() {
@@ -197,6 +196,7 @@ Component({
       })
     },
     showTemp(e = null) {
+      this.provinceData();
       let data = {
         address: "666",
         city: "2807",

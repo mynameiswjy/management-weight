@@ -386,6 +386,7 @@
 }
 
 .mask_scroll_view {
+    margin-top: 20rpx;
     height: 600rpx;
     width: 750rpx;
     background-color: #fff;

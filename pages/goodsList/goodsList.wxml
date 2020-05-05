@@ -8,7 +8,7 @@
                 <view class="pri1">￥{{item.compostCashPrice}}</view>
                 <view class="pri2"><text style="font-size: 26rpx;">返现: </text><text>{{item.shareBrok}}</text></view>
             </view>
-            <view class="goods_btn">去抢购</view>
+            <view class="goods_btn" bindtap="buyBtn" data-goods-sno="{{item.goodsSno}}">去抢购</view>
         </view>
     </view>
 </view>

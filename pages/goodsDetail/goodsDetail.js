@@ -1,4 +1,5 @@
-import { goodsDetail, goodsSspecs, recommendGoods } from '../../api/index'
+import { goodsDetail, goodsSspecs, recommendGoods, getGoodsInfo } from '../../api/index'
+import {discussList} from "../../api/comment"
 import { addCard } from '../../api/cart'
 const app = getApp();
 const config = require('../../config.globle');
@@ -15,22 +16,15 @@ Page({
     navIdx: 0,
     grodCoe: 0,
     IsShare: 0,
-    bannerHei: 0,
-    bannerList: [],
-    detailsImg: [],
-    currentScrollTop: 0,
-    selectColorIdx: 0,
-    selectSpecsIdx: 0,
     goodsNum: 1,
     IsOpenMaskGoods: false,
     goodsInfo: null,
     selectInfo: [],
-    selectColor: '',
-    selectSpecs: '',
-    defaultSpecsGoodsSnoL: '',
     hasLogin: false,
     pageIdx: 1,
-    isEnd: false
+    scrollTops: null,
+    isEnd: false,
+    userSelect: {}
   },
 
   onLoad: function (options) {
@@ -48,13 +42,7 @@ Page({
       options
     });
 
-    goodsDetail({goodsSno: options.goodsSno || "3712144700781232517"}).then((res) => {
-      let Data = res.data.object;
-      wx.hideLoading();
-      this.setData({
-        goodsInfo: Data
-      })
-    });
+    this.commentData(options);
     this.recommendList();
     setTimeout(() => {
       let query = wx.createSelectorQuery();
@@ -70,6 +58,32 @@ Page({
 
   },
 
+  initData(options) {
+    return new Promise((resolve, reject) => {
+      goodsDetail({goodsSno: options.goodsSno || "3712144700781232517"}).then((res) => {
+        let Data = res.data.object;
+        wx.hideLoading();
+        resolve(Data);
+        this.setData({
+          goodsInfo: Data
+        })
+      });
+    })
+  },
+
+  commentData(options) {
+    Promise.all([this.initData(options)]).then((res) => {
+      discussList({
+        goodsSno: res[0].goodsSno,
+        page: this.data.pageIdx,
+        pageSize: 3
+      }).then((comment) => {
+        if (comment.data.code === 200) {
+          this.selectComponent("#estimateTemp").commentlist(comment.data.object)
+        }
+      });
+    })
+  },
 
   recommendList() {
     if (this.data.isEnd) {
@@ -105,11 +119,6 @@ Page({
     })
   },
 
-  // 打开选择模板
-  openSelectMask() {
-
-  },
-
   successCallback(){
     // this.selectData({type: this.data.selectType})
   },
@@ -123,46 +132,34 @@ Page({
       this.selectComponent("#login").showPopup();
       return;
     }
-    goodsSspecs({
-      defaultSpecsGoodsSno: this.data.defaultSpecsGoodsSnoL || goodsData.defaultSpecsGoodsSno,
-      goodsSno: goodsData.goodsSno,
-      color: this.data.selectColor,
-      specs: this.data.selectSpecs
-    }).then((res) => {
-      const data = res.data.object;
-      let selectInfo = data.color.length ? data.color : data.specs;
-      selectInfo = selectInfo.filter((item) => {
-        return item.defaultIsSelect === true
-      });
-      data.selectInfo = selectInfo;
+    if (this.data.selectInfo.length) {
       this.setData({
         IsOpenMaskGoods: true,
-        IsOpenAnimation: true,
-        selectInfo: data
-      }, () => {
-        let selectColor, selectSpecs;
-        if (data.color.length) {
-          for (let i = 0; i < data.color.length; i++) {
-            if (data.color[i].defaultIsSelect) {
-              selectColor = data.color[i].color
-              break;
-            }
-          }
-        }
-        if (data.specs.length) {
-          for (let i = 0; i < data.specs.length; i++) {
-            if (data.specs[i].defaultIsSelect) {
-              selectSpecs = data.specs[i].specs
-              break;
-            }
+        IsOpenAnimation: true
+      });
+    } else {
+      goodsSspecs({
+        goodsSno: goodsData.goodsSno,
+      }).then((res) => {
+        const data = res.data.object;
+        let selectInfo = [];
+        for (let i in data) {
+          const item = data[i];
+          if (item.length) {
+            selectInfo.push({
+              data: item,
+              name: i === 'specs' ? '类型' :'颜色',
+              type: i
+            })
           }
         }
         this.setData({
-          selectColor,
-          selectSpecs
-        })
+          IsOpenMaskGoods: true,
+          IsOpenAnimation: true,
+          selectInfo: selectInfo
+        });
       });
-    });
+    }
   },
 
   goodsAddBtn(e) {
@@ -184,31 +181,71 @@ Page({
   },
 
   selectType(e) {
-    const target = e.currentTarget.dataset;
-    const idx = target.index;
-    const tap = target.tap;
-    if (!target.isSelect) return;
-    this.data.defaultSpecsGoodsSnoL = target.defaulSno;
-    if (tap === 'color') {
-      this.data.selectColor = target.color
-    } else if (tap === 'specs') {
-      this.data.selectSpecs = target.specs
+    const globalData = this.data;
+    const selectInfo = globalData.selectInfo;
+    const {index, idx, item, type} = e.currentTarget.dataset;
+    if (type === 'color') {
+      globalData.userSelect.color = item.color;
+    } else if (type === 'specs') {
+      globalData.userSelect.specs = item.specs;
     }
-    this.selectData();
+    for (let i = 0; i < selectInfo[idx].data.length; i++) {
+      if (index === i) {
+        selectInfo[idx].data[index].IsSelect = true
+      } else {
+        selectInfo[idx].data[i].IsSelect = false
+      }
+    }
+    this.setData({
+      selectInfo: selectInfo,
+      userSelect: globalData.userSelect
+    });
+    getGoodsInfo(Object.assign({}, globalData.userSelect, {
+      goodsSno: this.data.goodsInfo.goodsSno
+    })).then((res) => {
+      if (res.data.code === 200) {
+        const Data = res.data.object;
+        let goodsInfo = this.data.goodsInfo;
+        goodsInfo.compostCashPrice = Data.compostCashPrice;
+        goodsInfo.name = Data.name;
+        goodsInfo.specsImgUrls = Data.specsImgUrl;
+        goodsInfo.specsGoodsSno = Data.specsGoodsSno;
+        this.setData({
+          goodsInfo
+        })
+      }
+    })
+
   },
 
   confirmOrder(e) {
     const that = this;
     const type = this.data.selectType;
     const goodsInfo = this.data.goodsInfo;
-    const specsGoodsSno = this.data.defaultSpecsGoodsSnoL ? this.data.defaultSpecsGoodsSnoL : goodsInfo.defaultSpecsGoodsSno;
+    const selectInfo = this.data.selectInfo;
+    const userSelect = this.data.userSelect;
+    const specsGoodsSno = goodsInfo.specsGoodsSno;
     let param= `quantity=${this.data.goodsNum}&goodsSno=${goodsInfo.goodsSno}&specsGoodsSno=${specsGoodsSno}`;
-    if (this.data.selectSpecs) {
-      param += `&selectSpecs=${this.data.selectSpecs}`
+    for (let i = 0; i < selectInfo.length; i++) {
+      if (!userSelect[selectInfo[i].type]) {
+        wx.showToast({
+          title: `请选择${selectInfo[i].name}`,
+          icon: 'none',
+          duration: 1000,
+          mask: true
+        });
+      }
     }
-    if (this.data.selectColor) {
-      param += `&selectColor=${this.data.selectColor}`
+    for (let key in userSelect) {
+      if (userSelect[key]) {
+        if (key === 'color') {
+          param += `&selectColor=${userSelect[key]}`
+        } else {
+          param += `&selectSpecs=${userSelect[key]}`
+        }
+      }
     }
+
     if (type === 'buy') {
       wx.navigateTo({
         url: '/pages/createOrder/creadeOrder?' + param,
@@ -218,15 +255,14 @@ Page({
           })
         }
       })
-    } else {
+    } else if (type === 'addCard') {
       addCard({
-        specsGoodsSno: this.data.defaultSpecsGoodsSnoL ? this.data.defaultSpecsGoodsSnoL : goodsInfo.defaultSpecsGoodsSno,
+        specsGoodsSno: specsGoodsSno,
         quantity: this.data.goodsNum,
         goodsSno: goodsInfo.goodsSno,
         isSelect: 'N',
         custSno: app.globalData.loginInfo.custSno
       }).then((res) => {
-        console.log(res);
         that.setData({
           IsOpenMaskGoods: false
         });
@@ -244,6 +280,10 @@ Page({
           })
         }
       })
+    } else {
+      that.setData({
+        IsOpenMaskGoods: false
+      });
     }
   },
 
@@ -323,7 +363,7 @@ Page({
     })
   },
 
-  onReachBottom: function () {
+  bindscrolltolower() {
     this.recommendList()
   },
 

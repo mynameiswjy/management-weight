@@ -41,16 +41,16 @@
 
 .item_name {
     font-size: 24rpx;
-    line-height: 26rpx;
+    line-height: 30rpx;
     color: #403C3C;
     max-width: 296rpx;
     margin: 18rpx auto 25rpx;
-    text-overflow: -o-ellipsis-lastline;
     overflow: hidden;
-    text-overflow: ellipsis;
     display: -webkit-box;
+    text-overflow: ellipsis;
+    word-wrap: break-all;
+    white-space: normal !important;
     -webkit-line-clamp: 2;
-    line-clamp: 2;
     -webkit-box-orient: vertical;
 }
 

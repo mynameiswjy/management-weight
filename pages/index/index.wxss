@@ -16,7 +16,7 @@ page {
     align-items: center;
     width: 690rpx;
     height: 57rpx;
-    border-radius:20rpx;
+    border-radius: 29rpx;
     background-color: #fff;
     margin: 30rpx 30rpx 19rpx;
     color: #BCBCBC;
@@ -169,10 +169,11 @@ page {
 .ad_item .ad_right {
     width: 40rpx;
     max-height: 40rpx;
-    margin: 7rpx auto 0;
+    margin: 38rpx auto 0;
 }
 
 .ad_item .rush {
+    padding-top: 20rpx;
     font-size: 28rpx;
     color: #030303;
     width: 162rpx;

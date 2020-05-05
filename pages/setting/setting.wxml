@@ -9,7 +9,7 @@
     </view>
     <view class="flex item">
         <view>性别</view>
-        <view class="item1">男</view>
+        <view class="item1">{{userInfo.gender === 1? '男':'女'}}</view>
     </view>
     <view class="flex item">
         <view>绑定手机号</view>

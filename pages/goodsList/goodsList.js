@@ -1,4 +1,4 @@
-import { ClassifyThree, commodityzonegoods, commodityGoodsList } from '../../api/index'
+import {ClassifyThree, commodityzonegoods, commodityGoodsList, goodsRecord} from '../../api/index'
 const app = getApp();
 
 Page({
@@ -40,6 +40,17 @@ Page({
 
   onShow: function () {
 
+  },
+
+  buyBtn(e) {
+    const target = e.currentTarget.dataset;
+    const goodsSno = target.goodsSno;
+    wx.navigateTo({
+      url: `/pages/goodsDetail/goodsDetail?goodsSno=${goodsSno}`,
+      success() {
+        goodsRecord({goodsSno: goodsSno})
+      }
+    })
   },
 
   manage(res) {

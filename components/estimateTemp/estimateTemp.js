@@ -42,7 +42,16 @@ Component({
     attached() {}
   },
   methods: {
-
+    commentlist(e) {
+      this.setData({
+        list: e
+      })
+    },
+    checkAll() {
+      wx.navigateTo({
+        url: '/pages/comment/comment'
+      })
+    }
   }
 
 });

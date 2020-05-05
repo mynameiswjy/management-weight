@@ -62,7 +62,7 @@ Page({
           item = []
         }
       }
-      if (zoneGoodsList.length < 4) {
+      if (zoneGoodsList.length < 3) {
         for (let i = 0; i < zoneGoodsList.length; i++) {
           item.push(zoneGoodsList[i]);
         }

@@ -136,6 +136,12 @@ Page({
           NickName: target.userInfo.nickName,
           avatarUrl: target.userInfo.avatarUrl
         }
+      }, () => {
+        wx.showToast({
+          title: '资料更新成功',
+          icon: 'none',
+          duration: 2000
+        });
       });
       app.updateUserInfo(target.userInfo)
     } else {

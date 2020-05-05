@@ -2,14 +2,24 @@
     <view class="iconfont iconfanhui1" bindtap="backBtn"></view>
     <view class="search flex">
         <view style="width: 20rpx;"></view>
-        <input class="input" type="text" value="{{searchVal}}" placeholder="苹果" bindinput="bindinput"/>
+        <input class="input" type="text" focus="true" value="{{searchVal}}" placeholder="输入商品名称" bindinput="bindinput" bindconfirm="searchBtn"/>
         <view wx:if="{{searchVal}}" class="iconfont iconclose-b" bindtap="emptyVal"></view>
     </view>
 </view>
-<view class="history_title flex">
-    <view>搜索历史</view>
-    <view class="iconfont iconweb-icon-"></view>
+<block wx:if="{{(IsEmpty || !searchData) && historyList.length}}">
+    <view class="history_title flex">
+        <view>搜索历史</view>
+        <view class="iconfont iconweb-icon-" bindtap="deleteHistory"></view>
+    </view>
+    <view class="flex history_wrap">
+        <view class="history_item" wx:for="{{historyList}}" wx:key="history_item">{{item}}</view>
+    </view>
+</block>
+<view wx:if="{{!IsEmpty&&searchData}}" style="background-color: #F4F1F4;height: {{windowHeight-navHeight-40}}rpx;margin-top: 20rpx">
+    <view style="height: 20rpx;background-color: #F4F1F4;"></view>
+    <goodsListTemp id="goodsListTemp" showType="1"></goodsListTemp>
 </view>
-<view class="flex history_wrap">
-    <view class="history_item" wx:for="{{historyList}}" wx:key="history_item">{{item}}</view>
+<view wx:if="{{IsEmpty}}" class="empty">
+    <image mode="widthFix" class="empty_img" src="https://www.mengniuhealth.cn/upload/empty_search.png"></image>
+    <view class="empty_txt">没有搜索到您想要的商品</view>
 </view>

@@ -76,10 +76,11 @@ App({
   },
   updateUserInfo(data) {
     if (!data) return;
-    const {avatarUrl, nickName} = data;
+    const {avatarUrl, nickName, gender} = data;
     const userInfo = {
       avatarUrl,
-      nickName
+      nickName,
+      gender
     };
     this.globalData.userInfo = userInfo;
     wx.setStorage({

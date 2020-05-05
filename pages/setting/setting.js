@@ -15,11 +15,12 @@ Page({
       userInfo: {
         NickName: app.globalData.userInfo.nickName ? app.globalData.userInfo.nickName : app.globalData.loginInfo.phoneNo,
         avatarUrl: app.globalData.userInfo.avatarUrl ? app.globalData.userInfo.avatarUrl : '',
-        phoneNum: app.globalData.loginInfo.phoneNo
+        phoneNum: app.globalData.loginInfo.phoneNo,
+        gender: app.globalData.userInfo.gender
       },
     })
 
-    this.selectComponent("#maskTemp").showTemp()
+    // this.selectComponent("#maskTemp").showTemp()
   },
 
   onShow: function () {
