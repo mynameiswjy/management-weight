@@ -256,3 +256,42 @@ page {
     padding-top: 25rpx;
     justify-content: center;
 }
+
+.hot_goods {
+    margin-bottom: 40rpx;
+    margin-top: 40rpx;
+    justify-content: center;
+    align-items: center;
+}
+
+.hot_goods .txt {
+    font-size: 32rpx;
+    color: #282828;
+    font-weight: 600;
+    text-align: center;
+    line-height: 32rpx;
+    margin: 0 20rpx;
+}
+
+.iconhot {
+    color: #F07E65;
+    font-size: 28rpx;
+}
+
+.right_bor, .left_bor {
+    position: relative;
+}
+
+.hot_goods .bor {
+    width: 42rpx;
+    height: 4rpx;
+    background-color: #DDD;
+}
+
+.hot_goods .left_bor {
+    margin-right: 20rpx;
+}
+
+.hot_goods .right_bor {
+    margin-left: 20rpx;
+}

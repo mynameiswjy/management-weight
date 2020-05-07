@@ -1,4 +1,5 @@
-import {orderList} from '../../api/index'
+import { PaySign } from '../../api/index'
+import { orderList, finished} from '../../api/orders'
 const app = getApp();
 
 Page({
@@ -15,124 +16,14 @@ Page({
     ],
     navIdx: 0,
     AllOrderList: {
-      allList: [
-        {
-          sno	:	4244810770998321250,
-          orderState	:	'INIT',
-          totalAmount	:	0.01,
-          totalQuantity	:	1,
-          items: [
-            {
-              shopOrderGoodsSno:	4244810770998321251,
-              goodsSno:	4230091952434454544,
-              specsGoodsSno:	4230091952434454545,
-              goodsImgUrl	:	'http://www.mengniuhealth.cn/upload/15867861380616203.jpg',
-              name:	'吾迪新款270本色6劵卫生纸家庭装无芯卷纸家用卷纸筒纸',
-              specs:'吾迪新款270本色6劵',
-              color: null,
-              quantity:	1,
-              payAmount	:	0.01,
-              carriageAmount	:	0.00,
-              payMethod	:	'CASE',
-              compostCashPrice	:	0.01,}
-          ],
-          handler: {}
-        },
-        {
-          sno	:	4244810770998321250,
-          orderState	:	'PAID',
-          totalAmount	:	0.01,
-          totalQuantity	:	1,
-          items: [
-            {
-              shopOrderGoodsSno:	4244810770998321251,
-              goodsSno:	4230091952434454544,
-              specsGoodsSno:	4230091952434454545,
-              goodsImgUrl	:	'http://www.mengniuhealth.cn/upload/15867861380616203.jpg',
-              name:	'吾迪新款270本色6劵卫生纸家庭装无芯卷纸家用卷纸筒纸',
-              specs:'吾迪新款270本色6劵',
-              color: null,
-              quantity:	1,
-              payAmount	:	0.01,
-              carriageAmount	:	0.00,
-              payMethod	:	'CASE',
-              compostCashPrice	:	0.01,}
-          ],
-          handler: {}
-        },
-        {
-          sno	:	4244810770998321250,
-          orderState	:	'SHIPPED',
-          totalAmount	:	0.01,
-          totalQuantity	:	1,
-          items: [
-            {
-              shopOrderGoodsSno:	4244810770998321251,
-              goodsSno:	4230091952434454544,
-              specsGoodsSno:	4230091952434454545,
-              goodsImgUrl	:	'http://www.mengniuhealth.cn/upload/15867861380616203.jpg',
-              name:	'吾迪新款270本色6劵卫生纸家庭装无芯卷纸家用卷纸筒纸',
-              specs:'吾迪新款270本色6劵',
-              color: null,
-              quantity:	1,
-              payAmount	:	0.01,
-              carriageAmount	:	0.00,
-              payMethod	:	'CASE',
-              compostCashPrice	:	0.01,}
-          ],
-          handler: {}
-        },
-        {
-          sno	:	4244810770998321250,
-          orderState	:	'FINISHED',
-          totalAmount	:	0.01,
-          totalQuantity	:	1,
-          items: [
-            {
-              shopOrderGoodsSno:	4244810770998321251,
-              goodsSno:	4230091952434454544,
-              specsGoodsSno:	4230091952434454545,
-              goodsImgUrl	:	'http://www.mengniuhealth.cn/upload/15867861380616203.jpg',
-              name:	'吾迪新款270本色6劵卫生纸家庭装无芯卷纸家用卷纸筒纸',
-              specs:'吾迪新款270本色6劵',
-              color: null,
-              quantity:	1,
-              payAmount	:	0.01,
-              carriageAmount	:	0.00,
-              payMethod	:	'CASE',
-              compostCashPrice	:	0.01,}
-          ],
-          handler: {}
-        },
-        {
-          sno	:	4244810770998321250,
-          orderState	:	'CANCEL',
-          totalAmount	:	0.01,
-          totalQuantity	:	1,
-          items: [
-            {
-              shopOrderGoodsSno:	4244810770998321251,
-              goodsSno:	4230091952434454544,
-              specsGoodsSno:	4230091952434454545,
-              goodsImgUrl	:	'http://www.mengniuhealth.cn/upload/15867861380616203.jpg',
-              name:	'吾迪新款270本色6劵卫生纸家庭装无芯卷纸家用卷纸筒纸',
-              specs:'吾迪新款270本色6劵',
-              color: null,
-              quantity:	1,
-              payAmount	:	0.01,
-              carriageAmount	:	0.00,
-              payMethod	:	'CASE',
-              compostCashPrice	:	0.01,}
-          ],
-          handler: {}
-        },
-      ],
+      allList: [],
       PAID: [],
       INIT: [],
       SHIPPED: [],
       FINISHED: [],
       CANCEL: [],
-      IsEnd: false
+      IsEnd: false,
+      IsRefresh: false
     },
     pageIdx: 1
   },
@@ -155,8 +46,12 @@ Page({
 
   initData() {
     const navIdx = this.data.navIdx;
+    const IsRefresh = this.data.IsRefresh;
     const type = this.data.navList[navIdx].type;
-    if (!this.data.navList[navIdx].IsEnd) {
+    if (IsRefresh) {
+      this.data.navList[navIdx].pageIdx = 1
+    }
+    if (!this.data.navList[navIdx].IsEnd || IsRefresh) {
       wx.showLoading({
         title: '加载中',
       });
@@ -193,23 +88,79 @@ Page({
     }
   },
 
+  payment(e) {
+    const {orderSno, payNum} = e.currentTarget.dataset
+    PaySign({
+      orderSno: orderSno,
+      payChannel: 'WX',
+      custSno: app.globalData.loginInfo.custSno
+    }).then((res) => {
+      const data = res.data.object;
+      wx.requestPayment({
+        timeStamp: data.timestamp,
+        nonceStr: data.nonceStr,
+        package: 'prepay_id=' + data.prepayId,
+        signType: 'MD5',
+        paySign: data.sign,
+        success(e) {
+          if (e.errMsg === "requestPayment:ok") {
+            wx.redirectTo({
+              url: `/pages/createOrder/creadeOrder?successPay=true&PayNum=${payNum}`
+            })
+          }
+        },
+        fail(err) {
+          console.log(err);
+        }
+      })
+    })
+  },
+
+  checkLogis(e) {
+    const {expressBill, sno} = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: `/pages/expressInfo/expressInfo?expressBill=${expressBill}&sno=${sno}`
+    })
+  },
+
   navTab(e) {
     const index = e.currentTarget.dataset.index;
     const type = this.data.navList[index].type;
     this.data.navIdx = index;
-    if (!this.data.AllOrderList[type?type:'allList'].length) {
-      this.initData();
-      this.setData({
-        navIdx: index
-      })
-    } else {
-      this.setData({
-        navIdx: index,
-        AllOrderList: this.data.AllOrderList
-      })
-    }
+    this.initData();
+    this.setData({
+      navIdx: index
+    })
+  },
 
+  confirmGoodsBtn(e) {
+    const that = this;
+    wx.showLoading({
+      title: '请稍后',
+    })
+    finished({
+      sno: e.currentTarget.dataset.sno,
+      custSno: app.globalData.loginInfo.custSno
+    }).then((res) => {
+      wx.hideLoading();
+      if (res.data.code === 200) {
+        wx.showToast({
+          title: '确认收货成功',
+          icon: 'none',
+          duration: 1000,
+          success(e) {
+            that.initData();
+          }
+        })
+      } else {
+        wx.showToast({
+          title: res.data.message,
+          icon: 'none',
+          duration: 2000
+        })
+      }
 
+    })
   },
 
 

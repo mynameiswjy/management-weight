@@ -48,9 +48,13 @@
             <text style="font-size: 30rpx;font-weight: 600;">{{goodsInfo.totalAmount}}</text>
         </view>
         <view class="order_btn">
-            <view class="common_btn" wx:if="{{goodsInfo.orderState === 'INIT'}}">去付款</view>
-            <view class="common_btn check_logistics" wx:if="{{goodsInfo.orderState === 'SHIPPED'}}">查看物流</view>
-            <view class="common_btn" wx:if="{{goodsInfo.orderState === 'SHIPPED'}}">确认收货</view>
+            <view class="common_btn" wx:if="{{goodsInfo.orderState === 'INIT'}}" data-pay-num="{{goodsInfo.totalAmount}}" data-order-sno="{{goodsInfo.orderSno}}" bindtap="payment">去付款</view>
+            <view class="common_btn check_logistics"
+                  wx:if="{{goodsInfo.orderState === 'SHIPPED'}}"
+                  bindtap="checkLogis" data-express-bill="{{goodsInfo.expressBill}}"
+                  data-sno="{{goodsInfo.sno}}"
+            >查看物流</view>
+            <view class="common_btn" wx:if="{{goodsInfo.orderState === 'SHIPPED'}}" bindtap="confirmGoodsBtn" data-sno="{{goodsInfo.sno}}">确认收货</view>
             <view class="common_btn" wx:if="{{goodsInfo.orderState === 'FINISHED'}}">再次购买</view>
             <view class="common_btn" wx:if="{{goodsInfo.orderState === 'FINISHED'}}">评价</view>
             <view class="common_btn check_logistics" wx:if="{{goodsInfo.orderState === 'CANCEL'}}">加入购物车</view>

@@ -136,16 +136,6 @@ export function PaySign (data) {
   })
 }
 
-// 10元专区订单列表
-export function orderList (data) {
-  const url = '/shop/applet/shopOrder/list';
-  return new Promise((resolve, reject) => {
-    requestAjaxPost(url, data, (res) => {
-      resolve(res)
-    })
-  })
-}
-
 // 10元专区下方订单列表
 export function commodityGoodsList (data) {
   const url = '/shop/applet/goods/commodity/zone/list';

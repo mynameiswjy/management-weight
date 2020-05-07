@@ -66,7 +66,7 @@ export function modifiAddr (data) {
   })
 }
 
-// 删除收货地址
+// 快递信息查询
 export function deleteAddr (data) {
   const url = '/shop/cse/del';
   return new Promise((resolve, reject) => {

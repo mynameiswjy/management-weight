@@ -78,7 +78,7 @@
             <view class="iconfont iconchenggong"></view>
             <view class="success_txt">支付成功</view>
         </view>
-        <view class="pay_num">支付金额：<text style="color: #F4523B;">¥{{orderInfo.orderTotolAmount}}</text></view>
+        <view class="pay_num">支付金额：<text style="color: #F4523B;">¥{{orderInfo.orderTotolAmount || PayNum}}</text></view>
         <view class="another" bindtap="AnotherOrder">返回主页</view>
         <view class="order_detail flex" bindtap="checkDetail">
             <view>查看订单详情</view>
@@ -86,7 +86,14 @@
         </view>
         <view style="height: 20rpx;"></view>
     </view>
-    <goodsListTemp showType="{{1}}"></goodsListTemp>
+    <view class="hot_goods flex">
+        <view class="bor left_bor"></view>
+        <view class="iconfont iconhot"></view>
+        <view class="txt">热销商品</view>
+        <view class="iconfont iconhot"></view>
+        <view class="bor right_bor"></view>
+    </view>
+    <goodsListTemp id="goodsListTemp" showType="{{1}}"></goodsListTemp>
 </block>
 <login></login>
 <addAddress id="addAddress" bindaddress="bindaddress"></addAddress>

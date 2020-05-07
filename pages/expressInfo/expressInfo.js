@@ -4,19 +4,30 @@ const app = getApp();
 Page({
 
   data: {
-    expressData: null
+    expressData: null,
+    IsEmptyPage: false
   },
 
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    });
     expressFind({
-      "expressBill":"773033554381865",
-      "sno":"4274707660389253134",
-      "custSno":"80691038527"
+      "expressBill": options.expressBill,
+      "sno": options.sno,
+      custSno: app.globalData.loginInfo.custSno
     }).then((res) => {
+      wx.hideLoading();
       if (res.data.code === 200) {
-        this.setData({
-          expressData: res.data.object
-        })
+        if (res.data.object.jdOrderTrack.orderTrack.length) {
+          this.setData({
+            expressData: res.data.object
+          })
+        } else {
+          this.setData({
+            IsEmptyPage: true
+          })
+        }
       }
     })
   },

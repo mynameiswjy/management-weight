@@ -1,10 +1,10 @@
-<view class="flex shipped">
+<!--<view class="flex shipped">
     <view class="iconfont iconyifahuo"></view>
     <view class="right">
         <view class="txt1">已发货</view>
         <view class="txt2">终端运输中，很快就要到了呐！</view>
     </view>
-</view>
+</view>-->
 
 <view class="shipped express_num">
     <view class="txt3">
@@ -18,7 +18,7 @@
     </view>
 </view>
 
-<view class="express_info">
+<view class="express_info" wx:if="{{expressData.jdOrderTrack.orderTrack.length}}">
     <view
             wx:for="{{expressData.jdOrderTrack.orderTrack}}"
             wx:key="index"
@@ -27,4 +27,9 @@
         <view class="expre_detail">{{item.content}}</view>
         <view class="expres_time">{{item.msgTime}}</view>
     </view>
+</view>
+
+<view class="empty" wx:if="{{IsEmptyPage}}">
+    <image mode="widthFix" class="empty_img" src="https://www.mengniuhealth.cn/upload/logistics_info.png"></image>
+    <view class="empty_txt">咱无快递信息</view>
 </view>

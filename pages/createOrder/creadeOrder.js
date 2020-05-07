@@ -1,5 +1,5 @@
 
-import {createOrder, PaySign} from "../../api/index"
+import {createOrder, PaySign, recommendGoods} from "../../api/index"
 import {addrDefaulted} from "../../api/address"
 const app = getApp();
 
@@ -10,12 +10,23 @@ Page({
     isShowAddr: false,
     options: null,
     successPay: false,
-    IsRefresh: false
+    IsRefresh: false,
+    PayNum: 0,
+    pageIdx: 1,
+    isEnd: false
   },
 
   onLoad: function (options) {
     this.options = options;
-    this.orderData(options)
+    if (options.successPay) {
+      this.setData({
+        successPay: options.successPay,
+        PayNum: options.PayNum
+      })
+    } else {
+      this.orderData(options)
+    }
+    this.goodsList()
   },
 
   onShow: function () {
@@ -126,15 +137,53 @@ Page({
       url: '/pages/index/index'
     })
   },
-
+  goodsList() {
+    if (this.data.isEnd) {
+      wx.showToast({
+        title: '没有更多了',
+        icon: 'none',
+        duration: 1000,
+        mask: true
+      });
+      return
+    }
+    recommendGoods({
+      page: this.data.pageIdx,
+      pageSize: 10
+    }).then((res) => {
+      if (res.data.code === 200) {
+        if (res.data.object.length) {
+          this.data.pageIdx++;
+          this.selectComponent('#goodsListTemp').reqData(res.data.object);
+        } else {
+          this.setData({
+            isEnd: true
+          })
+        }
+      } else {
+        wx.showToast({
+          title: res.data.message,
+          icon: 'none',
+          duration: 1000,
+          mask: true
+        });
+      }
+    })
+  },
   checkDetail() {
     wx.navigateTo({
-      url: '/pages/order/order'
+      url: '/pages/order/order?navIdx=1'
     })
   },
 
   addAddress() {
     this.selectComponent('#addAddress').showTemp()
+  },
+
+  onReachBottom() {
+    if (this.data.successPay) {
+      this.goodsList()
+    }
   },
 
   /**
