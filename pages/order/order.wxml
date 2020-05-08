@@ -12,7 +12,7 @@
     </view>
 </scroll-view>
 <view style="height: 120rpx;"></view>
-<view style="min-height: {{windowHeight}}rpx">
+<scroll-view scroll-y style="height: {{windowHeight-130}}rpx" bindscrolltolower="bindscrolltolower" scroll-top="{{IsRefresh?0:''}}">
     <view class="order" wx:for="{{AllOrderList[navList[navIdx].type?navList[navIdx].type:'allList']}}" wx:key="index" wx:for-item="goodsInfo">
         <view class="flex shop_title">
             <view class="flex">
@@ -25,8 +25,10 @@
                 <view wx:if="{{goodsInfo.orderState === 'SHIPPED'}}">已发货</view>
                 <view wx:if="{{goodsInfo.orderState === 'FINISHED'}}">已完成</view>
                 <view wx:if="{{goodsInfo.orderState === 'CANCEL'}}">已取消</view>
-                <view class="bor_between"></view>
-                <view class="iconfont iconweb-icon-"></view>
+                <block wx:if="{{goodsInfo.orderState === 'INIT'||goodsInfo.orderState === 'FINISHED'||goodsInfo.orderState === 'CANCEL'}}">
+                    <view class="bor_between"></view>
+                    <view class="iconfont iconweb-icon-" bindtap="deleteOrder" data-sno="{{goodsInfo.sno}}"></view>
+                </block>
             </view>
         </view>
         <view class="flex content" wx:for="{{goodsInfo.items}}" wx:key="index">
@@ -65,9 +67,11 @@
         <image mode="widthFix" class="empty_img" src="https://www.mengniuhealth.cn/upload/empty_order.png"></image>
         <view class="empty_txt">咱无订单</view>
     </view>
-</view>
-<view class="is-end" wx:if="{{navList[navIdx].IsEnd&&AllOrderList[navList[navIdx].type?navList[navIdx].type:'allList'].length}}">已经到底啦</view>
-<view class="weui-loadmore" wx:if="{{!navList[navIdx].IsEnd&&AllOrderList[navList[navIdx].type?navList[navIdx].type:'allList'].length}}">
-    <view class="weui-loading"></view>
-    <view class="weui-loadmore_tips">正在加载</view>
-</view>
+    <block wx:if="{{AllOrderList[navList[navIdx].type?navList[navIdx].type:'allList'].length}}">
+        <view class="is-end" wx:if="{{IsEnd}}">已经到底啦</view>
+        <view class="weui-loadmore" wx:if="{{!IsEnd}}">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore_tips">正在加载</view>
+        </view>
+    </block>
+</scroll-view>

@@ -1,5 +1,5 @@
 import { PaySign } from '../../api/index'
-import { orderList, finished} from '../../api/orders'
+import { orderList, finished, deleteOrder} from '../../api/orders'
 const app = getApp();
 
 Page({
@@ -23,7 +23,7 @@ Page({
       FINISHED: [],
       CANCEL: [],
       IsEnd: false,
-      IsRefresh: false
+      IsRefresh: false // 订单列表发生变动把这个变为true
     },
     pageIdx: 1
   },
@@ -37,7 +37,7 @@ Page({
       })
     }
     this.setData({
-      windowHeight: (windowHeight - 90) * 750 / windowWidth,
+      windowHeight: windowHeight * 375 / windowWidth * 2,
     });
     this.initData()
   },
@@ -65,16 +65,23 @@ Page({
         if (res.data.code === 200) {
           if (res.data.object.length) {
             const data = res.data.object;
-            this.data.AllOrderList[type?type:'allList'] = this.data.AllOrderList[type?type:'allList'].concat(data);
-            this.data.navList[navIdx].pageIdx++;
+            if (IsRefresh) {
+              this.data.IsRefresh = false;
+              this.data.AllOrderList[type?type:'allList'] = data
+            } else {
+              this.data.AllOrderList[type?type:'allList'] = this.data.AllOrderList[type?type:'allList'].concat(data);
+            }
             this.setData({
               AllOrderList: this.data.AllOrderList,
-              IsEnd: this.data.pageIdx < 2 && data.length < 10 ? true : false
+              IsEnd: this.data.navList[navIdx].pageIdx < 2 && data.length < 10 ? true : false
+            }, () => {
+              this.data.navList[navIdx].pageIdx++;
             });
           } else {
             this.data.navList[navIdx].IsEnd = true;
             this.setData({
-              navList: this.data.navList
+              navList: this.data.navList,
+              IsEnd: true
             })
           }
         } else {
@@ -116,6 +123,38 @@ Page({
     })
   },
 
+  deleteOrder(e) {
+    const {sno} = e.currentTarget.dataset;
+    const that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定删除吗？',
+      success (res) {
+        if (res.confirm) {
+          deleteOrder({
+            sno: sno,
+            custSno: app.globalData.loginInfo.custSno
+          }).then((res) => {
+            if (res.data.code === 200) {
+              that.setData({
+                IsRefresh: true
+              });
+              that.initData()
+            } else {
+              wx.showToast({
+                title: res.data.message,
+                icon: 'none',
+                duration: 2000
+              })
+            }
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
+
   checkLogis(e) {
     const {expressBill, sno} = e.currentTarget.dataset;
     wx.navigateTo({
@@ -125,7 +164,7 @@ Page({
 
   navTab(e) {
     const index = e.currentTarget.dataset.index;
-    const type = this.data.navList[index].type;
+    this.data.navList[index].pageIdx = 1;
     this.data.navIdx = index;
     this.initData();
     this.setData({
@@ -149,6 +188,9 @@ Page({
           icon: 'none',
           duration: 1000,
           success(e) {
+            that.setData({
+              IsRefresh: true
+            });
             that.initData();
           }
         })
@@ -174,7 +216,7 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  bindscrolltolower() {
     this.initData()
   },
 
