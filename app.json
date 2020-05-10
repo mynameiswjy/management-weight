@@ -13,7 +13,9 @@
     "pages/goodsList/goodsList",
     "pages/setting/setting",
     "pages/expressInfo/expressInfo",
-    "pages/comment/comment"
+    "pages/comment/comment",
+    "pages/estimate/estimate",
+    "pages/orderDetail/orderDetail"
   ],
   "subPackages": [],
   "window": {

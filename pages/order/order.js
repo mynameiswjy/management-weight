@@ -172,6 +172,20 @@ Page({
     })
   },
 
+  estimateBtn(e) {
+    const {goodsSno} = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: `/pages/estimate/estimate?goodsSno=${goodsSno}`
+    })
+  },
+
+  checkOrderDetail(e) {
+    const {sno} = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: `/pages/orderDetail/orderDetail?sno=${sno}`
+    })
+  },
+
   confirmGoodsBtn(e) {
     const that = this;
     wx.showLoading({

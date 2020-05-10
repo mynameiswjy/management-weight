@@ -1,0 +1,106 @@
+@import "../createOrder/creadeOrder.wxss";
+@import "../order/order.wxss";
+
+.detail_top {
+    width: 640rpx;
+    margin: 20rpx 30rpx;
+    height: 130rpx;
+    border-radius: 20rpx;
+    background:linear-gradient(90deg,rgba(248,206,58,1) 0%,rgba(248,191,66,1) 100%);
+    justify-content: space-between;
+    padding: 0 25rpx;
+    align-items: center;
+    color: #282828;
+}
+
+.icondaojishi {
+    font-size: 40rpx;
+    margin-right: 18rpx;
+}
+
+.detail_top .txt {
+    font-size: 32rpx;
+}
+
+.detail_top .right {
+    font-size: 24rpx;
+    line-height: 1;
+    text-align: right;
+}
+
+.botton_btn {
+    width: 690rpx;
+    height: 100rpx;
+    background-color: #fff;
+    font-size: 26rpx;
+    align-items: center;
+    padding: 0 30rpx;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+}
+
+.cansel_btn {
+    height: 100rpx;
+    padding-right: 30rpx;
+    line-height: 100rpx;
+}
+
+.icondizhi2 {
+    font-size: 40rpx;
+}
+
+.pey_btn {
+   width: 120rpx;
+    height: 50rpx;
+    background-color: #DE2910;
+    border-radius: 25rpx;
+    color: #fff;
+    text-align: center;
+    line-height: 50rpx;
+}
+
+.detail-wrap {
+    width: 634rpx;
+    background-color: #fff;
+    border-radius: 20rpx;
+    padding: 28rpx 28rpx 0;
+    margin: 0 auto;
+    font-size: 26rpx;
+    color: #282828;
+}
+
+.detail-wrap .order_item {
+    justify-content: space-between;
+    padding-bottom: 28rpx;
+}
+
+.detail-wrap .order_item_color {
+    color: #DE2910;
+}
+
+.botton_wrap {
+    margin-top: 20rpx;
+    padding-bottom: 10rpx;
+}
+
+.botton_item {
+    height: 54rpx;
+
+}
+
+.botton_item .txt{
+    color: #999;
+}
+
+.botton_item .copy {
+    width: 64rpx;
+    height: 32rpx;
+    background-color: #F3F3F3;
+    border-radius: 16rpx;
+    margin-left: 20rpx;
+    font-size: 20rpx;
+    text-align: center;
+    line-height: 32rpx;
+    display: inline-block;
+}

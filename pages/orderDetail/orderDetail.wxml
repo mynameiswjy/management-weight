@@ -1,0 +1,108 @@
+<view class="detail_top flex">
+    <view class="flex">
+        <view class="iconfont icongantanhao" wx:if="{{orderData.orderState === 'CANCEL'}}"></view>
+        <view wx:else class="iconfont icondaojishi"></view>
+        <view wx:if="{{orderData.orderState === 'INIT'}}" class="txt">待付款</view>
+        <view wx:if="{{orderData.orderState === 'PAID'}}" class="txt">待发货</view>
+        <view wx:if="{{orderData.orderState === 'SHIPPED'}}" class="txt">已发货</view>
+        <view wx:if="{{orderData.orderState === 'FINISHED'}}" class="txt">已完成</view>
+        <view wx:if="{{orderData.orderState === 'CANCEL'}}" class="txt">已取消</view>
+    </view>
+    <view class="right">
+        <block wx:if="{{orderData.orderState === 'INIT'}}">
+            <view style="margin-bottom: 12rpx;">
+                剩余： 23 时 20 分 12 秒
+            </view>
+            <view>自动取消订单</view>
+        </block>
+        <view wx:if="{{orderData.orderState === 'CANCEL'}}" >取消原因：手动取消</view>
+    </view>
+</view>
+<view class="address address1 flex" bindtap="modifiyAddr">
+    <view class="iconfont icondizhi2"></view>
+    <view>
+        <view class="userinfo">
+            <text style="margin-right: 40rpx;">{{cseInfoBean.cseName}}</text>
+            <text style="color: #282828;">{{cseInfoBean.csePhone}}</text>
+        </view>
+        <view class="addr_name">{{cseInfoBean.provinceName+cseInfoBean.cityName+cseInfoBean.districtName}}</view>
+    </view>
+</view>
+<view class="order">
+    <view class="flex shop_title">
+        <view class="flex">
+            <view class="iconfont icondianpu"></view>
+            <view>官方旗舰店</view>
+        </view>
+        <view class="flex cancel">
+            <view wx:if="{{orderData.orderState === 'INIT'}}">待付款</view>
+            <view wx:if="{{orderData.orderState === 'PAID'}}">待发货</view>
+            <view wx:if="{{orderData.orderState === 'SHIPPED'}}">已发货</view>
+            <view wx:if="{{orderData.orderState === 'FINISHED'}}">已完成</view>
+            <view wx:if="{{orderData.orderState === 'CANCEL'}}">已取消</view>
+        </view>
+    </view>
+    <view class="flex content" wx:for="{{orderData.items}}" wx:key="index" bindtap="checkOrderDetail" data-sno="{{goodsInfo.sno}}">
+        <image mode="widthFix" src="{{item.goodsImgUrl}}" class="order_img"></image>
+        <view class="right">
+            <view class="flex top">
+                <view class="order_goods_name">{{item.name}}</view>
+                <view class="order_goods_price">
+                    <view>¥ {{item.payAmount}}</view>
+                    <view>X{{item.quantity}}</view>
+                </view>
+            </view>
+            <view class="order_goods_type">{{item.specs}}</view>
+        </view>
+    </view>
+    <view class="total">
+        <text>共{{orderData.totalQuantity}}件，总计：</text>
+        <text>¥</text>
+        <text style="font-size: 30rpx;font-weight: 600;">{{orderData.totalAmount}}</text>
+    </view>
+    <view style="height: 20rpx;"></view>
+</view>
+
+<view class="detail-wrap">
+    <view class="flex order_item">
+        <view style="color: #666;">商品总价</view>
+        <view>{{orderData.totalAmount}}</view>
+    </view>
+    <view class="flex order_item">
+        <view style="color: #666;">运费</view>
+        <view>{{orderData.totalCarriage}}</view>
+    </view>
+    <view class="flex order_item order_item_color" wx:if="{{orderData.payAmount}}">
+        <view>实付款</view>
+        <view>{{orderData.payAmount}}</view>
+    </view>
+</view>
+<view class="detail-wrap botton_wrap">
+    <view class="botton_item">
+        <text class="txt">订单编号：</text>
+        <text>{{cseInfoBean.sno}}</text>
+        <txte class="copy" bindtap="copyBtn" data-sno="{{cseInfoBean.sno}}">复制</txte>
+    </view>
+    <view class="botton_item">
+        <text class="txt">下单时间：</text>
+        <text>{{orderData.orderDate}}</text>
+    </view>
+    <view class="botton_item" wx:if="{{orderData.payAmount}}">
+        <text class="txt">支付方式：</text>
+        <text>微信支付</text>
+    </view>
+    <view class="botton_item" wx:if="{{cseInfoBean.payDate}}">
+        <text class="txt">支付时间：</text>
+        <text>{{cseInfoBean.payDate}}</text>
+    </view>
+    <view class="botton_item">
+        <text class="txt">备注：</text>
+        <text>{{orderData.remark?orderData.remark:''}}</text> 
+    </view>
+</view>
+
+<view style="height: 140rpx;"></view>
+<view class="botton_btn flex">
+    <view class="cansel_btn">取消订单</view>
+    <view class="pey_btn">去付款</view>
+</view>

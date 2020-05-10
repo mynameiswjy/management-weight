@@ -1,0 +1,35 @@
+<view class="e_top flex">
+    <view class="txt">商品评价</view>
+    <view class="flex">
+        <view
+                wx:for="{{5}}"
+                wx:key="index"
+                class="iconfont iconxingxing {{starNum>index?'star_color':'disable_star_color'}}"
+                bindtap="clickStart"
+                data-index="{{index}}"
+        ></view>
+    </view>
+</view>
+<view>
+    <textarea bindinput="bindinput" value="{{content}}" class="textarea" maxlength="300" placeholder="在这里发表你的评价吧" auto-focus></textarea>
+</view>
+<view class="upload">
+    <view class="upload_title">
+        <text>添加照片</text>
+        <text style="color: #BCBCBC;">（{{localImgs.length}}/9）</text>
+    </view>
+    <view class="upload_img_wrap flex">
+        <view wx:for="{{localImgs}}" wx:key="*this" class="upload_img {{(index+1)%3==0?'':'upload_img_right'}}">
+            <image mode="aspectFill" src="{{item}}"></image>
+            <view class="iconfont iconguanbi" catchtap="deleteImg" data-index="{{index}}"></view>
+        </view>
+        <view class="upload_btn" bindtap="uploadImg" wx:if="{{localImgs.length<9}}">
+            <view style="position: absolute;top: 50%;left:50%;transform: translate(-50%,-50%);">
+                <view class="iconfont iconpaizhao"></view>
+                <view style="white-space: nowrap;">添加照片</view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="submit_btn" bindtap="submit">发表评论</view>

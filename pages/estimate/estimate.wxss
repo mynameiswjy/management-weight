@@ -1,0 +1,110 @@
+.e_top {
+    width: 700rpx;
+    margin: 20rpx 25rpx 0;
+    font-size: 28rpx;
+    color: #282828;
+    align-items: center;
+    padding-bottom: 20rpx;
+    border-bottom: 1rpx solid #E9E9E9;
+}
+
+.e_top .txt {
+    margin-right: 20rpx;
+}
+
+.iconxingxing {
+    font-size: 38rpx;
+}
+
+.star_color {
+    color: #F0963D;
+}
+
+.disable_star_color {
+    color: #E6E6E6;
+}
+
+.textarea {
+    width: 680rpx;
+    margin: 0 auto;
+    padding: 20rpx 10rpx;
+    color: #282828;
+    height: 200rpx;
+}
+
+.upload {
+    color: #282828;
+    font-size: 30rpx;
+    margin-left: 25rpx;
+}
+
+.upload_title {
+    margin-bottom: 10rpx;
+}
+
+.upload_btn {
+    width: 220rpx;
+    height: 220rpx;
+    background-color: #F7F7F7;
+    border-radius: 20rpx;
+    text-align: center;
+    font-size: 28rpx;
+    color: #BABABA;
+    position: relative;
+    margin-top: 10rpx;
+}
+
+.iconpaizhao {
+    font-size: 50rpx;
+    color: #999;
+    margin-bottom: 5rpx;
+}
+
+.upload_img_wrap {
+    flex-wrap: wrap;
+    width: 690rpx;
+    margin-left: 10rpx;
+}
+
+.upload_img {
+    width: 220rpx;
+    height: 220rpx;
+    border-radius: 20rpx;
+    margin-top: 10rpx;
+    overflow: hidden;
+    position: relative;
+}
+
+.upload_img image {
+    width: 220rpx;
+    max-height: 220rpx;
+}
+
+.upload_img_right {
+    margin-right: 10rpx;
+}
+
+.iconguanbi {
+    font-size: 24rpx;
+    color: #fff;
+    background-color: #DE2910;
+    width: 38rpx;
+    height: 38rpx;
+    text-align: center;
+    line-height: 35rpx;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.submit_btn {
+    height: 80rpx;
+    width: 690rpx;
+    background-color: #DE2910;
+    border-radius: 40rpx;
+    text-align: center;
+    line-height: 80rpx;
+    color: #fff;
+    margin: 50rpx auto;
+}

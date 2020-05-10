@@ -234,6 +234,7 @@ Page({
           duration: 1000,
           mask: true
         });
+        return
       }
     }
     for (let key in userSelect) {
