@@ -42,7 +42,11 @@ Page({
     this.initData()
   },
 
-  onShow: function () {},
+  onShow: function () {
+    if (this.data.IsRefresh) {
+      this.initData()
+    }
+  },
 
   initData() {
     const navIdx = this.data.navIdx;
@@ -95,8 +99,8 @@ Page({
     }
   },
 
-  payment(e) {
-    const {orderSno, payNum} = e.currentTarget.dataset
+  payment() {
+    const {orderSno, payNum} = e.currentTarget.dataset;
     PaySign({
       orderSno: orderSno,
       payChannel: 'WX',
@@ -120,6 +124,14 @@ Page({
           console.log(err);
         }
       })
+    })
+  },
+
+  remindBtn() {
+    wx.showToast({
+      title: '提醒商家发货成功',
+      icon: 'success',
+      duration: 2000
     })
   },
 
@@ -181,6 +193,7 @@ Page({
 
   checkOrderDetail(e) {
     const {sno} = e.currentTarget.dataset;
+    this.data.IsRefresh = true;
     wx.navigateTo({
       url: `/pages/orderDetail/orderDetail?sno=${sno}`
     })
@@ -188,34 +201,41 @@ Page({
 
   confirmGoodsBtn(e) {
     const that = this;
-    wx.showLoading({
-      title: '请稍后',
-    })
-    finished({
-      sno: e.currentTarget.dataset.sno,
-      custSno: app.globalData.loginInfo.custSno
-    }).then((res) => {
-      wx.hideLoading();
-      if (res.data.code === 200) {
-        wx.showToast({
-          title: '确认收货成功',
-          icon: 'none',
-          duration: 1000,
-          success(e) {
-            that.setData({
-              IsRefresh: true
-            });
-            that.initData();
-          }
-        })
-      } else {
-        wx.showToast({
-          title: res.data.message,
-          icon: 'none',
-          duration: 2000
-        })
+    wx.showModal({
+      title: '确认收货',
+      content: '确认收到该订单的商品？',
+      success (res) {
+        if (res.confirm) {
+          wx.showLoading({
+            title: '请稍后',
+          });
+          finished({
+            sno: e.currentTarget.dataset.sno,
+            custSno: app.globalData.loginInfo.custSno
+          }).then((res) => {
+            wx.hideLoading();
+            if (res.data.code === 200) {
+              wx.showToast({
+                title: '确认收货成功',
+                icon: 'none',
+                duration: 1000,
+                success(e) {
+                  that.setData({
+                    IsRefresh: true
+                  });
+                  that.initData();
+                }
+              })
+            } else {
+              wx.showToast({
+                title: res.data.message,
+                icon: 'none',
+                duration: 2000
+              })
+            }
+          })
+        }
       }
-
     })
   },
 

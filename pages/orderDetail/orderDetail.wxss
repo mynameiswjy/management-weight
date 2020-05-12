@@ -13,7 +13,7 @@
     color: #282828;
 }
 
-.icondaojishi {
+.icondaojishi, .icongantanhao {
     font-size: 40rpx;
     margin-right: 18rpx;
 }
@@ -51,13 +51,13 @@
 }
 
 .pey_btn {
-   width: 120rpx;
     height: 50rpx;
     background-color: #DE2910;
     border-radius: 25rpx;
     color: #fff;
     text-align: center;
     line-height: 50rpx;
+    padding: 0 20rpx;
 }
 
 .detail-wrap {
@@ -103,4 +103,15 @@
     text-align: center;
     line-height: 32rpx;
     display: inline-block;
+}
+
+.remind_btn {
+    height: 50rpx;
+    font-size: 26rpx;
+    color: #666;
+    text-align: center;
+    line-height: 50rpx;
+    border-radius: 25rpx;
+    border: 1rpx solid #999;
+    padding: 0 20rpx;
 }

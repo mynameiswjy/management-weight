@@ -15,7 +15,6 @@
             </view>
             <view>自动取消订单</view>
         </block>
-        <view wx:if="{{orderData.orderState === 'CANCEL'}}" >取消原因：手动取消</view>
     </view>
 </view>
 <view class="address address1 flex" bindtap="modifiyAddr">
@@ -103,6 +102,24 @@
 
 <view style="height: 140rpx;"></view>
 <view class="botton_btn flex">
-    <view class="cansel_btn">取消订单</view>
-    <view class="pey_btn">去付款</view>
+    <block wx:if="{{orderData.orderState === 'INIT'}}">
+        <view class="cansel_btn" bindtap="cancelOrder">取消订单</view>
+        <view class="pey_btn" bindtap="payment">去付款</view>
+    </block>
+    <block wx:if="{{orderData.orderState === 'PAID'}}">
+        <view></view>
+        <view class="remind_btn" bindtap="remindBtn">提醒商家发货</view>
+    </block>
+    <block wx:if="{{orderData.orderState === 'FINISHED'}}">
+        <view class="cansel_btn" bindtap="deleteOrder">删除订单</view>
+        <view class="pey_btn" bindtap="buyAgain">再次购买</view>
+    </block>
+    <block wx:if="{{orderData.orderState === 'CANCEL'}}">
+        <view class="cansel_btn" bindtap="deleteOrder">删除订单</view>
+        <view class="pey_btn" bindtap="buyAgain">再次购买</view>
+    </block>
+    <block wx:if="{{orderData.orderState === 'SHIPPED'}}">
+        <view class="remind_btn" bindtap="checkLogis">查看物流</view>
+        <view class="pey_btn" bindtap="confirmGoodsBtn">确认收货</view>
+    </block>
 </view>
