@@ -58,7 +58,7 @@
             >查看物流</view>
             <view class="common_btn" wx:if="{{goodsInfo.orderState === 'SHIPPED'}}" bindtap="confirmGoodsBtn" data-sno="{{goodsInfo.sno}}">确认收货</view>
             <!--<view class="common_btn" wx:if="{{goodsInfo.orderState === 'FINISHED'}}" bindtap="buyAgain" data-goods-sno="{{goodsInfo.sno}}">再次购买</view>-->
-            <view class="common_btn" bindtap="estimateBtn" data-status="{{goodsInfo.discussStatus}}" data-sno="{{}}" data-goods-sno="{{goodsInfo.sno}}" wx:if="{{goodsInfo.orderState === 'FINISHED'}}">{{goodsInfo.discussStatus?'评价':'已评价'}}</view>
+            <view class="common_btn" bindtap="estimateBtn" data-status="{{goodsInfo.discussStatus}}" data-sno="{{}}" data-goods-sno="{{goodsInfo.sno}}" wx:if="{{goodsInfo.orderState === 'FINISHED'}}">{{goodsInfo.discussStatus =='false'?'评价':'已评价'}}</view>
             <view class="common_btn" wx:if="{{goodsInfo.orderState === 'CANCEL'}}" bindtap="buyAgain" data-goods-sno="{{goodsInfo.items[0].goodsSno}}">再次购买</view>
             <view class="common_btn check_logistics" wx:if="{{goodsInfo.orderState === 'PAID'}}" bindtap="remindBtn">提醒发货</view>
         </view>
