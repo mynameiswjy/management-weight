@@ -186,7 +186,11 @@ Page({
   },
 
   estimateBtn(e) {
-    const {goodsSno} = e.currentTarget.dataset;
+    const {goodsSno, status} = e.currentTarget.dataset;
+    if (status === 'true') {
+      return
+    }
+    this.data.IsRefresh = true;
     wx.navigateTo({
       url: `/pages/estimate/estimate?goodsSno=${goodsSno}`
     })

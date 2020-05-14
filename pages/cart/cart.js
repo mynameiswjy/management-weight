@@ -178,7 +178,28 @@ Page({
   },
 
   PayBtn() {
-    // app.globalData.userSelectInfo
+    const userSelectInfo = this.data.cardList.filter((item) => {
+      return item.isSelect === 'Y'
+    }).map((item, index) => {
+      return {
+        quantity: item.quantity,
+        goodsSno: item.goodsSno,
+        specsGoodsSno: item.specsGoodsSno
+      }
+    });
+    if (!userSelectInfo.length) {
+      wx.showToast({
+        title: `请选择要购买的商品`,
+        icon: 'none',
+        duration: 1000,
+        mask: true
+      });
+      return
+    }
+    app.globalData.userSelectInfo = userSelectInfo;
+    wx.navigateTo({
+      url: '/pages/createOrder/creadeOrder?param'
+    })
   },
 
   /**

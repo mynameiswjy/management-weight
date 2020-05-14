@@ -124,9 +124,10 @@ Page({
   estimate(imgsIdx = '') {
     const starNum = this.data.starNum;
     saveDiscuss({
-      goodsSno: this.data.goodsSno,
+      sno: this.data.goodsSno,
       content: this.data.content,
-      imgs: imgsIdx
+      imgs: imgsIdx,
+      level: starNum
     }).then((res) => {
       wx.hideLoading();
       if (res.data.code === 200) {

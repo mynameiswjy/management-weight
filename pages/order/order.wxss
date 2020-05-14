@@ -91,6 +91,10 @@ page {
     margin-right: 28rpx;
 }
 
+.content {
+    margin-bottom: 15rpx;
+}
+
 .content .right {
     width: 406rpx;
     color: #282828;  }
