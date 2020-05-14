@@ -178,7 +178,7 @@ Page({
   },
 
   PayBtn() {
-
+    // app.globalData.userSelectInfo
   },
 
   /**

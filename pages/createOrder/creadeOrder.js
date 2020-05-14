@@ -18,20 +18,27 @@ Page({
 
   onLoad: function (options) {
     this.options = options;
+    if (app.globalData.userSelectInfo.length) {
+      this.data.userSelectInfo = app.globalData.userSelectInfo;
+      app.globalData.userSelectInfo = null;
+    }
+    this.options = options;
     if (options.successPay) {
       this.setData({
         successPay: options.successPay,
         PayNum: options.PayNum
       })
     } else {
-      this.orderData(options)
+      this.orderData()
     }
-    this.goodsList()
+    if (this.data.successPay) {
+      this.goodsList()
+    }
   },
 
   onShow: function () {
     if (this.data.IsRefresh) {
-      this.orderData(this.options)
+      this.orderData()
     }
   },
 
@@ -46,7 +53,7 @@ Page({
     })
   },
 
-  orderData(options) {
+  orderData() {
     wx.showLoading({
       title: '加载中',
     });
@@ -54,13 +61,7 @@ Page({
       createOrder({
         custSno: app.globalData.loginInfo.custSno,
         cseInfoSno: addr[0].sno,
-        goodsDetails: [
-          {
-            goodsSno: options.goodsSno,
-            specsGoodsSno: options.specsGoodsSno,
-            quantity: options.quantity
-          }
-        ]
+        goodsDetails: this.data.userSelectInfo
       }).then((res) => {
         if (res.data.code === 200) {
           this.setData({

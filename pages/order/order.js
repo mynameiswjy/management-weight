@@ -1,5 +1,6 @@
 import { PaySign } from '../../api/index'
 import { orderList, finished, deleteOrder} from '../../api/orders'
+import {addCard} from "../../api/cart";
 const app = getApp();
 
 Page({
@@ -239,24 +240,20 @@ Page({
     })
   },
 
+  buyAgain(e) {
+    wx.navigateTo({
+      url: `/pages/goodsDetail/goodsDetail?goodsSno=${e.currentTarget.dataset.goodsSno}`
+    })
+  },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function () {
 
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   bindscrolltolower() {
     this.initData()
   },
 
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
 
   }

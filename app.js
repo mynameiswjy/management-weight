@@ -11,7 +11,8 @@ App({
       avatar: '',
       userName: ''
     },
-    IsRefresh: false
+    IsRefresh: false,
+    userSelectInfo: null
   },
   onLaunch () {
     const that = this;

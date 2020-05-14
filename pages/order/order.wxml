@@ -59,7 +59,7 @@
             <view class="common_btn" wx:if="{{goodsInfo.orderState === 'SHIPPED'}}" bindtap="confirmGoodsBtn" data-sno="{{goodsInfo.sno}}">确认收货</view>
             <!--<view class="common_btn" wx:if="{{goodsInfo.orderState === 'FINISHED'}}" bindtap="buyAgain" data-goods-sno="{{goodsInfo.sno}}">再次购买</view>-->
             <view class="common_btn" bindtap="estimateBtn" data-goods-sno="{{goodsInfo.sno}}" wx:if="{{goodsInfo.orderState === 'FINISHED'}}">评价</view>
-            <view class="common_btn check_logistics" wx:if="{{goodsInfo.orderState === 'CANCEL'}}">加入购物车</view>
+            <view class="common_btn" wx:if="{{goodsInfo.orderState === 'CANCEL'}}" bindtap="buyAgain" data-goods-sno="{{goodsInfo.items[0].goodsSno}}">再次购买</view>
             <view class="common_btn check_logistics" wx:if="{{goodsInfo.orderState === 'PAID'}}" bindtap="remindBtn">提醒发货</view>
         </view>
     </view>

@@ -225,7 +225,12 @@ Page({
     const selectInfo = this.data.selectInfo;
     const userSelect = this.data.userSelect;
     const specsGoodsSno = goodsInfo.specsGoodsSno;
-    let param= `quantity=${this.data.goodsNum}&goodsSno=${goodsInfo.goodsSno}&specsGoodsSno=${specsGoodsSno}`;
+    let param;
+    let paramArr = {
+      quantity: this.data.goodsNum,
+      goodsSno: goodsInfo.goodsSno,
+      specsGoodsSno: specsGoodsSno
+    };
     for (let i = 0; i < selectInfo.length; i++) {
       if (!userSelect[selectInfo[i].type]) {
         wx.showToast({
@@ -248,8 +253,9 @@ Page({
     }
 
     if (type === 'buy') {
+      app.globalData.userSelectInfo = [paramArr];
       wx.navigateTo({
-        url: '/pages/createOrder/creadeOrder?' + param,
+        url: '/pages/createOrder/creadeOrder?param',
         success() {
           that.setData({
             IsOpenMaskGoods: false
