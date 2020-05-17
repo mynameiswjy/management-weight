@@ -69,11 +69,12 @@ App({
         that.globalData.IsRefresh = false;
       }
     });
-    wx.showToast({
+    console.log('存储成功')
+    /*wx.showToast({
       title: '存储成功',
       icon: 'none',
       duration: 2000
-    })
+    })*/
   },
   updateUserInfo(data) {
     if (!data) return;

@@ -16,6 +16,7 @@ Page({
     const {windowWidth, windowHeight, statusBarHeight} = app.globalData.SystemInfo;
     const MenuButton = wx.getMenuButtonBoundingClientRect();
     const coe = 750 / windowWidth;
+    wx.hideShareMenu();
     this.setData({
       MenuButtonTop: Math.ceil(MenuButton.top * coe) + 5,
       navHeight: Math.ceil((MenuButton.height + MenuButton.top * 2 - statusBarHeight + 3) * coe),

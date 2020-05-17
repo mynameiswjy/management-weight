@@ -1,0 +1,35 @@
+<view class="share_wrap" wx:if="{{openShareTemp}}" bindtap="canselBtn">
+    <view class="share_content" catchtap="stop">
+        <view class="share_title">好物分享</view>
+        <view class="flex btn">
+            <button hover-class="none" open-type="share" class="comment_btn">
+                <view class="iconfont iconsign_wechat"></view>
+                <view>微信</view>
+            </button>
+            <view class="comment_btn" bindtap="uploadBtn">
+                <view class="iconfont iconpengyouquancopy"></view>
+                <view>生成美图</view>
+            </view>
+        </view>
+        <view class="cansel_btn" bindtap="canselBtn">取消</view>
+    </view>
+</view>
+
+<view wx:if="{{IsShareImg}}" class="share_img_wrap">
+    <view class="close-btn">
+        <image src="http://img02.exam8.com/img2017/minapp/other/icon_poster-close2.png" mode="widthFix"></image>
+    </view>
+    <view class="posterCtx-preview">
+        <image src="{{shareImg}}" mode="widthFix" class="posterCtx-preview-image" bindtap="previewImage"></image>
+        <image src="http://img02.exam8.com/img2017/minapp/other/icon_poster_tap_tip.png" class="image_tip" mode="widthFix"></image>
+        <view class="posterCtx-btn">
+            <text class="iconfont"></text>
+            <text class="">分享给好友</text>
+        </view>
+    </view>
+
+
+    <view class='posterCtx-btm-image-box'>
+        <image src='{{shareImg}}' mode='widthFix' class='posterCtx-btm-image'></image>
+    </view>
+</view>

@@ -1,5 +1,5 @@
 
-import {createOrder, PaySign, recommendGoods} from "../../api/index"
+import {createOrder, PaySign, recommendGoods, putShare} from "../../api/index"
 import {addrDefaulted} from "../../api/address"
 const app = getApp();
 
@@ -17,12 +17,11 @@ Page({
   },
 
   onLoad: function (options) {
-    this.options = options;
     if (app.globalData.userSelectInfo.length) {
       this.data.userSelectInfo = app.globalData.userSelectInfo;
       app.globalData.userSelectInfo = null;
     }
-    this.options = options;
+    this.data.options = options;
     if (options.successPay) {
       this.setData({
         successPay: options.successPay,
@@ -105,6 +104,42 @@ Page({
   },
 
   submit() {
+    if (!this.data.defaultAddData) {
+      wx.showToast({
+        title: '请填写收货地址',
+        icon: 'none',
+        duration: 1000,
+        mask: true
+      });
+    }
+    const options = this.data.options;
+    if (options.shareCustSno) {
+      const userSelectInfo = this.data.userSelectInfo[0];
+      putShare({
+        goodsSno: userSelectInfo.goodsSno,
+        specsGoodsSno: userSelectInfo.specsGoodsSno,
+        shareCustSno: options.shareCustSno
+      }).then((res) => {
+        if (res.data.code === 200) {
+          this.pay()
+        } else {
+          wx.showToast({
+            title: '网络错误，请重新下单',
+            icon: 'none',
+            duration: 1000,
+            mask: true
+          });
+        }
+      })
+    } else {
+      this.pay()
+    }
+
+  },
+
+
+
+  pay() {
     const that = this;
     PaySign({
       orderSno: this.data.orderInfo.orderSno,
@@ -120,10 +155,11 @@ Page({
         paySign: data.sign,
         success(e) {
           console.log(e);
-          if (errMsg === "requestPayment:ok") {
+          if (e.errMsg === "requestPayment:ok") {
             that.setData({
               successPay: true
             })
+            that.goodsList()
           }
         },
         fail(err) {

@@ -85,3 +85,13 @@ export function expressFind (data) {
     })
   })
 }
+
+// 存储微信地址
+export function wechatAddr (data) {
+  const url = '/shop/cse/wx/add';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}

@@ -4,6 +4,7 @@
   "usingComponents": {
     "estimateTemp": "/components/estimateTemp/estimateTemp",
     "Login": "/components/Login/Login",
+    "shareTemp": "/components/shareTemp/shareTemp",
     "goodsListTemp": "/components/goodsListTemp/goodsListTemp"
   }
 }

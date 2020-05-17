@@ -1,4 +1,4 @@
-import {addrList, setDefault, deleteAddr} from "../../api/address"
+import {addrList, setDefault, deleteAddr, wechatAddr} from "../../api/address"
 const app = getApp();
 
 Page({
@@ -87,10 +87,28 @@ Page({
       telNumber: "15831683109",
       userName: "王佳运",
     };
+    const that = this;
     wx.chooseAddress({
       success(res) {
-        if (errMsg === "chooseAddress:ok") {
+        if (res.errMsg === "chooseAddress:ok") {
           console.log(res);
+          wechatAddr(Object.assign({}, res, {
+            town: 0
+          })).then((res) => {
+            if (res.data.code === 200) {
+              wx.showToast({
+                title: '保存成功',
+                icon: 'none',
+                duration: 1000
+              });
+            } else {
+              wx.showToast({
+                title: res.data.message,
+                icon: 'none',
+                duration: 1000
+              });
+            }
+          })
         }
       }
     })

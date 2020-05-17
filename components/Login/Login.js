@@ -37,6 +37,7 @@ Component({
 			this.setData({
         showPopup: false
       })
+      this.triggerEvent('cansel', {});
     },
 
     getPhoneNumber(e) {

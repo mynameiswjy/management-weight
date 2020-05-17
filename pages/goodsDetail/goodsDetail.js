@@ -24,10 +24,20 @@ Page({
     pageIdx: 1,
     scrollTops: null,
     isEnd: false,
-    userSelect: {}
+    userSelect: {},
+    currentIdx: 0
+  },
+
+  analyticParam(options) {
+    if (options.scene) {
+
+    } else {
+      return options
+    }
   },
 
   onLoad: function (options) {
+    options = this.analyticParam(options);
     wx.showLoading({
       title: '加载中',
     });
@@ -68,6 +78,20 @@ Page({
           goodsInfo: Data
         })
       });
+    })
+  },
+
+  checkImgs(e) {
+    const {idx, imgs} = e.currentTarget.dataset;
+    wx.previewImage({
+      current: imgs[idx], // 当前显示图片的http链接
+      urls: imgs // 需要预览的图片http链接列表
+    })
+  },
+
+  swiperChange(e) {
+    this.setData({
+      currentIdx: e.detail.current
     })
   },
 
@@ -225,7 +249,11 @@ Page({
     const selectInfo = this.data.selectInfo;
     const userSelect = this.data.userSelect;
     const specsGoodsSno = goodsInfo.specsGoodsSno;
-    let param;
+    const options = this.data.options;
+    let paramUrl = `/pages/createOrder/creadeOrder`;
+    if (options.shareCustSno) {
+      paramUrl += `?shareCustSno=${options.shareCustSno}`
+    }
     let paramArr = {
       quantity: this.data.goodsNum,
       goodsSno: goodsInfo.goodsSno,
@@ -242,20 +270,20 @@ Page({
         return
       }
     }
-    for (let key in userSelect) {
+    /*for (let key in userSelect) {
       if (userSelect[key]) {
         if (key === 'color') {
-          param += `&selectColor=${userSelect[key]}`
+          paramUrl += `&selectColor=${userSelect[key]}`
         } else {
-          param += `&selectSpecs=${userSelect[key]}`
+          paramUrl += `&selectSpecs=${userSelect[key]}`
         }
       }
-    }
+    }*/
 
     if (type === 'buy') {
       app.globalData.userSelectInfo = [paramArr];
       wx.navigateTo({
-        url: '/pages/createOrder/creadeOrder?param',
+        url: paramUrl,
         success() {
           that.setData({
             IsOpenMaskGoods: false
@@ -381,8 +409,29 @@ Page({
 
   },
 
-  onShareAppMessage: function () {
+  shareBtn() {
+    if (!app.globalData.loginInfo.hasLogin) {
+      this.selectComponent("#login").showPopup();
+      return;
+    }
+    const goodsInfo = this.data.goodsInfo;
+    this.selectComponent("#shareTemp").canselBtn({
+      isOpen: 1,
+      goodsSno: this.data.options.goodsSno,
+      page: 'pages/goodsDetail/goodsDetail',
+      scene: '1,2,3',
+      specsGoodsSno: goodsInfo.specsGoodsSno || goodsInfo.defaultSpecsGoodsSno
+    });
+  },
 
+  onShareAppMessage: function () {
+    this.selectComponent("#shareTemp").canselBtn({isOpen: 0});
+    let title = '好物分享';
+    let path = `/pages/goodsDetail/goodsDetail?goodsSno=${this.data.options.goodsSno}&IsShare=1&shareCustSno=${app.globalData.loginInfo.custSno}`;
+    return {
+      title: title,
+      path: path
+    }
   },
 
   stopClick() {

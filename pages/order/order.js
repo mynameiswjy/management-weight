@@ -30,6 +30,11 @@ Page({
   },
 
   onLoad: function (options) {
+    if (!app.globalData.loginInfo.hasLogin) {
+      this.selectComponent("#login").showPopup();
+      return
+    }
+
     const {windowWidth, windowHeight, statusBarHeight} = app.globalData.SystemInfo;
     this.data.cos = 750 / windowWidth;
     if (options.navIdx) {
@@ -40,7 +45,8 @@ Page({
     this.setData({
       windowHeight: windowHeight * 375 / windowWidth * 2,
     });
-    this.initData()
+    this.initData();
+    wx.hideShareMenu()
   },
 
   onShow: function () {
@@ -98,6 +104,16 @@ Page({
         }
       })
     }
+  },
+
+  succCallBack() {
+    this.initData()
+  },
+
+  canselBtn() {
+    wx.navigateBack({
+      delta: 1
+    })
   },
 
   payment() {

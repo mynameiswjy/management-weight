@@ -1,0 +1,158 @@
+@import "../../iconfont.wxss";
+
+.flex {
+  display: flex;
+}
+
+.share_wrap {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 750rpx;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.share_content {
+  width: 700rpx;
+  position: absolute;
+  bottom: 80rpx;
+  background-color: #F7F7F7;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 20rpx;
+  padding-top: 30rpx;
+  overflow: hidden;
+}
+
+.share_title {
+  font-size: 30rpx;
+  font-weight: 600;
+  line-height: 1;
+  color: #282828;
+  text-align: center;
+  margin-top: 20rpx;
+}
+
+.btn {
+  font-size: 28rpx;
+  color: #4E4E4E;
+  justify-content: space-around;
+  margin: 50rpx 50rpx 0;
+}
+
+.iconsign_wechat, .iconpengyouquancopy {
+  font-size: 80rpx;
+  margin-bottom: 10rpx;
+}
+
+.iconpengyouquancopy {
+  color: #E98158;
+}
+
+.iconsign_wechat {
+  color: #97C181;
+}
+
+.comment_btn {
+  text-align: center;
+  padding: 0 50rpx;
+}
+
+.cansel_btn {
+  height: 80rpx;
+  width: 700rpx;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  color: #282828;
+  background-color: #fff;
+  margin-top: 50rpx;
+}
+
+.posterCtx-btm-image-box {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 950rpx;
+  z-index: 8;
+  background: #fff;
+}
+
+.share_img_wrap {
+  position: fixed;top: 0;
+  left: 0;
+  width: 750rpx;
+  bottom: 0;
+  background-color: rgba(0,0,0, 0.3);
+  z-index: 100;
+}
+
+.posterCtx-btm-image {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+  filter: blur(20rpx);
+  background: #fff;
+}
+
+.close-btn {
+  float: right;
+  clear: both;
+  width: 96rpx;
+  height: 96rpx;
+  top: 12rpx;
+  right: 32rpx;
+  z-index: 99;
+  text-align: center;
+}
+
+.close-btn image {
+  margin: 35rpx;
+  width: 26rpx;
+  height: 26rpx;
+}
+
+.posterCtx-preview {
+  position: absolute;
+  display: flex;
+  width: 500rpx;
+  flex-direction: column;
+  left: 50%;
+  align-items: center;
+  transform: translateX(-50%);
+  z-index: 99;
+}
+
+.posterCtx-preview-image {
+  width: 500rpx;
+  max-height: 800rpx;
+  margin-top: 83rpx;
+  border-radius: 14rpx;
+}
+
+.image_tip {
+  margin-top: 30rpx;
+  width: 192rpx;
+  height: 35rpx;
+}
+
+.posterCtx-btn {
+  margin-top: 85rpx;
+  width: 300rpx;
+  background: #6fce29;
+  text-align: center;
+  font-size: 32rpx;
+  color: #fff;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}

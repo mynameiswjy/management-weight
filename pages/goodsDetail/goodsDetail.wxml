@@ -13,11 +13,14 @@
         </view>
     </view>
     <view id="intoView1" class="scroll-view-item">
-        <swiper class="swiper_wrap" circular="true">
-            <swiper-item wx:for="{{goodsInfo.goodsImgUrls}}" wx:key="index">
-                <image bindload="" mode="widthFix" class="banner_img" src="{{item}}"></image>
-            </swiper-item>
-        </swiper>
+        <view style="position: relative;">
+            <swiper class="swiper_wrap" circular="true" circular="{{false}}" bindchange="swiperChange">
+                <swiper-item wx:for="{{goodsInfo.goodsImgUrls}}" wx:key="index">
+                    <image bindload="" mode="widthFix" class="banner_img" src="{{item}}" bindtap="checkImgs" data-idx="{{index}}" data-imgs="{{goodsInfo.goodsImgUrls}}"></image>
+                </swiper-item>
+            </swiper>
+            <view class="indicator">{{currentIdx+1}}/{{goodsInfo.goodsImgUrls.length}}</view>
+        </view>
         <view class="flex price_wrap">
             <view class="price">
                 <view class="actual_price">
@@ -26,10 +29,10 @@
                 </view>
                 <view class="share_price">分享返现：¥{{goodsInfo.shareBrok}}</view>
             </view>
-            <button open-type="share" class="share_btn flex">
+            <view class="share_btn flex" bindtap="shareBtn">
                 <view>分享给亲友</view>
                 <view class="iconfont iconfenxiang"></view>
-            </button>
+            </view>
         </view>
         <view class="goods_name line_clamp">{{goodsInfo.name}}</view>
         <view class="active flex">
@@ -156,3 +159,4 @@
     <view class="common_btn buy_btn" bindtap="selectData" data-type="buy">立即购买</view>
 </view>
 <Login id="login" bindsuccCallBack="successCallback"></Login>
+<shareTemp id="shareTemp" bindshareBtn="shareBtn"></shareTemp>

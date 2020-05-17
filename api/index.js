@@ -178,10 +178,29 @@ export function getUserInfo (data) {
   })
 }
 
-// 利用code获取用户信息
+// 搜索接口
 export function search (data) {
   const url = '/shop/applet/goods/search';
-  const app = getApp();
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
+// 分享返现
+export function putShare (data) {
+  const url = '/shop/applet/share/put.do';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
+// 分享图片
+export function ShareImg (data) {
+  const url = '/shop/applet/qr/invite/goods/get.do';
   return new Promise((resolve, reject) => {
     requestAjaxPost(url, data, (res) => {
       resolve(res)

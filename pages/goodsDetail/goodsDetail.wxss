@@ -134,7 +134,7 @@
 .iconfenxiang {
     font-size: 39rpx;
     line-height: 62rpx;
-    margin-left: 40rpx;
+    margin-left: 20rpx;
 }
 
 .goods_name {
@@ -501,4 +501,18 @@
     100% {
         bottom: -916rpx;
     }
+}
+
+.indicator {
+    position: absolute;
+    right: 0;
+    bottom: 20rpx;
+    font-size: 28rpx;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 80rpx;
+    height: 46rpx;
+    border-radius: 23rpx 0 0 23rpx;
+    text-align: center;
+    line-height: 46rpx;
 }

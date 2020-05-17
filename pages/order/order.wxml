@@ -75,3 +75,4 @@
         </view>
     </block>
 </scroll-view>
+<Login id="login" bindsuccCallBack="succCallBack" bindcansel="canselBtn"></Login>

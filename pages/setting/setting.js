@@ -19,7 +19,7 @@ Page({
         gender: app.globalData.userInfo.gender
       },
     })
-
+    wx.hideShareMenu();
     // this.selectComponent("#maskTemp").showTemp()
   },
 
