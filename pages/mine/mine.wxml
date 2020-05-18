@@ -17,26 +17,15 @@
     </view>
 </button>
 <view class="withdraw">
-    <view class="flex withdraw_price">
-        <view class="withdraw_txt">可提现 ¥ 4.00</view>
-        <view class="withdraw_btn" bindtap="withdrawBtn">立即提现</view>
+    <view class="title">
+        <text class="iconfont iconjianglijin2"></text>
+        <text>红包奖励金</text>
     </view>
-    <view class="flex bottom">
-        <view class="item">
-            <view>¥ 104.00</view>
-            <view class="txt1">上月提现<text class="iconfont icontubiao-"></text></view>
-        </view>
-        <view class="bor_between"></view>
-        <view class="item">
-            <view>¥ 104.00</view>
-            <view class="txt1">上月提现<text class="iconfont icontubiao-"></text></view>
-        </view>
-        <view class="bor_between"></view>
-        <view class="item">
-            <view>¥ 104.00</view>
-            <view class="txt1">上月提现<text class="iconfont icontubiao-"></text></view>
-        </view>
+    <view class="withdraw_txt">
+        <text style="font-size: 30rpx;margin-right: 15rpx;">¥</text>
+        <text>66.00</text>
     </view>
+    <view class="withdraw_btn" bindtap="withdrawBtn">立即提现</view>
 </view>
 
 <view class="privilege flex">

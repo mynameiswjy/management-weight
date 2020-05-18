@@ -16,13 +16,13 @@
 </view>
 
 <view wx:if="{{IsShareImg}}" class="share_img_wrap">
-    <view class="close-btn">
-        <image src="http://img02.exam8.com/img2017/minapp/other/icon_poster-close2.png" mode="widthFix"></image>
-    </view>
     <view class="posterCtx-preview">
-        <image src="{{shareImg}}" mode="widthFix" class="posterCtx-preview-image" bindtap="previewImage"></image>
+        <view class="close-btn" bindtap="closeImgs">
+            <image src="http://img02.exam8.com/img2017/minapp/other/icon_poster-close2.png" mode="widthFix"></image>
+        </view>
+        <image src="{{shareImg}}" bindload="bindload" mode="widthFix" class="posterCtx-preview-image" bindtap="previewImage"></image>
         <image src="http://img02.exam8.com/img2017/minapp/other/icon_poster_tap_tip.png" class="image_tip" mode="widthFix"></image>
-        <view class="posterCtx-btn">
+        <view class="posterCtx-btn" bindtap="saveImgBtn">
             <text class="iconfont"></text>
             <text class="">分享给好友</text>
         </view>

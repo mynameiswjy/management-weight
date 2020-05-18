@@ -76,25 +76,20 @@ Page({
   },
 
   wechatAdd() {
-    let data = {
-      cityName: "北京市",
-      countyName: "海淀区",
-      detailInfo: "中关村南大街甲12号寰太大厦",
-      errMsg: "chooseAddress:ok",
-      nationalCode: "110108",
-      postalCode: "100089",
-      provinceName: "北京市",
-      telNumber: "15831683109",
-      userName: "王佳运",
-    };
     const that = this;
     wx.chooseAddress({
       success(res) {
         if (res.errMsg === "chooseAddress:ok") {
           console.log(res);
-          wechatAddr(Object.assign({}, res, {
-            town: 0
-          })).then((res) => {
+          wechatAddr({
+            town: 0,
+            cityName: res.cityName,
+            countyName: res.countyName,
+            detailInfo: res.detailInfo,
+            provinceName: res.provinceName,
+            telNumber: res.telNumber,
+            userName: res.userName
+          }).then((res) => {
             if (res.data.code === 200) {
               wx.showToast({
                 title: '保存成功',

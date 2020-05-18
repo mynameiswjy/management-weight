@@ -1,4 +1,5 @@
 import {ShareImg} from "../../api/index";
+const utils = require("../../utils/util");
 
 let app = getApp();
 
@@ -16,6 +17,16 @@ Component({
 
   },
   methods: {
+    saveImgBtn() {
+      wx.showLoading({
+        title: '保存中，请耐心等待',
+        mask: true
+      });
+      utils.saveMinappToPhoto(this.data.shareImg, () => {
+        this.closeImgs()
+      })
+    },
+
     canselBtn(e) {
       this.data.goodsData = e;
       this.setData({
@@ -30,7 +41,24 @@ Component({
       })
     },
 
+    closeImgs() {
+      this.setData({
+        IsShareImg: false
+      })
+    },
+
     uploadBtn() {
+      wx.showLoading({
+        title: '加载中',
+      });
+      if (this.data.shareImg) {
+        this.setData({
+          openShareTemp: false,
+          shareImg: this.data.shareImg,
+          IsShareImg: true
+        })
+        return
+      }
       const goodsData = this.data.goodsData;
       ShareImg({
         scene: goodsData.scene,
@@ -46,6 +74,10 @@ Component({
           })
         }
       })
+    },
+
+    bindload() {
+      wx.hideLoading();
     },
 
     stop() {

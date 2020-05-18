@@ -15,6 +15,7 @@
     "pages/expressInfo/expressInfo",
     "pages/comment/comment",
     "pages/estimate/estimate",
+    "pages/payment/payment",
     "pages/orderDetail/orderDetail"
   ],
   "subPackages": [],

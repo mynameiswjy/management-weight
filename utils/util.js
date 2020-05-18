@@ -47,7 +47,7 @@ function getMinappCodeImage(page, app, params = {}) {
   return url
 }
 
-function saveMinappToPhoto(tempFilePath) {
+function saveMinappToPhoto(tempFilePath, cb) {
   return new Promise((resolve, reject) => {
     wx.getImageInfo({
       src: tempFilePath,
@@ -56,7 +56,8 @@ function saveMinappToPhoto(tempFilePath) {
           filePath: res.path,
           success(res) {
             resolve(res);
-            wx.hideLoading();
+            wx.hideLoading()
+            cb();
             wx.showToast({
               title: '保存成功',
               icon: 'success',

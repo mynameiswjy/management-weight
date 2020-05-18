@@ -101,20 +101,19 @@
 }
 
 .close-btn {
-  float: right;
-  clear: both;
   width: 96rpx;
   height: 96rpx;
-  top: 12rpx;
-  right: 32rpx;
+  position: absolute;
+  top: 120rpx;
+  right: -80rpx;
   z-index: 99;
   text-align: center;
 }
 
 .close-btn image {
   margin: 35rpx;
-  width: 26rpx;
-  height: 26rpx;
+  width: 32rpx;
+  height: 32rpx;
 }
 
 .posterCtx-preview {
@@ -131,7 +130,8 @@
 .posterCtx-preview-image {
   width: 500rpx;
   max-height: 800rpx;
-  margin-top: 83rpx;
+  height: 800rpx;
+  margin-top: 160rpx;
   border-radius: 14rpx;
 }
 
