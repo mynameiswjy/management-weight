@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "红包奖励金",
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#DB3527",
   "usingComponents": {}
 }

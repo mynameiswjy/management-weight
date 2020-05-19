@@ -1,1 +1,101 @@
-/* pages/payment/payment.wxss */
+
+.bg {
+    position: fixed;
+    top: 0;
+    height: 250rpx;
+    width: 750rpx;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.bg_content {
+    background-color: #DB3527;
+    height: 2500rpx;
+    width: 2500rpx;
+    border-radius: 1250rpx;
+    background-position: 500rpx;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.payment-wrap {
+
+}
+
+.payment {
+    width: 690rpx;
+    border-radius: 20rpx;
+    background-color: #fff;
+    margin: 30rpx;
+    box-shadow: 0 8rpx 24rpx 0 rgba(219, 53, 39, 0.20);
+}
+
+.payment .title {
+    font-size: 28rpx;
+    text-align: center;
+    color: #282828;
+    line-height: 1;
+    padding-top: 30rpx;
+}
+
+.payment .money {
+    font-size: 40rpx;
+    color: #DB3527;
+    margin: 20rpx 0;
+    text-align: center;
+    line-height: 1;
+}
+
+.payment .payment_money {
+    color: #999;
+    text-align: center;
+    font-size: 22rpx;
+}
+
+.payment_btn {
+    background:linear-gradient(265deg,#DC3928 0%,#EB713A 100%);
+    width: 550rpx;
+    height: 80rpx;
+    color: #fff;
+    text-align: center;
+    line-height: 80rpx;
+    border-radius: 40rpx;
+    margin: 30rpx auto 0;
+    font-size: 30rpx;
+}
+
+.payment .bottom {
+    font-size: 22rpx;
+    color: #282828;
+    padding-bottom: 30rpx;
+    margin-top: 15rpx;
+    text-align: center;
+}
+
+.payment_record {
+
+}
+
+.payment_record .title {
+    color: #282828;
+    margin-left: 30rpx;
+    margin-top: 30rpx;
+    font-size: 30rpx;
+    font-weight: 600;
+}
+
+.icontixianjilux {
+    font-size: 34rpx;
+    margin-right: 10rpx;
+    color: #282828;
+}
+
+.payment_record_item {
+    margin-left: 40rpx;
+    margin-top: 20rpx;
+    line-height: 1;
+    font-size: 28rpx;
+    color: #333;
+}

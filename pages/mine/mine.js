@@ -17,7 +17,9 @@ Page({
   },
 
   withdrawBtn() {
-
+    wx.navigateTo({
+      url: `/pages/payment/payment`
+    })
   },
 
   onShow: function () {
