@@ -12,7 +12,8 @@ Page({
     oderFind({}).then((res) => {
       console.log(res);
       this.setData({
-        accountAmount: res.data.object.accountAmount
+        accountAmount: res.data.object.accountAmount,
+        occurAmount: res.data.object.occurAmount
       })
     });
     paymentList().then((res) => {
