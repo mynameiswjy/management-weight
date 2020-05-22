@@ -81,6 +81,42 @@ function saveMinappToPhoto(tempFilePath, cb) {
   })
 }
 
+function requestSubscribeMessage(tmplIds, cb, err) {
+  if (!tmplIds.length) return console.log('tmplIds是空的', tmplIds);
+  /*模板消息start*/
+  wx.requestSubscribeMessage({
+    tmplIds: tmplIds,
+    success(e) {
+      if (e.errMsg === 'requestSubscribeMessage:ok') {
+        let State;
+        const data = tmplIds.map((item) => {
+          let obj = {};
+          if (e[item] === 'accept') {
+            State = 1
+          } else if (e[item] === 'reject') {
+            State = 0
+          } else if (e[item] === 'ban') {
+            State = -1
+          }
+          obj.State = State;
+          obj.WxTemplateId = item;
+          return obj
+        });
+
+        if (cb && data.length) {
+          cb(data)
+        }
+      }
+    },
+    fail(error) {
+      if (err) {
+        err(error)
+      }
+    }
+  });
+  /*模板消息end*/
+}
+
 module.exports = {
   createUrlParam,
   parseUrlParam,
