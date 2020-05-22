@@ -1,3 +1,14 @@
-<view class="mask_wrap" wx:if="{{}}">
-  <view class="content">666</view>
+<view class="mask_wrap">
+  <view class="rank_content" catchtap="touchmove">
+    <view class="rule_title">规则</view>
+    <scroll-view scroll-y="{{true}}" class="scroll {{ruleType?'scroll1':''}}">
+      <block wx:for="{{InCircleRules}}" wx:key="index">
+        <view class="item_title flex" wx:if="{{item.name}}">
+          <view class="item_title_bor" style="background-color: #bfa;"></view>
+          <view>{{item.name}}</view>
+        </view>
+        <view class="rule_detail" wx:if="{{item.value}}">{{item.value}}</view>
+      </block>
+    </scroll-view>
+  </view>
 </view>
