@@ -23,7 +23,7 @@
     </view>
     <view class="withdraw_txt">
         <text style="font-size: 30rpx;margin-right: 15rpx;">¥</text>
-        <text>66.00</text>
+        <text>{{accountAmount}}</text>
     </view>
     <view class="withdraw_btn" bindtap="withdrawBtn">立即提现</view>
 </view>

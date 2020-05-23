@@ -83,6 +83,7 @@ function saveMinappToPhoto(tempFilePath, cb) {
 
 function requestSubscribeMessage(tmplIds, cb, err) {
   if (!tmplIds.length) return console.log('tmplIds是空的', tmplIds);
+
   /*模板消息start*/
   wx.requestSubscribeMessage({
     tmplIds: tmplIds,
@@ -121,5 +122,6 @@ module.exports = {
   createUrlParam,
   parseUrlParam,
   getMinappCodeImage,
-  saveMinappToPhoto
+  saveMinappToPhoto,
+  requestSubscribeMessage
 };

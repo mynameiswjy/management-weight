@@ -1,4 +1,3 @@
-
 .bg {
     position: fixed;
     top: 0;
@@ -18,10 +17,6 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-}
-
-.payment-wrap {
-
 }
 
 .payment {
@@ -74,10 +69,6 @@
     text-align: center;
 }
 
-.payment_record {
-
-}
-
 .payment_record .title {
     color: #282828;
     margin-left: 30rpx;
@@ -93,9 +84,41 @@
 }
 
 .payment_record_item {
-    margin-left: 40rpx;
-    margin-top: 20rpx;
     line-height: 1;
     font-size: 28rpx;
-    color: #333;
+    color: #666;
+    margin: 20rpx 20rpx;
+}
+
+.payment_record_item .record_title {
+    font-size: 24rpx;
+    color: #666666;
+}
+
+.record_common {
+    text-align: center;
+    margin-bottom: 25rpx;
+}
+
+.record_time {
+    width: 160rpx;
+    margin-right: 40rpx;
+}
+
+.record_money {
+    width: 120rpx;
+    margin-right: 40rpx;
+}
+.record_item {
+    text-align: center;
+    margin-bottom: 15rpx;
+    color: #282828;
+}
+.record_source {
+    width: 120rpx;
+}
+
+.record_txt {
+    width: 200rpx;
+    margin-left: 40rpx;
 }

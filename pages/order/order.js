@@ -116,7 +116,11 @@ Page({
     })
   },
 
-  payment() {
+  payment(e) {
+    wx.showLoading({
+      title: '支付中',
+      mask: true
+    });
     const {orderSno, payNum} = e.currentTarget.dataset;
     PaySign({
       orderSno: orderSno,
@@ -131,14 +135,26 @@ Page({
         signType: 'MD5',
         paySign: data.sign,
         success(e) {
+          wx.hideLoading();
           if (e.errMsg === "requestPayment:ok") {
             wx.redirectTo({
               url: `/pages/createOrder/creadeOrder?successPay=true&PayNum=${payNum}`
             })
+          } else {
+            wx.showToast({
+              title: '支付失败',
+              duration: 2000,
+              mask: true
+            })
           }
         },
         fail(err) {
-          console.log(err);
+          wx.hideLoading();
+          wx.showToast({
+            title: '支付失败',
+            icon: 'success',
+            duration: 2000
+          })
         }
       })
     })

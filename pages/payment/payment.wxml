@@ -11,12 +11,19 @@
     </view>
 
     <view class="payment_record">
-        <view class="title">
-            <text class="iconfont icontixianjilux"></text>
-            <text>提现记录</text>
-        </view>
-        <view wx:for="{{paymentRecord}}" wx:item="index" class="payment_record_item">
-            {{item.accountTime}}——{{item.recordedAmount}}——{{item.accountStatus}}——{{item.describe}}
+        <view class="payment_record_item">
+            <view class="flex record_title">
+                <view class="record_time record_common">时间</view>
+                <view class="record_money record_common">金额</view>
+                <view class="record_source record_common">来源</view>
+                <view class="record_txt record_common">说明</view>
+            </view>
+            <view class="flex record_item" wx:for="{{paymentRecord}}" wx:key="index">
+                <view class="record_time">{{item.accountTime}}</view>
+                <view class="record_money">{{item.recordedAmount}}</view>
+                <view class="record_source">{{item.accountStatus}}</view>
+                <view class="record_txt">{{item.describe}}</view>
+            </view>
         </view>
     </view>
 </view>

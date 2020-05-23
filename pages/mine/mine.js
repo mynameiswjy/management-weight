@@ -1,4 +1,5 @@
 import {login, logout} from "../../api/index"
+import {oderFind} from "../../api/orders";
 const config = require('../../config.globle');
 const app = getApp();
 
@@ -23,6 +24,11 @@ Page({
   },
 
   onShow: function () {
+    oderFind({}).then((res) => {
+      this.setData({
+        accountAmount: res.data.object.accountAmount
+      })
+    });
     console.log(app.globalData.loginInfo);
     if (app.globalData.IsRefresh) {
       app.loginCallback = () => {

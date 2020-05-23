@@ -3,8 +3,8 @@
 }
 
 .goods_img {
-    width: 276rpx;
-    max-height: 245rpx;
+    width: 267rpx;
+    max-height: 238rpx;
     display: block;
     background-color: #666;
     margin: 15rpx 30rpx 15rpx 15rpx;
@@ -18,6 +18,7 @@
     max-width: 339rpx;
     line-height: 29rpx;
     font-size: 26rpx;
+    min-height: 58rpx;
     margin-top: 38rpx;
     color: #292929;
     font-weight: 600;
@@ -26,6 +27,15 @@
     display:-webkit-box;
     -webkit-box-orient:vertical;
     -webkit-line-clamp:2;
+}
+
+.goods_space {
+    padding: 4rpx 18rpx;
+    background-color: #eee;
+    display: inline-block;
+    border-radius: 34rpx;
+    font-size: 24rpx;
+    margin: 12rpx 0;
 }
 
 .goods_right {
@@ -39,21 +49,39 @@
 }
 
 .goods_price .pri1 {
-    font-size: 40rpx;
+    font-size: 36rpx;
 }
 
 .goods_price .pri2 {
-    font-size: 36rpx;
-    margin-top: 27rpx;
+    font-size: 22rpx;
+    height: 27rpx;
+    padding: 4rpx 10rpx 3rpx;
+    color: #FF6400;
+    margin-left: 15rpx;
+    border: 1rpx solid #FDBC8C;
+    border-radius: 22rpx;
 }
 
-.goods_btn {
-    width: 140rpx;
-    height: 58rpx;
-    background-color: #CC3C25;
-    border-radius: 12rpx;
-    text-align: center;
-    line-height: 58rpx;
-    color: #fff;
-    font-size: 24rpx;
+.bott_icon {
+    font-size: 22rpx;
+    margin-top: 15rpx;
+}
+
+.common_bor {
+    color: #c1bbbb;
+    padding: 2rpx 15rpx;
+    border: 1rpx solid #c1bbbb;
+    border-radius: 32rpx;
+    margin-right: 10rpx;
+    line-height: 1;
+}
+
+.new {
+    color: #00FED8;
+    border: 1rpx solid #00FED8;
+}
+
+.buy_icon {
+    color: #3D86FF;
+    border: 1rpx solid #3D86FF;
 }

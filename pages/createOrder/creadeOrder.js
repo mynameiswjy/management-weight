@@ -1,6 +1,8 @@
 
 import {createOrder, PaySign, recommendGoods, putShare} from "../../api/index"
 import {addrDefaulted} from "../../api/address"
+import {tmplIds, reqMessageStatus} from "../../api/comment";
+const utils = require('../../utils/util');
 const app = getApp();
 
 Page({
@@ -13,7 +15,8 @@ Page({
     IsRefresh: false,
     PayNum: 0,
     pageIdx: 1,
-    isEnd: false
+    isEnd: false,
+    tmplIds: null
   },
 
   onLoad: function (options) {
@@ -33,6 +36,13 @@ Page({
     if (this.data.successPay) {
       this.goodsList()
     }
+    tmplIds().then((res) => {
+      if (res.data.code) {
+        this.setData({
+          tmplIds: res.data.object
+        })
+      }
+    })
   },
 
   onShow: function () {
@@ -137,8 +147,6 @@ Page({
 
   },
 
-
-
   pay() {
     const that = this;
     PaySign({
@@ -158,7 +166,10 @@ Page({
           if (e.errMsg === "requestPayment:ok") {
             that.setData({
               successPay: true
-            })
+            });
+            utils.requestSubscribeMessage(that.data.tmplIds, (data) => {
+              reqMessageStatus(data)
+            });
             that.goodsList()
           }
         },

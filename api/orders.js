@@ -62,7 +62,7 @@ export function paymentList (data) {
 
 // 提现
 export function paymentMoney (data) {
-  const url = '/applet/acc/essay.do';
+  const url = '/shop/applet/acc/essay.do';
   return new Promise((resolve, reject) => {
     requestAjaxPost(url, data, (res) => {
       resolve(res)

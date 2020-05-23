@@ -30,3 +30,23 @@ export function saveDiscuss (data) {
     })
   })
 }
+
+// 获取消息模板id
+export function tmplIds (data) {
+  const url = '/shop/applet/mes/get.do';
+  return new Promise((resolve, reject) => {
+    requestAjaxGet(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
+// 发送模板状态
+export function reqMessageStatus (data) {
+  const url = '/shop/applet/mes/put.do';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
