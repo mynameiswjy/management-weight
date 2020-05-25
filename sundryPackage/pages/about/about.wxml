@@ -1,0 +1,7 @@
+<view class="flex top">
+    <image class="imgs" src="{{BASE_URL + '/upload/20200525213554.png'}}" mode="widthFix"></image>
+    <view>
+        <view>淘客精选好物</view>
+        <view>平台规则及行为规范</view>
+    </view>
+</view>

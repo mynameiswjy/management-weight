@@ -1,0 +1,9 @@
+page {
+    background: linear-gradient(175deg,rgba(221,61,42,1),rgba(234,110,56,1));
+}
+
+.imgs {
+    width: 120rpx;
+    max-height: 120rpx;
+    border-radius: 106rpx;
+}

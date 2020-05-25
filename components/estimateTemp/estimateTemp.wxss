@@ -35,10 +35,6 @@
     margin-right: 28rpx;
 }
 
-.imgs_wrap {
-
-}
-
 .imgs {
     width: 214rpx;
     max-height: 225rpx;
@@ -63,7 +59,8 @@
 }
 
 .imgs_wrap {
-    justify-content: center;
+    justify-content: left;
+    margin-left: 35rpx;
 }
 
 .all_estimate {

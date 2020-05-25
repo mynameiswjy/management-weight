@@ -1,6 +1,6 @@
 <view wx:for="{{commentList}}" wx:for-item="commentItem" wx:key="index" class="comment_item {{index+1 !== commentList.length ?'comment_item1':''}}" wx:if="{{commentList.length}}">
     <view class="flex top">
-        <image src="{{commentItem.avatar}}" class="user_avatar"></image>
+        <image src="{{commentItem.avatar || BASE_URL + '/upload/20200525213554.png'}}" class="user_avatar"></image>
         <view>{{commentItem.userName}}</view>
         <view class="flex level">
             <view wx:for="{{commentItem.level}}" wx:key="index" class="iconfont iconxingxing"></view>

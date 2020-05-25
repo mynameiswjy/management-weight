@@ -36,7 +36,8 @@ Component({
         ],
         date: '2020-03-06'
       },
-    ]
+    ],
+    BASE_URL: config.BASE_URL
   },
   lifetimes: {
     attached() {}
@@ -49,7 +50,7 @@ Component({
     },
     checkAll() {
       wx.navigateTo({
-        url: '/pages/comment/comment'
+        url: `/pages/comment/comment?goodsSno=${this.data.list[0].goodsSno}`
       })
     }
   }

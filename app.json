@@ -18,7 +18,14 @@
     "pages/payment/payment",
     "pages/orderDetail/orderDetail"
   ],
-  "subPackages": [],
+  "subPackages": [
+    {
+      "root": "sundryPackage",
+      "pages": [
+        "pages/about/about"
+      ]
+    }
+  ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
