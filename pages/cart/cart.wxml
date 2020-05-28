@@ -3,7 +3,7 @@
         <!--<view class="shop_name flex">
             <view class="iconfont {{isAllSelect?'iconxuanzhong':'iconweixuanzhong'}}" bindtap="IsJoinCart"></view>
             <view class="iconfont icondianpu"></view>
-            <view>SD官方旗舰店</view>
+            <view>SD官方旗舰店</view>cart_goods_right
         </view>-->
         <block wx:if="{{cardList.length}}" wx:for="{{cardList}}" wx:key="index">
             <scroll-view scroll-x="true" class="scroll" scroll-left="{{ScrollLeft}}rpx">
@@ -11,8 +11,8 @@
                     <view class="iconfont  {{item.isSelect=='Y'?'iconxuanzhong':'iconweixuanzhong'}}" bindtap="selecGoods" data-index="{{index}}"></view>
                     <image mode="widthFix" src="{{item.masterPic}}" class="cart_goods_img"></image>
                     <view class="cart_goods_right">
-                        <view class="txt">{{item.name}}</view>
-                        <view class="txt1">
+                        <view class="txt two_hidden">{{item.name}}</view>
+                        <view class="txt1 one_hidden">
                             <text wx:if="{{item.specs}}">{{item.specs}}</text>
                             <text wx:if="{{item.color}}">，{{item.color}}</text>
                         </view>

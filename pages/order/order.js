@@ -74,6 +74,7 @@ Page({
       }).then((res) => {// INIT待付款，PAID 代发货，SHIPPED 已发货，FINISHED 已完成，CANCEL 取消；
         wx.hideLoading();
         if (res.data.code === 200) {
+          this.data.AllOrderList[type?type:'allList'] = [];
           if (res.data.object.length) {
             const data = res.data.object;
             if (IsRefresh) {

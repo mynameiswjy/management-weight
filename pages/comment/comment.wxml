@@ -16,6 +16,6 @@
     </view>
 </view>
 
-<view wx:if="{{!commentList.length}}">
+<view wx:if="{{isEnd&&!commentList.length}}">
     暂无评价
 </view>
