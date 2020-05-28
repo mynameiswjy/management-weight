@@ -22,7 +22,8 @@
     {
       "root": "sundryPackage",
       "pages": [
-        "pages/about/about"
+        "pages/about/about",
+        "pages/FAQ/FAQ"
       ]
     }
   ],

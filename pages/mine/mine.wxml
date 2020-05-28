@@ -70,19 +70,19 @@
         <view class="iconfont icondaishouhuo"></view>
         <view>待收货</view>
     </view>
-    <view class="order_item" bindtap="">
+    <view class="order_item" bindtap="checkDetail" data-idx="4">
         <view class="iconfont icondaipingjia"></view>
         <view>待评价</view>
     </view>
 </view>
 <view class="member_title server">我的服务</view>
 <view class="flex member" style="margin-bottom: 20rpx;">
-    <view class="member_item">
+    <view class="member_item" bindtap="FAQ">
         <image class="member_img" mode="widthFix" src="{{imgUrl}}/upload/mine/FAQ.png"></image>
         <view class="txt1">常见问题</view>
         <view class="txt2">有疑问点这里</view>
     </view>
-    <view class="member_item">
+    <view class="member_item" bindtap="appRule">
         <image class="member_img" mode="widthFix" src="{{imgUrl}}/upload/mine/rule.png"></image>
         <view class="txt1">平台规则</view>
         <view class="txt2">请严格遵守</view>

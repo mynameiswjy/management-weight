@@ -168,6 +168,18 @@ Page({
     })
   },
 
+  appRule() {
+    wx.navigateTo({
+      url: '/sundryPackage/pages/about/about'
+    })
+  },
+
+  FAQ() {
+    wx.navigateTo({
+      url: '/sundryPackage/pages/FAQ/FAQ'
+    })
+  },
+
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */

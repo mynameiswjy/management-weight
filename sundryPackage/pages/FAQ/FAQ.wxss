@@ -1,0 +1,31 @@
+page {
+    background-color: #F3F3F3;
+}
+
+.list {
+    background-color: #fff;
+    width: 680rpx;
+    border-radius: 10rpx;
+    margin: 20rpx 10rpx;
+    padding: 0 25rpx;
+}
+
+.item {
+    height: 100rpx;
+    line-height: 100rpx;
+    justify-content: space-between;
+    font-size: 28rpx;
+    color: #282828;
+}
+
+.icontubiao-, .iconarrow-down {
+    color: #C7C7CB;
+    font-size: 30rpx;
+}
+
+.item_content {
+    border-top: 1rpx solid #f3f3f3;
+    padding: 30rpx 0;
+    font-size: 26rpx;
+    color: #4E4E4E;
+}
