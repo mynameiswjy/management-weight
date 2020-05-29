@@ -33,6 +33,9 @@
                     <view style="font-size: 24rpx;">{{item.shareBrok}}</view>
                 </view>
             </view>
+            <view class="flex bott_icon" wx:if="{{item.label.length}}">
+                <view class=" common_bor {{label.type==3?'new':''}} {{label.type==2?'buy_icon':''}}" wx:for="{{item.label}}" wx:for-item="label" wx:for-index="idx" wx:key="idx">{{label.value}}</view>
+            </view>
             <view wx:if="{{item.des}}" class="hot_goods">{{item.des}}</view>
         </view>
     </view>
@@ -50,6 +53,9 @@
                     <view style="font-size: 19rpx;margin-right: 5rpx;">分享返现</view>
                     <view style="font-size: 24rpx;">{{item.shareBrok}}</view>
                 </view>
+            </view>
+            <view class="flex bott_icon" wx:if="{{item.label.length}}">
+                <view class=" common_bor {{label.type==3?'new':''}} {{label.type==2?'buy_icon':''}}" wx:for="{{item.label}}" wx:for-item="label" wx:for-index="idx" wx:key="idx">{{label.value}}</view>
             </view>
             <view wx:if="{{item.des}}" class="hot_goods">{{item.des}}</view>
         </view>

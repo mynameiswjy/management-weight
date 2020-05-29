@@ -19,7 +19,7 @@
         </scroll-view>
     </view>
     <view style="height: 178rpx;"></view>
-    <goodsListTemp id="goodsListTemp" showType="{{1}}"></goodsListTemp>
+    <goodsListTemp id="goodsListTemp" showType="{{0}}"></goodsListTemp>
     <!--<view wx:if="{{!goodsData[navIdx].length}}" class="empty">
         <image class="empty_img" mode="widthFix" src="https://www.mengniuhealth.cn/upload/empty_goods.png"></image>
         <view class="empty_txt">这个类型没有商品，换个别的试试吧</view>

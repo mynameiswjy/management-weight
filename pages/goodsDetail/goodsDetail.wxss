@@ -94,54 +94,44 @@
 }
 
 .price_wrap {
-    margin-top: 20rpx;
-    justify-content: space-between;
+    margin-top: 30rpx;
     align-items: center;
-}
-
-.price {
-    margin-left: 30rpx;
+    margin-left: 20rpx;
 }
 
 .actual_price {
     color: #CC3C25;
     font-weight: 600;
-    margin-bottom: 24rpx;
-    line-height: 1;
+    line-height: 45rpx;
 }
 
 .share_price {
-    width: 277rpx;
     line-height: 45rpx;
     font-size: 29rpx;
-    color: #fff;
+    color: #FF6F05;
     text-align: center;
-    background-color: #CC3C25;
     border-radius: 6rpx;
+    border: 1rpx solid #FF6F05;
+    padding: 0 10rpx;
+    margin-left: 30rpx;
 }
 
 .share_btn {
-    width: 319rpx;
-    height: 62rpx;
-    border-radius: 12rpx 0 0 12rpx;
-    background-color: #EDEDED;
-    align-items: center;
-    font-size: 39rpx;
-    color: #858383;
-    justify-content: center;
+    position: fixed;
+    bottom: 250rpx;
+    right: 20rpx;
+    background-color: rgba(255,255,255, 0.8);
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 80rpx;
+    border: 1rpx solid #4e4e4e;
 }
 
 .iconfenxiang {
     font-size: 39rpx;
-    line-height: 62rpx;
-    margin-left: 20rpx;
-}
-
-.goods_name {
-    max-width: 705rpx;
-    font-size: 30rpx;
-    line-height: 39rpx;
-    font-weight: 600;
+    color: #333;
+    margin: 0 auto;
+    line-height: 80rpx;
 }
 
 .line_clamp {
@@ -153,12 +143,20 @@
     -webkit-line-clamp:2; 
 }
 
+.goods_name {
+    max-width: 710rpx;
+    font-size: 30rpx;
+    line-height: 39rpx;
+    font-weight: 600;
+    margin: 30rpx 20rpx;
+}
+
 .active {
     width: 740rpx;
     height: 66rpx;
     border-radius: 12rpx;
     background-color: #F9EEDA;
-    margin:  0 auto 8rpx;
+    margin:  0 auto 30rpx;
     align-items: center;
     justify-content: space-around;
 }
@@ -191,7 +189,7 @@
 }
 
 .user_select .txt {
-    font-size: 38rpx;
+    font-size: 30rpx;
     font-weight: 600;
     color: #1A1A1A;
     margin-left: 30rpx;

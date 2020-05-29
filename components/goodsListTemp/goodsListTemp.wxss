@@ -57,7 +57,6 @@
 .price {
     align-items: center;
     margin-left: 20rpx;
-    margin-bottom: 30rpx;
 }
 
 .actual_price {
@@ -89,24 +88,31 @@
     color: #2E97F5;
     font-size: 24rpx;
     text-align: center;
-    margin-bottom: 30rpx;
+    margin-bottom: 20rpx;
 }
 
-/*
-.left{
-
-    float:left;
-
-}
-
-.listLeft,.listRight{
-
-    width: 340rpx;
-
-}
-
-.listRight{
-
+.bott_icon {
+    font-size: 22rpx;
+    margin-top: 12rpx;
     margin-left: 20rpx;
+    margin-bottom: 20rpx;
+}
 
-}*/
+.common_bor {
+    color: #c1bbbb;
+    padding: 2rpx 15rpx;
+    border: 1rpx solid #c1bbbb;
+    border-radius: 32rpx;
+    margin-right: 10rpx;
+    line-height: 1;
+}
+
+.new {
+    color: #00FED8;
+    border: 1rpx solid #00FED8;
+}
+
+.buy_icon {
+    color: #3D86FF;
+    border: 1rpx solid #3D86FF;
+}

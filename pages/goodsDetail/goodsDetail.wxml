@@ -22,17 +22,11 @@
             <view class="indicator">{{currentIdx+1}}/{{goodsInfo.goodsImgUrls.length}}</view>
         </view>
         <view class="flex price_wrap">
-            <view class="price">
-                <view class="actual_price">
-                    <text style="font-size: 30rpx">¥</text>
-                    <text style="font-size: 38rpx;">{{goodsInfo.compostCashPrice}}</text>
-                </view>
-                <view class="share_price">分享返现：¥{{goodsInfo.shareBrok}}</view>
+            <view class="actual_price">
+                <text style="font-size: 25rpx">¥</text>
+                <text style="font-size: 38rpx;">{{goodsInfo.compostCashPrice}}</text>
             </view>
-            <view class="share_btn flex" bindtap="shareBtn">
-                <view>分享给亲友</view>
-                <view class="iconfont iconfenxiang"></view>
-            </view>
+            <view class="share_price">分享返现：¥{{goodsInfo.shareBrok}}</view>
         </view>
         <view class="goods_name line_clamp">{{goodsInfo.name}}</view>
         <view class="active flex">
@@ -64,7 +58,7 @@
             </block>
         </view>
         <view class="user_select flex">
-            <view class="txt txt1">服务</view>
+            <view class="txt txt1">运费</view>
             <view class="txt3">在线支付运费</view>
         </view>
     </view>
@@ -149,14 +143,15 @@
 <view class="goods_btn flex">
     <button open-type="contact" hover-class="none" class="server">
         <view class="iconfont iconkefu"></view>
-        <view>联系客服</view>
     </button>
     <view class="cart server" bindtap="gotoBtn">
         <view class="iconfont icongouwuche1"></view>
-        <view>购物车</view>
     </view>
     <view class="common_btn join_cart" bindtap="selectData" data-type="addCard">加入购物车</view>
     <view class="common_btn buy_btn" bindtap="selectData" data-type="buy">立即购买</view>
+</view>
+<view class="share_btn flex" bindtap="shareBtn">
+    <view class="iconfont iconfenxiang"></view>
 </view>
 <Login id="login" bindsuccCallBack="successCallback"></Login>
 <shareTemp id="shareTemp" bindshareBtn="shareBtn"></shareTemp>

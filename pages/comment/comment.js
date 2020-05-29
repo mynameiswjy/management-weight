@@ -19,11 +19,15 @@ Page({
   },
 
   initData() {
+    wx.showLoading({
+      title: '加载中',
+    });
     discussList({
       goodsSno: this.data.goodsSno,
       page: this.data.pageIdx,
       pageSize: 10
     }).then((res) => {
+      wx.hideLoading();
       if (res.data.code === 200) {
         const data = res.data.object;
         if (data.length) {

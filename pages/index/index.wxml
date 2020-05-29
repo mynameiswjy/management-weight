@@ -1,9 +1,17 @@
 <scroll-view scroll-y="true" bindscroll="bindscrollchange" class="scroll_wrap" style="height: 100vh" lower-threshold="50" bindscrolltolower="tolower" scroll-into-view="{{intoView}}">
-  <view class="top_bg"></view>
-  <view class="flex search" bindtap="goSearchPage">
-    <view class="iconfont iconsousuo1"></view>
-    <view class="search_input">点击这里搜索想要的商品</view>
+  <view class="top_bg">
+    <view class="top_bg_content"></view>
   </view>
+  <view class="flex" style="align-items: center;">
+    <view class="flex search" bindtap="goSearchPage">
+      <view class="iconfont iconsousuo1"></view>
+      <view class="search_input">点击这里搜索想要的商品</view>
+    </view>
+    <button open-type="contact" hover-class="none">
+      <view class="iconfont iconkefu2"></view>
+    </button>
+  </view>
+
   <view class="banner">
     <swiper class="swiper" bindchange="swiperChange" autoplay="true" interval="3000" circular="true">
       <block wx:for="{{indexData.banner}}" wx:key="index">
@@ -16,26 +24,8 @@
       <view class="{{bannerCurIdx == index ? 'slot-item-active' : 'slot-item'}}" wx:for="{{indexData.banner.length}}" wx:key="slot"></view>
     </view>
   </view>
-  <view class="flex promise">
-    <view class="item flex" style="margin-left: 50rpx;">
-      <image class="image" mode="widthFix" src="{{imgUrl}}/upload/index/promise.png"></image>
-      <view class="txt">自营商品</view>
-    </view>
-    <view class="item flex">
-      <image class="image" mode="widthFix" src="{{imgUrl}}/upload/index/promise.png"></image>
-      <view class="txt">自营商品</view>
-    </view>
-    <view class="item flex" style="margin-right: 50rpx;">
-      <image class="image" mode="widthFix" src="{{imgUrl}}/upload/index/promise.png"></image>
-      <view class="txt">自营商品</view>
-    </view>
-  </view>
+
   <view class="small_ad">
-    <view class="flex title">
-      <view class="ad_1">{{indexData.zoneGoods.name}}</view>
-      <view class="ad_2"></view>
-      <view class="ad_3">好货不错过</view>
-    </view>
     <swiper class="ad_swiper" vertical="true" circular="true" autoplay="true">
       <block wx:for="{{indexData.zoneGoods.zoneGoodsList}}" wx:for-item="zoneGoods" wx:key="index">
         <swiper-item>
@@ -56,14 +46,6 @@
     </swiper>
   </view>
   <view class="hot_goods">
-    <!--<view class="title flex">
-      <image class="hot_img" mode="widthFix" src="{{imgUrl}}/upload/index/hot_goods_icon.png"></image>
-      <view>爆款商品</view>
-      <view class="more_hot_goods flex" bindtap="goToGoodsList" data-zone-type="HOT_STYLE_GOODS">
-        <view>更多爆款</view>
-        <view class="iconfont iconxiangyoujiantou"></view>
-      </view>
-    </view>-->
     <view class="flex hot_goods_item_wrap">
       <view
               class="hot_goods_item"
@@ -79,7 +61,7 @@
   </view>
   <view class="goods_list">
     <view style="height: 111rpx;" wx:if="{{isStop}}"></view>
-    <view class="flex {{isStop ? 'goods_list_nav' : ''}}" id="goods-list-title">
+    <view class="flex {{isStop ? 'goods_list_nav' : ''}}" id="goods-list-title" style="margin-bottom: 20rpx;">
       <view class="flex goods_list_title" wx:for="{{goodsListTitle}}" wx:key="id">
         <view class="list_title" bindtap="selectGoodsType" data-index="{{index}}" data-type="{{item.type}}">
           <view class="goods_txt1 {{TitleIdx == index ? 'goods_txt3' : ''}}">{{item.name}}</view>
