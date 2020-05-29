@@ -1,5 +1,5 @@
 page {
-    background: linear-gradient(175deg,rgba(221,61,42,1),rgba(234,110,56,1));
+    background: linear-gradient(175deg,rgba(221,61,42,1) 0%,rgba(234,110,56,1) 100%);
 }
 
 .imgs {
