@@ -99,3 +99,12 @@ button::after {
     overflow: hidden;
     word-break: break-all;
 }
+
+.iphoneX .full_up {
+    background-color: #fff;
+    z-index: 1000;
+    height: 60rpx;
+    position: fixed;
+    bottom: 0;
+    width: 750rpx;
+}

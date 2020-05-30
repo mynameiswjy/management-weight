@@ -12,11 +12,20 @@ App({
       userName: ''
     },
     IsRefresh: false,
-    userSelectInfo: null
+    userSelectInfo: null,
+    iphoneX: false
   },
   onLaunch () {
     const that = this;
-    this.globalData.SystemInfo = wx.getSystemInfoSync();
+    const SystemInfo = wx.getSystemInfoSync();
+    this.globalData.SystemInfo = SystemInfo;
+    const systemInfo = SystemInfo.system.substring(0, 3);
+    const iOS = systemInfo === 'iOS';
+    const above = SystemInfo.safeArea.top;
+    if (above > 40 && iOS) {
+      that.globalData.iphoneX = true;
+    }
+
     try {
       const loginInfo = wx.getStorageSync(config.LOGININFO);
       const userInfo = wx.getStorageSync(config.UserInfo);

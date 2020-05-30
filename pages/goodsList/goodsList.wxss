@@ -7,7 +7,7 @@
     max-height: 238rpx;
     display: block;
     background-color: #666;
-    margin: 15rpx 30rpx 15rpx 15rpx;
+    margin: 10rpx 30rpx 10rpx 15rpx;
 }
 
 .goods_list .goods_right {
@@ -46,6 +46,7 @@
     color: #CD3C26;
     font-weight: 600;
     line-height: 1;
+    align-items: center;
 }
 
 .goods_price .pri1 {
@@ -55,11 +56,12 @@
 .goods_price .pri2 {
     font-size: 22rpx;
     height: 27rpx;
-    padding: 4rpx 10rpx 3rpx;
+    padding: 6rpx 10rpx 0rpx;
     color: #FF6400;
     margin-left: 15rpx;
-    border: 1rpx solid #FDBC8C;
+    border: 2rpx solid #FDBC8C;
     border-radius: 22rpx;
+    line-height: 1;
 }
 
 .bott_icon {

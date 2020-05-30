@@ -26,7 +26,6 @@ page {
 .iconkefu2 {
     font-size: 49rpx;
     color: #fff;
-    margin-top: 12rpx;
 }
 
 .search {
@@ -155,7 +154,7 @@ page {
     padding-top: 20rpx;
     font-size: 28rpx;
     color: #E44A3D;
-    width: 162rpx;
+    width: 100rpx;
     text-align: center;
     line-height: 33rpx;
     position: absolute;

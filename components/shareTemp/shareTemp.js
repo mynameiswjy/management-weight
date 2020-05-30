@@ -11,10 +11,14 @@ Component({
     openShareTemp: false,
     goodsData: null,
     IsShareImg: false,
-    shareImg: ''
+    shareImg: '',
+    top: 0
   },
-	lifetimes() {
-
+  attached() {
+    const SystemInfo = app.globalData.SystemInfo;
+    this.setData({
+      top: SystemInfo.statusBarHeight
+    })
   },
   methods: {
     saveImgBtn() {
@@ -22,15 +26,15 @@ Component({
         title: '保存中，请耐心等待',
         mask: true
       });
-      utils.saveMinappToPhoto(this.data.shareImg, () => {
+      utils.saveMinappToPhoto(this.data.savaImgs, () => { // savaImgs
         this.closeImgs()
-      })
+      }, 0)
     },
 
     canselBtn(e) {
       this.data.goodsData = e;
       this.setData({
-        openShareTemp: e.isOpen === 1 ? true : false
+        openShareTemp: e.isOpen === 1
       })
     },
 
@@ -70,7 +74,8 @@ Component({
           this.setData({
             IsShareImg: true,
             openShareTemp: false,
-            shareImg: res.data.object[0]
+            shareImg: res.data.object[0],
+            savaImgs: res.data.object
           })
         }
       })

@@ -1,0 +1,47 @@
+page {
+    background: linear-gradient(175deg,rgba(221,61,42,1) 0%,rgba(234,110,56,1) 100%);
+}
+
+.imgs {
+    width: 120rpx;
+    max-height: 120rpx;
+    border-radius: 106rpx;
+    margin: 40rpx;
+}
+
+.title {
+    font-size: 34rpx;
+}
+
+.title_rule {
+    font-size: 40rpx;
+    font-weight: 600;
+    margin-top: 30rpx;
+}
+
+.title_wrap {
+    color: #fff;
+    line-height: 1;
+    margin-top: 46rpx;
+}
+
+.content  {
+    width: 640rpx;
+    /*height: 500rpx;*/
+    background-color: #fff;
+    margin: 30rpx auto;
+    padding: 30rpx 25rpx;
+    text-align: justify;
+    font-size: 30rpx;
+    color: #282828;
+}
+
+.content_title {
+    line-height: 1;
+    margin-bottom: 40rpx;
+}
+
+.content_val {
+    margin-bottom: 30rpx;
+    line-height: 36rpx;
+}

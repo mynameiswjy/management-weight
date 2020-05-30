@@ -17,7 +17,7 @@ Page({
   },
 
   onShow: function () {
-    this.initData()
+    this.initData();
     this.goodsList()
   },
 
@@ -61,8 +61,12 @@ Page({
     });
     cardList({custSno: app.globalData.loginInfo.custSno}).then((res) => {
       wx.hideLoading();
+      let isAllSelect = res.data.object.filter((item) => {
+        return item.isSelect === 'N'
+      });
       this.setData({
-        cardList: res.data.object
+        cardList: res.data.object,
+        isAllSelect: !isAllSelect.length
       })
     })
   },
@@ -156,7 +160,7 @@ Page({
     });
     this.setData({
       cardList: cardList,
-      isAllSelect: list.length ? false : true
+      isAllSelect: !list.length
     })
   },
 

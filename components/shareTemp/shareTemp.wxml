@@ -17,19 +17,14 @@
 
 <view wx:if="{{IsShareImg}}" class="share_img_wrap">
     <view class="posterCtx-preview">
-        <view class="close-btn" bindtap="closeImgs">
+        <view class="close-btn" bindtap="closeImgs" style="top: {{top+120}}rpx;">
             <image src="http://img02.exam8.com/img2017/minapp/other/icon_poster-close2.png" mode="widthFix"></image>
         </view>
-        <image src="{{shareImg}}" bindload="bindload" mode="widthFix" class="posterCtx-preview-image" bindtap="previewImage"></image>
+        <image src="{{shareImg}}" style="margin-top: {{top+140}}rpx;" bindload="bindload" mode="widthFix" class="posterCtx-preview-image" bindtap="previewImage"></image>
         <image src="http://img02.exam8.com/img2017/minapp/other/icon_poster_tap_tip.png" class="image_tip" mode="widthFix"></image>
         <view class="posterCtx-btn" bindtap="saveImgBtn">
             <text class="iconfont"></text>
-            <text class="">分享给好友</text>
+            <text class="">保存素材图</text>
         </view>
-    </view>
-
-
-    <view class='posterCtx-btm-image-box'>
-        <image src='{{shareImg}}' mode='widthFix' class='posterCtx-btm-image'></image>
     </view>
 </view>

@@ -75,12 +75,12 @@
 }
 
 .share_price {
-    padding: 3rpx 4rpx;
+    padding: 0 4rpx;
     border: 2rpx solid #EB8533;
     border-radius: 6rpx;
     color: #EB8533;
     align-items: center;
-    line-height: 1;
+    line-height: 26rpx;
     max-height: 31rpx;
 }
 
@@ -100,11 +100,11 @@
 
 .common_bor {
     color: #c1bbbb;
-    padding: 2rpx 15rpx;
+    padding: 0 15rpx;
     border: 1rpx solid #c1bbbb;
     border-radius: 32rpx;
     margin-right: 10rpx;
-    line-height: 1;
+    line-height: 26rpx;
 }
 
 .new {

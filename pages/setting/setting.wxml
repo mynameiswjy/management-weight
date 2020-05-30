@@ -22,5 +22,3 @@
 </view>
 
 <view class="logout_btn" bindtap="logoutBtn">退出登录</view>
-
-<maskTemp id="maskTemp"></maskTemp>

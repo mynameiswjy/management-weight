@@ -25,7 +25,9 @@ Page({
     scrollTops: null,
     isEnd: false,
     userSelect: {},
-    currentIdx: 0
+    currentIdx: 0,
+    estimateList: [],
+    iphoneX: app.globalData.iphoneX
   },
 
   analyticParam(options) {
@@ -104,6 +106,9 @@ Page({
       }).then((comment) => {
         if (comment.data.code === 200) {
           this.selectComponent("#estimateTemp").commentlist(comment.data.object)
+          this.setData({
+            estimateList: comment.data.object
+          })
         }
       });
     })
@@ -400,6 +405,10 @@ Page({
 
   bindscrolltolower() {
     this.recommendList()
+  },
+
+  moreExpress() {
+    this.selectComponent("#estimateTemp").checkAll()
   },
 
   /**

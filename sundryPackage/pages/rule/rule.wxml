@@ -1,0 +1,22 @@
+<view class="flex top">
+    <image class="imgs" src="{{BASE_URL + '/upload/20200525213554.png'}}" mode="widthFix"></image>
+    <view class="title_wrap">
+        <view class="title">淘客精选好物</view>
+        <view class="title_rule">平台规则及行为规范</view>
+    </view>
+</view>
+
+<view class="content">
+    <view wx:for="{{list}}" wx:key="index">
+        <view class="content_title">{{item.title}}</view>
+        <view class="content_val" wx:for="{{item.value}}" wx:for-item="val" for-index="isx">{{index+1}}、{{val}}</view>
+    </view>
+    <view class="content_title">四、举报放式所有投诉内容请以下格式发送到邮箱。</view>
+    <view class="content_title">投诉邮箱：1372807260@qq.com</view>
+    <view class="content_val">邮件格式：</view>
+    <view class="content_val">1、投诉原因；</view>
+    <view class="content_val">2、投诉人联系放式；</view>
+    <view class="content_val">3、投诉证据；</view>
+    <view class="content_val">请谨慎投诉，如果发现存在恶意行为或虚假投诉，会对投诉 者账号进行封号处理。 如果发现抹黑平台信息，不要传播，将信息发送到邮箱，官 方律师会更进处理，追究其法律责任。</view>
+</view>
+<view style="height: 30rpx;"></view>

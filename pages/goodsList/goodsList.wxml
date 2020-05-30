@@ -16,7 +16,7 @@
             </view>
         </view>
     </view>
-    <view style="height: 18rpx;background-color: #f8f8f8;" wx:if="{{goodsList.length!==index+1}}"></view>
+    <view style="height: 1rpx;background-color: #f8f8f8;" wx:if="{{goodsList.length!==index+1}}"></view>
 </block>
 
 <block wx:if="{{goodsList.length}}">

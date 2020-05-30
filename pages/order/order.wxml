@@ -17,7 +17,7 @@
         <view class="flex shop_title">
             <view class="flex">
                 <view class="iconfont icondianpu"></view>
-                <view>官方旗舰店</view>
+<!--                <view>官方旗舰店</view>-->
             </view>
             <view class="flex cancel">
                 <view wx:if="{{goodsInfo.orderState === 'INIT'}}">待付款</view>
@@ -65,7 +65,7 @@
     </view>
     <view class="empty" wx:if="{{!AllOrderList[navList[navIdx].type?navList[navIdx].type:'allList'].length}}">
         <image mode="widthFix" class="empty_img" src="https://www.mengniuhealth.cn/upload/empty_order.png"></image>
-        <view class="empty_txt">咱无订单</view>
+        <view class="empty_txt">暂无订单</view>
     </view>
     <block wx:if="{{AllOrderList[navList[navIdx].type?navList[navIdx].type:'allList'].length}}">
         <view class="is-end" wx:if="{{IsEnd}}">已经到底啦</view>

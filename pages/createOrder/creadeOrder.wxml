@@ -20,7 +20,7 @@
         <view class="goods_detail">
             <view class="shop_title flex">
                 <view class="iconfont icondianpu"></view>
-                <view>官方旗舰店</view>
+                <view></view>
             </view>
             <view class="flex goods_info" wx:for="{{goodsInfo.goodsInfoBeans}}" wx:key="goodsSno">
                 <image class="goods_img" mode="widthFix" src="{{item.goodsImageUrl}}"></image>
@@ -70,6 +70,7 @@
         </view>
         <view class="submit" bindtap="submit">提交订单</view>
     </view>
+    <view style="height: 120rpx;"></view>
 </block>
 <block wx:if="{{successPay}}">
     <view class="pay_success">

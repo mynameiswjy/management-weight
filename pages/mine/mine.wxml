@@ -3,14 +3,14 @@
     <view class="user_name">登录</view>
 </button>
 <button class="flex user_info" bindtap="" wx:else>
-    <image mode="widthFix" src="{{userInfo.avatarUrl}}" class="avatar"></image>
+    <image mode="widthFix" src="{{userInfo.avatarUrl || baseUrl + '/upload/20200525213554.png'}}" class="avatar"></image>
     <view class="user_name user_name1">
         <view>{{userInfo.NickName}}</view>
         <button hover-class="none" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="update_info">更新资料</button>
     </view>
     <view class="flex grade">
         <view class="iconfont iconicon-"></view>
-        <view>高级团长</view>
+        <view>合伙人</view>
     </view>
     <view class="setting flex" catchtap="logout">
         <text class="iconfont iconshezhi"></text>
@@ -45,7 +45,7 @@
     <view class="member_item">
         <image class="member_img" mode="widthFix" src="{{imgUrl}}/upload/mine/wechat.png"></image>
         <view class="txt1">导师微信</view>
-        <view class="txt2">看看六角恐龙</view>
+        <view class="txt2">taok336</view>
     </view>
     <view class="member_item">
         <image class="member_img" mode="widthFix" src="{{imgUrl}}/upload/mine/course.png"></image>
@@ -87,7 +87,7 @@
         <view class="txt1">平台规则</view>
         <view class="txt2">请严格遵守</view>
     </view>
-    <view class="member_item">
+    <view class="member_item" bindtap="about">
         <image class="member_img" mode="widthFix" src="{{imgUrl}}/upload/mine/aboult.png"></image>
         <view class="txt1">关于平台</view>
         <view class="txt2">V1.0.0</view>

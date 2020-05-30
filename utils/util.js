@@ -47,37 +47,41 @@ function getMinappCodeImage(page, app, params = {}) {
   return url
 }
 
-function saveMinappToPhoto(tempFilePath, cb) {
-  return new Promise((resolve, reject) => {
-    wx.getImageInfo({
-      src: tempFilePath,
-      success: function(res) {
-        wx.saveImageToPhotosAlbum({
-          filePath: res.path,
-          success(res) {
-            resolve(res);
-            wx.hideLoading()
-            cb();
-            wx.showToast({
-              title: '保存成功',
-              icon: 'success',
-              duration: 1000
-            })
-          },
-          fail(err) {
-            reject(err)
-            wx.showToast({
-              title: '保存失败',
-              icon: 'none',
-              duration: 1000
-            })
-          }
-        })
-      },
-      fail(err) {
-        reject(err)
-      }
-    })
+function saveMinappToPhoto(imgs, cb, idx) {
+  let tempFilePath;
+  if (!imgs.length) {
+    wx.hideLoading();
+    wx.showToast({
+      title: '共计' + idx + '张图片保存成功',
+      icon: 'none',
+      duration: 1000
+    });
+    return false;
+  } else {
+    idx++;
+    tempFilePath = imgs[0];
+    imgs.splice(0, 1)
+  }
+  wx.getImageInfo({
+    src: tempFilePath,
+    success: function(res) {
+      wx.saveImageToPhotosAlbum({
+        filePath: res.path,
+        success(res) {
+          saveMinappToPhoto(imgs, cb, idx)
+        },
+        fail(err) {
+          wx.showToast({
+            title: '保存失败',
+            icon: 'none',
+            duration: 1000
+          })
+        }
+      })
+    },
+    fail(err) {
+      reject(err)
+    }
   })
 }
 

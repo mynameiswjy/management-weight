@@ -1,5 +1,6 @@
-import {login, logout} from "../../api/index"
+import {login} from "../../api/index"
 import {oderFind} from "../../api/orders";
+import {UserGrade} from "../../api/comment";
 const config = require('../../config.globle');
 const app = getApp();
 
@@ -7,7 +8,8 @@ Page({
 
   data: {
     imgUrl: config.BASE_URL,
-    hasLogin: false
+    hasLogin: false,
+    baseUrl: config.BASE_URL
   },
 
   /**
@@ -15,6 +17,17 @@ Page({
    */
   onLoad: function (options) {
     wx.hideShareMenu();
+    this.UserGrade()
+  },
+
+  UserGrade() {
+    wx.login({
+      success(res) {
+        UserGrade({code: res.code}).then((e) => {
+          console.log(e);
+        })
+      }
+    })
   },
 
   withdrawBtn() {
@@ -170,13 +183,19 @@ Page({
 
   appRule() {
     wx.navigateTo({
-      url: '/sundryPackage/pages/about/about'
+      url: '/sundryPackage/pages/rule/rule'
     })
   },
 
   FAQ() {
     wx.navigateTo({
       url: '/sundryPackage/pages/FAQ/FAQ'
+    })
+  },
+
+  about() {
+    wx.navigateTo({
+      url: '/sundryPackage/pages/about/about'
     })
   },
 
