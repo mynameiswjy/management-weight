@@ -1,4 +1,4 @@
-import {login} from "../../api/index";
+const config = require("../../config.globle");
 
 let app = getApp();
 
@@ -23,6 +23,7 @@ Component({
         value: '2、当多个用户为统一打卡数据时，将并列为同一名次'
       }
     ],
+    BASE_URL: config.BASE_URL
   },
 	lifetimes() {
 
@@ -31,6 +32,25 @@ Component({
     showTemp() {
       this.setData({
         showUserInfo: true
+      })
+    },
+    copyWechat() {
+      const that = this;
+      wx.setClipboardData({
+        data: 'taok336',
+        success: function (res) {
+          that.setData({
+            showUserInfo: false
+          });
+          wx.showToast({
+            title: '复制成功'
+          })
+        }
+      })
+    },
+    hideTemp() {
+      this.setData({
+        showUserInfo: false
       })
     }
   }

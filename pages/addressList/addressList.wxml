@@ -3,8 +3,8 @@
     <view>还没有存地址</view>
 </block>
 <block wx:if="{{addrList.length}}">
-    <view class="address_item" wx:for="{{addrList}}" wx:key="index">
-        <image class="close_icon" bindtap="closeTemp" data-sno="{{item.sno}}" src="http://img02.exam8.com/img2017/minapp/icon/close@2x.png"></image>
+    <view class="address_item" wx:for="{{addrList}}" wx:key="index" bindtap="getSno" data-item="{{item}}">
+        <image class="close_icon" catchtap="closeTemp" data-sno="{{item.sno}}" src="http://img02.exam8.com/img2017/minapp/icon/close@2x.png"></image>
         <view class="flex top">
             <view class="addr_name">{{item.cseName}}</view>
             <view class="addr_phone">{{item.csePhone}}</view>

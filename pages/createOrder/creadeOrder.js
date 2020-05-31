@@ -47,7 +47,7 @@ Page({
 
   onShow: function () {
     if (this.data.IsRefresh) {
-      this.orderData()
+      this.initData(this.data.defaultAddData)
     }
   },
 
@@ -58,41 +58,45 @@ Page({
   modifiyAddr() {
     this.data.IsRefresh = true;
     wx.navigateTo({
-      url: '/pages/addressList/addressList'
+      url: '/pages/addressList/addressList?from=order'
     })
   },
 
   orderData() {
+    Promise.all([this.addrDefaultedData()]).then((addr) => {
+      this.initData(addr[0])
+    })
+  },
+
+  initData(addr) {
     wx.showLoading({
       title: '加载中',
     });
-    Promise.all([this.addrDefaultedData()]).then((addr) => {
-      createOrder({
-        custSno: app.globalData.loginInfo.custSno,
-        cseInfoSno: addr[0].sno,
-        goodsDetails: this.data.userSelectInfo
-      }).then((res) => {
-        if (res.data.code === 200) {
-          this.setData({
-            orderInfo: res.data.object
-          }, () => {
-            wx.hideLoading()
-          })
-        } else {
-          wx.showModal({
-            title: '提示',
-            content: '所选商品型号不存在，请更换！',
-            showCancel: false,
-            success (res) {
-              if (res.confirm) {
-                wx.navigateBack({
-                  delta: 1
-                })
-              }
+    createOrder({
+      custSno: app.globalData.loginInfo.custSno,
+      cseInfoSno: addr.sno,
+      goodsDetails: this.data.userSelectInfo
+    }).then((res) => {
+      if (res.data.code === 200) {
+        this.setData({
+          orderInfo: res.data.object
+        }, () => {
+          wx.hideLoading()
+        })
+      } else {
+        wx.showModal({
+          title: '提示',
+          content: '所选商品型号不存在，请更换！',
+          showCancel: false,
+          success (res) {
+            if (res.confirm) {
+              wx.navigateBack({
+                delta: 1
+              })
             }
-          })
-        }
-      })
+          }
+        })
+      }
     })
   },
 

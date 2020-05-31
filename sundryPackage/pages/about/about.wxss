@@ -23,3 +23,11 @@
     text-align: center;
     color: #999;
 }
+
+.tetx1 {
+    font-size: 30rpx;
+    color: #282828;
+    text-align: center;
+    margin-top: 15rpx;
+    font-weight: 600;
+}

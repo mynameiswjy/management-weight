@@ -1,3 +1,5 @@
+@import "../../iconfont.wxss";
+
 .mask_wrap {
   width: 750rpx;
   height: 100%;
@@ -56,4 +58,68 @@
   max-width: 520rpx;
   line-height: 40rpx;
   margin-left: 40rpx;
+}
+
+.resource_content {
+  width: 600rpx;
+  max-height: 598rpx;
+  background: #FFFFFF;
+  border-radius: 14rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.iconguanbi {
+  font-size: 23rpx;
+  color: #ccc;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 30rpx 30rpx 0 0;
+}
+
+.resource_title {
+  font-size: 34rpx;
+  color: #333333;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 34rpx;
+  margin-top: 56rpx;
+  margin-bottom: 48rpx;
+}
+
+.resource_image {
+  width: 130rpx;
+  max-height: 130rpx;
+  background-color: #999999;
+  display: block;
+  margin: 0 auto 26rpx;
+  border-radius: 65rpx;
+}
+
+.resource_txt {
+  font-size: 30rpx;
+  color: #666666;
+  text-align: center;
+  line-height: 30rpx;
+}
+
+.iconweixin {
+  font-size: 26rpx;
+  margin-right: 15rpx;
+  color: #1AAD1A;
+}
+
+.resource_btn {
+  background: #E44A3D;
+  border-radius: 100rpx;
+  width: 430rpx;
+  height: 80rpx;
+  font-size: 32rpx;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 80rpx;
+  margin: 60rpx auto;
 }

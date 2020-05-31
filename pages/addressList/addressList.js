@@ -2,18 +2,37 @@ import {addrList, setDefault, deleteAddr, wechatAddr} from "../../api/address"
 const app = getApp();
 
 Page({
-
   data: {
     addrList: null,
-    isEmpty: false
+    isEmpty: false,
+    pageFrom: ''
   },
 
   onLoad: function (options) {
+    this.setData({
+      options
+    });
     this.initData()
   },
 
   onShow: function () {
 
+  },
+
+  getSno(e) {
+    if (this.data.options.from !== 'order') {
+      return
+    }
+    const {item} = e.currentTarget.dataset;
+    var pages = getCurrentPages();
+    var prevPage = pages[pages.length - 2];
+    prevPage.setData({
+      defaultAddData: item
+    }, () => {
+      wx.navigateBack({
+        delta: 1
+      })
+    })
   },
 
   initData() {

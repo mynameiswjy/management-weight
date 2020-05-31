@@ -1,8 +1,13 @@
 <block wx:if="{{goodsData.length}}">
     <view class="nav_top">
-        <view class="search flex" bindtap="goSearchPage">
-            <view class="iconfont iconsousuo1"></view>
-            <view class="search_input">点击这里搜索想要的商品</view>
+        <view class="flex" style="align-items: flex-end;">
+            <view class="flex search" bindtap="goSearchPage">
+                <view class="iconfont iconsousuo1"></view>
+                <view class="search_input">点击这里搜索想要的商品</view>
+            </view>
+            <button open-type="contact" hover-class="none">
+                <view class="iconfont iconkefu2"></view>
+            </button>
         </view>
         <scroll-view scroll-x="true" class="nav_scroll">
             <view class="nav_bar flex" id="scroll-view">

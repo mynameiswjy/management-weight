@@ -27,7 +27,6 @@
 }
 
 .user_info .grade {
-    width: 165rpx;
     height: 37rpx;
     border-radius: 8rpx;
     background-color: #141414;
@@ -36,12 +35,21 @@
     color: #fff;
     align-items: center;
     justify-content: center;
+    padding: 0 15rpx;
 }
 
 .iconicon- {
     font-size: 30rpx;
     color: #DEE6EA;
     margin-right: 8rpx;
+}
+
+.grade_icon {
+    color: #FF545A;
+}
+
+.grade_icon1 {
+    color: #FFDB58;
 }
 
 .withdraw {

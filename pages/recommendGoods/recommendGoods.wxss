@@ -11,12 +11,20 @@ page {
 }
 
 .search {
-    width: 690rpx;
-    height: 57rpx;
+    width: 616rpx;
+    height: 55rpx;
+    border: 1rpx solid #4e4e4e;
     background-color: #fff;
     border-radius: 30rpx;
     margin: 21rpx 0 0rpx 30rpx;
+    font-size: 28rpx;
     color: #BCBCBC;
+}
+
+.iconkefu2 {
+    font-size: 49rpx;
+    color: #282828;
+    margin-left: 20rpx;
 }
 
 .iconsousuo1 {
@@ -29,7 +37,6 @@ page {
 .search_input {
     line-height: 57rpx;
     height: 57rpx;
-    font-size: 36rpx;
 }
 
 

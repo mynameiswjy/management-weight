@@ -169,6 +169,7 @@ page {
     background-color: #fff;
     bottom: 0;
     left: 0;
+    align-items: center;
 }
 
 .order_btn .left {
@@ -178,7 +179,6 @@ page {
     display: flex;
     align-items: center;
     line-height: 1;
-    top: 54rpx;
 }
 
 .submit {
@@ -188,10 +188,10 @@ page {
     font-size: 26rpx;
     color: #fff;
     text-align: center;
-    line-height: 120rpx;
     font-weight: 600;
     position: absolute;
     right: 0;
+    line-height: 120rpx;
 }
 
 .pay_success {

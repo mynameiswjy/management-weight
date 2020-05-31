@@ -9,7 +9,8 @@ Page({
   data: {
     imgUrl: config.BASE_URL,
     hasLogin: false,
-    baseUrl: config.BASE_URL
+    baseUrl: config.BASE_URL,
+    grade: 1
   },
 
   /**
@@ -21,12 +22,20 @@ Page({
   },
 
   UserGrade() {
-    wx.login({
-      success(res) {
-        UserGrade({code: res.code}).then((e) => {
-          console.log(e);
-        })
+    UserGrade({}).then((res) => {
+      const data = res.data.object;
+      let grade;
+      if (data.rank === '1') {
+        grade = '初级'
+      } else if (data.rank === '2') {
+        grade = '中级'
+      } else {
+        grade = '高级'
       }
+      this.setData({
+        gradeName: grade,
+        grade: data.rank
+      })
     })
   },
 
@@ -143,15 +152,6 @@ Page({
     const target = e.detail;
     console.log(e);
     if (target.errMsg === 'getUserInfo:ok') {
-      /*let data = {
-        avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/PiajxSqBRaELeFMWLr9vD1jLNYJm3BvQoIqFiacibEReCbdDNppzNgbp3zPNHTwbVB2hiaboj2eqApCicZmKrNFIJsQ/132",
-        city: "Changping",
-        country: "China",
-        gender: 1,
-        language: "zh_CN",
-        nickName: "王佳运",
-        province: "Beijing"
-      }*/
       this.setData({
         userInfo: {
           NickName: target.userInfo.nickName,
@@ -191,6 +191,10 @@ Page({
     wx.navigateTo({
       url: '/sundryPackage/pages/FAQ/FAQ'
     })
+  },
+
+  addWechat() {
+    this.selectComponent("#maskTemp").showTemp()
   },
 
   about() {
