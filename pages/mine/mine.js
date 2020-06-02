@@ -46,12 +46,14 @@ Page({
   },
 
   onShow: function () {
-    oderFind({}).then((res) => {
-      this.setData({
-        accountAmount: res.data.object.accountAmount
-      })
-    });
-    console.log(app.globalData.loginInfo);
+    if (app.globalData.loginInfo.hasLogin) {
+      oderFind({}).then((res) => {
+        this.setData({
+          accountAmount: res.data.object.accountAmount
+        })
+      });
+    }
+
     if (app.globalData.IsRefresh) {
       app.loginCallback = () => {
         this.setData({

@@ -137,7 +137,7 @@
                 </view>
                 <view style="height: 60rpx;"></view>
             </scroll-view>
-            <view class="submit_goods_btn" bindtap="confirmOrder">确定</view>
+            <view class="submit_goods_btn" style="margin-bottom: {{iphoneX?100:''}}rpx;" bindtap="confirmOrder">确定</view>
         </view>
     </view>
     <!--<view class="is-end" wx:if="{{isEnd}}">已经到底啦</view>

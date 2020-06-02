@@ -36,7 +36,7 @@ App({
         } else {
           data = {hasLogin: false}
         }
-        this.globalData.loginInfo = Object.assign({}, data, loginInfo)
+        this.globalData.loginInfo = Object.assign({}, loginInfo, data)
       } else {
         that.globalData.IsRefresh = true;
         wx.login({
