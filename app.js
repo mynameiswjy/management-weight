@@ -4,16 +4,15 @@ import {getUserInfo} from "./api/index"
 App({
   globalData: {
     SystemInfo: null,
-    loginInfo: {
-      hasLogin: false
-    },
+    loginInfo: null,
     userInfo: {
       avatar: '',
       userName: ''
     },
     IsRefresh: false,
     userSelectInfo: null,
-    iphoneX: false
+    iphoneX: false,
+    hasLogin: false
   },
   onLaunch () {
     const that = this;
@@ -30,13 +29,12 @@ App({
       const loginInfo = wx.getStorageSync(config.LOGININFO);
       const userInfo = wx.getStorageSync(config.UserInfo);
       if (loginInfo) {
-        let data = {};
-        if (loginInfo.token) {
-          data = {hasLogin: true}
+        if (loginInfo.token && loginInfo.custSno) {
+          this.globalData.hasLogin = true;
+          this.globalData.loginInfo = loginInfo;
         } else {
-          data = {hasLogin: false}
+          this.globalData.hasLogin = false;
         }
-        this.globalData.loginInfo = Object.assign({}, loginInfo, data)
       } else {
         that.globalData.IsRefresh = true;
         wx.login({
@@ -45,6 +43,12 @@ App({
               const data = res.data.object;
               if (res.data.code === 200 && data.loginStatus != 'SIGNOUT') {
                 that.syncLoginInfo(data);
+              } else {
+                wx.showToast({
+                  title: '登录失败',
+                  icon: 'none',
+                  duration: 2000
+                })
               }
             })
           }
@@ -66,8 +70,9 @@ App({
     if (!data) return;
     const that = this;
     const {custSno, phoneNo, token} = data;
-    const loginInfo = {custSno, phoneNo, token, hasLogin: true};
+    const loginInfo = {custSno, phoneNo, token};
     this.globalData.loginInfo = loginInfo;
+    this.globalData.hasLogin = true;
     wx.setStorage({
       key: config.LOGININFO,
       data: loginInfo,
@@ -79,11 +84,6 @@ App({
       }
     });
     console.log('存储成功')
-    /*wx.showToast({
-      title: '存储成功',
-      icon: 'none',
-      duration: 2000
-    })*/
   },
   updateUserInfo(data) {
     if (!data) return;

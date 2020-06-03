@@ -61,7 +61,7 @@ Component({
               if (res.data.code === 200) {
                 const data = res.data.object;
                 if (data.token) {
-                  app.globalData.loginInfo.hasLogin = true;
+                  app.globalData.hasLogin = true;
                   that.setData({
                     showPopup: false
                   })

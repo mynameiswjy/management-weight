@@ -30,7 +30,7 @@ Page({
   },
 
   onLoad: function (options) {
-    if (!app.globalData.loginInfo.hasLogin) {
+    if (!app.globalData.hasLogin) {
       this.selectComponent("#login").showPopup();
       return
     }

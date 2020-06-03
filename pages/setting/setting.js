@@ -35,7 +35,7 @@ Page({
       success (res) {
         if (res.confirm) {
           logout({}).then((res) => {
-            app.globalData.loginInfo.hasLogin = false;
+            app.globalData.hasLogin = false;
             wx.removeStorage({
               key: config.LOGININFO,
               success: function(res) {

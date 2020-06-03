@@ -23,19 +23,23 @@ Page({
 
   UserGrade() {
     UserGrade({}).then((res) => {
-      const data = res.data.object;
-      let grade;
-      if (data.rank === '1') {
-        grade = '初级'
-      } else if (data.rank === '2') {
-        grade = '中级'
+      if (res.data.code === 200) {
+        const data = res.data.object;
+        let grade;
+        if (data.rank === '1') {
+          grade = '初级'
+        } else if (data.rank === '2') {
+          grade = '中级'
+        } else {
+          grade = '高级'
+        }
+        this.setData({
+          gradeName: grade,
+          grade: data.rank
+        })
       } else {
-        grade = '高级'
+
       }
-      this.setData({
-        gradeName: grade,
-        grade: data.rank
-      })
     })
   },
 
@@ -46,7 +50,7 @@ Page({
   },
 
   onShow: function () {
-    if (app.globalData.loginInfo.hasLogin) {
+    if (app.globalData.hasLogin) {
       oderFind({}).then((res) => {
         this.setData({
           accountAmount: res.data.object.accountAmount
@@ -57,7 +61,7 @@ Page({
     if (app.globalData.IsRefresh) {
       app.loginCallback = () => {
         this.setData({
-          hasLogin: app.globalData.loginInfo.hasLogin,
+          hasLogin: app.globalData.hasLogin,
           userInfo: {
             NickName: app.globalData.userInfo.nickName ? app.globalData.userInfo.nickName : app.globalData.loginInfo.phoneNo,
             avatarUrl: app.globalData.userInfo.avatarUrl ? app.globalData.userInfo.avatarUrl : ''
@@ -66,7 +70,7 @@ Page({
       }
     } else {
       this.setData({
-        hasLogin: app.globalData.loginInfo.hasLogin,
+        hasLogin: app.globalData.hasLogin,
         userInfo: {
           NickName: app.globalData.userInfo.nickName ? app.globalData.userInfo.nickName : app.globalData.loginInfo.phoneNo,
           avatarUrl: app.globalData.userInfo.avatarUrl ? app.globalData.userInfo.avatarUrl : ''
@@ -113,7 +117,7 @@ Page({
             if (res.data.code === 200) {
               const data = res.data.object;
               if (data.token) {
-                app.globalData.loginInfo.hasLogin = true;
+                app.globalData.hasLogin = true;
                 that.setData({
                   hasLogin: true,
                   userInfo: {

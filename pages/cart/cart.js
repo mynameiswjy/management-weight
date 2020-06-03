@@ -9,7 +9,8 @@ Page({
     isSelect: true,
     cardList: null,
     pageIdx: 1,
-    isEnd: false
+    isEnd: false,
+    hasLogin: false
   },
 
   onLoad: function (options) {
@@ -18,7 +19,10 @@ Page({
 
   onShow: function () {
     this.initData();
-    this.goodsList()
+    this.goodsList();
+    this.setData({
+      hasLogin: app.globalData.hasLogin
+    })
   },
 
   goodsList() {
@@ -59,7 +63,7 @@ Page({
     wx.showLoading({
       title: '加载中',
     });
-    cardList({custSno: app.globalData.loginInfo.custSno}).then((res) => {
+    cardList({}).then((res) => {
       wx.hideLoading();
       let isAllSelect = res.data.object.filter((item) => {
         return item.isSelect === 'N'
@@ -92,8 +96,7 @@ Page({
     cardEdit({
       specsGoodsSno: specsGoodsSno,
       quantity: cardList[index].quantity,
-      sno: sno,
-      custSno: app.globalData.loginInfo.custSno
+      sno: sno
     }).then((res) => {
       if (res.data.code === 200) {
         this.initData()
@@ -121,8 +124,7 @@ Page({
         if (res.confirm) {
           deleteCartGoods({
             specsGoodsSno: specsGoodsSno,
-            sno: sno,
-            custSno: app.globalData.loginInfo.custSno
+            sno: sno
           }).then((res) => {
             if (res.data.code === 200) {
               that.setData({

@@ -76,7 +76,15 @@ Page({
         if (res.confirm) {
           deleteAddr({sno: e.currentTarget.dataset.sno}).then((res) => {
             if (res.data.code === 200) {
-              that.initData()
+              that.initData();
+              if (that.data.options.from === 'order') {
+                let pages = getCurrentPages();
+                let prevPage = pages[pages.length - 2];
+                prevPage.setData({
+                  IsAllRefresh: true,
+                  defaultAddData: ''
+                })
+              }
             }
           })
         } else if (res.cancel) {

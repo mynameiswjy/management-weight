@@ -40,6 +40,7 @@ Page({
 
   onLoad: function (options) {
     options = this.analyticParam(options);
+    wx.hideShareMenu();
     wx.showLoading({
       title: '加载中',
     });
@@ -157,7 +158,7 @@ Page({
     if (e) {
       this.data.selectType = e.currentTarget.dataset.type;
     }
-    if (!app.globalData.loginInfo.hasLogin) {
+    if (!app.globalData.hasLogin) {
       this.selectComponent("#login").showPopup();
       return;
     }
@@ -419,7 +420,7 @@ Page({
   },
 
   shareBtn() {
-    if (!app.globalData.loginInfo.hasLogin) {
+    if (!app.globalData.hasLogin) {
       this.selectComponent("#login").showPopup();
       return;
     }

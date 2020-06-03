@@ -16,7 +16,8 @@ Page({
     PayNum: 0,
     pageIdx: 1,
     isEnd: false,
-    tmplIds: null
+    tmplIds: null,
+    IsAllRefresh: false
   },
 
   onLoad: function (options) {
@@ -49,10 +50,13 @@ Page({
     if (this.data.IsRefresh) {
       this.initData(this.data.defaultAddData)
     }
+    if (this.data.IsAllRefresh) {
+      this.orderData();
+    }
   },
 
   bindaddress(e) {
-    console.log(e);
+    this.orderData();
   },
 
   modifiyAddr() {
@@ -74,7 +78,7 @@ Page({
     });
     createOrder({
       custSno: app.globalData.loginInfo.custSno,
-      cseInfoSno: addr.sno,
+      cseInfoSno: (addr && addr.sno) || '',
       goodsDetails: this.data.userSelectInfo
     }).then((res) => {
       if (res.data.code === 200) {
@@ -104,11 +108,20 @@ Page({
     return new Promise((resolve, reject) => {
       addrDefaulted({custSno: app.globalData.loginInfo.custSno}).then((res) => {
         if (res.data.code === 200) {
-          this.setData({
-            defaultAddData: res.data.object,
-          });
-          resolve(res.data.object)
+          const data = res.data.object;
+          if (data) {
+            this.setData({
+              defaultAddData: data,
+              isShowAddr: false
+            });
+          } else {
+            this.setData({
+              isShowAddr: true
+            })
+          }
+          resolve(data)
         } else {
+          reject(res.data)
           this.setData({
             isShowAddr: true
           })

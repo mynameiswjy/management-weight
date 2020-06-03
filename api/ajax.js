@@ -1,14 +1,21 @@
 const config = require("../config.globle");
 const host = config.BASE_URL;
-const {token, custSno} = wx.getStorageSync(config.LOGININFO);
 
-export function requestAjaxGet(url, data = {}, cb, header = {}, err) {
+export function requestAjaxGet(url = '', data = null, cb, header = null, err) {
+  const {globalData} = getApp();
   let head = {
-    'content-type': 'application/json',
-    token: token ? token : '',
-    custSno: custSno ? custSno : ''
+    token: '',
+    custSno: ''
   };
-  head = Object.assign({}, head, header);
+  if (globalData && globalData.loginInfo) {
+    head = {
+      token: globalData.loginInfo.token,
+      custSno: globalData.loginInfo.custSno
+    };
+  }
+  head = Object.assign({
+    'content-type': 'application/json'
+  }, head, header);
   wx.request({
     url: host + url,
     data: data,
@@ -27,13 +34,21 @@ export function requestAjaxGet(url, data = {}, cb, header = {}, err) {
   })
 }
 
-export function requestAjaxPost(url, data={}, cb, header, err) {
+export function requestAjaxPost(url = '', data = null, cb, header = null, err) {
+  const {globalData} = getApp();
   let head = {
-    'content-type': 'application/json',
-    token: token ? token : '',
-    custSno: custSno ? custSno : ''
+    token: '',
+    custSno: ''
   };
-  head = Object.assign({}, head, header);
+  if (globalData && globalData.loginInfo) {
+    head = {
+      token: globalData.loginInfo.token,
+      custSno: globalData.loginInfo.custSno
+    };
+  }
+  head = Object.assign({
+    'content-type': 'application/json',
+  }, head, header);
   wx.request({
     url: host + url,
     data: data,

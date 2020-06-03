@@ -12,8 +12,7 @@ Component({
     }
   },
   data: {
-    list: [
-      {
+    list: [/*{
         avatar: config.BASE_URL + '/upload/details/default_avatar.png',
         nickName: '1688',
         graded: 3,
@@ -35,8 +34,7 @@ Component({
           '//img30.360buyimg.com/shaidan/s128x96_jfs/t1/106510/33/3264/95310/5dde08dfE88abf71b/5e6addcea7b46d0d.jpg!cc_100x100!q70.dpg.png'
         ],
         date: '2020-03-06'
-      },
-    ],
+      },*/],
     BASE_URL: config.BASE_URL
   },
   lifetimes: {
