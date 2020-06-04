@@ -33,6 +33,6 @@
             <view class="txt2">额外收益翻倍</view>
         </view>
     </view>
-    <view class="btn">立即升级</view>
+    <view class="btn" bindtap="userUpgrade">立即升级</view>
     <view style="height: 266rpx;"></view>
 </view>

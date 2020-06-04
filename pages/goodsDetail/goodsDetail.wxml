@@ -36,7 +36,7 @@
             <view class="goods_name line_clamp">{{goodsInfo.name}}</view>
             <view class="active flex">
                 <view class="rebate">下单返</view>
-                <view style="font-weight: 600;">
+                <view style="font-weight: 600;" bindtap="privilegeBtn">
                     <text style="font-size: 28rpx;color: #131313;">升级为高级团长</text>
                     <text style="font-size: 23rpx;color: #131313;">可享更多返现金额</text>
                     <!--<text style="color: #C04334;font-size: 25rpx;"> ¥ 29.12 </text>-->

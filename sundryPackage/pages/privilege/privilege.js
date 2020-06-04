@@ -1,4 +1,7 @@
+import {reqMessageStatus} from "../../../api/comment";
+
 const config = require("../../../config.globle");
+import {UserUpgrade} from "../../../api/index"
 const app = getApp();
 
 Page({
@@ -17,15 +20,47 @@ Page({
       '分享赚钱：分享好友购买商品即可赚钱',
       '月月有收入：随时可提现至微信',
       '裂变发展：滚雪球模式迅速壮大团队',
-    ]
+    ],
+    gradeData: null
   },
 
   onLoad: function (options) {
-
+    UserUpgrade({}).then((res) => {
+      if (res.data.code === 200) {
+        this.setData({
+          gradeData: res.data.object
+        })
+      }
+    })
   },
 
   onReady: function () {
 
+  },
+
+  userUpgrade() {
+    const data = this.data.gradeData;
+    if (!data) return;
+    wx.requestPayment({
+      timeStamp: data.timestamp,
+      nonceStr: data.nonceStr,
+      package: 'prepay_id=' + data.prepayId,
+      signType: 'MD5',
+      paySign: data.sign,
+      success(e) {
+        console.log(e);
+        if (e.errMsg === "requestPayment:ok") {
+          wx.showToast({
+            title: '支付成功',
+            icon: 'none',
+            duration: 1000,
+            mask: true
+          });
+        }
+      },
+      fail(err) {
+      }
+    })
   },
 
   onShow: function () {

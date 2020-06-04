@@ -408,6 +408,12 @@ Page({
     this.recommendList()
   },
 
+  privilegeBtn() {
+    wx.navigateTo({
+      url: '/sundryPackage/pages/privilege/privilege'
+    })
+  },
+
   moreExpress() {
     this.selectComponent("#estimateTemp").checkAll()
   },

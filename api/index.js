@@ -208,4 +208,14 @@ export function ShareImg (data) {
   })
 }
 
+// 分享图片
+export function UserUpgrade (data) {
+  const url = '/shop/applet/user/up';
+  return new Promise((resolve, reject) => {
+    requestAjaxPost(url, data, (res) => {
+      resolve(res)
+    })
+  })
+}
+
 
