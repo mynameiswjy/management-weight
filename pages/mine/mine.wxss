@@ -105,10 +105,10 @@
     justify-content: space-between;
 }
 
-.privilege image {
-    width: 43rpx;
-    max-height: 34rpx;
-    margin: 0 24rpx 0 34rpx;
+.privilege .pri_img {
+    margin-left: 34rpx;
+    margin-right: 15rpx;
+    font-size: 35rpx;
 }
 
 .privilege .left {

@@ -101,3 +101,12 @@ page {
 .addr_btn1 {
     background-color: #03C300;
 }
+
+.empty_addr {
+    font-size: 30rpx;
+    color: #282828;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

@@ -9,7 +9,9 @@
     </view>
     <view class="flex item">
         <view>性别</view>
-        <view class="item1">{{userInfo.gender === 1? '男':'女'}}</view>
+        <view class="item1" wx:if="{{userInfo.gender === 1}}">男</view>
+        <view class="item1" wx:elif="{{userInfo.gender === 2}}">女</view>
+        <view class="item1" wx:else>未知</view>
     </view>
     <view class="flex item">
         <view>绑定手机号</view>

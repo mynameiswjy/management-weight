@@ -55,10 +55,11 @@
 }
 
 .tab {
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     color: #747474;
     font-size: 24rpx;
+    margin: 0 50rpx;
 }
 
 .tab_item {

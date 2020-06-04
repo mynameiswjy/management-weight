@@ -1,0 +1,38 @@
+<view>
+    <view class="bg"></view>
+
+    <view class="title">淘客精选</view>
+    <view class="explain">
+        <image class="triangle" mode="widthFix" src="{{baseUrl+'/upload/privilege/triangle.png'}}"></image>
+        <image class="pre_title" mode="widthFix" src="{{baseUrl+'/upload/privilege/pre_title.png'}}"></image>
+
+        <view wx:for="{{privileList}}" wx:key="index" class="pre_item">{{item}}</view>
+
+    </view>
+    <view class="card flex">
+        <view class="card_item">
+            <image class="book_icon" src="{{baseUrl+'/upload/privilege/book_icon.png'}}"></image>
+            <view class="txt">官方培训</view>
+            <view class="txt1">一对一培训</view>
+            <view class="txt2">加入官方团长群</view>
+        </view>
+        <view class="card_item">
+            <image class="book_icon share_icon" src="{{baseUrl+'/upload/privilege/share_icon.png'}}"></image>
+            <view class="txt">邀请好友</view>
+            <view class="txt1">好友下单</view>
+            <view class="txt2">额外收入翻倍</view>
+        </view>
+        <view class="card_item">
+            <image class="book_icon tearcher_icon" src="{{baseUrl+'/upload/privilege/tearcher_icon.png'}}"></image>
+            <view class="txt">专属导师</view>
+            <view class="txt2">手把手教你省钱秘籍</view>
+        </view>
+        <view class="card_item">
+            <image class="book_icon tearcher_icon" src="{{baseUrl+'/upload/privilege/fans.png'}}"></image>
+            <view class="txt">粉丝奖励</view>
+            <view class="txt2">额外收益翻倍</view>
+        </view>
+    </view>
+    <view class="btn">立即升级</view>
+    <view style="height: 266rpx;"></view>
+</view>

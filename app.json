@@ -24,7 +24,8 @@
       "pages": [
         "pages/rule/rule",
         "pages/FAQ/FAQ",
-        "pages/about/about"
+        "pages/about/about",
+        "pages/privilege/privilege"
       ]
     }
   ],

@@ -50,13 +50,3 @@ export function reqMessageStatus (data) {
     })
   })
 }
-
-// 发送模板状态
-export function UserGrade (data) {
-  const url = '/shop/applet/user/get.do';
-  return new Promise((resolve, reject) => {
-    requestAjaxPost(url, data, (res) => {
-      resolve(res)
-    })
-  })
-}

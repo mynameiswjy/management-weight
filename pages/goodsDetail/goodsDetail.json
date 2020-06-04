@@ -1,6 +1,5 @@
 {
   "navigationBarTitleText": "商品详情",
-  "navigationStyle": "custom",
   "usingComponents": {
     "estimateTemp": "/components/estimateTemp/estimateTemp",
     "Login": "/components/Login/Login",

@@ -68,7 +68,6 @@ Page({
         }
         newZoneGoodsList.push(item);
       }
-      // data.hotStyleGoods = data.hotStyleGoods.slice(0, 4)
       data.zoneGoods.zoneGoodsList = newZoneGoodsList;
       wx.hideLoading();
       this.setData({

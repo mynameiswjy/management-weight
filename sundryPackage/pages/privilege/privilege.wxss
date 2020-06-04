@@ -1,0 +1,124 @@
+.bg {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background-color: #0e0e0e;
+    width: 750rpx;
+    z-index: -1;
+}
+
+.title {
+    font-size: 33rpx;
+    font-weight: 600;
+    color: #FEF2BA;
+    line-height: 1;
+    text-align: center;
+    margin: 30rpx auto;
+}
+
+.explain {
+    width:690rpx;
+    background: #313131;
+    border-radius: 20rpx;
+    margin: 0 auto;
+    position: relative;
+    padding-bottom: 58rpx;
+}
+
+.triangle {
+    width: 318rpx;
+    max-height: 197rpx;
+    display: block;
+    margin: 0 auto 30rpx;
+    padding-top: 30rpx;
+}
+
+.pre_title {
+    width: 593rpx;
+    height: 70rpx;
+    display: block;
+    position: absolute;
+    top: 83rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.pre_item {
+    font-size: 30rpx;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 38rpx;
+    margin-left: 88rpx;
+    color: #FEF2BA;
+}
+
+.btn {
+    width: 690rpx;
+    height: 80rpx;
+    border-radius: 45rpx;
+    border: 2rpx solid #FEF2BA;
+    text-align: center;
+    line-height: 78rpx;
+    font-size: 34rpx;
+    color: #FEF2BA;
+    position: fixed;
+    bottom: 100rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #0e0e0e;
+}
+
+.card {
+    width: 690rpx;
+    border-radius: 20rpx;
+    margin: 30rpx auto 0;
+    background: linear-gradient(90deg,rgba(255,241,203,1) 0%,rgba(255,228,158,1) 100%);
+    padding: 20rpx 0;
+    flex-wrap: wrap;
+}
+
+.book_icon {
+    width: 51rpx;
+    height: 60rpx;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 18rpx;
+}
+
+.card_item {
+    font-size: 22rpx;
+    color: #313131;
+    text-align: center;
+    width: 345rpx;
+    line-height: 1;
+}
+
+.card_item .txt {
+    font-size: 30rpx;
+    font-weight: 600;
+    margin-bottom: 8rpx;
+}
+
+.card_item .txt1 {
+    margin-bottom: 10rpx;
+}
+
+.card_item .txt2 {
+    margin-bottom: 10rpx;
+}
+
+.share_icon {
+    width: 61rpx;
+    height: 56rpx;
+    margin-bottom: 20rpx;
+}
+
+.tearcher_icon {
+    width: 64rpx;
+    height: 64rpx;
+}
+
+.fans_icon {
+    width: 64rpx;
+    height: 57rpx;
+}

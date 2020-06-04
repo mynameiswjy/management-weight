@@ -1,12 +1,12 @@
 <view class="{{iphoneX?'iphoneX':''}}">
     <scroll-view scroll-y="true" bindscroll="bindscroll" class="scroll_view" scroll-into-view="{{intoView}}" bindscrolltolower="bindscrolltolower">
-        <view class="back_home flex" style="top: {{MenuButtonTop + 4}}rpx;">
+        <!--<view class="back_home flex" style="top: {{MenuButtonTop + 4}}rpx;">
             <view class="iconfont {{options.IsShare?'iconshouye':'iconfanhui'}}" bindtap="backBtn"></view>
             <view class="back_home_bor"></view>
             <view class="iconfont iconcaidan1"></view>
-        </view>
-        <view class="nav" style="height: {{navHeight}}rpx;opacity: {{grodCoe}}">
-            <view class="flex tab" style="height: {{navHeight-statusBarHeight}}rpx;margin-top: {{statusBarHeight}}rpx;">
+        </view>-->
+        <view class="nav" style="opacity: {{grodCoe}}"><!--height: {{navHeight}}rpx;-->
+            <view class="flex tab"><!-- style="height: {{navHeight-statusBarHeight}}rpx;margin-top: {{statusBarHeight}}rpx;"-->
                 <view class="tab_item" wx:for="{{navList}}" wx:key="nav_item" bindtap="selectTab" data-index="{{index}}">
                     <view class="{{index == navIdx ? 'select_txt' : ''}}">{{item.name}}</view>
                     <view class="select_bar" wx:if="{{navIdx == index}}"></view>
@@ -37,9 +37,9 @@
             <view class="active flex">
                 <view class="rebate">下单返</view>
                 <view style="font-weight: 600;">
-                    <text style="font-size: 26rpx;color: #131313;">¥ 18.87</text>
-                    <text style="font-size: 25rpx;color: #131313;"> 成为团长可返</text>
-                    <text style="color: #C04334;font-size: 25rpx;"> ¥ 29.12 </text>
+                    <text style="font-size: 28rpx;color: #131313;">升级为高级团长</text>
+                    <text style="font-size: 23rpx;color: #131313;">可享更多返现金额</text>
+                    <!--<text style="color: #C04334;font-size: 25rpx;"> ¥ 29.12 </text>-->
                 </view>
                 <view class="look_more flex">
                     <text>立即升级</text>

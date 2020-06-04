@@ -1,5 +1,15 @@
 page {
+
+}
+
+.bg {
+    width: 750rpx;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
     background: linear-gradient(175deg,rgba(221,61,42,1) 0%,rgba(234,110,56,1) 100%);
+    z-index: -1;
 }
 
 .imgs {

@@ -69,8 +69,8 @@ App({
   syncLoginInfo(data = null) {
     if (!data) return;
     const that = this;
-    const {custSno, phoneNo, token} = data;
-    const loginInfo = {custSno, phoneNo, token};
+    const {custSno, phoneNo, token, rank} = data;
+    const loginInfo = {custSno, phoneNo, token, rank};
     this.globalData.loginInfo = loginInfo;
     this.globalData.hasLogin = true;
     wx.setStorage({

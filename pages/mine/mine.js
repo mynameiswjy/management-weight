@@ -1,6 +1,5 @@
 import {login} from "../../api/index"
 import {oderFind} from "../../api/orders";
-import {UserGrade} from "../../api/comment";
 const config = require('../../config.globle');
 const app = getApp();
 
@@ -22,24 +21,18 @@ Page({
   },
 
   UserGrade() {
-    UserGrade({}).then((res) => {
-      if (res.data.code === 200) {
-        const data = res.data.object;
-        let grade;
-        if (data.rank === '1') {
-          grade = '初级'
-        } else if (data.rank === '2') {
-          grade = '中级'
-        } else {
-          grade = '高级'
-        }
-        this.setData({
-          gradeName: grade,
-          grade: data.rank
-        })
-      } else {
-
-      }
+    const rank = app.globalData.loginInfo.rank;
+    let grade;
+    if (rank === '1') {
+      grade = '初级'
+    } else if (rank === '2') {
+      grade = '中级'
+    } else {
+      grade = '高级'
+    }
+    this.setData({
+      gradeName: grade,
+      grade: rank
     })
   },
 
@@ -184,6 +177,12 @@ Page({
   logout() {
     wx.navigateTo({
       url: '/pages/setting/setting'
+    })
+  },
+
+  privilegeBtn() {
+    wx.navigateTo({
+      url: '/sundryPackage/pages/privilege/privilege'
     })
   },
 

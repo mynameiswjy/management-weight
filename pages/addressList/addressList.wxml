@@ -1,6 +1,6 @@
 
 <block wx:if="{{isEmpty}}">
-    <view>还没有存地址</view>
+    <view class="empty_addr">收货地址列表是空的</view>
 </block>
 <block wx:if="{{addrList.length}}">
     <view class="address_item" wx:for="{{addrList}}" wx:key="index" bindtap="getSno" data-item="{{item}}">
