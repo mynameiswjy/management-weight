@@ -122,10 +122,48 @@ function requestSubscribeMessage(tmplIds, cb, err) {
   /*模板消息end*/
 }
 
+function requestPayment(data) {
+  wx.showLoading({
+    title: '加载中',
+  });
+  return new Promise((resolve, reject) => {
+    wx.requestPayment({
+      timeStamp: data.timestamp,
+      nonceStr: data.nonceStr,
+      package: 'prepay_id=' + data.prepayId,
+      signType: 'MD5',
+      paySign: data.sign,
+      success(e) {
+        wx.hideLoading();
+        if (e.errMsg === "requestPayment:ok") {
+          wx.showToast({
+            title: '支付成功',
+            icon: 'none',
+            duration: 1000,
+            mask: true
+          });
+          resolve(e)
+        }
+      },
+      fail(err) {
+        wx.hideLoading();
+        wx.showToast({
+          title: '支付失败',
+          icon: 'none',
+          duration: 1000,
+          mask: true
+        });
+        reject(err)
+      }
+    })
+  })
+}
+
 module.exports = {
   createUrlParam,
   parseUrlParam,
   getMinappCodeImage,
   saveMinappToPhoto,
-  requestSubscribeMessage
+  requestSubscribeMessage,
+  requestPayment
 };

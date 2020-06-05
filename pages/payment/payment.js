@@ -6,22 +6,22 @@ Page({
 
   data: {
     paymentRecord: null,
-    accountAmount: 0
+    accountAmount: 0,
+    pageIdx: 1,
+    IsEnd: false
   },
 
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    });
     oderFind({}).then((res) => {
       this.setData({
         accountAmount: res.data.object.accountAmount,
         occurAmount: res.data.object.occurAmount
       })
     });
-    paymentList().then((res) => {
-      this.setData({
-        paymentRecord: res.data.object
-      })
-    });
-
+    this.paymentList();
     tmplIds().then((res) => {
       if (res.data.code) {
         this.setData({
@@ -29,6 +29,30 @@ Page({
         })
       }
     })
+  },
+
+  paymentList() {
+    if (!this.data.IsEnd) {
+      paymentList({
+        pageSize: 50,
+        page: this.data.pageIdx
+      }).then((res) => {
+        wx.hideLoading();
+        if (res.data.code === 200) {
+          const data = res.data.object;
+          if (data.length) {
+            this.data.pageIdx++;
+            this.setData({
+              paymentRecord: data
+            })
+          } else {
+            this.data.IsEnd = true
+          }
+        }
+      }).catch(() => {
+        wx.hideLoading();
+      });
+    }
   },
 
   onShow: function () {
@@ -62,7 +86,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.paymentList()
   },
 
   /**

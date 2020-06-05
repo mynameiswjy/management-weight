@@ -1,13 +1,16 @@
 <view class="payment-wrap">
-    <view class="bg">
-        <view class="bg_content"></view>
-    </view>
-    <view class="payment">
-        <view class="title">可提现(元)</view>
-        <view class="money">{{accountAmount}}</view>
-        <view class="payment_money">已提现 {{occurAmount}} 元</view>
-        <view class="payment_btn" bindtap="paymentBtn">提现</view>
-        <view class="bottom">满10元提现</view>
+    <view style="position: relative">
+        <view class="bg">
+            <view class="bg_content"></view>
+        </view>
+        <view style="height: 30rpx;"></view>
+        <view class="payment">
+            <view class="title">可提现(元)</view>
+            <view class="money">{{accountAmount}}</view>
+            <view class="payment_money">已提现 {{occurAmount}} 元</view>
+            <view class="payment_btn" bindtap="paymentBtn">提现</view>
+            <view class="bottom">满10元提现</view>
+        </view>
     </view>
 
     <view class="payment_record">

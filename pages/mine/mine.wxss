@@ -140,7 +140,7 @@
 
 .member_img {
     width: 61rpx;
-    max-height: 53rpx;
+    height: 53rpx;
     display: block;
     margin:  0 auto;
 }

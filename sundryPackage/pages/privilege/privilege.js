@@ -2,6 +2,7 @@ import {reqMessageStatus} from "../../../api/comment";
 
 const config = require("../../../config.globle");
 import {UserUpgrade} from "../../../api/index"
+const utils = require("../../../utils/util");
 const app = getApp();
 
 Page({
@@ -41,25 +42,8 @@ Page({
   userUpgrade() {
     const data = this.data.gradeData;
     if (!data) return;
-    wx.requestPayment({
-      timeStamp: data.timestamp,
-      nonceStr: data.nonceStr,
-      package: 'prepay_id=' + data.prepayId,
-      signType: 'MD5',
-      paySign: data.sign,
-      success(e) {
-        console.log(e);
-        if (e.errMsg === "requestPayment:ok") {
-          wx.showToast({
-            title: '支付成功',
-            icon: 'none',
-            duration: 1000,
-            mask: true
-          });
-        }
-      },
-      fail(err) {
-      }
+    utils.requestPayment(data).then((res) => {
+      console.log(res);
     })
   },
 

@@ -171,15 +171,9 @@ Page({
       payChannel: 'WX',
       custSno: app.globalData.loginInfo.custSno
     }).then((res) => {
-      const data = res.data.object;
-      wx.requestPayment({
-        timeStamp: data.timestamp,
-        nonceStr: data.nonceStr,
-        package: 'prepay_id=' + data.prepayId,
-        signType: 'MD5',
-        paySign: data.sign,
-        success(e) {
-          console.log(e);
+      if (res.data.code === 200) {
+        const signData = res.data.object;
+        utils.requestPayment(signData).then((e) => {
           if (e.errMsg === "requestPayment:ok") {
             that.setData({
               successPay: true
@@ -189,11 +183,8 @@ Page({
             });
             that.goodsList()
           }
-        },
-        fail(err) {
-          console.log(err);
-        }
-      })
+        })
+      }
     })
   },
 
