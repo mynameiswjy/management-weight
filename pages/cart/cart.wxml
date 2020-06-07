@@ -40,7 +40,13 @@
             <view class="iconfont {{isAllSelect?'iconxuanzhong':'iconweixuanzhong'}}" bindtap="IsJoinCart"></view>
             <view>全选</view>
         </view>
-        <view class="close_account" bindtap="PayBtn">去结算</view>
+        <view class="flex total_btn">
+            <view class="total_price">
+                <text>总计：</text>
+                <text>¥{{totalPrice}}</text>
+            </view>
+            <view class="close_account" bindtap="PayBtn">去结算</view>
+        </view>
     </view>
     <view class="hot_goods flex">
         <view class="bor left_bor"></view>

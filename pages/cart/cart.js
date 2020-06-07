@@ -10,7 +10,8 @@ Page({
     cardList: null,
     pageIdx: 1,
     isEnd: false,
-    hasLogin: false
+    hasLogin: false,
+    totalPrice: 0
   },
 
   onLoad: function (options) {
@@ -66,14 +67,34 @@ Page({
     cardList({}).then((res) => {
       wx.hideLoading();
       let isAllSelect = res.data.object.filter((item) => {
+        /*if (item === 'Y') {
+          this.countPrice(item.isSelect, item.compostCashPrice, item.quantity)
+        }*/
         return item.isSelect === 'N'
       });
       this.setData({
         cardList: res.data.object,
-        isAllSelect: !isAllSelect.length
+        isAllSelect: !isAllSelect.length,
+        totalPrice: 0.00
       })
     })
   },
+
+  countPrice(isAdd, price, num) {
+    let totalPrice = this.data.totalPrice * 1;
+    price = Number(price)
+    if (isAdd === 'Y') {
+      totalPrice += price * num
+    } else {
+      if (this.data.totalPrice > 0) {
+        totalPrice -= price * num
+      }
+    }
+    this.setData({
+      totalPrice: totalPrice.toFixed(2)
+    })
+  },
+
   quantityGoods(e) {
     const {type, index} = e.currentTarget.dataset;
     const cardList = this.data.cardList;
@@ -157,6 +178,7 @@ Page({
     } else {
       cardList[index].isSelect = 'Y'
     }
+    this.countPrice(cardList[index].isSelect, cardList[index].compostCashPrice, cardList[index].quantity)
     const list = cardList.filter((item) => {
       return item.isSelect === 'N'
     });
@@ -169,16 +191,19 @@ Page({
   IsJoinCart() {
     const cardList = this.data.cardList;
     let isAllSelect = this.data.isAllSelect;
+    let totalPrice = 0;
     for (let i = 0; i < cardList.length; i++) {
       if (isAllSelect) {
         cardList[i].isSelect = 'N'
       } else {
         cardList[i].isSelect = 'Y'
+        totalPrice += Number(cardList[i].compostCashPrice) * Number(cardList[i].quantity)
       }
     }
 
     this.setData({
       isAllSelect: !isAllSelect,
+      totalPrice: !isAllSelect ? totalPrice.toFixed(2) : 0.00,
       cardList
     })
   },
