@@ -183,6 +183,13 @@ Page({
             });
             that.goodsList()
           }
+        }).catch((e) => {
+          if (e.errMsg === "requestPayment:fail cancel") {
+            console.log(e);
+            wx.redirectTo({
+              url: `/pages/order/order?navIdx=2`
+            })
+          }
         })
       }
     })

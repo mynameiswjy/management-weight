@@ -143,6 +143,8 @@ function requestPayment(data) {
             mask: true
           });
           resolve(e)
+        } else {
+          reject(e)
         }
       },
       fail(err) {

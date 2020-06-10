@@ -128,36 +128,46 @@ Page({
       payChannel: 'WX',
       custSno: app.globalData.loginInfo.custSno
     }).then((res) => {
-      const data = res.data.object;
-      wx.requestPayment({
-        timeStamp: data.timestamp,
-        nonceStr: data.nonceStr,
-        package: 'prepay_id=' + data.prepayId,
-        signType: 'MD5',
-        paySign: data.sign,
-        success(e) {
-          wx.hideLoading();
-          if (e.errMsg === "requestPayment:ok") {
-            wx.redirectTo({
-              url: `/pages/createOrder/creadeOrder?successPay=true&PayNum=${payNum}`
-            })
-          } else {
+      if (res.data.code === 200) {
+        wx.requestPayment({
+          timeStamp: data.timestamp,
+          nonceStr: data.nonceStr,
+          package: 'prepay_id=' + data.prepayId,
+          signType: 'MD5',
+          paySign: data.sign,
+          success(e) {
+            wx.hideLoading();
+            if (e.errMsg === "requestPayment:ok") {
+              wx.redirectTo({
+                url: `/pages/createOrder/creadeOrder?successPay=true&PayNum=${payNum}`
+              })
+            } else {
+              wx.showToast({
+                title: '支付失败',
+                duration: 2000,
+                mask: true
+              })
+            }
+          },
+          fail(err) {
+            wx.hideLoading();
             wx.showToast({
               title: '支付失败',
-              duration: 2000,
-              mask: true
+              icon: 'success',
+              duration: 2000
             })
           }
-        },
-        fail(err) {
-          wx.hideLoading();
-          wx.showToast({
-            title: '支付失败',
-            icon: 'success',
-            duration: 2000
-          })
-        }
-      })
+        })
+      } else {
+        wx.hideLoading();
+        wx.showToast({
+          title: '签名生成失败，请重新下单！',
+          duration: 2000,
+          icon: "none",
+          mask: true
+        })
+      }
+      const data = res.data.object;
     })
   },
 
