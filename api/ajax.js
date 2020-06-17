@@ -60,7 +60,9 @@ export function requestAjaxPost(url = '', data = null, cb, header = null, err) {
       }
     },
     fail(error) {
-      err(error)
+      if (err) {
+        err(error)
+      }
     }
   })
 }
