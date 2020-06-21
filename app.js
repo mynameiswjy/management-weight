@@ -1,5 +1,6 @@
 const config = require("./config.globle");
 import {getUserInfo} from "./api/index"
+import {manageGet} from "./api/mine"
 
 App({
   globalData: {
@@ -12,7 +13,8 @@ App({
     IsRefresh: false,
     userSelectInfo: null,
     iphoneX: false,
-    hasLogin: false
+    hasLogin: false,
+    review: false
   },
   onLaunch () {
     const that = this;
@@ -64,6 +66,14 @@ App({
         duration: 2000
       })*/
     }
+    this.manageGet();
+  },
+
+  // 审核开关
+  manageGet() {
+    manageGet({}).then((res) => {
+      this.globalData.review = res.data.object[1].status === 'Y';
+    })
   },
 
   syncLoginInfo(data = null) {

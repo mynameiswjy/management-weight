@@ -21,7 +21,7 @@
                     </swiper-item>
                 </swiper>
                 <view class="indicator">{{currentIdx+1}}/{{goodsInfo.goodsImgUrls.length}}</view>
-                <view class="share_btn1 flex" bindtap="shareBtn">
+                <view class="share_btn1 flex" bindtap="shareBtn" wx:if="{{review}}">
                     <view>分享给亲友</view>
                     <view class="iconfont iconfenxiang"></view>
                 </view>
@@ -159,7 +159,7 @@
         </view>
     </view>
     <view class="full_up"></view>
-    <view class="share_btn flex" bindtap="shareBtn">
+    <view class="share_btn flex" bindtap="shareBtn" wx:if="{{review}}">
         <view class="iconfont iconfenxiang"></view>
     </view>
     <Login id="login" bindsuccCallBack="successCallback"></Login>

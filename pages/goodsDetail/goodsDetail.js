@@ -3,6 +3,7 @@ import {discussList} from "../../api/comment"
 import { addCard } from '../../api/cart'
 const app = getApp();
 const config = require('../../config.globle');
+const utils = require("../../utils/util");
 
 Page({
 
@@ -27,19 +28,12 @@ Page({
     userSelect: {},
     currentIdx: 0,
     estimateList: [],
-    iphoneX: app.globalData.iphoneX
-  },
-
-  analyticParam(options) {
-    if (options.scene) {
-
-    } else {
-      return options
-    }
+    iphoneX: app.globalData.iphoneX,
+    review: false
   },
 
   onLoad: function (options) {
-    options = this.analyticParam(options);
+    options = utils.parseUrlParam(options);
     wx.hideShareMenu();
     wx.showLoading({
       title: '加载中',
@@ -52,7 +46,8 @@ Page({
       MenuButtonTop: Math.ceil(MenuButton.top * coe),
       navHeight: Math.ceil((MenuButton.height + MenuButton.top * 2 - statusBarHeight + 3) * coe),
       statusBarHeight: statusBarHeight * coe,
-      options
+      options,
+      review: app.globalData.review
     });
 
     this.commentData(options);
@@ -435,7 +430,10 @@ Page({
       isOpen: 1,
       goodsSno: this.data.options.goodsSno,
       page: 'pages/goodsDetail/goodsDetail',
-      scene: '1,2,3',
+      scene: utils.createUrlParam({
+        goodsSno: this.data.options.goodsSno,
+        shareCustSno: app.globalData.loginInfo.custSno
+      }),
       specsGoodsSno: goodsInfo.specsGoodsSno || goodsInfo.defaultSpecsGoodsSno
     });
   },

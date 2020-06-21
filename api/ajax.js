@@ -35,15 +35,15 @@ export function requestAjaxGet(url = '', data = null, cb, header = null, err) {
 }
 
 export function requestAjaxPost(url = '', data = null, cb, header = null, err) {
-  const {globalData} = getApp();
+  const app = getApp();
   let head = {
     token: '',
     custSno: ''
   };
-  if (globalData && globalData.loginInfo) {
+  if (app && app.globalData && app.globalData.loginInfo) {
     head = {
-      token: globalData.loginInfo.token,
-      custSno: globalData.loginInfo.custSno
+      token: app.globalData.loginInfo.token,
+      custSno: app.globalData.loginInfo.custSno
     };
   }
   head = Object.assign({

@@ -9,7 +9,8 @@ Page({
     imgUrl: config.BASE_URL,
     hasLogin: false,
     baseUrl: config.BASE_URL,
-    grade: 1
+    grade: 1,
+    review: false
   },
 
   /**
@@ -17,7 +18,10 @@ Page({
    */
   onLoad: function (options) {
     wx.hideShareMenu();
-    this.UserGrade()
+    this.UserGrade();
+    this.setData({
+      review: app.globalData.review
+    })
   },
 
   UserGrade() {

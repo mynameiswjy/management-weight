@@ -16,7 +16,7 @@
         <text class="iconfont iconshezhi"></text>
     </view>
 </button>
-<view class="withdraw">
+<view class="withdraw" wx:if="{{review}}">
     <view class="title">
         <text class="iconfont iconjianglijin2"></text>
         <text>红包奖励金</text>

@@ -1,13 +1,12 @@
 function createUrlParam(params) {
   let scene = '';
   let baseParams = {
-    "IsShare": 1,
-    "isCode": 1
+    "IsShare": 1
   }
 
   let options = Object.assign(baseParams, params)
 
-  for (var key in options) {
+  for (let key in options) {
     scene += options[key] + ','
   }
   return scene
@@ -18,10 +17,7 @@ function parseUrlParam(options, data = []) {
   if (options.scene) {
     const scene = decodeURIComponent(options.scene).split(',');
     let params = {};
-    let key = [
-      "IsShare",
-      "isCode"
-    ]
+    let key = ["IsShare"]
 
     key = key.concat(data);
 
@@ -31,7 +27,7 @@ function parseUrlParam(options, data = []) {
 
     return params
   }
-  return null
+  return options
 }
 
 function getMinappCodeImage(page, app, params = {}) {
