@@ -38,7 +38,7 @@
 </view>
 <view class="member_title">会员中心</view>
 <view class="flex member">
-    <view class="member_item">
+    <view class="member_item" bindtap="inviteFriends">
         <image class="member_img" mode="widthFix" src="{{imgUrl}}/upload/mine/invite_friends.png"></image>
         <view class="txt1">邀请好友</view>
         <view class="txt2">分享赚钱</view>
@@ -48,7 +48,7 @@
         <view class="txt1">导师微信</view>
         <view class="txt2">taok336</view>
     </view>
-    <view class="member_item">
+    <view class="member_item" bindtap="Tutorials">
         <image class="member_img" mode="widthFix" src="{{imgUrl}}/upload/mine/course.png"></image>
         <view class="txt1">新手教程</view>
         <view class="txt2">新手攻略</view>

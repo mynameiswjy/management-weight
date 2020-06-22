@@ -25,6 +25,8 @@
         "pages/rule/rule",
         "pages/FAQ/FAQ",
         "pages/about/about",
+        "pages/inviteFriends/inviteFriends",
+        "pages/Tutorials/Tutorials",
         "pages/privilege/privilege"
       ]
     }

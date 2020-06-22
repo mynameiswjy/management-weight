@@ -1,0 +1,39 @@
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 32rpx;
+}
+
+.poster {
+    width: 350rpx;
+    display: block;
+    margin: 40rpx auto 30rpx;
+    border-radius: 12rpx;
+}
+
+.value_wrap {
+    font-size: 22rpx;
+    color: #939393;
+    padding-left: 30rpx;
+    margin-top: 50rpx;
+}
+
+.value_wrap .txt {
+    font-size: 30rpx;
+    color: #888;
+}
+
+.share_btn {
+    width: 600rpx;
+    height: 92rpx;
+    border-radius: 46rpx;
+    background: linear-gradient(90deg,rgba(251,49,102,1) 0%,rgba(255,6,23,1) 100%);
+    color: #fff;
+    text-align: center;
+    line-height: 92rpx;
+    position: fixed;bottom: 120rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}

@@ -212,6 +212,18 @@ Page({
     })
   },
 
+  inviteFriends() {
+    wx.navigateTo({
+      url: '/sundryPackage/pages/inviteFriends/inviteFriends'
+    })
+  },
+
+  Tutorials() {
+    wx.navigateTo({
+      url: '/sundryPackage/pages/Tutorials/Tutorials'
+    })
+  },
+
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */

@@ -1,0 +1,10 @@
+<view>
+    <image src="{{imgUrl}}" mode="widthFix" class="poster"></image>
+    <view class="value_wrap">
+        <view class="txt">邀请步骤：</view>
+        <view>1、保存邀请海报分享给好友</view>
+        <view>2、好友通过扫描海报二维码</view>
+        <view>3、Ta 将成为您的粉丝</view>
+    </view>
+    <view class="share_btn" bindtap="savePosterBtn">分享专属海报</view>
+</view>
