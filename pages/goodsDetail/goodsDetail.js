@@ -33,7 +33,7 @@ Page({
   },
 
   onLoad: function (options) {
-    options = utils.parseUrlParam(options);
+    options = utils.parseUrlParam(options, ['goodsSno', 'shareCustSno']);
     wx.hideShareMenu();
     wx.showLoading({
       title: '加载中',

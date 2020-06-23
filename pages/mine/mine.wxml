@@ -10,7 +10,7 @@
     </view>
     <view class="flex grade">
         <view class="iconfont iconicon- {{grade=='2'&&'grade_icon'}} {{grade=='3'&&'grade_icon1'}}"></view>
-        <view>{{gradeName}}合伙人</view>
+        <view>{{gradeName}}</view>
     </view>
     <view class="setting flex" catchtap="logout">
         <text class="iconfont iconshezhi"></text>

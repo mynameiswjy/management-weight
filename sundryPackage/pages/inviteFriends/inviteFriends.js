@@ -1,5 +1,8 @@
-import {inviteGet, inviteSave} from "../../../api/mine"
+import {inviteGet} from "../../../api/mine"
 const config = require("../../../config.globle");
+const utils = require("../../../utils/util");
+
+const app = getApp();
 
 Page({
 
@@ -15,12 +18,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.initData();
+  },
+
+  initData() {
     wx.showLoading({
       title: '加载中',
       mask: true
     });
+    if (!app.globalData.hasLogin) {
+      wx.hideLoading();
+      this.selectComponent("#login").showPopup();
+      return
+    }
     inviteGet({
-      scene: '1,2,3',
+      scene: utils.createUrlParam({
+        custSno: app.globalData.loginInfo.custSno,
+        IsInvite: true
+      }),
       page: 'pages/index/index'
     }).then(res => {
       wx.hideLoading();
@@ -28,6 +43,16 @@ Page({
         imgUrl: res.data.object
       })
     })
+  },
+
+  loginCancelBtn() {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
+
+  loginCallback() {
+    this.initData()
   },
 
   savePosterBtn() {

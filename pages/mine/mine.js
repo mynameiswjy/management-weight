@@ -28,11 +28,11 @@ Page({
     const rank = app.globalData.loginInfo.rank;
     let grade;
     if (rank === '1') {
-      grade = '初级'
+      grade = '初级合伙人'
     } else if (rank === '2') {
-      grade = '中级'
+      grade = '中级合伙人'
     } else {
-      grade = '高级'
+      grade = '高级团长'
     }
     this.setData({
       gradeName: grade,

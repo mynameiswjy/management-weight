@@ -1,5 +1,7 @@
 import { homeIndex, homeGoodsList } from '../../api/index'
+import {inviteSave} from "../../api/mine"
 const config = require('../../config.globle');
+const utils =require("../../utils/util");
 
 const app = getApp();
 
@@ -31,14 +33,16 @@ Page({
     },
     isEnd: false
   },
-  onLoad: function () {
+  onLoad: function (options) {
     const {windowWidth, windowHeight} = app.globalData.SystemInfo;
     this.data.cos = 750 / windowWidth;
     this.setData({
       windowHeight: windowHeight * 750 / windowWidth,
-      windowWidth
+      windowWidth,
+      options
     });
     this.initData();
+    this.relations()
   },
 
   onShow() {
@@ -74,6 +78,39 @@ Page({
         indexData: data
       })
     })
+  },
+
+  loginCallback() {
+    this.relations()
+  },
+
+  // 绑定分享关系
+  relations() {
+    let options = this.data.options;
+    options = utils.parseUrlParam(options,['custSno', 'IsInvite']);
+    if (options.IsInvite) {
+      if (!app.globalData.hasLogin) {
+        this.selectComponent("#login").showPopup();
+        return
+      }
+      inviteSave({
+        shareCustSno: options.custSno
+      }).then(res => {
+        if (res.data.code === 200) {
+          wx.showToast({
+            title: '恭喜你，绑定关系成功！',
+            icon: 'none',
+            duration: 1000
+          });
+        } else {
+          wx.showToast({
+            title: '绑定失败！',
+            icon: 'none',
+            duration: 1000
+          });
+        }
+      })
+    }
   },
 
   typeGoodsData(sno) {

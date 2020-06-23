@@ -1,10 +1,11 @@
+// scene 生成
 function createUrlParam(params) {
   let scene = '';
   let baseParams = {
     "IsShare": 1
-  }
+  };
 
-  let options = Object.assign(baseParams, params)
+  let options = Object.assign(baseParams, params);
 
   for (let key in options) {
     scene += options[key] + ','
@@ -12,12 +13,13 @@ function createUrlParam(params) {
   return scene
 }
 
+// 二维码 解码
 function parseUrlParam(options, data = []) {
   //文件引用不要改位置 会引起错误
   if (options.scene) {
     const scene = decodeURIComponent(options.scene).split(',');
     let params = {};
-    let key = ["IsShare"]
+    let key = ["IsShare"];
 
     key = key.concat(data);
 
