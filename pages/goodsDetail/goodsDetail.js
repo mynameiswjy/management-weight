@@ -97,7 +97,7 @@ Page({
     Promise.all([this.initData(options)]).then((res) => {
       discussList({
         goodsSno: res[0].goodsSno,
-        page: this.data.pageIdx,
+        page: 1,
         pageSize: 3
       }).then((comment) => {
         if (comment.data.code === 200) {

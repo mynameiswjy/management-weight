@@ -53,7 +53,7 @@
 .content {
     max-width: 662rpx;
     font-size: 30rpx;
-    font-weight: 600;
+    /* font-weight: 600; */
     line-height: 39rpx;
     margin: 20rpx auto;
 }
