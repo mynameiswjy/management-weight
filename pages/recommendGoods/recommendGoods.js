@@ -43,7 +43,7 @@ Page({
           const Data = data.data.object;
           if (Data.length) {
             const goodsData = this.data.goodsData;
-            goodsData[navIdx] = Data;
+            goodsData[navIdx] = goodsData[navIdx].concat(Data);
             this.data.scrollLeft[navIdx].pageIndex++;
             this.setData({
               IsShowGoods: true,
@@ -93,6 +93,11 @@ Page({
           return item
         });
         resolve(leftList);
+        if (leftList.length) {
+          for (let i = 0; i < leftList.length; i++) {
+            this.data.goodsData[i] = []
+          }
+        }
         this.setData({
           scrollLeft: leftList
         })
