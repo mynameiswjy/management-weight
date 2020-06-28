@@ -76,7 +76,7 @@ Page({
     this.setData({
       navIdx: index
     });
-    if (!this.data.goodsData[index]) {
+    if (!this.data.goodsData[index].length) {
       this.rightData(sno);
     } else {
       this.selectComponent("#goodsListTemp").reqData(this.data.goodsData[this.data.navIdx]);

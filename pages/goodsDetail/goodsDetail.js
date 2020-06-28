@@ -1,5 +1,6 @@
 import { goodsDetail, goodsSspecs, recommendGoods, getGoodsInfo } from '../../api/index'
 import {discussList} from "../../api/comment"
+import {similarGoods} from "../../api/goodsList"
 import { addCard } from '../../api/cart'
 const app = getApp();
 const config = require('../../config.globle');
@@ -120,10 +121,11 @@ Page({
       });
       return
     }
-    recommendGoods({
+    similarGoods({
       page: this.data.pageIdx,
-      pageSize: 10
-    }).then((res) => {
+      pageSize: 10,
+      goodsSno: this.data.options.goodsSno
+    }).then(res => {
       if (res.data.code === 200) {
         if (res.data.object.length) {
           this.data.pageIdx++;
