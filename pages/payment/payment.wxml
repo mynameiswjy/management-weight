@@ -9,7 +9,7 @@
             <view class="money">{{accountAmount}}</view>
             <view class="payment_money">已提现 {{occurAmount}} 元</view>
             <view class="payment_btn" bindtap="paymentBtn">提现</view>
-            <view class="bottom">满10元提现</view>
+            <view class="bottom"></view>
         </view>
     </view>
 
