@@ -30,7 +30,8 @@ Page({
     currentIdx: 0,
     estimateList: [],
     iphoneX: app.globalData.iphoneX,
-    review: false
+    review: false,
+    recommendGoodsList: []
   },
 
   onLoad: function (options) {
@@ -129,7 +130,10 @@ Page({
       if (res.data.code === 200) {
         if (res.data.object.length) {
           this.data.pageIdx++;
-          this.selectComponent('#goodsListTemp').reqData(res.data.object);
+          this.setData({
+            recommendGoodsList: this.data.recommendGoodsList.concat(res.data.object)
+          })
+          this.selectComponent('#goodsListTemp').reqData(this.data.recommendGoodsList);
         } else {
           this.setData({
             isEnd: true

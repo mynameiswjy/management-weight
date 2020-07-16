@@ -11,7 +11,8 @@ Page({
     pageIdx: 1,
     isEnd: false,
     hasLogin: false,
-    totalPrice: 0
+    totalPrice: 0,
+    recommendGoodsList: []
   },
 
   onLoad: function (options) {
@@ -28,12 +29,12 @@ Page({
 
   goodsList() {
     if (this.data.isEnd) {
-      wx.showToast({
-        title: '到底了, 别扯了',
-        icon: 'none',
-        duration: 1000,
-        mask: true
-      });
+      // wx.showToast({
+      //   title: '到底了, 别扯了',
+      //   icon: 'none',
+      //   duration: 1000,
+      //   mask: true
+      // });
       return
     }
     recommendGoods({
@@ -43,7 +44,10 @@ Page({
       if (res.data.code === 200) {
         if (res.data.object.length) {
           this.data.pageIdx++;
-          this.selectComponent('#goodsListTemp').reqData(res.data.object);
+          this.setData({
+            recommendGoodsList: this.data.recommendGoodsList.concat(res.data.object)
+          })
+          this.selectComponent('#goodsListTemp').reqData(this.data.recommendGoodsList);
         } else {
           this.setData({
             isEnd: true
