@@ -34,6 +34,10 @@ Page({
     isEnd: false
   },
   onLoad: function (options) {
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus: ['shareAppMessage', 'shareTimeline']
+    })
     const {windowWidth, windowHeight} = app.globalData.SystemInfo;
     this.data.cos = 750 / windowWidth;
     this.setData({
@@ -211,6 +215,20 @@ Page({
         url: `/pages/goodsList/goodsList?type=index&zoneType=${type}`
       })
     }
-  }
+  },
+  /*onShareAppMessage: function() {
+    return {
+      title: 'title',
+      imageUrl: "/pages/index/index",
+    }
+  },
+
+  onShareTimeline() {
+    // return {
+    //   title: '测试',
+    //   query: '',
+    //   imageUrl: 'http://img02.exam8.com/img2017/minapp/vip/user_header@2x.png'
+    // }
+  }*/
 
 });
